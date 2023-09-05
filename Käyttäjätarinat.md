@@ -10,8 +10,8 @@ Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lip
 Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lippuista löytyvää koodia.
 <br>
 
-3. __Otskko__  
-tekstiä
+3. __Simo Satunnaiskäyttäjä__  
+Simo ostaa lippuja harvoin. Hän kävisi mieluusti useammin eri tapahtumissa, mutta kokee lippujen ostamisen palvelupisteessä vaivalloiseksi ja toivoisikin että asia hoituisi netin kautta. 
 <br>
 
 4. __Otskko__  
