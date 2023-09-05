@@ -1,7 +1,7 @@
 # TicketGuru
 Ohjelmistoprojekti 1 kurssin tiimityö
 
-Tiimi: Etunimi Sukunimi, Etunimi Sukunimi
+99-Errors: Akseli Leskinen, Nadja Liljeström, Vilma Parikainen, Roope Salonen, Nicklas Åkerman
 
 ## Johdanto
 
