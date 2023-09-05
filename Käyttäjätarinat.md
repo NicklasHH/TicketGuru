@@ -1,22 +1,39 @@
-Käyttäjätarinat
+# TicketGuru
 
-1. Viimehetken mieliteko
+### Käyttäjätarinat
+
+1. __Viimehetken mieliteko__
 Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lippua ja ennakkomyynti on päättynyt. Viljamin kaverit tietävät, että niitä on saatavilla vielä ovelta, koska tapahtuma ei ollut loppuunmyyty. Viljami lähtee etkoilta vähän ennen muita, jotta ehtii ostaa lipun ovelta ilman kiirettä ja pääsee näin kavereidensa kanssa mukaan keikalle.
+<br>
 
-2. Perheen yhteinen reissu
+2. __Perheen yhteinen reissu__
 Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lippuista löytyvää koodia.
+<br>
 
-3.
+3. __Otskko__
+tekstiä
+<br>
 
-4.
+4. __Otskko__
+tekstiä
+<br>
 
-5.
+5. __Otskko__
+tekstiä
+<br>
+
+### Käyttäjäroolit
+1. Lipunmyyjä
+2. Asiakas
+3. Käyttöjärjestelmän ylläpitäjä
+4. Lipuntarkastaja
+5. 
 
 
 
 
 
-
+# <span style="color:red">Vika kirjottaja poistaa mallin</span>
 1.	Yhteisöllisyyden tukeminen taloyhtiön toimesta.
 Marko-Herlevi ja Sebastian-Sointu haluaisivat oman vakivuoron maanantaille kahdeksi tunniksi B-talosta, koska he asuvat remonttiin menevässä A talossa, johon heillä on nykyisin vakivuoro torstaille. Tämä on kuitenkin talonmiehen mielestä huono ajatus, koska saunavuoron lämmitys on kallista. Talonmies kuitenkin tokaisee, että yrittäkää saada vielä 3 taloutta mukaan, jolloin homma saadaan järkeväksi.
 He alkavat kyselemään taloyhtiöön kuuluvilta tutuilta, kiinnostaisiko ihmisiä maanantaille varata oma vakivuoro, mutta he saavat vain yhden talouden osallistumaan. Niinpä he päättävät hoitaa asian niin, että he varaavat saunan neljäksi tunniksi, ensin kaksi tuntia talouksien omaan käyttöön ja sen jälkeen sauna on käytössä kaksi tuntia kaikille halukkaille sekasaunan muodossa ilmaiseksi.
