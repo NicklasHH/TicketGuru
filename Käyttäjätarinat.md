@@ -2,23 +2,23 @@
 
 ### Käyttäjätarinat
 
-1. __Viimehetken mieliteko__
+1. __Viimehetken mieliteko__  
 Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lippua ja ennakkomyynti on päättynyt. Viljamin kaverit tietävät, että niitä on saatavilla vielä ovelta, koska tapahtuma ei ollut loppuunmyyty. Viljami lähtee etkoilta vähän ennen muita, jotta ehtii ostaa lipun ovelta ilman kiirettä ja pääsee näin kavereidensa kanssa mukaan keikalle.
 <br>
 
-2. __Perheen yhteinen reissu__
+2. __Perheen yhteinen reissu__  
 Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lippuista löytyvää koodia.
 <br>
 
-3. __Otskko__
+3. __Otskko__  
 tekstiä
 <br>
 
-4. __Otskko__
+4. __Otskko__  
 tekstiä
 <br>
 
-5. __Otskko__
+5. __Otskko__  
 tekstiä
 <br>
 
