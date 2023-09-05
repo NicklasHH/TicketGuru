@@ -1,9 +1,9 @@
-# <span style="color:Orange">TicketGuru</span>
+# TicketGuru
 Ohjelmistoprojekti 1 kurssin tiimityö
 
 99-Errors: Akseli Leskinen, Nadja Liljeström, Vilma Parikainen, Roope Salonen, Nicklas Åkerman
 
-## <span style="color:Orange">Johdanto</span>
+## Johdanto
 
 Johdantoon kirjoitetaan lyhyt, ytimekäs kuvaus siitä, mikä on projektin aihe,
 kuka on asiakas (käyttäjä), mitä hän haluaa ja saa järjestelmältä, mitä
@@ -15,7 +15,7 @@ tekniikoita käytetään ja mitä konkreettisesti on valmiina, kun projekti pä�
     -   Käyttöliittymäratkaisut ja teknologiat (esim. päätelaitteet: puhelin,
     täppäri, desktop)
 
-## <span style="color:Orange">Järjestelmän määrittely</span>
+## Järjestelmän määrittely
 
 Määrittelyssä järjestelmää tarkastellaan käyttäjän näkökulmasta. Järjestelmän
 toiminnot hahmotellaan käyttötapausten tai käyttäjätarinoiden kautta, ja kuvataan järjestelmän
@@ -29,13 +29,13 @@ käyttäjäryhmät.
 Kuvauksissa kannattaa harkita, mikä on toteuttajalle ja asiakkaalle oleellista
 tietoa ja keskittyä siihen.
 
-## <span style="color:Orange">Käyttöliittymä</span>
+## Käyttöliittymä
 
 Esitetään käyttöliittymän tärkeimmät (vain ne!) näkymät sekä niiden väliset siirtymät käyttöliittymäkaaviona. 
 
 Jos näkymän tarkoitus ei ole itsestään selvä, se pitää kuvata lyhyesti.
 
-## <span style="color:Orange">Tietokanta</span>
+## Tietokanta
 
 Järjestelmään säilöttävä ja siinä käsiteltävät tiedot ja niiden väliset suhteet
 kuvataan käsitekaaviolla. Käsitemalliin sisältyy myös taulujen välisten viiteyhteyksien ja avainten
@@ -55,7 +55,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > avatar | int FK | Tilin avatar, viittaus [avatar](#Avatar)-tauluun
 > kayttaja | int FK | Viittaus käyttäjään [käyttäjä](#Kayttaja)-taulussa
 
-## <span style="color:Orange">Tekninen kuvaus</span>
+## Tekninen kuvaus
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
 ratkaisut, esim.
@@ -76,7 +76,7 @@ Tämän lisäksi
 -   ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta
     vältytään
 
-## <span style="color:Orange">Testaus</span>
+## Testaus
 
 Tässä kohdin selvitetään, miten ohjelmiston oikea toiminta varmistetaan
 testaamalla projektin aikana: millaisia testauksia tehdään ja missä vaiheessa.
@@ -85,7 +85,7 @@ erillisiin dokumentteihin.
 
 Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu.
 
-## <span style="color:Orange">Asennustiedot</span>
+## Asennustiedot
 
 Järjestelmän asennus on syytä dokumentoida kahdesta näkökulmasta:
 
@@ -99,7 +99,7 @@ Asennusohjeesta tulisi ainakin käydä ilmi, miten käytettävä tietokanta ja
 käyttäjät tulee ohjelmistoa asentaessa määritellä (käytettävä tietokanta,
 käyttäjätunnus, salasana, tietokannan luonti yms.).
 
-## <span style="color:Orange">Käynnistys- ja käyttöohje</span>
+## Käynnistys- ja käyttöohje
 
 Tyypillisesti tässä riittää kertoa ohjelman käynnistykseen tarvittava URL sekä
 mahdolliset kirjautumiseen tarvittavat tunnukset. Jos järjestelmän
