@@ -4,7 +4,7 @@ Käyttäjätarinat
 Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lippua ja ennakkomyynti on päättynyt. Viljamin kaverit tietävät, että niitä on saatavilla vielä ovelta, koska tapahtuma ei ollut loppuunmyyty. Viljami lähtee etkoilta vähän ennen muita, jotta ehtii ostaa lipun ovelta ilman kiirettä ja pääsee näin kavereidensa kanssa mukaan keikalle.
 
 2. Perheen yhteinen reissu
-Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat liput myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lippuista löytyvää koodia.
+Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lippuista löytyvää koodia.
 
 3.
 
