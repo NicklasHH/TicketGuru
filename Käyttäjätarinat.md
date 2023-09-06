@@ -18,8 +18,12 @@ Simo ostaa lippuja harvoin. Hän kävisi mieluusti useammin eri tapahtumissa, mu
 Laura on aktiivinen tapahtumien kävijä. Hän käyttää TicketGuru-verkkosivustoa ensimmäistä kertaa. Laura valitsee tapahtuman, istumapaikan, käyttää alennuskoodin, maksaa verkossa ja saa lipun PDF-muodossa sähköpostiinsa. Hän arvostaa helppoa ja nopeaa ostokokemusta.
 <br>
 
-5. __Otskko__  
-tekstiä
+5. __Lasse Lipunmyyjä__  
+Lipunmyyjänä Lasse haluaa julkaista TicketGuru-verkkosivulle tapahtumalippuja, päivittää lippuja sekä poistaa vanhoja lippuja, jotta asiakkailla olisi aina ajantasaiset liput saatavilla. 
+<br>
+
+6. __Tanja Tapahtumanjärjestäjä__
+Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön.
 <br>
 
 ### Käyttäjäroolit
@@ -27,7 +31,7 @@ tekstiä
 2. Asiakas
 3. Käyttöjärjestelmän ylläpitäjä
 4. Lipuntarkastaja
-5. 
+5. Tapahtumanjärjestäjä
 
 
 
