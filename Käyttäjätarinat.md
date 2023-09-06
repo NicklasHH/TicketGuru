@@ -14,8 +14,8 @@ Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa
 Simo ostaa lippuja harvoin. Hän kävisi mieluusti useammin eri tapahtumissa, mutta kokee lippujen ostamisen palvelupisteessä vaivalloiseksi ja toivoisikin että asia hoituisi netin kautta. 
 <br>
 
-4. __Otskko__  
-tekstiä
+4. __Laura ostaa lippuja TicketGurun verkkosivustolta__  
+Laura on aktiivinen tapahtumien kävijä. Hän käyttää TicketGuru-verkkosivustoa ensimmäistä kertaa. Laura valitsee tapahtuman, istumapaikan, käyttää alennuskoodin, maksaa verkossa ja saa lipun PDF-muodossa sähköpostiinsa. Hän arvostaa helppoa ja nopeaa ostokokemusta.
 <br>
 
 5. __Otskko__  
