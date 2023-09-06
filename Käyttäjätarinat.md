@@ -19,11 +19,11 @@ Laura on aktiivinen tapahtumien kävijä. Hän käyttää TicketGuru-verkkosivus
 <br>
 
 5. __Lasse Lipunmyyjä__  
-Lipunmyyjänä Lasse haluaa julkaista TicketGuru-verkkosivulle tapahtumalippuja, päivittää lippuja sekä poistaa vanhoja lippuja, jotta asiakkailla olisi aina ajantasaiset liput saatavilla. 
+Lipunmyyjänä Lasse haluaa julkaista TicketGuru-verkkosivulle tapahtumalippuja, päivittää lippuja sekä poistaa vanhoja lippuja, jotta asiakkailla olisi aina ajantasaiset liput saatavilla. Ennakkomyynnin loputtua myymättä jääneet liput tulostetaan ovella myytäväksi, joten Lasse tarvitsee tarkan luvun, monta lippua on myymättä.
 <br>
 
 6. __Tanja Tapahtumanjärjestäjä__
-Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön.
+Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön. Tanja haluaa myyntiraportin myydyistä lipuista, jotta hän voi laskea onko tapahtuman järjestäminen kannattavaa.
 <br>
 
 ### Käyttäjäroolit
