@@ -7,7 +7,7 @@ Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lip
 <br>
 
 2. __Perheen yhteinen reissu__  
-Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lippuista löytyvää koodia.
+Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lipuista löytyvää koodia.
 <br>
 
 3. __Simo Satunnaiskäyttäjä__  
