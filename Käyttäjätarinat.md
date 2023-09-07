@@ -32,7 +32,11 @@ Ennakkomyynnistä saatiin myytyä noin 50% lipuista, joten lipunmyyjä painaa en
 
 8. __Pentin peliporukka__  
 Pentti ja hänen ystävänsä ovat ahkeria penkkiurheilijoita. Erityisesti jalkapallo ja pesäpallo ovat lähellä sydäntä. Pentti on jo eläkkeellä ja polvia hieman kolottaa, joten yleensä ystäväporukasta joku vetreämpi käy hakemassa liput koko sakille.
+<br>
 
+9. __Tarja Taiteenystävä__  
+Tarja on kulttuuritapahtumien suurkuluttaja. Taidenäyttelyiden avajaiset, valokuvanäyttelyt, ooppera ja museot, mikä vain käy. Tarja toivoisi, että työpaikan liikunta- ja kulttuuriseteleitä voisi käyttää lippuja ostaessa.
+<br>
 
 
 ### Käyttäjäroolit
