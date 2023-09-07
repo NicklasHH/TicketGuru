@@ -30,6 +30,9 @@ Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivus
 Ennakkomyynnistä saatiin myytyä noin 50% lipuista, joten lipunmyyjä painaa ennakkomyynnin päätyttyä nappia, mistä tulostuu automaattisesti loput liput, jotka laitetaan ovelle myyntiin.
 <br>
 
+8. __Pentin peliporukka__  
+Pentti ja hänen ystävänsä ovat ahkeria penkkiurheilijoita. Erityisesti jalkapallo ja pesäpallo ovat lähellä sydäntä. Pentti on jo eläkkeellä ja polvia hieman kolottaa, joten yleensä ystäväporukasta joku vetreämpi käy hakemassa liput koko sakille.
+
 
 
 ### Käyttäjäroolit
