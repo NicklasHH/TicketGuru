@@ -35,6 +35,44 @@ käyttäjäryhmät.
 Kuvauksissa kannattaa harkita, mikä on toteuttajalle ja asiakkaalle oleellista
 tietoa ja keskittyä siihen.
 
+### Käyttäjätarinat
+
+1. __Viimehetken mieliteko__  
+Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lippua ja ennakkomyynti on päättynyt. Viljamin kaverit tietävät, että niitä on saatavilla vielä ovelta, koska tapahtuma ei ollut loppuunmyyty. Viljami lähtee etkoilta vähän ennen muita, jotta ehtii ostaa lipun ovelta ilman kiirettä ja pääsee näin kavereidensa kanssa mukaan keikalle.
+<br>
+
+2. __Perheen yhteinen reissu__  
+Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lipuista löytyvää koodia.
+<br>
+
+5. __Lasse Lipunmyyjä__  
+Lipunmyyjänä Lasse lisää TicketGuru-järjestelmään tapahtumia ja niihin myytäviä lippuja. Kun Lasse myy lippuja, järjestelmän lippusaldo päivittyy ja myydyt liput merkitään myydyiksi. Ennakkomyynnin loputtua myymättä jääneet liput tulostetaan ovella myytäväksi, joten Lasse tarvitsee tarkan luvun, monta lippua on myymättä.
+<br>
+
+6. __Tanja Tapahtumanjärjestäjä__  
+Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön. Tanja haluaa myyntiraportin myydyistä lipuista, jotta hän voi laskea onko tapahtuman järjestäminen kannattavaa.
+<br>
+
+7. __Ennakkomyynti loppuu ja lippuja on jäljellä__  
+Ennakkomyynnistä saatiin myytyä noin 50% lipuista, joten lipunmyyjä painaa ennakkomyynnin päätyttyä nappia, mistä tulostuu automaattisesti loput liput, jotka laitetaan ovelle myyntiin.
+<br>
+
+8. __Pentin peliporukka__  
+Pentti ja hänen ystävänsä ovat ahkeria penkkiurheilijoita. Erityisesti jalkapallo ja pesäpallo ovat lähellä sydäntä. Pentti on jo eläkkeellä ja polvia hieman kolottaa, joten yleensä ystäväporukasta joku vetreämpi käy hakemassa liput koko sakille.
+<br>
+
+9. __Tarja Taiteenystävä__  
+Tarja on kulttuuritapahtumien suurkuluttaja. Taidenäyttelyiden avajaiset, valokuvanäyttelyt, ooppera ja museot, mikä vain käy. Tarja toivoisi, että työpaikan liikunta- ja kulttuuriseteleitä voisi käyttää lippuja ostaessa.
+<br>
+
+
+### Käyttäjäroolit
+1. Lipunmyyjä
+2. Asiakas
+3. Käyttöjärjestelmän ylläpitäjä
+4. Lipuntarkastaja
+5. Tapahtumanjärjestäjä
+
 ## Käyttöliittymä
 
 Esitetään käyttöliittymän tärkeimmät (vain ne!) näkymät sekä niiden väliset siirtymät käyttöliittymäkaaviona. 
