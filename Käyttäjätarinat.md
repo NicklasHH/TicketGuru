@@ -26,6 +26,10 @@ Lipunmyyjänä Lasse haluaa julkaista TicketGuru-verkkosivulle tapahtumalippuja,
 Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön. Tanja haluaa myyntiraportin myydyistä lipuista, jotta hän voi laskea onko tapahtuman järjestäminen kannattavaa.
 <br>
 
+7. __Ennakkomyynti loppuu ja lippuja on jäljellä__  
+Ennakkomyynnistä saatiin myytyä noin 50% lipuista, joten lipunmyyjä painaa ennakkomyynnin päätyttyä nappia, mistä tulostuu automaattisesti loput liput, jotka laitetaan ovelle myyntiin.
+<br>
+
 
 
 ### Käyttäjäroolit
