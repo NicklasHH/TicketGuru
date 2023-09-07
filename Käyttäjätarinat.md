@@ -11,7 +11,7 @@ Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa
 <br>
 
 3. __Simo Satunnaiskäyttäjä__  
-Simo ostaa lippuja harvoin. Hän kävisi mieluusti useammin eri tapahtumissa, mutta kokee lippujen ostamisen palvelupisteessä vaivalloiseksi ja toivoisikin että asia hoituisi netin kautta. 
+Simo ostaa lippuja harvoin. Hän kävisi mieluusti useammin eri tapahtumissa, mutta kokee lippujen ostamisen palvelupisteessä vaivalloiseksi ja toivoisikin että asia hoituisi netin kautta. Koska Simo ei erityisemmin pidä siitä, että hän joutuu raahautumaan palvelupisteelle, hän pyrkii ostamaan samalla kertaa liput useampaan tapahtumaan.    
 <br>
 
 4. __Laura ostaa lippuja TicketGurun verkkosivustolta__  
@@ -25,6 +25,8 @@ Lipunmyyjänä Lasse haluaa julkaista TicketGuru-verkkosivulle tapahtumalippuja,
 6. __Tanja Tapahtumanjärjestäjä__
 Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön. Tanja haluaa myyntiraportin myydyistä lipuista, jotta hän voi laskea onko tapahtuman järjestäminen kannattavaa.
 <br>
+
+
 
 ### Käyttäjäroolit
 1. Lipunmyyjä
