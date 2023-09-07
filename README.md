@@ -45,26 +45,17 @@ Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lip
 Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lipuista löytyvää koodia.
 <br>
 
-5. __Lasse Lipunmyyjä__  
+3. __Lasse Lipunmyyjä__  
 Lipunmyyjänä Lasse lisää TicketGuru-järjestelmään tapahtumia ja niihin myytäviä lippuja. Kun Lasse myy lippuja, järjestelmän lippusaldo päivittyy ja myydyt liput merkitään myydyiksi. Ennakkomyynnin loputtua myymättä jääneet liput tulostetaan ovella myytäväksi, joten Lasse tarvitsee tarkan luvun, monta lippua on myymättä.
 <br>
 
-6. __Tanja Tapahtumanjärjestäjä__  
+4. __Tanja Tapahtumanjärjestäjä__  
 Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön. Tanja haluaa myyntiraportin myydyistä lipuista, jotta hän voi laskea onko tapahtuman järjestäminen kannattavaa.
 <br>
 
-7. __Ennakkomyynti loppuu ja lippuja on jäljellä__  
+5. __Ennakkomyynti loppuu ja lippuja on jäljellä__  
 Ennakkomyynnistä saatiin myytyä noin 50% lipuista, joten lipunmyyjä painaa ennakkomyynnin päätyttyä nappia, mistä tulostuu automaattisesti loput liput, jotka laitetaan ovelle myyntiin.
 <br>
-
-8. __Pentin peliporukka__  
-Pentti ja hänen ystävänsä ovat ahkeria penkkiurheilijoita. Erityisesti jalkapallo ja pesäpallo ovat lähellä sydäntä. Pentti on jo eläkkeellä ja polvia hieman kolottaa, joten yleensä ystäväporukasta joku vetreämpi käy hakemassa liput koko sakille.
-<br>
-
-9. __Tarja Taiteenystävä__  
-Tarja on kulttuuritapahtumien suurkuluttaja. Taidenäyttelyiden avajaiset, valokuvanäyttelyt, ooppera ja museot, mikä vain käy. Tarja toivoisi, että työpaikan liikunta- ja kulttuuriseteleitä voisi käyttää lippuja ostaessa.
-<br>
-
 
 ### Käyttäjäroolit
 1. Lipunmyyjä
