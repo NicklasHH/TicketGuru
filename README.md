@@ -38,8 +38,7 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
    - saada (tulostettua) järjestelmästä myyntiraportin
    - pystyä tulostamaan kerralla myymättömät liput <!--(ennakkomyynnin päätyttyä)-->
    - pysty tulostamaan myyntihetkellä yksittäisiä lippuja
-   - pystyä tarkastelemaan myyntitapahtumia
-   - 
+   - pystyä tarkastelemaan myyntitapahtumia     
 
 4. __Lipuntarkastajana haluan...__
    - pystyä tarkastamaan lipun yksilöllisen tunnistenumeron (ovella)
