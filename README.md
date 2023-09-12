@@ -23,9 +23,9 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
    - tarjota lippuja myyntiin eri ikäryhmille
    - asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
    - asettaa kullekin tapahtumalle myytävien lippujen määrän
-   - pystyä lisäämään myytäviä lippuja *(!!!tarvitseeko määritellä tarkemmin?)*
-   - pystyä poistamaan myynnissä olevia *(!!!/myyntiin tulevia?)* lippuja
-   - pystyä muokkaamaan myynnissä *(!!!/myyntiin tulevia?)* olevia lippuja
+   - pystyä lisäämään myytäviä lippuja <!--*(!!!tarvitseeko määritellä tarkemmin?)*-->
+   - pystyä poistamaan myynnissä olevia <!--*(!!!/myyntiin tulevia?)* lippuja-->
+   - pystyä muokkaamaan myynnissä <!--*(!!!/myyntiin tulevia?)* olevia lippuja-->
 
 
 4. __Lipuntarkastajana haluan...__  
