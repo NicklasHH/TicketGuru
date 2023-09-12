@@ -17,24 +17,44 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 1. __Admin-käyttäjänä haluan...__
    - että jokaisella lipulla on oma uniikki tunnuksensa
+   - että jokainen myyty lippu merkitään (järjestelmässä) myydyksi
+   - pystyä hallitsemaan käyttäjätilejä
+   - pystyä hallitsemaan käyttäjätilien oikeuksia (permissions)
 
 
 3. __Lipunmyyjänä haluan...__
    - tarjota lippuja myyntiin eri ikäryhmille
    - asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
    - asettaa kullekin tapahtumalle myytävien lippujen määrän
-   - pystyä lisäämään myytäviä lippuja <!--*(!!!tarvitseeko määritellä tarkemmin?)*-->
+   - pystyä lisäämään myytäviä lippuja järjestelmään <!--*(!!!tarvitseeko määritellä tarkemmin?)*-->
    - pystyä poistamaan myynnissä olevia <!--*(!!!/myyntiin tulevia?)* lippuja-->
    - pystyä muokkaamaan myynnissä <!--*(!!!/myyntiin tulevia?)* olevia lippuja-->
+  
+   - pystyä luomaan uuden tapahtuman
+   - pystyä asettamaan tapahtumalle päivämäärän
+   - pystyä asettamaan tapahtumalle paikan <!--paikkakunnan ja osoitteen?-->
+  
+   - pystyä luomaan myyntiraportteja
+   - saada (tulostettua) järjestelmästä myyntiraportin
+   - pystyä tulostamaan kerralla myymättömät liput <!--(ennakkomyynnin päätyttyä)-->
+   - pysty tulostamaan myyntihetkellä yksittäisiä lippuja
+   - pystyä tarkastelemaan myyntitapahtumia
+   - 
+
+4. __Lipuntarkastajana haluan...__
+   - pystyä tarkastamaan lipun yksilöllisen tunnistenumeron (ovella)
+   - pystyä merkitsemään tarkastamani lipun tarkastetuksi ja käytetyksi
 
 
-4. __Lipuntarkastajana haluan...__  
+6. __Tapahtumanjärjestäjänä haluan...__
+   - asettaa lippuja myytäväksi järjestämiini tapahtumiin
+   - ilmoittaa lipunmyyjälle tapahtumapaikan ja -ajan
+   - ilmoittaa lipunmyyjälle tapahtumaan myytävien lippujen määrän
+   - seurata myyntiä
 
-
-5. __Tapahtumanjärjestäjänä haluan...__  
-
-
-6. __Asiakkaana haluan...__  
+8. __Asiakkaana haluan...__
+   - ostaa lippuja itseäni kiinnostaviin tapahtumiin
+   - tietoa itseäni kiinnostavista tapahtumista (missä ja milloin)
 
 
 ### Käyttäjäroolit 
