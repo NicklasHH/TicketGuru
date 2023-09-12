@@ -15,19 +15,26 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 ### Käyttäjätarinat
 
-1. __Admin-käyttäjänä haluan...__  
+1. __Admin-käyttäjänä haluan...__
+   - että jokaisella lipulla on oma uniikki tunnuksensa
 
 
-2. __Lipunmyyjänä haluan...__  
+3. __Lipunmyyjänä haluan...__
+   - tarjota lippuja myyntiin eri ikäryhmille
+   - asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
+   - asettaa kullekin tapahtumalle myytävien lippujen määrän
+   - pystyä lisäämään myytäviä lippuja *(!!!tarvitseeko määritellä tarkemmin?)*
+   - pystyä poistamaan myynnissä olevia *(!!!/myyntiin tulevia?)* lippuja
+   - pystyä muokkaamaan myynnissä *(!!!/myyntiin tulevia?)* olevia lippuja
 
 
-3. __Lipuntarkastajana haluan...__  
+4. __Lipuntarkastajana haluan...__  
 
 
-4. __Tapahtumanjärjestäjänä haluan...__  
+5. __Tapahtumanjärjestäjänä haluan...__  
 
 
-5. __Asiakkaana haluan...__  
+6. __Asiakkaana haluan...__  
 
 
 ### Käyttäjäroolit 
