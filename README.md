@@ -20,12 +20,15 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
    - että jokainen myyty lippu merkitään (järjestelmässä) myydyksi
    - pystyä hallitsemaan käyttäjätilejä
    - pystyä hallitsemaan käyttäjätilien oikeuksia (permissions)
+   - Mahdollisuuden tarkastaa lippujen myynti- ja varastotilanteen
+   - Pystyä tarkastelemaan ja hallitsemaan tapahtumien tietoja ja kategorioita
 
 
 3. __Lipunmyyjänä haluan...__
    - tarjota lippuja myyntiin eri ikäryhmille
    - asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
    - asettaa kullekin tapahtumalle myytävien lippujen määrän
+   - Määrittää lippujen hinnoittelua ja alennuksia
    - pystyä lisäämään myytäviä lippuja järjestelmään <!--*(!!!tarvitseeko määritellä tarkemmin?)*-->
    - pystyä poistamaan myynnissä olevia <!--*(!!!/myyntiin tulevia?)* lippuja-->
    - pystyä muokkaamaan myynnissä <!--*(!!!/myyntiin tulevia?)* olevia lippuja-->
@@ -53,6 +56,7 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 8. __Asiakkaana haluan...__
    - ostaa lippuja itseäni kiinnostaviin tapahtumiin
+   -Saatavilla olevat maksuvaihtoehdot, kuten luottokortin, mobiilimaksun tai laskun
    - tietoa itseäni kiinnostavista tapahtumista (missä ja milloin)
 
 
