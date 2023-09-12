@@ -15,32 +15,27 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 ### Käyttäjätarinat
 
-1. __Viimehetken mieliteko__  
-Viljami haluaa kavereidensa mukaan stand-up keikalle, mutta hänellä ei ole lippua ja ennakkomyynti on päättynyt. Viljamin kaverit tietävät, että niitä on saatavilla vielä ovelta, koska tapahtuma ei ollut loppuunmyyty. Viljami lähtee etkoilta vähän ennen muita, jotta ehtii ostaa lipun ovelta ilman kiirettä ja pääsee näin kavereidensa kanssa mukaan keikalle.
-<br>
+1. __Admin-käyttäjänä haluan...__  
 
-2. __Perheen yhteinen reissu__  
-Perhe koostuu neljästä henkilöstä, jotka haluavat päästä messukeskuksessa järjestettävään tapahtumaan. He ostavat kaksi aikuisten ja kaksi lasten lippua myyntipisteen kautta ennakkoon, jolloin he voivat vain kävellä suoraan tapahtumaan sisään, näyttäen ovella lipuista löytyvää koodia.
-<br>
 
-3. __Lasse Lipunmyyjä__  
-Lipunmyyjänä Lasse lisää TicketGuru-järjestelmään tapahtumia ja niihin myytäviä lippuja. Kun Lasse myy lippuja, järjestelmän lippusaldo päivittyy ja myydyt liput merkitään myydyiksi. Ennakkomyynnin loputtua myymättä jääneet liput tulostetaan ovella myytäväksi, joten Lasse tarvitsee tarkan luvun, monta lippua on myymättä.
-<br>
+2. __Lipunmyyjänä haluan...__  
 
-4. __Tanja Tapahtumanjärjestäjä__  
-Tapahtumanjärjestäjänä Tanja haluaa myydä tapahtumalippuja TicketGuru-sivustolla, jotta tapahtumat saavuttaisivat mahdollisimman laajan yleisön. Tanja haluaa myyntiraportin myydyistä lipuista, jotta hän voi laskea onko tapahtuman järjestäminen kannattavaa.
-<br>
 
-5. __Ennakkomyynti loppuu ja lippuja on jäljellä__  
-Ennakkomyynnistä saatiin myytyä noin 50% lipuista, joten lipunmyyjä painaa ennakkomyynnin päätyttyä nappia, mistä tulostuu automaattisesti loput liput, jotka laitetaan ovelle myyntiin.
-<br>
+3. __Lipuntarkastajana haluan...__  
 
-### Käyttäjäroolit
-1. Lipunmyyjä (käyttää järjestelmää)
-2. Asiakas (ostaa lippuja lipunmyyjältä)
-3. Käyttöjärjestelmän ylläpitäjä (admin, tekee järjestelmään muutokset/päivitykset)
-4. Lipuntarkastaja (käyttää järjestelmää lippujen tarkastamiseen)
-5. Tapahtumanjärjestäjä (antaa lipunmyyjälle tiedot uusista tapahtumista, saa myyntiraportit tarvittaessa lipunmyyjältä)
+
+4. __Tapahtumanjärjestäjänä haluan...__  
+
+
+5. __(Asiakkaana haluan...)__  
+
+
+### Käyttäjäroolit 
+1. Käyttöjärjestelmän ylläpitäjä (admin, tekee järjestelmään muutokset/päivitykset)
+2. Lipunmyyjä (käyttää järjestelmää)
+3. Lipuntarkastaja (käyttää järjestelmää lippujen tarkastamiseen)
+4. Tapahtumanjärjestäjä (antaa lipunmyyjälle tiedot uusista tapahtumista, saa myyntiraportit tarvittaessa lipunmyyjältä)
+5. Asiakas (ostaa lippuja lipunmyyjältä)
 
 ## Käyttöliittymä
 
