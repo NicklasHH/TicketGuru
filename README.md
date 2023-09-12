@@ -16,48 +16,48 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 ### Käyttäjätarinat
 
 1. __Admin-käyttäjänä haluan...__
-   - että jokaisella lipulla on oma uniikki tunnuksensa
-   - että jokainen myyty lippu merkitään (järjestelmässä) myydyksi
-   - pystyä hallitsemaan käyttäjätilejä
-   - pystyä hallitsemaan käyttäjätilien oikeuksia (permissions)
+   - Että jokaisella lipulla on oma uniikki tunnuksensa
+   - Että jokainen myyty lippu merkitään (järjestelmässä) myydyksi
+   - Pystyä hallitsemaan käyttäjätilejä
+   - Pystyä hallitsemaan käyttäjätilien oikeuksia (permissions)
    - Mahdollisuuden tarkastaa lippujen myynti- ja varastotilanteen
    - Pystyä tarkastelemaan ja hallitsemaan tapahtumien tietoja ja kategorioita
 
 
 3. __Lipunmyyjänä haluan...__
-   - tarjota lippuja myyntiin eri ikäryhmille
-   - asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
-   - asettaa kullekin tapahtumalle myytävien lippujen määrän
+   - Tarjota lippuja myyntiin eri ikäryhmille
+   - Asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
+   - Asettaa kullekin tapahtumalle myytävien lippujen määrän
    - Määrittää lippujen hinnoittelua ja alennuksia
-   - pystyä lisäämään myytäviä lippuja järjestelmään <!--*(!!!tarvitseeko määritellä tarkemmin?)*-->
-   - pystyä poistamaan myynnissä olevia <!--*(!!!/myyntiin tulevia?)* lippuja-->
-   - pystyä muokkaamaan myynnissä <!--*(!!!/myyntiin tulevia?)* olevia lippuja-->
+   - Pystyä lisäämään myytäviä lippuja järjestelmään <!--*(!!!tarvitseeko määritellä tarkemmin?)*-->
+   - Pystyä poistamaan myynnissä olevia <!--*(!!!/myyntiin tulevia?)* lippuja-->
+   - Pystyä muokkaamaan myynnissä <!--*(!!!/myyntiin tulevia?)* olevia lippuja-->
   
-   - pystyä luomaan uuden tapahtuman
-   - pystyä asettamaan tapahtumalle päivämäärän
-   - pystyä asettamaan tapahtumalle paikan <!--paikkakunnan ja osoitteen?-->
+   - Pystyä luomaan uuden tapahtuman
+   - Pystyä asettamaan tapahtumalle päivämäärän
+   - Pystyä asettamaan tapahtumalle paikan <!--paikkakunnan ja osoitteen?-->
   
-   - pystyä luomaan myyntiraportteja
-   - saada (tulostettua) järjestelmästä myyntiraportin
-   - pystyä tulostamaan kerralla myymättömät liput <!--(ennakkomyynnin päätyttyä)-->
-   - pysty tulostamaan myyntihetkellä yksittäisiä lippuja
-   - pystyä tarkastelemaan myyntitapahtumia     
+   - Pystyä luomaan myyntiraportteja
+   - Saada (tulostettua) järjestelmästä myyntiraportin
+   - Pystyä tulostamaan kerralla myymättömät liput <!--(ennakkomyynnin päätyttyä)-->
+   - Pysty tulostamaan myyntihetkellä yksittäisiä lippuja
+   - Pystyä tarkastelemaan myyntitapahtumia     
 
 4. __Lipuntarkastajana haluan...__
-   - pystyä tarkastamaan lipun yksilöllisen tunnistenumeron (ovella)
-   - pystyä merkitsemään tarkastamani lipun tarkastetuksi ja käytetyksi
+   - Pystyä tarkastamaan lipun yksilöllisen tunnistenumeron (ovella)
+   - Pystyä merkitsemään tarkastamani lipun tarkastetuksi ja käytetyksi
 
 
 6. __Tapahtumanjärjestäjänä haluan...__
-   - asettaa lippuja myytäväksi järjestämiini tapahtumiin
-   - ilmoittaa lipunmyyjälle tapahtumapaikan ja -ajan
-   - ilmoittaa lipunmyyjälle tapahtumaan myytävien lippujen määrän
-   - seurata myyntiä
+   - Asettaa lippuja myytäväksi järjestämiini tapahtumiin
+   - Ilmoittaa lipunmyyjälle tapahtumapaikan ja -ajan
+   - Ilmoittaa lipunmyyjälle tapahtumaan myytävien lippujen määrän
+   - Seurata myyntiä
 
 8. __Asiakkaana haluan...__
-   - ostaa lippuja itseäni kiinnostaviin tapahtumiin
+   - Pstaa lippuja itseäni kiinnostaviin tapahtumiin
    -Saatavilla olevat maksuvaihtoehdot, kuten luottokortin, mobiilimaksun tai laskun
-   - tietoa itseäni kiinnostavista tapahtumista (missä ja milloin)
+   - Tietoa itseäni kiinnostavista tapahtumista (missä ja milloin)
 
 
 ### Käyttäjäroolit 
