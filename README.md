@@ -27,7 +27,7 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 4. __Tapahtumanjärjestäjänä haluan...__  
 
 
-5. __(Asiakkaana haluan...)__  
+5. __Asiakkaana haluan...__  
 
 
 ### Käyttäjäroolit 
