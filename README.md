@@ -29,23 +29,23 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
    - Asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
    - Asettaa kullekin tapahtumalle myytävien lippujen määrän
    - Määrittää lippujen hinnoittelua ja alennuksia
-   - Pystyä lisäämään myytäviä lippuja järjestelmään <!--*(!!!tarvitseeko määritellä tarkemmin?)*-->
-   - Pystyä poistamaan myynnissä olevia <!--*(!!!/myyntiin tulevia?)* lippuja-->
-   - Pystyä muokkaamaan myynnissä <!--*(!!!/myyntiin tulevia?)* olevia lippuja-->
+   - Pystyä lisäämään myytäviä lippuja järjestelmään
+   - Pystyä poistamaan myynnissä olevia lippuja
+   - Pystyä muokkaamaan myynnissä olevia lippuja
   
    - Pystyä luomaan uuden tapahtuman
    - Pystyä asettamaan tapahtumalle päivämäärän
-   - Pystyä asettamaan tapahtumalle paikan <!--paikkakunnan ja osoitteen?-->
+   - Pystyä asettamaan tapahtumalle paikan ja osoitetiedot
   
    - Pystyä luomaan myyntiraportteja
    - Saada (tulostettua) järjestelmästä myyntiraportin
-   - Pystyä tulostamaan kerralla myymättömät liput <!--(ennakkomyynnin päätyttyä)-->
-   - Pysty tulostamaan myyntihetkellä yksittäisiä lippuja
+   - Pystyä tulostamaan kerralla myymättömät liput, kun ennakkomyynti on päättynyt
+   - Pystyä tulostamaan myyntihetkellä yksittäisiä lippuja
    - Pystyä tarkastelemaan myyntitapahtumia     
 
 4. __Lipuntarkastajana haluan...__
    - Pystyä tarkastamaan lipun yksilöllisen tunnistenumeron (ovella)
-   - Pystyä merkitsemään tarkastamani lipun tarkastetuksi ja käytetyksi
+   - Pystyä merkitsemään järjestelmään tarkastamani lipun käytetyksi 
 
 
 6. __Tapahtumanjärjestäjänä haluan...__
@@ -55,9 +55,10 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
    - Seurata myyntiä
 
 8. __Asiakkaana haluan...__
-   - Pstaa lippuja itseäni kiinnostaviin tapahtumiin
+   - Ostaa lippuja itseäni kiinnostaviin tapahtumiin
    -Saatavilla olevat maksuvaihtoehdot, kuten luottokortin, mobiilimaksun tai laskun
    - Tietoa itseäni kiinnostavista tapahtumista (missä ja milloin)
+   - Pitää lipunmyyntipisteen tietoisena, että verkkokaupalle olisi kysyntää <!--(Voisko tän muotoilla paremmin, eli varaudutaan siihen, että myös verkkokauppa olisi mahdollista toteuttaa ilman muutoksia nykyiseen järjestelmään)-->
 
 
 ### Käyttäjäroolit 
