@@ -73,8 +73,7 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 Käyttöliittymään kirjautuessa on olennaista kirjautuuko järjestelmään lipunmyyjänä vai lipuntarkastajana. Admin-oikeuksia käytetään järjestelmän kehittämiseen ja muutosten tekoon. 
 
 <!--![Katastrofi ajalta 2023 09 07 13 47 45](https://github.com/NicklasHH/TicketGuru/assets/117033936/b0fca7bb-b075-429f-973a-4c63afdf7641) (vanha kuva)--> 
-![TicketGuru](https://github.com/NicklasHH/TicketGuru/assets/117033936/5109a064-354f-4a4a-8c8c-bdd20e7b47c2)
-
+![TicketGuru](https://github.com/NicklasHH/TicketGuru/assets/117033936/9ed14a17-2ca9-46b8-83d5-ddd8520870de)
 
 ## Tietokanta
 
