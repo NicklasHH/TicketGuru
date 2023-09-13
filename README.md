@@ -95,6 +95,9 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > avatar | int FK | Tilin avatar, viittaus [avatar](#Avatar)-tauluun
 > kayttaja | int FK | Viittaus käyttäjään [käyttäjä](#Kayttaja)-taulussa
 
+
+
+<!--
 ## Tekninen kuvaus
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
@@ -147,3 +150,5 @@ käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimi
 
 Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat
 järjestelmän pariin !
+
+-->
