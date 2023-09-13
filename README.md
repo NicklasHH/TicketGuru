@@ -72,8 +72,8 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 Käyttöliittymään kirjautuessa on olennaista kirjautuuko järjestelmään lipunmyyjänä vai lipuntarkastajana. Admin-oikeuksia käytetään järjestelmän kehittämiseen ja muutosten tekoon. 
 
-![Katastrofi ajalta 2023 09 07 13 47 45](https://github.com/NicklasHH/TicketGuru/assets/117033936/b0fca7bb-b075-429f-973a-4c63afdf7641)
-
+<!--![Katastrofi ajalta 2023 09 07 13 47 45](https://github.com/NicklasHH/TicketGuru/assets/117033936/b0fca7bb-b075-429f-973a-4c63afdf7641) (vanha kuva)--> 
+![TicketGuruIsompi](https://github.com/NicklasHH/TicketGuru/assets/117033936/738b8458-4bc9-46d8-94f4-5c8da60c991e)
 
 ## Tietokanta
 
@@ -95,6 +95,9 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > avatar | int FK | Tilin avatar, viittaus [avatar](#Avatar)-tauluun
 > kayttaja | int FK | Viittaus käyttäjään [käyttäjä](#Kayttaja)-taulussa
 
+
+
+<!--
 ## Tekninen kuvaus
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
@@ -147,3 +150,5 @@ käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimi
 
 Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat
 järjestelmän pariin !
+
+-->
