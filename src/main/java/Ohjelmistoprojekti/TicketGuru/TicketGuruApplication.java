@@ -11,3 +11,18 @@ public class TicketGuruApplication {
 	}
 
 }
+
+
+/*
+ * Lisätty depedencyt thymeleaf, jpa, h2
+ * 
+ * 
+ * Lisätty packaget .domain ja .web
+ * 
+ * Lisätty Ticket.java, TicketRepository.java ja TicketController
+ * 
+ * 
+ * Lisätty kansio templates ja index.html
+ * 
+ * 
+ * */
