@@ -8,9 +8,9 @@ public class Event {
 
 	private String date;
 
-	private Int ticketCount;
+	private int ticketCount;
 
-	private Int venueId;
+	private int venueId;
 
 	private String description;
 }
