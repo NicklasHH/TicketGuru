@@ -2,8 +2,15 @@ package Ohjelmistoprojekti.TicketGuru.domain;
 
 public class Event {
 	
-	private long eventid;
+	private long eventId;
 	
-	private String eventname;
+	private String eventName;
 
+	private String date;
+
+	private Int ticketCount;
+
+	private Int venueId;
+
+	private String description;
 }
