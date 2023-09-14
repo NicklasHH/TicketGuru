@@ -99,7 +99,19 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > avatar | int FK | Tilin avatar, viittaus [avatar](#Avatar)-tauluun
 > kayttaja | int FK | Viittaus käyttäjään [käyttäjä](#Kayttaja)-taulussa
 
-
+> ### AppUsers
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> appUserid | Long PK | Käyttäjän id
+> username | varchar(30) |  Tilin nimimerkki
+> password | String | Tilin salasana
+> roleId | int FK | Käyttäjän rooli
+>
+> > ### Role
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> roleId | Long PK | @Id, @GeneratedValue, not null, unique
+> roleName | String | not null
 
 <!--
 ## Tekninen kuvaus
