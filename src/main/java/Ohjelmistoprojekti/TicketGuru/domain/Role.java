@@ -2,6 +2,8 @@ package Ohjelmistoprojekti.TicketGuru.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name= "Roles")
 public class Role {
@@ -11,8 +13,11 @@ public class Role {
     @Column(name = "roleId", nullable = false, updatable = false)
     private Long roleId;
 
-    @Column(name = "role", nullable = false)
-    private String role;
+    @Column(name = "roleName", nullable = false)
+    private String roleName;
+
+    @OneToMany(mappedBy = "userRole")
+    private List<AppUser> users;
 
 
     public Role() {
@@ -20,7 +25,7 @@ public class Role {
 
     public Role(Long roleId, String role) {
         this.roleId = roleId;
-        this.role = role;
+        this.roleName = role;
     }
 
     public Long getRoleId() {
@@ -32,10 +37,10 @@ public class Role {
     }
 
     public String getRole() {
-        return role;
+        return roleName;
     }
 
     public void setRole(String role) {
-        this.role = role;
+        this.roleName = role;
     }
 }

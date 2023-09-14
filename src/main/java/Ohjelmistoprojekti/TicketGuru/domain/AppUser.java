@@ -18,17 +18,19 @@ public class AppUser {
     @Column(name = "password", nullable = false)
     private String passwordHash;
 
-    @Column(name = "role", nullable = false)
-    private String role;
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role userRole;
+
 
     public AppUser() {
     }
 
-    public AppUser(Long id, String username, String passwordHash, String role) {
+    public AppUser(Long id, String username, String passwordHash, Role userRole) {
         this.id = id;
         this.username = username;
         this.passwordHash = passwordHash;
-        this.role = role;
+        this.userRole = userRole;
     }
 
     public Long getId() {
@@ -55,11 +57,11 @@ public class AppUser {
         this.passwordHash = passwordHash;
     }
 
-    public String getRole() {
-        return role;
+    public Role getUserRole() {
+        return userRole;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setUserRole(Role userRole) {
+        this.userRole = userRole;
     }
 }
