@@ -2,6 +2,7 @@ package Ohjelmistoprojekti.TicketGuru.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,30 +18,33 @@ public class Role {
     private String roleName;
 
     @OneToMany(mappedBy = "userRole")
-    private List<AppUser> users;
+    private List<AppUser> users = new ArrayList<>();
 
 
     public Role() {
     }
 
-    public Role(Long roleId, String role) {
-        this.roleId = roleId;
-        this.roleName = role;
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public List<AppUser> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<AppUser> users) {
+        this.users = users;
     }
 
     public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
-
-    public String getRole() {
+    public String getRoleName() {
         return roleName;
     }
 
-    public void setRole(String role) {
-        this.roleName = role;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

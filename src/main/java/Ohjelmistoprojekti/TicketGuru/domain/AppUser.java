@@ -26,8 +26,7 @@ public class AppUser {
     public AppUser() {
     }
 
-    public AppUser(Long id, String username, String passwordHash, Role userRole) {
-        this.id = id;
+    public AppUser(String username, String passwordHash, Role userRole) {
         this.username = username;
         this.passwordHash = passwordHash;
         this.userRole = userRole;
