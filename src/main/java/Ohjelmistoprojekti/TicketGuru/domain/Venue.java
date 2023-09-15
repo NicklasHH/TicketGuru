@@ -1,15 +1,19 @@
 package Ohjelmistoprojekti.TicketGuru.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
+@Table(name = "Venues")
+@Entity
 public class Venue {
-	//venueId(pk) place(char 150) streetAddress(char 150), postalCode(fk, char 5), cityId(fk)
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name =  "venueId")
@@ -24,19 +28,96 @@ public class Venue {
 	private String streetAddress;
 	
 	@Column(name = "postalCode")
+	private String postalCode;
+	/*
 	@ManyToOne
     @JoinColumn(name = "postalCode")
-	private String postalCode;
+	private PostalCode postalCode; 
+	*/
 	
 	@Column(name = "cityId")
+	private String city;	
+	/*
 	@ManyToOne
-    @JoinColumn(name = "cityId")
-	private int cityId; 
+    @JoinColumn(name = "city")
+	private City city; */
 	
-	/*  //ID
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
-    private Long id;  */
+	public Venue() {}
+	
+	
+
+	public Venue(long venueId, @Size(min = 1, max = 150) String place, @Size(min = 1, max = 150) String streetAddress,
+			String postalCode, String city) {
+		super();
+		this.venueId = venueId;
+		this.place = place;
+		this.streetAddress = streetAddress;
+		this.postalCode = postalCode;
+		this.city = city;
+	}
+
+
+
+	public long getVenueId() {
+		return venueId;
+	}
+
+	public void setVenueId(long venueId) {
+		this.venueId = venueId;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+	public String getStreetAddress() {
+		return streetAddress;
+	}
+
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Venue [venueId=" + venueId + ", place=" + place + ", streetAddress=" + streetAddress + ", postalCode="
+				+ postalCode + ", city=" + city + "]";
+	}
+	
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+
 
 }
