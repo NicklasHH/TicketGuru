@@ -12,12 +12,13 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class TicketType {
+	//ticketTypeId(pk) ticketType(char50) price(char10)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ticketTypeId;
 
 	@Column(nullable = false)
-	private int price;
+	private String price;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticketType")
 	private List<Ticket> tickets;
@@ -25,7 +26,7 @@ public class TicketType {
 	public TicketType() {
 	}
 
-	public TicketType(Long ticketTypeId, int price, List<Ticket> tickets) {
+	public TicketType(Long ticketTypeId, String price, List<Ticket> tickets) {
 		super();
 		this.ticketTypeId = ticketTypeId;
 		this.price = price;
@@ -40,11 +41,11 @@ public class TicketType {
 		this.ticketTypeId = ticketTypeId;
 	}
 
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
