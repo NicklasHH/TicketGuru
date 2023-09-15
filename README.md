@@ -106,12 +106,35 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > username | varchar(30) |  Tilin nimimerkki
 > password | String | Tilin salasana
 > roleId | int FK | Käyttäjän rooli
->
-> > ### Role
+
+> ### Role
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
 > roleId | Long PK | @Id, @GeneratedValue, not null, unique
 > roleName | String | not null
+
+> ### TicketTypes
+> _TicketTypes-taulu sisältää lipputyypit. Lipputyyppejä on erilaisia. Yksi lippu pitää sisällään vain yhdenlaisen lipputyypin._
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> ticketTypeId | Long PK | Lipun tyypin id
+> ticketType | varchar(50) | Lipun tyyppi
+> price | varchar(10) | Lipputyypin hinta
+
+>  ### Tickets
+> _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden lipputyypin sekä yhden tapahtuman._
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> ticketId | Long PK | Lipun id
+> eventId | int FK | Viittaus Events-tauluun
+> ticketTypeId | int FK | Viittaus TicketTypes-tauluun
+
+>  ### abc
+> _ABC_
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> A | B | C
+> A | B | C
 
 <!--
 ## Tekninen kuvaus
