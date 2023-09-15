@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Ticket {
-
+	//ticketId(pk) eventId(fk int) ticketTypeId(fk int)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ticketId;
