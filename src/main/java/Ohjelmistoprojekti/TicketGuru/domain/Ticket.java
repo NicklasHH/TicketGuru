@@ -32,9 +32,7 @@ public class Ticket {
 	public Ticket() {
 	}
 
-	public Ticket(Long ticketId, Event event, TicketType ticketType) {
-		super();
-		this.ticketId = ticketId;
+	public Ticket(Event event, TicketType ticketType) {
 		this.event = event;
 		this.ticketType = ticketType;
 	}

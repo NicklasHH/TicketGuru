@@ -46,10 +46,8 @@ public class Venue {
 	
 	
 
-	public Venue(long venueId, @Size(min = 1, max = 150) String place, @Size(min = 1, max = 150) String streetAddress,
+	public Venue(@Size(min = 1, max = 150) String place, @Size(min = 1, max = 150) String streetAddress,
 			String postalCode, String city) {
-		super();
-		this.venueId = venueId;
 		this.place = place;
 		this.streetAddress = streetAddress;
 		this.postalCode = postalCode;

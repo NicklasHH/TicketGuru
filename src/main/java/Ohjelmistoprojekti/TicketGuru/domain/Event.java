@@ -31,10 +31,9 @@ public class Event {
 	
 	
 
-	public Event(long eventId, List<Ticket> tickets, String eventName, String date, int ticketCount, int venueId,
+	public Event(List<Ticket> tickets, String eventName, String date, int ticketCount, int venueId,
 			String description) {
 		super();
-		this.eventId = eventId;
 		this.tickets = tickets;
 		this.eventName = eventName;
 		this.date = date;

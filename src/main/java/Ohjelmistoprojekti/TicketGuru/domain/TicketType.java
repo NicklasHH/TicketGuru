@@ -26,9 +26,7 @@ public class TicketType {
 	public TicketType() {
 	}
 
-	public TicketType(Long ticketTypeId, String price, List<Ticket> tickets) {
-		super();
-		this.ticketTypeId = ticketTypeId;
+	public TicketType(String price, List<Ticket> tickets) {
 		this.price = price;
 		this.tickets = tickets;
 	}
