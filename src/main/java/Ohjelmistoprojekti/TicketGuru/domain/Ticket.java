@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
+
 @Entity
 public class Ticket {
 	//ticketId(pk) eventId(fk int) ticketTypeId(fk int)
@@ -19,20 +20,28 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ticketId;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "eventName")
-	private List<Event> events;
+	
+    @ManyToOne
+    @JoinColumn(name = "eventId")
+    private Event event;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne//(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ticketTypeId")
 	private TicketType ticketType;
 
 	public Ticket() {
 	}
 
-	public Ticket(Long ticketId, List<Event> events, TicketType ticketType) {
+	public Ticket(Long ticketId, Event event, TicketType ticketType) {
 		super();
 		this.ticketId = ticketId;
-		this.events = events;
+		this.event = event;
+		this.ticketType = ticketType;
+	}
+
+	public Ticket(Long ticketId, TicketType ticketType) {
+		super();
+		this.ticketId = ticketId;
 		this.ticketType = ticketType;
 	}
 
@@ -44,12 +53,12 @@ public class Ticket {
 		this.ticketId = ticketId;
 	}
 
-	public List<Event> getEvents() {
-		return events;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEvents(List<Event> events) {
-		this.events = events;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	public TicketType getTicketType() {
@@ -62,8 +71,11 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [ticketId=" + ticketId + ", events=" + events + ", ticketType=" + ticketType + "]";
+		return "Ticket [ticketId=" + ticketId + ", event=" + event + ", ticketType=" + ticketType + "]";
 	}
 	
+	
+
+
 
 }
