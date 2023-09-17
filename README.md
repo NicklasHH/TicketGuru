@@ -100,65 +100,65 @@ määritykset. Tietokanta kuvataan käyttäen jotain kuvausmenetelmää, joko ER
 #### AppUsers
 
 _Kuvaus_
-| Kenttä | Tyyppi | Kuvaus |
+| Kenttä    | Tyyppi      | Kuvaus           |
 |-----------|-------------|------------------|
-| appUserid | Long PK | Käyttäjän id |
-| username | varchar(30) | Tilin nimimerkki |
-| password | String | Tilin salasana |
-| roleId | int FK | Käyttäjän rooli |
+| appUserid | Long PK     | Käyttäjän id     |
+| username  | varchar(30) | Tilin nimimerkki |
+| password  | String      | Tilin salasana   |
+| roleId    | int FK      | Käyttäjän rooli  |
 
 ---
 
 #### Roles
 
 _Kuvaus_
-| Kenttä | Tyyppi | Kuvaus |
+| Kenttä   | Tyyppi  | Kuvaus                                 |
 |----------|---------|----------------------------------------|
-| roleId | Long PK | @Id, @GeneratedValue, not null, unique |
-| roleName | String | not null |
+| roleId   | Long PK | @Id, @GeneratedValue, not null, unique |
+| roleName | String  | not null                               |
 
 ---
 
 #### TicketTypes
 
-_TicketTypes-taulu sisältää lipputyypit. Lipputyyppejä on erilaisia. Yksi lippu pitää sisällään vain yhdenlaisen lipputyypin._
-| Kenttä | Tyyppi | Kuvaus |
-|--------------|-------------|-------------------|
-| ticketTypeId | Long PK | Lipun tyypin id |
-| ticketType | varchar(50) | Lipun tyyppi |
-| price | varchar(10) | Lipputyypin hinta |
+_TicketTypes-taulu sisältää eri lipputyypit. Yksi lippu sisältää vain yhdenlaisen lipputyypin._
+| Kenttä       | Tyyppi      | Kuvaus                                      |
+|--------------|-------------|---------------------------------------------|
+| ticketTypeId | Long PK     | Lipputyypin yksilöllinen tunniste, not null |
+| ticketType   | varchar(50) | Lipun tyyppi, not null                      |
+| price        | varchar(10) | Lipputyypin hinta, not null                 |
 
 ---
 
 #### Tickets
 
 _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden lipputyypin sekä yhden tapahtuman._
-| Kenttä | Tyyppi | Kuvaus |
-|--------------|---------|------------------------------|
-| ticketId | Long PK | Lipun id |
-| eventId | int FK | Viittaus Events-tauluun |
-| ticketTypeId | int FK | Viittaus TicketTypes-tauluun |
+| Kenttä       | Tyyppi  | Kuvaus                                 |
+|--------------|---------|----------------------------------------|
+| ticketId     | Long PK | Lipun yksilöllinen tunniste, not null  |
+| eventId      | int FK  | Viittaus Events-tauluun, not null      |
+| ticketTypeId | int FK  | Viittaus TicketTypes-tauluun, not null |
 
 ---
 
 #### Events
 
 _Events-taulu sisältää tapahtuman tiedot._
-| Kenttä | Tyyppi | Kuvaus |
+| Kenttä      | Tyyppi       | Kuvaus                                        |
 |-------------|--------------|-----------------------------------------------|
-| eventId | Long PK | Tapahtuman id |
-| eventName | varchar(100) | Tapahtuman nimi |
-| date | String | Tapahtuman päivämäärä |
-| ticketCount | int | Tapahtuman lippujen määrä |
-| venueId | int FK | Tapahtuman paikan id, viittaus Venues-tauluun |
-| description | varchar(500) | Tapahtuman kuvaus |
+| eventId     | Long PK      | Tapahtuman id                                 |
+| eventName   | varchar(100) | Tapahtuman nimi                               |
+| date        | String       | Tapahtuman päivämäärä                         |
+| ticketCount | int          | Tapahtuman lippujen määrä                     |
+| venueId     | int FK       | Tapahtuman paikan id, viittaus Venues-tauluun |
+| description | varchar(500) | Tapahtuman kuvaus                             |
 
 ---
 
 #### Venues
 
 | Kenttä        | Tyyppi       | Kuvaus                                                       |
-| ------------- | ------------ | ------------------------------------------------------------ |
+|---------------|--------------|--------------------------------------------------------------|
 | venueId       | long PK      | Yksilöllinen tunniste, tapahtumapaikka, not null             |
 | place         | varchar(150) | Tapahtumapaikan nimi, not null                               |
 | streetAddress | varchar(150) | Tapahtumapaikan katuosoite, not null                         |
@@ -172,8 +172,8 @@ _Events-taulu sisältää tapahtuman tiedot._
 _Kuvaus_
 | Kenttä | Tyyppi | Kuvaus |
 |--------|--------|--------|
-| A | B | C |
-| A | B | C |
+| A      | B      | C      |
+| A      | B      | C      |
 
 ---
 
@@ -182,8 +182,8 @@ _Kuvaus_
 _Kuvaus_
 | Kenttä | Tyyppi | Kuvaus |
 |--------|--------|--------|
-| A | B | C |
-| A | B | C |
+| A      | B      | C      |
+| A      | B      | C      |
 
 ---
 
