@@ -81,17 +81,17 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 Käyttöliittymään kirjautuessa on olennaista kirjautuuko järjestelmään lipunmyyjänä vai lipuntarkastajana. Admin-oikeuksia käytetään järjestelmän kehittämiseen ja muutosten tekoon.
 
-![](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruN%C3%A4ytt%C3%B6kuva.png)
+![Näyttömallinnukset](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruN%C3%A4ytt%C3%B6kuva.png)
 Voit avata kuvan isommaksi klikkaamalla sitä
 
 ---
 
 ## Tietokanta
 
-Järjestelmään säilöttävä ja siinä käsiteltävät tiedot ja niiden väliset suhteet
-kuvataan käsitekaaviolla. Käsitemalliin sisältyy myös taulujen välisten viiteyhteyksien ja avainten
-määritykset. Tietokanta kuvataan käyttäen jotain kuvausmenetelmää, joko ER-kaaviota ja UML-luokkakaaviota.
-![image](https://github.com/NicklasHH/TicketGuru/assets/117033936/3bc18d8d-1f3a-4d97-a931-61a100e671a6)
+
+Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
+
+![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/3bc18d8d-1f3a-4d97-a931-61a100e671a6)
 
 ---
 
@@ -99,29 +99,29 @@ määritykset. Tietokanta kuvataan käyttäen jotain kuvausmenetelmää, joko ER
 
 ### AppUsers
 
-_Kuvaus_
-| Kenttä    | Tyyppi      | Kuvaus           |
-|-----------|-------------|------------------|
-| appUserid | Long PK     | Käyttäjän id     |
-| username  | varchar(30) | Tilin nimimerkki |
-| password  | String      | Tilin salasana   |
-| roleId    | int FK      | Käyttäjän rooli  |
+_AppUsers-taulu sisältää käyttäjätunnukset, joita vaaditaan järjestelmän käyttämiseen._
+| Kenttä    | Tyyppi      | Kuvaus                                   |
+|-----------|-------------|------------------------------------------|
+| appUserid | Long PK     | Käyttäjän yksilöllinen tunnite, not null |
+| username  | varchar(25) | Tilin nimimerkki, not null               |
+| password  | varchar(50) | Tilin salasana, not null                 |
+| roleId    | int FK      | Viittaus Roles-tauluun, not null         |
 
 ---
 
 ### Roles
 
-_Kuvaus_
-| Kenttä   | Tyyppi  | Kuvaus                                 |
-|----------|---------|----------------------------------------|
-| roleId   | Long PK | @Id, @GeneratedValue, not null, unique |
-| roleName | String  | not null                               |
+_Roles-taulu sisältää käyttäjätunnuksien roolit. Yhdellä käyttäjätunnuksella on yksi rooli._
+| Kenttä   | Tyyppi      | Kuvaus                                 |
+|----------|-------------|----------------------------------------|
+| roleId   | Long PK     | Roolin yksilöllinen tunniste, not null |
+| roleName | varchar(50) | Roolin nimi, not null                  |
 
 ---
 
 ### TicketTypes
 
-_TicketTypes-taulu sisältää eri lipputyypit. Yksi lippu sisältää vain yhdenlaisen lipputyypin._
+_TicketTypes-taulu sisältää lipputyypit. Yhdellä lipulla on yksi lipputyyppi._
 | Kenttä       | Tyyppi      | Kuvaus                                      |
 |--------------|-------------|---------------------------------------------|
 | ticketTypeId | Long PK     | Lipputyypin yksilöllinen tunniste, not null |
@@ -132,7 +132,7 @@ _TicketTypes-taulu sisältää eri lipputyypit. Yksi lippu sisältää vain yhde
 
 ### Tickets
 
-_Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden lipputyypin sekä yhden tapahtuman._
+_Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden tapahtuman ja yhden lipputyypin tiedot._
 | Kenttä       | Tyyppi  | Kuvaus                                 |
 |--------------|---------|----------------------------------------|
 | ticketId     | Long PK | Lipun yksilöllinen tunniste, not null  |
@@ -144,18 +144,20 @@ _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden lipputyypi
 ### Events
 
 _Events-taulu sisältää tapahtuman tiedot._
-| Kenttä      | Tyyppi       | Kuvaus                                        |
-|-------------|--------------|-----------------------------------------------|
-| eventId     | Long PK      | Tapahtuman id                                 |
-| eventName   | varchar(100) | Tapahtuman nimi                               |
-| date        | String       | Tapahtuman päivämäärä                         |
-| ticketCount | int          | Tapahtuman lippujen määrä                     |
-| venueId     | int FK       | Tapahtuman paikan id, viittaus Venues-tauluun |
-| description | varchar(500) | Tapahtuman kuvaus                             |
+| Kenttä      | Tyyppi       | Kuvaus                                                  |
+|-------------|--------------|---------------------------------------------------------|
+| eventId     | Long PK      | Tapahtuman yksilöllinen tunniste, not null              |
+| eventName   | varchar(100) | Tapahtuman nimi, not null                               |
+| date        | String       | Tapahtuman päivämäärä, not null                         |
+| ticketCount | int          | Tapahtuman lippujen määrä, not null                     |
+| venueId     | int FK       | Tapahtuman paikan id, viittaus Venues-tauluun, not null |
+| description | varchar(500) | Tapahtuman kuvaus                                       |
 
 ---
 
 ### Venues
+
+_Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä tapahtumapaikassa._
 
 | Kenttä        | Tyyppi       | Kuvaus                                                       |
 |---------------|--------------|--------------------------------------------------------------|
@@ -169,21 +171,21 @@ _Events-taulu sisältää tapahtuman tiedot._
 
 ### Postcodes
 
-_Kuvaus_
-| Kenttä | Tyyppi | Kuvaus |
-|--------|--------|--------|
-| A      | B      | C      |
-| A      | B      | C      |
+_Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaikat. Yksi tapahtumapaikka sisältää vain yhden postinumeron._
+| Kenttä     | Tyyppi       | Kuvaus                                                 |
+|------------|--------------|--------------------------------------------------------|
+| postalCode | varchar(5)   | Postinumero toimii yksilöllisenä tunnisteena, not null |
+| postOffice | varchar(150) | Postitoimipaikka, not null                             |
 
 ---
 
 ### Cities
 
-_Kuvaus_
-| Kenttä | Tyyppi | Kuvaus |
-|--------|--------|--------|
-| A      | B      | C      |
-| A      | B      | C      |
+_Cities-taulu sisältää kaupungit. Yksi tapahtuma pitää sisällään yhden kaupungin. Ne ovat omassa taulussaan, koska sama kaupunki esiintyy usein._
+| Kenttä | Tyyppi       | Kuvaus                          |
+|--------|--------------|---------------------------------|
+| cityId | Long PK      | Yksilöllinen tunniste, not null |
+| city   | varchar(150) | Kaupunki, not null              |
 
 ---
 
