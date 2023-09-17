@@ -97,7 +97,7 @@ määritykset. Tietokanta kuvataan käyttäen jotain kuvausmenetelmää, joko ER
 
 ## Taulut, taulujen attribuutit ja näiden selitys
 
-#### AppUsers
+### AppUsers
 
 _Kuvaus_
 | Kenttä    | Tyyppi      | Kuvaus           |
@@ -109,7 +109,7 @@ _Kuvaus_
 
 ---
 
-#### Roles
+### Roles
 
 _Kuvaus_
 | Kenttä   | Tyyppi  | Kuvaus                                 |
@@ -119,7 +119,7 @@ _Kuvaus_
 
 ---
 
-#### TicketTypes
+### TicketTypes
 
 _TicketTypes-taulu sisältää eri lipputyypit. Yksi lippu sisältää vain yhdenlaisen lipputyypin._
 | Kenttä       | Tyyppi      | Kuvaus                                      |
@@ -130,7 +130,7 @@ _TicketTypes-taulu sisältää eri lipputyypit. Yksi lippu sisältää vain yhde
 
 ---
 
-#### Tickets
+### Tickets
 
 _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden lipputyypin sekä yhden tapahtuman._
 | Kenttä       | Tyyppi  | Kuvaus                                 |
@@ -141,7 +141,7 @@ _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden lipputyypi
 
 ---
 
-#### Events
+### Events
 
 _Events-taulu sisältää tapahtuman tiedot._
 | Kenttä      | Tyyppi       | Kuvaus                                        |
@@ -155,7 +155,7 @@ _Events-taulu sisältää tapahtuman tiedot._
 
 ---
 
-#### Venues
+### Venues
 
 | Kenttä        | Tyyppi       | Kuvaus                                                       |
 |---------------|--------------|--------------------------------------------------------------|
@@ -167,7 +167,7 @@ _Events-taulu sisältää tapahtuman tiedot._
 
 ---
 
-#### Postcodes
+### Postcodes
 
 _Kuvaus_
 | Kenttä | Tyyppi | Kuvaus |
@@ -177,7 +177,7 @@ _Kuvaus_
 
 ---
 
-#### Cities
+### Cities
 
 _Kuvaus_
 | Kenttä | Tyyppi | Kuvaus |
