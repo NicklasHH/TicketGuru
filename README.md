@@ -136,6 +136,18 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > eventId | int FK | Viittaus Events-tauluun
 > ticketTypeId | int FK | Viittaus TicketTypes-tauluun
 
+> ### Events
+>
+> _Events-taulu sisältää tapahtuman tiedot._
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> eventId | Long PK | Tapahtuman id
+> eventName | varchar(100) | Tapahtuman nimi
+> date | String | Tapahtuman päivämäärä
+> ticketCount | int | Tapahtuman lippujen määrä
+> venueId | int FK | Tapahtuman paikan id, viittaus Venues-tauluun
+> description | varchar(500) | Tapahtuman kuvaus
+
 > ### abc
 >
 > _ABC_
