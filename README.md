@@ -155,8 +155,8 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > | venueId    | long PK     | Yksilöllinen tunniste, tapahtumapaikka, not null   |
 > | place      | varchar(150)| Tapahtumapaikan nimi, not null                     |
 > | streetAddress | varchar(150) | Tapahtumapaikan katuosoite, not null           |
-> | postalCode | int FK      | Viittaus postinroon postalCode PostCodes-taulussa, not null |
-> | cityId     | int FK      | Viittaus kaupunkiin cityID Cities-taulussa, not null |
+> | postalCode | int FK      | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
+> | cityId     | int FK      | Viittaus kaupunkiin, cityID Cities-taulussa, not null |
 
 > ### abc
 >
