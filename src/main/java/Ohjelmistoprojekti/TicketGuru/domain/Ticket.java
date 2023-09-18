@@ -1,8 +1,6 @@
 package Ohjelmistoprojekti.TicketGuru.domain;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -10,22 +8,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Tickets")
 public class Ticket {
-	//ticketId(pk) eventId(fk int) ticketTypeId(fk int)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, updatable = false)
 	private Long ticketId;
 
-	
-    @ManyToOne
-    @JoinColumn(name = "eventId")
-    private Event event;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "eventId")
+	private Event event;
 
-	@ManyToOne//(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ticketTypeId")
 	private TicketType ticketType;
 
@@ -71,9 +68,5 @@ public class Ticket {
 	public String toString() {
 		return "Ticket [ticketId=" + ticketId + ", event=" + event + ", ticketType=" + ticketType + "]";
 	}
-	
-	
-
-
 
 }

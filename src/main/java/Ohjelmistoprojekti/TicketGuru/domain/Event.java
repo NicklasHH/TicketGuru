@@ -1,35 +1,48 @@
 package Ohjelmistoprojekti.TicketGuru.domain;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
 @Entity
+@Table(name = "Events")
 public class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, updatable = false)
 	private long eventId;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "event") 
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
 	private List<Ticket> tickets;
-	
-	
+
+	@Column(nullable = false)
+	@Size(min = 1, max = 100)
 	private String eventName;
-	private String date;
-	private int ticketCount;
-	private int venueId;
+
+	@Column(nullable = false)
+	@Size(min = 1, max = 500)
 	private String description;
+
+	@Column(nullable = false)
+	private String date;
+	
+	@Column(nullable = false)
+	private int ticketCount;
+	
+	@Column(nullable = false)
+	private int venueId;
 
 	public Event() {
 
 	}
-	
-	
 
 	public Event(List<Ticket> tickets, String eventName, String date, int ticketCount, int venueId,
 			String description) {
@@ -41,10 +54,6 @@ public class Event {
 		this.venueId = venueId;
 		this.description = description;
 	}
-	
-	
-
-
 
 	public long getEventId() {
 		return eventId;
@@ -101,10 +110,5 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-	
-	
-
 
 }

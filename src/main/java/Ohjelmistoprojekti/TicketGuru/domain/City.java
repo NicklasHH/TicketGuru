@@ -8,22 +8,26 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 @Entity
+@Table(name = "Cities")
 public class City {
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="cityId")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, updatable = false)
 	private Long cityId;
-	
-	@Column(name="city")
+
+	@Size(min = 1, max = 150)
+	@Column(nullable = false)
 	private String city;
-	
-	@OneToMany(mappedBy = "Venue")
-    private List<Venue> venues;
-	
-	public City() {}
+
+	@OneToMany(mappedBy = "city")
+	private List<Venue> venues;
+
+	public City() {
+	}
 
 	public Long getCityId() {
 		return cityId;
@@ -48,7 +52,5 @@ public class City {
 	public void setVenues(List<Venue> venues) {
 		this.venues = venues;
 	}
-
-	
 
 }
