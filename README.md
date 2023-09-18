@@ -91,7 +91,7 @@ Voit avata kuvan isommaksi klikkaamalla sitä
 
 Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
 
-![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/a4c3e4b3-ef25-4d4c-a842-f45e09813b0c)
+![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/24a4db3a-b0fa-49bc-927f-8f19388b0333)
 
 ---
 
@@ -165,7 +165,6 @@ _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä
 | place         | varchar(150) | Tapahtumapaikan nimi, not null                               |
 | streetAddress | varchar(150) | Tapahtumapaikan katuosoite, not null                         |
 | postalcode    | int FK       | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
-| cityId        | int FK       | Viittaus kaupunkiin, cityID Cities-taulussa, not null        |
 
 ---
 
@@ -176,16 +175,6 @@ _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaik
 |------------|--------------|--------------------------------------------------------|
 | postalcode | varchar(5)   | Postinumero toimii yksilöllisenä tunnisteena, not null |
 | postOffice | varchar(150) | Postitoimipaikka, not null                             |
-
----
-
-### Cities
-
-_Cities-taulu sisältää kaupungit. Yksi tapahtuma pitää sisällään yhden kaupungin. Ne ovat omassa taulussaan, koska sama kaupunki esiintyy usein._
-| Kenttä | Tyyppi       | Kuvaus                          |
-|--------|--------------|---------------------------------|
-| cityId | Long PK      | Yksilöllinen tunniste, not null |
-| city   | varchar(150) | Kaupunki, not null              |
 
 ---
 
