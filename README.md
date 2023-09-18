@@ -91,7 +91,7 @@ Voit avata kuvan isommaksi klikkaamalla sitä
 
 Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
 
-![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/3bc18d8d-1f3a-4d97-a931-61a100e671a6)
+![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/a4c3e4b3-ef25-4d4c-a842-f45e09813b0c)
 
 ---
 
@@ -164,7 +164,7 @@ _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä
 | venueId       | long PK      | Yksilöllinen tunniste, tapahtumapaikka, not null             |
 | place         | varchar(150) | Tapahtumapaikan nimi, not null                               |
 | streetAddress | varchar(150) | Tapahtumapaikan katuosoite, not null                         |
-| postalCode    | int FK       | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
+| postalcode    | int FK       | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
 | cityId        | int FK       | Viittaus kaupunkiin, cityID Cities-taulussa, not null        |
 
 ---
@@ -174,7 +174,7 @@ _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä
 _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaikat. Yksi tapahtumapaikka sisältää vain yhden postinumeron._
 | Kenttä     | Tyyppi       | Kuvaus                                                 |
 |------------|--------------|--------------------------------------------------------|
-| postalCode | varchar(5)   | Postinumero toimii yksilöllisenä tunnisteena, not null |
+| postalcode | varchar(5)   | Postinumero toimii yksilöllisenä tunnisteena, not null |
 | postOffice | varchar(150) | Postitoimipaikka, not null                             |
 
 ---
