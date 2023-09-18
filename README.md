@@ -91,7 +91,7 @@ Voit avata kuvan isommaksi klikkaamalla sitä
 
 Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
 
-![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/3bc18d8d-1f3a-4d97-a931-61a100e671a6)
+![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/24a4db3a-b0fa-49bc-927f-8f19388b0333)
 
 ---
 
@@ -164,8 +164,7 @@ _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä
 | venueId       | long PK      | Yksilöllinen tunniste, tapahtumapaikka, not null             |
 | place         | varchar(150) | Tapahtumapaikan nimi, not null                               |
 | streetAddress | varchar(150) | Tapahtumapaikan katuosoite, not null                         |
-| postalCode    | int FK       | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
-| cityId        | int FK       | Viittaus kaupunkiin, cityID Cities-taulussa, not null        |
+| postalcode    | int FK       | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
 
 ---
 
@@ -174,18 +173,8 @@ _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä
 _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaikat. Yksi tapahtumapaikka sisältää vain yhden postinumeron._
 | Kenttä     | Tyyppi       | Kuvaus                                                 |
 |------------|--------------|--------------------------------------------------------|
-| postalCode | varchar(5)   | Postinumero toimii yksilöllisenä tunnisteena, not null |
+| postalcode | varchar(5)   | Postinumero toimii yksilöllisenä tunnisteena, not null |
 | postOffice | varchar(150) | Postitoimipaikka, not null                             |
-
----
-
-### Cities
-
-_Cities-taulu sisältää kaupungit. Yksi tapahtuma pitää sisällään yhden kaupungin. Ne ovat omassa taulussaan, koska sama kaupunki esiintyy usein._
-| Kenttä | Tyyppi       | Kuvaus                          |
-|--------|--------------|---------------------------------|
-| cityId | Long PK      | Yksilöllinen tunniste, not null |
-| city   | varchar(150) | Kaupunki, not null              |
 
 ---
 
