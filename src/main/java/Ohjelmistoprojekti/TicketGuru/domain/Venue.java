@@ -30,18 +30,13 @@ public class Venue {
 	@JoinColumn(name = "postalcode")
 	private Postalcode postalcode;
 
-	@ManyToOne
-	@JoinColumn(name = "cityId")
-	private City city;
-
 	public Venue() {
 	}
 
-	public Venue(String place, String streetAddress, Postalcode postalcode, City city) {
+	public Venue(String place, String streetAddress, Postalcode postalcode) {
 		this.place = place;
 		this.streetAddress = streetAddress;
 		this.postalcode = postalcode;
-		this.city = city;
 	}
 
 	public long getVenueId() {
@@ -76,18 +71,10 @@ public class Venue {
 		this.postalcode = postalcode;
 	}
 
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
-
 	@Override
 	public String toString() {
 		return "Venue [venueId=" + venueId + ", place=" + place + ", streetAddress=" + streetAddress + ", postalcode="
-				+ postalcode + ", city=" + city + "]";
+				+ postalcode + "]";
 	}
 
 }
