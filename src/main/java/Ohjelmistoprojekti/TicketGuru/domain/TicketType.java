@@ -2,25 +2,32 @@ package Ohjelmistoprojekti.TicketGuru.domain;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 @Entity
+@Table(name = "TicketTypes")
 public class TicketType {
-	//ticketTypeId(pk) ticketType(char50) price(char10)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, updatable = false)
 	private Long ticketTypeId;
 
+	@Size(min = 1, max = 10)
 	@Column(nullable = false)
 	private String price;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticketType")
+	@Size(min = 1, max = 50)
+	@Column(nullable = false)
+	private String ticketType;
+
+	@OneToMany(mappedBy = "ticketType")
 	private List<Ticket> tickets;
 
 	public TicketType() {

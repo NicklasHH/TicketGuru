@@ -5,56 +5,44 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-//import jakarta.persistence.JoinColumn;
-//import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
-@Table(name = "Venues")
 @Entity
+@Table(name = "Venues")
 public class Venue {
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name =  "venueId")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, updatable = false)
 	private long venueId;
-	
-	@Column(name = "place")
-	@Size(min = 1, max = 150)
-	private String place;
-	
-	@Column(name = "streetAddress")
-	@Size(min = 1, max = 150)
-	private String streetAddress;
-	
-	@Column(name = "postalCode")
-	private String postalCode;
-	/*
-	@ManyToOne
-    @JoinColumn(name = "postalCode")
-	private PostalCode postalCode; 
-	*/
-	
-	@Column(name = "cityId")
-	private String city;	
-	/*
-	@ManyToOne
-    @JoinColumn(name = "city")
-	private City city; */
-	
-	public Venue() {}
-	
-	
 
-	public Venue(@Size(min = 1, max = 150) String place, @Size(min = 1, max = 150) String streetAddress,
-			String postalCode, String city) {
-		this.place = place;
-		this.streetAddress = streetAddress;
-		this.postalCode = postalCode;
-		this.city = city;
+	@Size(min = 1, max = 150)
+	@Column(nullable = false)
+	private String place;
+
+	@Size(min = 1, max = 150)
+	@Column(nullable = false)
+	private String streetAddress;
+
+	@ManyToOne
+	@JoinColumn(name = "postalcode")
+	private Postalcode postalcode;
+
+	@ManyToOne
+	@JoinColumn(name = "cityId")
+	private City city;
+
+	public Venue() {
 	}
 
-
+	public Venue(String place, String streetAddress, Postalcode postalcode, City city) {
+		this.place = place;
+		this.streetAddress = streetAddress;
+		this.postalcode = postalcode;
+		this.city = city;
+	}
 
 	public long getVenueId() {
 		return venueId;
@@ -80,42 +68,26 @@ public class Venue {
 		this.streetAddress = streetAddress;
 	}
 
-	public String getPostalCode() {
-		return postalCode;
+	public Postalcode getPostalcode() {
+		return postalcode;
 	}
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	public void setPostalcode(Postalcode postalcode) {
+		this.postalcode = postalcode;
 	}
 
-	public String getCity() {
+	public City getCity() {
 		return city;
 	}
 
-	public void setCity(String city) {
+	public void setCity(City city) {
 		this.city = city;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Venue [venueId=" + venueId + ", place=" + place + ", streetAddress=" + streetAddress + ", postalCode="
-				+ postalCode + ", city=" + city + "]";
+		return "Venue [venueId=" + venueId + ", place=" + place + ", streetAddress=" + streetAddress + ", postalcode="
+				+ postalcode + ", city=" + city + "]";
 	}
-	
-	
-	
-	
-
-
-	
-	
-	
-	
-	
-	
-	
-
 
 }

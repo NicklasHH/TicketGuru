@@ -1,0 +1,26 @@
+INSERT INTO Roles (role_name) VALUES ('Admin');
+INSERT INTO Roles (role_name) VALUES ('Lipunmyyjä');
+INSERT INTO App_Users(username, password, role_Id) VALUES ('admin', 'admin', 1);
+INSERT INTO App_Users(username, password, role_Id) VALUES ('käyttis', 'salis', 2);
+INSERT INTO Ticket_types(Ticket_type, price) VALUES ('Lapsi', '5');
+INSERT INTO Ticket_types(Ticket_type, price) VALUES ('Eläkeläinen', '15');
+INSERT INTO Postalcodes (postalcode, post_Office) VALUES ('00100', 'Helsinki');
+INSERT INTO Postalcodes (postalcode, post_Office) VALUES ('00200', 'Espoo');
+INSERT INTO Cities(city) VALUES ('Helsinki');
+INSERT INTO Cities(city) VALUES ('Turku');
+INSERT INTO Venues(place, street_address, postalcode, city_Id) VALUES ('a','b', '00100',1);
+INSERT INTO Venues(place, street_address, postalcode, city_Id) VALUES ('c','d', '00200',2);
+INSERT INTO Events(event_name, date, ticket_count, venue_id, description) VALUES ('eventin nimi','18.9.2029',100,2,'lisätiedot');
+INSERT INTO Events(event_name, date, ticket_count, venue_id, description) VALUES ('eventin nimi 2','19.9.2029',200,1,'lisätiedot');
+INSERT INTO Tickets(Event_id, Ticket_Type_Id) VALUES ('1','1');
+INSERT INTO Tickets(Event_id, Ticket_Type_Id) VALUES ('2','2');
+
+
+SELECT * FROM roles;
+SELECT * FROM app_users;
+SELECT * FROM Ticket_types;
+SELECT * FROM Postalcodes;
+SELECT * FROM Cities;
+SELECT * FROM venues;
+SELECT * FROM Events;
+SELECT * FROM Tickets;
