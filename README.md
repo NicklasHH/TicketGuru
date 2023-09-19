@@ -88,7 +88,6 @@ Voit avata kuvan isommaksi klikkaamalla sitä
 
 ## Tietokanta
 
-
 Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
 
 ![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/958673c6-ff44-4e5c-8e56-c1592a3d2181)
@@ -126,19 +125,21 @@ _TicketTypes-taulu sisältää lipputyypit. Yhdellä lipulla on yksi lipputyyppi
 |--------------|-------------|---------------------------------------------|
 | ticketTypeId | Long PK     | Lipputyypin yksilöllinen tunniste, not null |
 | ticketType   | varchar(50) | Lipun tyyppi, not null                      |
-| price        | varchar(10) | Lipputyypin hinta, not null                 |
+| eventId      | int FK      | Viittaus Events-tauluun, not null           |
+| price        | double      | Lipputyypin hinta, not null                 |
 
 ---
 
 ### Tickets
 
 _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden tapahtuman ja yhden lipputyypin tiedot._
-| Kenttä       | Tyyppi  | Kuvaus                                 |
-|--------------|---------|----------------------------------------|
-| ticketId     | Long PK | Lipun yksilöllinen tunniste, not null  |
-| eventId      | int FK  | Viittaus Events-tauluun, not null      |
-| ticketTypeId | int FK  | Viittaus TicketTypes-tauluun, not null |
-
+| Kenttä        | Tyyppi  | Kuvaus                                  |
+|---------------|---------|-----------------------------------------|
+| ticketId      | Long PK | Lipun yksilöllinen tunniste, not null   |
+| ticketTypeId  | int FK  | Viittaus TicketTypes-tauluun, not null  |
+| eventId       | int FK  | Viittaus Events-tauluun, not null       |
+| transactionId | int FK  | Viittaus transactions-tauluun, not null |
+| check         | Boolean | Onko lippu tarkistettu, not null        |
 ---
 
 ### Events
@@ -148,7 +149,8 @@ _Events-taulu sisältää tapahtuman tiedot._
 |-------------|--------------|---------------------------------------------------------|
 | eventId     | Long PK      | Tapahtuman yksilöllinen tunniste, not null              |
 | eventName   | varchar(100) | Tapahtuman nimi, not null                               |
-| date        | String       | Tapahtuman päivämäärä, not null                         |
+| eventDate   | String       | Tapahtuman päivämäärä, not null                         |
+| eventTime   | String       | Tapahtuman kellonaika, not null                         |
 | ticketCount | int          | Tapahtuman lippujen määrä, not null                     |
 | venueId     | int FK       | Tapahtuman paikan id, viittaus Venues-tauluun, not null |
 | description | varchar(500) | Tapahtuman kuvaus                                       |
@@ -180,11 +182,15 @@ _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaik
 
 ### Transactions
 
-_Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaikat. Yksi tapahtumapaikka sisältää vain yhden postinumeron._
-| Kenttä     | Tyyppi       | Kuvaus                                                 |
-|------------|--------------|--------------------------------------------------------|
+_Transactions-taulu sisältää tapahtumat._
+| Kenttä          | Tyyppi  | Kuvaus                                                   |
+|-----------------|---------|----------------------------------------------------------|
+| transactionId   | long PK | transactionid toimii yksilöllisenä tunnisteena, not null |
+| amount          | Double  | tapahtuman summa, not null                               |
+| transactionDate | String  | tapahtuman päivämäärä, not null                          |
 
 ---
+
 <!--
 ## Tekninen kuvaus
 
