@@ -27,7 +27,6 @@ public class Event {
 	@Size(min = 1, max = 100)
 	private String eventName;
 
-	@Column(nullable = false)
 	@Size(min = 1, max = 500)
 	private String description;
 
