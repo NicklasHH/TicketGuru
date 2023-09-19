@@ -91,7 +91,7 @@ Voit avata kuvan isommaksi klikkaamalla sitä
 
 Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
 
-![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/24a4db3a-b0fa-49bc-927f-8f19388b0333)
+![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/958673c6-ff44-4e5c-8e56-c1592a3d2181)
 
 ---
 
@@ -178,6 +178,13 @@ _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaik
 
 ---
 
+### Transactions
+
+_Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaikat. Yksi tapahtumapaikka sisältää vain yhden postinumeron._
+| Kenttä     | Tyyppi       | Kuvaus                                                 |
+|------------|--------------|--------------------------------------------------------|
+
+---
 <!--
 ## Tekninen kuvaus
 
