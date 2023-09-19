@@ -23,12 +23,12 @@ public class TicketRestController {
     @GetMapping("/{id}")
     public ResponseEntity<Event> getEvent(@PathVariable Long id) {
         // Hae tapahtuma tietokannasta ja palauta vastaus
-        Optional<Event> event = eventRepository.findById(id);
-        if (event.isPresent()) {
-            return ResponseEntity.ok(event.get());
+        Optional<Event> event = eventRepository.findById(id); // Palauttaa eventin Id:N perustellaa
+        if (event.isPresent()) { //
+            return ResponseEntity.ok(event.get()); // HTTP 200 OK
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
         }
     }
-    // Lisää muut REST-endpointit tähän luokkaan
+    // Lisää muut REST-endpointit tähän luokkaan POST,PUT,DELETE etc.
 }
