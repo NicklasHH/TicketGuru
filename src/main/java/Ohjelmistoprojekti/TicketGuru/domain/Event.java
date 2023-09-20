@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
@@ -31,35 +33,32 @@ public class Event {
 	private String description;
 
 	@Column(nullable = false)
-	private String date;
-	
+	private String eventDate;
+
+	@Column(nullable = false)
+	private String eventTime;
+
 	@Column(nullable = false)
 	private int ticketCount;
-	
-	@Column(nullable = false)
-	private int venueId;
+
+	@ManyToOne
+	@JoinColumn(name = "venueId")
+	private Venue venue;
 
 	public Event() {
 
 	}
 
-	public Event(List<Ticket> tickets, String eventName, String date, int ticketCount, int venueId,
-			String description) {
+	public Event(List<Ticket> tickets, String eventName, String description, String eventDate, String eventTime,
+			int ticketCount, Venue venue) {
 		super();
 		this.tickets = tickets;
 		this.eventName = eventName;
-		this.date = date;
-		this.ticketCount = ticketCount;
-		this.venueId = venueId;
 		this.description = description;
-	}
-
-	public long getEventId() {
-		return eventId;
-	}
-
-	public void setEventId(long eventId) {
-		this.eventId = eventId;
+		this.eventDate = eventDate;
+		this.eventTime = eventTime;
+		this.ticketCount = ticketCount;
+		this.venue = venue;
 	}
 
 	public List<Ticket> getTickets() {
@@ -78,12 +77,28 @@ public class Event {
 		this.eventName = eventName;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(String eventDate) {
+		this.eventDate = eventDate;
+	}
+
+	public String getEventTime() {
+		return eventTime;
+	}
+
+	public void setEventTime(String eventTime) {
+		this.eventTime = eventTime;
 	}
 
 	public int getTicketCount() {
@@ -94,20 +109,19 @@ public class Event {
 		this.ticketCount = ticketCount;
 	}
 
-	public int getVenueId() {
-		return venueId;
+	public Venue getVenue() {
+		return venue;
 	}
 
-	public void setVenueId(int venueId) {
-		this.venueId = venueId;
+	public void setVenue(Venue venue) {
+		this.venue = venue;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	@Override
+	public String toString() {
+		return "Event [eventId=" + eventId + ", tickets=" + tickets + ", eventName=" + eventName + ", description="
+				+ description + ", eventDate=" + eventDate + ", eventTime=" + eventTime + ", ticketCount=" + ticketCount
+				+ ", venue=" + venue + "]";
 	}
 
 }

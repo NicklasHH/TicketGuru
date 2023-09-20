@@ -1,23 +1,33 @@
 INSERT INTO Roles (role_name) VALUES ('Admin');
 INSERT INTO Roles (role_name) VALUES ('Lipunmyyjä');
+
 INSERT INTO App_Users(username, password, role_Id) VALUES ('admin', 'admin', 1);
 INSERT INTO App_Users(username, password, role_Id) VALUES ('käyttis', 'salis', 2);
-INSERT INTO Ticket_types(Ticket_type, price) VALUES ('Lapsi', '5');
-INSERT INTO Ticket_types(Ticket_type, price) VALUES ('Eläkeläinen', '15');
+
 INSERT INTO Postalcodes (postalcode, post_Office) VALUES ('00100', 'Helsinki');
 INSERT INTO Postalcodes (postalcode, post_Office) VALUES ('00200', 'Espoo');
+
 INSERT INTO Venues(place, street_address, postalcode) VALUES ('a','b', '00100');
 INSERT INTO Venues(place, street_address, postalcode) VALUES ('c','d', '00200');
-INSERT INTO Events(event_name, date, ticket_count, venue_id, description) VALUES ('eventin nimi','18.9.2029',100,2,'lisätiedot');
-INSERT INTO Events(event_name, date, ticket_count, venue_id, description) VALUES ('eventin nimi 2','19.9.2029',200,1,'lisätiedot');
-INSERT INTO Tickets(Event_id, Ticket_Type_Id) VALUES ('1','1');
-INSERT INTO Tickets(Event_id, Ticket_Type_Id) VALUES ('2','2');
+
+INSERT INTO Events(event_name, event_Date, event_Time, ticket_count, venue_id, description) VALUES ('eventin nimi','18.9.2029', '12.00',100,2,'lisätiedot');
+INSERT INTO Events(event_name, event_Date, event_Time, ticket_count, venue_id, description) VALUES ('eventin nimi 2','19.9.2029', '15.00',200,1,'lisätiedot');
+
+INSERT INTO Ticket_types(Ticket_type, event_id, price) VALUES ('Lapsi', 1, '5');
+INSERT INTO Ticket_types(Ticket_type, event_id, price) VALUES ('Eläkeläinen', 2,'15');
+
+INSERT INTO Transactions(Amount, Transaction_Date) VALUES (15, '20.9.2023');
+INSERT INTO Transactions(Amount, Transaction_Date) VALUES (25, '21.9.2023');
+INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id) VALUES (1, 1, 1);
+INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id) VALUES (2, 2, 2);
+INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id, is_Checked) VALUES (2, 2, 2, 1);
 
 
 SELECT * FROM roles;
 SELECT * FROM app_users;
-SELECT * FROM Ticket_types;
 SELECT * FROM Postalcodes;
 SELECT * FROM venues;
+SELECT * FROM Transactions;
 SELECT * FROM Events;
+SELECT * FROM Ticket_types;
 SELECT * FROM Tickets;

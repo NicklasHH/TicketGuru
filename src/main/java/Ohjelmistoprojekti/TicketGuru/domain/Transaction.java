@@ -1,45 +1,77 @@
 package Ohjelmistoprojekti.TicketGuru.domain;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Transactions")
 public class Transaction {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long transactionId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false)
+	private Long transactionId;
 
-    private double amount;
-    private String transactionDate;
+	private double amount;
 
-    @ManyToOne
-    @JoinColumn(name = "ticketId")
-    private Ticket ticket;
+	private String transactionDate;
 
-    public Transaction() {
-    }
+	@OneToMany(mappedBy = "transaction")
+	private List<Ticket> tickets;
 
-    public Transaction(double amount, String transactionDate, Ticket ticket) {
-        this.amount = amount;
-        this.transactionDate = transactionDate;
-        this.ticket = ticket;
-    }
+	public Transaction() {
+	}
 
-    public Long getTransactionId() {
-        return transactionId;
-    }
+	public Transaction(double amount, String transactionDate, List<Ticket> tickets) {
+		super();
+		this.amount = amount;
+		this.transactionDate = transactionDate;
+		this.tickets = tickets;
+	}
 
-    public double getAmount() {
-        return amount;
-    }
+	public Long getTransactionId() {
+		return transactionId;
+	}
 
-    public String getTransactionDate() {
-        return transactionDate;
-    }
+	public void setTransactionId(Long transactionId) {
+		this.transactionId = transactionId;
+	}
 
-    public Ticket getTicket() {
-        return ticket;
-    }
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public String getTransactionDate() {
+		return transactionDate;
+	}
+
+	public void setTransactionDate(String transactionDate) {
+		this.transactionDate = transactionDate;
+	}
+
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", amount=" + amount + ", transactionDate="
+				+ transactionDate + ", tickets=" + tickets + "]";
+	}
+
 }
