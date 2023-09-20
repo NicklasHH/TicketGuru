@@ -90,7 +90,7 @@ Voit avata kuvan isommaksi klikkaamalla sitä
 
 Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
 
-![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/assets/117033936/958673c6-ff44-4e5c-8e56-c1592a3d2181)
+![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/blob/master/TiecketGuruTietokantakaavio.png)
 
 ---
 
