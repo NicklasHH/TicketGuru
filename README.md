@@ -133,13 +133,13 @@ _TicketTypes-taulu sisältää lipputyypit. Yhdellä lipulla on yksi lipputyyppi
 ### Tickets
 
 _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden tapahtuman ja yhden lipputyypin tiedot._
-| Kenttä        | Tyyppi  | Kuvaus                                  |
-|---------------|---------|-----------------------------------------|
-| ticketId      | Long PK | Lipun yksilöllinen tunniste, not null   |
-| ticketTypeId  | int FK  | Viittaus TicketTypes-tauluun, not null  |
-| eventId       | int FK  | Viittaus Events-tauluun, not null       |
-| transactionId | int FK  | Viittaus transactions-tauluun, not null |
-| check         | Boolean | Onko lippu tarkistettu, not null        |
+| Kenttä        | Tyyppi  | Kuvaus                                              |
+|---------------|---------|-----------------------------------------------------|
+| ticketId      | Long PK | Lipun yksilöllinen tunniste, not null               |
+| ticketTypeId  | int FK  | Viittaus TicketTypes-tauluun, not null              |
+| eventId       | int FK  | Viittaus Events-tauluun, not null                   |
+| transactionId | int FK  | Viittaus transactions-tauluun, not null             |
+| isChecked     | Boolean | Onko lippu tarkistettu, true = tarkistettu not null |
 ---
 
 ### Events
@@ -182,12 +182,12 @@ _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaik
 
 ### Transactions
 
-_Transactions-taulu sisältää tapahtumat._
+_Transactions-taulu sisältää maksutapahtumat._
 | Kenttä          | Tyyppi  | Kuvaus                                                   |
 |-----------------|---------|----------------------------------------------------------|
 | transactionId   | long PK | transactionid toimii yksilöllisenä tunnisteena, not null |
-| amount          | Double  | tapahtuman summa, not null                               |
-| transactionDate | String  | tapahtuman päivämäärä, not null                          |
+| amount          | Double  | maksutapahtuman summa, not null                          |
+| transactionDate | String  | maksutapahtuman päivämäärä, not null                     |
 
 ---
 
