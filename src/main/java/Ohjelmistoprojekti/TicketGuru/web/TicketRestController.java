@@ -1,17 +1,17 @@
 package Ohjelmistoprojekti.TicketGuru.web;
 
-import Ohjelmistoprojekti.TicketGuru.domain.Event;
-import Ohjelmistoprojekti.TicketGuru.domain.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import Ohjelmistoprojekti.TicketGuru.domain.Event;
+import Ohjelmistoprojekti.TicketGuru.domain.EventRepository;
 
 import java.util.Optional;
 
-@RestController
+
 @RequestMapping("/api/events")
 public class TicketRestController {
     private final EventRepository eventRepository;
@@ -20,7 +20,7 @@ public class TicketRestController {
     public TicketRestController(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // http://localhost:8080/api/event/1
     public ResponseEntity<Event> getEvent(@PathVariable Long id) {
         // Hae tapahtuma tietokannasta ja palauta vastaus
         Optional<Event> event = eventRepository.findById(id); // Palauttaa eventin Id:N perustellaa

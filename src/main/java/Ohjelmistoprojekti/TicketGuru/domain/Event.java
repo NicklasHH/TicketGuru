@@ -1,5 +1,9 @@
 package Ohjelmistoprojekti.TicketGuru.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,8 +16,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
-import java.util.List;
-
 @Entity
 @Table(name = "Events")
 public class Event {
@@ -22,6 +24,7 @@ public class Event {
 	@Column(nullable = false, updatable = false)
 	private long eventId;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
 	private List<Ticket> tickets;
 
@@ -41,6 +44,7 @@ public class Event {
 	@Column(nullable = false)
 	private int ticketCount;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "venueId")
 	private Venue venue;
