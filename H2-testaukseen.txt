@@ -23,10 +23,10 @@ INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id) VALUES (2, 2, 2);
 INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id, is_Checked) VALUES (2, 2, 2, 1);
 
 
-SELECT * FROM roles;
-SELECT * FROM app_users;
+SELECT * FROM Roles;
+SELECT * FROM App_users;
 SELECT * FROM Postalcodes;
-SELECT * FROM venues;
+SELECT * FROM Venues;
 SELECT * FROM Transactions;
 SELECT * FROM Events;
 SELECT * FROM Ticket_types;
