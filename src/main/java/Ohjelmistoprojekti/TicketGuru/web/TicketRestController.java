@@ -1,17 +1,18 @@
 package Ohjelmistoprojekti.TicketGuru.web;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import Ohjelmistoprojekti.TicketGuru.domain.Event;
 import Ohjelmistoprojekti.TicketGuru.domain.EventRepository;
 
-import java.util.Optional;
-
-
+@RestController
 @RequestMapping("/api/events")
 public class TicketRestController {
     private final EventRepository eventRepository;
