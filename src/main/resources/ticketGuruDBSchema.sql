@@ -80,7 +80,10 @@ CREATE TABLE Events (
 INSERT INTO Events (eventName, eventDate, eventTime, ticketCount, venueId, description) 
 VALUES ('eventin nimi1', '2023-09-18', '12:00', 100, 2, 'lisätietoja'),
 		('eventin nimi 2', '2023-09-19', '15:00', 200, 1, 'lisätiedoton'),
-		('eventin nimi 3', '2023-09-20', '18:00', 300, 3, NULL);
+		('eventin nimi 3', '2023-09-20', '18:00', 300, 3, NULL),
+		('eventin nimi 4', '2023-09-20', '18:00', 300, 3, NULL),
+		('eventin nimi 5', '2023-09-20', '18:00', 300, 3, NULL),
+		('eventin nimi 6', '2023-09-20', '18:00', 300, 3, NULL);
 
 
 -- Luo TicketTypes-taulu
@@ -93,9 +96,10 @@ CREATE TABLE TicketTypes (
 );
 -- Lisätään tiedot
 INSERT INTO TicketTypes (TicketType, eventId, price)
-VALUES ('Lapsi', 1, '5'),
+VALUES ('Lapsi', 2, '5'),
 		('Eläkeläinen', 2, '15'),
-		('Varusmies', 2, '20');
+		('Varusmies', 2, '20'),
+		('Normaali', 2, '50');
 
 
 -- Luo Transactions-taulu
@@ -108,6 +112,8 @@ CREATE TABLE Transactions (
 INSERT INTO Transactions (Amount, TransactionDate) 
 VALUES (15, '2023-09-20'),
 		(25, '2023-09-21'),
+		(35, '2023-09-22'),
+		(35, '2023-09-22'),
 		(35, '2023-09-22');
 
 
@@ -125,6 +131,9 @@ CREATE TABLE Tickets (
 -- Lisätään tiedot
 INSERT INTO Tickets (ticketTypeId, eventId, transactionId, isChecked) 
 VALUES (1, 1, 1, 0),
+		(2, 2, 2, 0),
+		(2, 2, 2, 0),
+		(2, 2, 2, 0),
 		(2, 2, 2, 0),
 		(2, 2, 2, 1);
 
