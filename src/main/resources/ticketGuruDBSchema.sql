@@ -25,10 +25,10 @@ VALUES ('Admin'),
 
 -- Luo AppUsers-taulu
 CREATE TABLE AppUsers (
-  userId INT AUTO_INCREMENT PRIMARY KEY,
+  userId BIGINT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  roleId INT NOT NULL,
+  roleId BIGINT NOT NULL,
   FOREIGN KEY (roleId) REFERENCES Roles(roleId)
 );
 -- Lisätään tiedot
@@ -52,7 +52,7 @@ VALUES ('00100', 'Helsinki'),
 
 -- Luo Venues-taulu
 CREATE TABLE Venues (
-  venueId INT AUTO_INCREMENT PRIMARY KEY,
+  venueId BIGINT AUTO_INCREMENT PRIMARY KEY,
   place VARCHAR(255) NOT NULL,
   streetAddress VARCHAR(255) NOT NULL,
   postalcode VARCHAR(255) NOT NULL,
@@ -67,12 +67,12 @@ VALUES ('Jäähalli', 'Tie a', '00100'),
 
 -- Luo Events-taulu
 CREATE TABLE Events (
-  eventId INT AUTO_INCREMENT PRIMARY KEY,
+  eventId BIGINT AUTO_INCREMENT PRIMARY KEY,
   eventName VARCHAR(255) NOT NULL,
   eventDate DATE NOT NULL,
   eventTime TIME NOT NULL,
   ticketCount INT NOT NULL,
-  venueId INT NOT NULL,
+  venueId BIGINT NOT NULL,
   description TEXT,
   FOREIGN KEY (venueId) REFERENCES Venues(venueId)
 );
@@ -85,9 +85,9 @@ VALUES ('eventin nimi1', '2023-09-18', '12:00', 100, 2, 'lisätietoja'),
 
 -- Luo TicketTypes-taulu
 CREATE TABLE TicketTypes (
-  ticketTypeId INT AUTO_INCREMENT PRIMARY KEY,
+  ticketTypeId BIGINT AUTO_INCREMENT PRIMARY KEY,
   TicketType VARCHAR(255) NOT NULL,
-  eventId INT NOT NULL,
+  eventId BIGINT NOT NULL,
   price DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (eventId) REFERENCES Events(eventId)
 );
@@ -100,7 +100,7 @@ VALUES ('Lapsi', 1, '5'),
 
 -- Luo Transactions-taulu
 CREATE TABLE Transactions (
-  transactionId INT AUTO_INCREMENT PRIMARY KEY,
+  transactionId BIGINT AUTO_INCREMENT PRIMARY KEY,
   Amount DECIMAL(10, 2) NOT NULL,
   TransactionDate DATE NOT NULL
 );
@@ -113,20 +113,20 @@ VALUES (15, '2023-09-20'),
 
 -- Luo Tickets-taulu
 CREATE TABLE Tickets (
-  ticketId INT AUTO_INCREMENT PRIMARY KEY,
-  ticketTypeId INT NOT NULL,
-  eventId INT NOT NULL,
-  transactionId INT NOT NULL,
+  ticketId BIGINT AUTO_INCREMENT PRIMARY KEY,
+  ticketTypeId BIGINT NOT NULL,
+  eventId BIGINT NOT NULL,
+  transactionId BIGINT NOT NULL,
   isChecked BOOLEAN,
   FOREIGN KEY (ticketTypeId) REFERENCES TicketTypes(ticketTypeId),
   FOREIGN KEY (eventId) REFERENCES Events(eventId),
   FOREIGN KEY (transactionId) REFERENCES Transactions(transactionId)
 );
 -- Lisätään tiedot
-INSERT INTO Tickets (ticketTypeId, eventId, transactionId) 
-VALUES (1, 1, 1),
-		(2, 2, 2),
-		(2, 2, 2, 1),
+INSERT INTO Tickets (ticketTypeId, eventId, transactionId, isChecked) 
+VALUES (1, 1, 1, 0),
+		(2, 2, 2, 0),
+		(2, 2, 2, 1);
 
 
 SELECT * FROM  Roles;
