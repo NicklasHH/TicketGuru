@@ -1,5 +1,6 @@
 package Ohjelmistoprojekti.TicketGuru.Event;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,17 @@ public class EventRestController {
 	@Autowired
 	public EventRestController(EventRepository eventRepository) {
 		this.eventRepository = eventRepository;
+	}
+
+	@GetMapping // http://localhost:8080/api/events
+	public ResponseEntity<Iterable<Event>> getAllEvents() {
+		Iterable<Event> events = eventRepository.findAll(); // Hae kaikki tapahtumat tietokannasta
+
+		if (events.iterator().hasNext()) {
+			return ResponseEntity.ok(events); // HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
 	}
 
 	@GetMapping("/{id}") // http://localhost:8080/api/events/1
