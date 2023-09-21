@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.WebProperties.Resources;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +44,8 @@ public class EventRestController {
 		}
 	}
 
-	// lisätään uusi event 
-	@PostMapping("/newEvent")//http://localhost:8080/api/events/newEvent
+	// lisätään uusi event
+	@PostMapping("/newEvent") // http://localhost:8080/api/events/newEvent
 	Event newEvent(@RequestBody Event newEvent) {
 
 		System.out.println("Adding new event" + newEvent);
