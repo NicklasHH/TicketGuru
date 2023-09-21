@@ -30,4 +30,7 @@ public class EventRestController {
         }
     }
     // Lisää muut REST-endpointit tähän luokkaan POST,PUT,DELETE etc.
+    
+
+    
 }
