@@ -66,6 +66,16 @@ public class Event {
 		this.ticketCount = ticketCount;
 		this.venue = venue;
 	}
+	
+	
+
+	public long getEventId() { //luotu getterit ja setterit eventId:lle Rest apia varten
+		return eventId;
+	}
+
+	public void setEventId(long eventId) {
+		this.eventId = eventId;
+	}
 
 	public List<Ticket> getTickets() {
 		return tickets;
