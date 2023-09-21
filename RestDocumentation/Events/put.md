@@ -18,7 +18,7 @@ Provide ID and values to modify.
 
 ```json
 {
-    "eventID : long id,
+    "eventID" : long id,
     "eventName": "String min=1, max=100",
     "description": "String min=1, max=500",
     "eventDate" : "String",
