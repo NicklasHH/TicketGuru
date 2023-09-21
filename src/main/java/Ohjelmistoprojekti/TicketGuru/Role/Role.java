@@ -1,8 +1,9 @@
-package Ohjelmistoprojekti.TicketGuru.domain;
+package Ohjelmistoprojekti.TicketGuru.Role;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
