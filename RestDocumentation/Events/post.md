@@ -22,7 +22,7 @@ Provide below required values.
     "description": "String min=1, max=500",
     "eventDate" : "String",
     "eventTime" : "String",
-    "ticketCount" : int
+    "ticketCount" : "int"
 }
 ```
 
