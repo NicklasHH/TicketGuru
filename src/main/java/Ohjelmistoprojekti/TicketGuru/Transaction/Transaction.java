@@ -1,7 +1,8 @@
-package Ohjelmistoprojekti.TicketGuru.domain;
+package Ohjelmistoprojekti.TicketGuru.Transaction;
 
 import java.util.List;
 
+import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
