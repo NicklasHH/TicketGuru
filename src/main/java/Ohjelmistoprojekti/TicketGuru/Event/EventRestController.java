@@ -45,8 +45,8 @@ public class EventRestController {
 		}
 	}
 
-	// lisätään uusi event http://localhost:8080/api/events/newEvent
-	@PostMapping("/newEvent")
+	// lisätään uusi event 
+	@PostMapping("/newEvent")//http://localhost:8080/api/events/newEvent
 	Event newEvent(@RequestBody Event newEvent) {
 
 		System.out.println("Adding new event" + newEvent);
