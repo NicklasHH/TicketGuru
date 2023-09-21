@@ -49,7 +49,7 @@ public class EventRestController {
 	@PostMapping("/newEvent") // http://localhost:8080/api/events/newEvent
 	Event newEvent(@RequestBody Event newEvent) {
 
-		System.out.println("Adding new event" + newEvent);
+		System.out.println("Adding new event: " + newEvent);
 
 		return eventRepository.save(newEvent);
 	}
@@ -58,7 +58,8 @@ public class EventRestController {
 	@PutMapping("/{id}")//http://localhost:8080/api/events/id
 	Event editEvent(@RequestBody Event editedEvent, @PathVariable Long id) {
 
-		System.out.println("Editing event" + editedEvent);
+		editedEvent.setEventId(id);
+		System.out.println("Editing event: " + editedEvent);
 		return eventRepository.save(editedEvent);
 	}
 
