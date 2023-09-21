@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +34,13 @@ public class EventRestController {
     // Lisää muut REST-endpointit tähän luokkaan POST,PUT,DELETE etc.
     
 
+	// lisätään uusi event http://localhost:8080/api/events/newEvent
+	@PostMapping("uusituoterestjson")
+	Event newEvent(@RequestBody Event newEvent) {
+
+		System.out.println("Adding new event" + newEvent);
+
+		return eventRepository.save(newEvent);
+	}
     
 }
