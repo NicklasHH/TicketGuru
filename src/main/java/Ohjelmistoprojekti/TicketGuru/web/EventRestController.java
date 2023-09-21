@@ -14,11 +14,11 @@ import Ohjelmistoprojekti.TicketGuru.domain.EventRepository;
 
 @RestController
 @RequestMapping("/api/events")
-public class TicketRestController {
+public class EventRestController {
     private final EventRepository eventRepository;
 
     @Autowired
-    public TicketRestController(EventRepository eventRepository) {
+    public EventRestController(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
     @GetMapping("/{id}") // http://localhost:8080/api/event/1
