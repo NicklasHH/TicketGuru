@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/events")
 public class EventRestController {
+	
+	//@Autowired
     private final EventRepository eventRepository;
 
     @Autowired
@@ -35,7 +37,7 @@ public class EventRestController {
     
 
 	// lisätään uusi event http://localhost:8080/api/events/newEvent
-	@PostMapping("newEvent")
+	@PostMapping("/newEvent")
 	Event newEvent(@RequestBody Event newEvent) {
 
 		System.out.println("Adding new event" + newEvent);
