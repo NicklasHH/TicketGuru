@@ -1,7 +1,9 @@
-package Ohjelmistoprojekti.TicketGuru.domain;
+package Ohjelmistoprojekti.TicketGuru.TicketType;
 
 import java.util.List;
 
+import Ohjelmistoprojekti.TicketGuru.Event.Event;
+import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

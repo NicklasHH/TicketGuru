@@ -1,5 +1,6 @@
-package Ohjelmistoprojekti.TicketGuru.domain;
+package Ohjelmistoprojekti.TicketGuru.Venue;
 
+import Ohjelmistoprojekti.TicketGuru.Postalcode.Postalcode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

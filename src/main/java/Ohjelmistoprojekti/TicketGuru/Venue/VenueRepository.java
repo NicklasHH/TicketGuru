@@ -1,4 +1,4 @@
-package Ohjelmistoprojekti.TicketGuru.domain;
+package Ohjelmistoprojekti.TicketGuru.Venue;
 
 //import java.util.List;
 

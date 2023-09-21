@@ -1,4 +1,4 @@
-package Ohjelmistoprojekti.TicketGuru.domain;
+package Ohjelmistoprojekti.TicketGuru.Ticket;
 
 import org.springframework.data.repository.CrudRepository;
 
