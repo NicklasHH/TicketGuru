@@ -15,13 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/events")
 public class EventRestController {
-<<<<<<< HEAD
+
 	private final EventRepository eventRepository;
-=======
-	
-	//@Autowired
-    private final EventRepository eventRepository;
->>>>>>> 336fd99912e1c0d28aa7d7848408a618a890586f
 
 	@Autowired
 	public EventRestController(EventRepository eventRepository) {
@@ -56,7 +51,7 @@ public class EventRestController {
 			return ResponseEntity.ok(event); // HTTP 200 OK
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-		} 
+		}
 	}
 
 }
