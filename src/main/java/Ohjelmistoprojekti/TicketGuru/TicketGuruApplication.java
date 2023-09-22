@@ -88,7 +88,6 @@ public class TicketGuruApplication {
 			if (ticketTyperepository.count() == 0) {
 				TicketType ticketType = new TicketType();
 				ticketType.setTicketType("Aikuinen");
-				
 
 				ticketTyperepository.save(ticketType);
 			}
