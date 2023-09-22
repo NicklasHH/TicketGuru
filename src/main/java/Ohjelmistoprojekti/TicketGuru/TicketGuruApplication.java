@@ -4,10 +4,10 @@ import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUserRepository;
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import Ohjelmistoprojekti.TicketGuru.Event.EventRepository;
-<<<<<<< HEAD
+
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUserRepository;
-=======
+
 import Ohjelmistoprojekti.TicketGuru.Postalcode.Postalcode;
 import Ohjelmistoprojekti.TicketGuru.Postalcode.PostalcodeRepository;
 import Ohjelmistoprojekti.TicketGuru.Role.Role;
@@ -21,7 +21,7 @@ import Ohjelmistoprojekti.TicketGuru.Transaction.TransactionRepository;
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
 import Ohjelmistoprojekti.TicketGuru.Venue.VenueRepository;
 
->>>>>>> 07ceada629596f2d879ed8bdb1d55833051b7a3d
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,7 +34,7 @@ public class TicketGuruApplication {
 		SpringApplication.run(TicketGuruApplication.class, args);
 	}
 
-<<<<<<< HEAD
+
     @Bean
     public CommandLineRunner demo(EventRepository eventRepository, AppUserRepository appuserRepository) {
         return (args) -> {
@@ -58,7 +58,7 @@ public class TicketGuruApplication {
         
     }            
             
-=======
+
 	@Bean
 	public CommandLineRunner initData(EventRepository eventRepository, PostalcodeRepository postalcodeRepository,
 			AppUserRepository appUserRepository, RoleRepository roleRepository, TicketRepository ticketRepository,
@@ -144,5 +144,5 @@ public class TicketGuruApplication {
 		};
 	}
 
->>>>>>> 07ceada629596f2d879ed8bdb1d55833051b7a3d
+
 }
