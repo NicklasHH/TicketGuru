@@ -29,6 +29,25 @@ public class TicketGuruApplication {
 		SpringApplication.run(TicketGuruApplication.class, args);
 	}
 
+
+    @Bean
+    public CommandLineRunner demo(EventRepository eventRepository, AppUserRepository appuserRepository) {
+        return (args) -> {
+            // Luodaan Event entiteetti jos tietokanta on tyhjä
+            if (eventRepository.count() == 0) {
+                Event event = new Event();
+                event.setEventName("Esimerkkitapahtuma");
+                event.setDescription("Esim");
+                event.setEventDate("12-12-2023");
+                event.setEventTime("18:00");
+                event.setTicketCount(100);
+
+                eventRepository.save(event);
+            }      
+        };
+    }            
+            
+
 	@Bean
 	public CommandLineRunner initData(EventRepository eventRepository, PostalcodeRepository postalcodeRepository,
 			AppUserRepository appUserRepository, RoleRepository roleRepository, TicketRepository ticketRepository,
@@ -109,8 +128,6 @@ public class TicketGuruApplication {
 
 				venueRepository.save(venue);
 			}
-
 		};
 	}
-
 }
