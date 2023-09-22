@@ -4,10 +4,6 @@ import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUserRepository;
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import Ohjelmistoprojekti.TicketGuru.Event.EventRepository;
-
-import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
-import Ohjelmistoprojekti.TicketGuru.AppUser.AppUserRepository;
-
 import Ohjelmistoprojekti.TicketGuru.Postalcode.Postalcode;
 import Ohjelmistoprojekti.TicketGuru.Postalcode.PostalcodeRepository;
 import Ohjelmistoprojekti.TicketGuru.Role.Role;
@@ -20,7 +16,6 @@ import Ohjelmistoprojekti.TicketGuru.Transaction.Transaction;
 import Ohjelmistoprojekti.TicketGuru.Transaction.TransactionRepository;
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
 import Ohjelmistoprojekti.TicketGuru.Venue.VenueRepository;
-
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -48,14 +43,8 @@ public class TicketGuruApplication {
                 event.setTicketCount(100);
 
                 eventRepository.save(event);
-            }
-            
- 
-            
-
+            }      
         };
-        
-        
     }            
             
 
@@ -140,9 +129,6 @@ public class TicketGuruApplication {
 
 				venueRepository.save(venue);
 			}
-
 		};
 	}
-
-
 }
