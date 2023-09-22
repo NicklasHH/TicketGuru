@@ -1,4 +1,4 @@
-# DELETE single Event
+# Delete single Event
 
 delete single event based on its unique identifier `id`.
 
