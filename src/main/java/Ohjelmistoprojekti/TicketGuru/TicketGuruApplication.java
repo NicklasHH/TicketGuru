@@ -2,6 +2,8 @@ package Ohjelmistoprojekti.TicketGuru;
 
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import Ohjelmistoprojekti.TicketGuru.Event.EventRepository;
+import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
+import Ohjelmistoprojekti.TicketGuru.AppUser.AppUserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +17,7 @@ public class TicketGuruApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(EventRepository eventRepository) {
+    public CommandLineRunner demo(EventRepository eventRepository, AppUserRepository appuserRepository) {
         return (args) -> {
             // Luodaan Event entiteetti jos tietokanta on tyhjä
             if (eventRepository.count() == 0) {
@@ -28,8 +30,15 @@ public class TicketGuruApplication {
 
                 eventRepository.save(event);
             }
+            
+ 
+            
+
         };
-    }
+        
+        
+    }            
+            
 }
 
 
