@@ -41,7 +41,8 @@ public class TicketType {
 	public TicketType() {
 	}
 
-	public TicketType(double price, List<Ticket> tickets) {
+	public TicketType(String ticketType, double price, List<Ticket> tickets) {
+		this.ticketType = ticketType;
 		this.price = price;
 		this.tickets = tickets;
 	}
@@ -68,6 +69,23 @@ public class TicketType {
 
 	public void setTickets(List<Ticket> tickets) {
 		this.tickets = tickets;
+	}
+	
+
+	public String getTicketType() {
+		return ticketType;
+	}
+
+	public void setTicketType(String ticketType) {
+		this.ticketType = ticketType;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	@Override
