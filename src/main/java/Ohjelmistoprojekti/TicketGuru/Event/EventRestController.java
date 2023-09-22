@@ -70,7 +70,7 @@ public class EventRestController {
 		if (eventOptional.isPresent()) {
 			Event event = eventOptional.get();
 			eventRepository.deleteById(id); // Poistaa eventin Id:n perusteella
-			return ResponseEntity.ok(event); // HTTP 200 OK
+			return ResponseEntity.ok(event); // HTTP 200 OK, palauttaa poistetun eventin tiedot
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
