@@ -53,16 +53,15 @@ public class EventRestController {
 
 		return eventRepository.save(newEvent);
 	}
-	
-	// muokataan olemassa olevaa tapahtumaa 
-	@PutMapping("/{id}")//http://localhost:8080/api/events/id
+
+	// muokataan olemassa olevaa tapahtumaa
+	@PutMapping("/{id}") // http://localhost:8080/api/events/id
 	Event editEvent(@RequestBody Event editedEvent, @PathVariable Long id) {
 
 		editedEvent.setEventId(id);
 		System.out.println("Editing event: " + editedEvent);
 		return eventRepository.save(editedEvent);
 	}
-
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/events/1
 	public ResponseEntity<?> deleteEvent(@PathVariable Long id) { // Hae tapahtuma tietokannasta ja palauta vastaus

@@ -6,6 +6,7 @@ import java.util.List;
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,7 +26,7 @@ public class Role {
 	@Column(nullable = false)
 	private String roleName;
 
-	@OneToMany(mappedBy = "role")
+	@OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
 	private List<AppUser> users = new ArrayList<>();
 
 	public Role() {

@@ -5,6 +5,7 @@ import java.util.List;
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -19,7 +20,7 @@ public class Postalcode {
 	@Column(nullable = false)
 	private String postOffice;
 
-	@OneToMany(mappedBy = "postalcode")
+	@OneToMany(mappedBy = "postalcode", fetch = FetchType.EAGER)
 	private List<Venue> venues;
 
 	public Postalcode() {

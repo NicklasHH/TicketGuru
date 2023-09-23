@@ -5,6 +5,7 @@ import java.util.List;
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class Transaction {
 
 	private String transactionDate;
 
-	@OneToMany(mappedBy = "transaction")
+	@OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER)
 	private List<Ticket> tickets;
 
 	public Transaction() {

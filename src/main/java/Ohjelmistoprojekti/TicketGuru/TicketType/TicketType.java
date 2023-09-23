@@ -28,7 +28,7 @@ public class TicketType {
 	@Column(nullable = false)
 	private String ticketType;
 
-	@OneToMany(mappedBy = "ticketType")
+	@OneToMany(mappedBy = "ticketType", fetch = FetchType.EAGER)
 	private List<Ticket> tickets;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -70,7 +70,6 @@ public class TicketType {
 	public void setTickets(List<Ticket> tickets) {
 		this.tickets = tickets;
 	}
-	
 
 	public String getTicketType() {
 		return ticketType;

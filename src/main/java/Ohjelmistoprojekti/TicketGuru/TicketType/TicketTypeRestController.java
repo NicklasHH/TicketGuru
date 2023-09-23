@@ -1,10 +1,13 @@
 package Ohjelmistoprojekti.TicketGuru.TicketType;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,11 +24,23 @@ public class TicketTypeRestController {
 
 	@GetMapping // http://localhost:8080/api/tickettypes
 	ResponseEntity<List<TicketType>> all() {
-		List<TicketType> events = ticketTypeRepository.findAll(); // Hae kaikki lipputyypit tietokannasta
-		if (!events.isEmpty()) {
-			return ResponseEntity.ok(events);// HTTP 200 OK
+		List<TicketType> ticketTypes = ticketTypeRepository.findAll(); // Hae kaikki lipputyypit tietokannasta
+		if (!ticketTypes.isEmpty()) {
+			return ResponseEntity.ok(ticketTypes);// HTTP 200 OK
 		} else {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
+		}
+	}
+
+	@DeleteMapping("/{id}") // http://localhost:8080/api/tickettypes/1
+	public ResponseEntity<?> deleteTicketType(@PathVariable Long id) { // Hae lipputyyppi tietokannasta ja palauta vastaus
+		Optional<TicketType> ticketTypeOptional = ticketTypeRepository.findById(id); // Palauttaa lipputyypin Id:N perusteella
+		if (ticketTypeOptional.isPresent()) {
+			TicketType ticketType = ticketTypeOptional.get();
+			ticketTypeRepository.deleteById(id); // Poistaa lipputyypin Id:n perusteella
+			return ResponseEntity.ok(ticketType); // HTTP 200 OK, palauttaa poistetun lipputyypin tiedot
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 
