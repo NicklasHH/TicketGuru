@@ -43,6 +43,18 @@ Provide below required values.
 
 **Code** : `200 OK`  
 
+**Content example** :
+```json
+{
+    "eventId": 6,
+    "eventName": "Postman NEW one, adding new event2",
+    "description": "Testing RestApi, POST endpoint",
+    "eventDate": "02022022",
+    "eventTime": "21:30",
+    "ticketCount": 23
+}
+```
+
 ## Error response  
 
 **Code** : `400 Bad Request`  
