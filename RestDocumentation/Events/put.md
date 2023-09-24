@@ -43,3 +43,9 @@ Provide ID and values to modify.
 ## Success Response
 
 **Code** : `200 OK`
+
+## Error response  
+
+**Code** : `400 Bad Request`  
+
+**Message** : `JSON parse error`
