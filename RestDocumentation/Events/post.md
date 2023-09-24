@@ -39,3 +39,7 @@ Provide below required values.
 
 ```
 
+## Success Response
+
+**Code** : `200 OK`
+
