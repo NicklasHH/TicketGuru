@@ -41,5 +41,11 @@ Provide below required values.
 
 ## Success Response
 
-**Code** : `200 OK`
+**Code** : `200 OK`  
+
+## Error response  
+
+**Code** : `400 Bad Request`  
+
+**Message** : `JSON parse error`
 
