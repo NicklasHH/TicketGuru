@@ -8,9 +8,9 @@ Edit an Event.
 
 **Content-Type** : `application/json`
 
-<!--**Auth required** : Yes
+**Auth required** : No
 
-**Permissions required** : None -->
+**Permissions required** : None 
 
 **Data constraints**
 
@@ -39,3 +39,7 @@ Provide ID and values to modify.
     "ticketCount": 23
 }
 ```
+
+## Success Response
+
+**Code** : `200 OK`
