@@ -19,6 +19,7 @@ Each endpoint manipulates or displays information:
 * [AppUser](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/AppUser/delete.md): `DELETE /api/appusers/{id}`
 * [Events](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Events/get.md): `GET /api/events`
 * [Events](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Events/get.md): `GET /api/events/{id}`
+* [Events](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Events/get.md): `GET /api/events/{id}/*`
 * [Events](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Events/post.md): `POST /api/events/newEvent`
 * [Events](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Events/put.md): `PUT /api/events/{id}`
 * [Events](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Events/delete.md): `DELETE /api/events/{id}`
