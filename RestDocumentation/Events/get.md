@@ -110,8 +110,8 @@ ___
 **Possible endpoints** :  
 `http://localhost:8080/api/events/{id}/eventName`  
 `http://localhost:8080/api/events/{id}/eventDate`  
-`http://localhost:8080/api/events/{id}/eventTime`  
-`http://localhost:8080/api/events/{id}/ticketCount`  
+`http://localhost:8080/api/events/{id}/eventTime`<br>
+`http://localhost:8080/api/events/{id}/ticketCount`<br>
 `http://localhost:8080/api/events/{id}/description`  
 `http://localhost:8080/api/events/{id}/venue`  
 
