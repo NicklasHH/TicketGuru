@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
+import Ohjelmistoprojekti.TicketGuru.Ticket.*;
+import Ohjelmistoprojekti.TicketGuru.TicketType.*;
 
 @RestController
 @RequestMapping("/api/events")
@@ -27,6 +29,12 @@ public class EventRestController {
 		this.eventRepository = eventRepository;
 
 	}
+
+	@Autowired
+	private TicketRepository ticketRepository;
+
+	@Autowired
+	private TicketTypeRepository ticketTypeRepository;
 
 	@GetMapping // http://localhost:8080/api/events
 	ResponseEntity<List<Event>> all() {
@@ -127,14 +135,29 @@ public class EventRestController {
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/events/1
-	public ResponseEntity<?> deleteEvent(@PathVariable Long id) { // Hae tapahtuma tietokannasta ja palauta vastaus
-		Optional<Event> eventOptional = eventRepository.findById(id);// Palauttaa eventin Id:N perusteella
+	public ResponseEntity<?> deleteEvent(@PathVariable Long id) {
+		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
 			Event event = eventOptional.get();
-			eventRepository.deleteById(id); // Poistaa eventin Id:n perusteella
-			return ResponseEntity.ok(event); // HTTP 200 OK, palauttaa poistetun eventin tiedot
+
+			// Hae ja päivitä kaikki liittyvät tickets
+			List<Ticket> tickets = ticketRepository.findByEvent_EventId(id);
+			for (Ticket ticket : tickets) {
+				ticket.setEvent(null); // Aseta event-kenttä nulliksi
+			}
+			ticketRepository.saveAll(tickets);
+
+			// Hae ja päivitä kaikki liittyvät tickettypes
+			List<TicketType> ticketTypes = ticketTypeRepository.findByEvent_EventId(id);
+			for (TicketType ticketType : ticketTypes) {
+				ticketType.setEvent(null); // Aseta event-kenttä nulliksi
+			}
+			ticketTypeRepository.saveAll(ticketTypes);
+
+			eventRepository.deleteById(id); // Poista eventti
+			return ResponseEntity.ok(event);// HTTP 200 OK
 		} else {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
 
