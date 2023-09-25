@@ -1,6 +1,8 @@
 package Ohjelmistoprojekti.TicketGuru.Event;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,19 +38,21 @@ public class EventRestController {
 	@Autowired
 	private TicketTypeRepository ticketTypeRepository;
 
+	// Palauttaa kaikki tapahtumat tietokannasta.
 	@GetMapping // http://localhost:8080/api/events
 	ResponseEntity<List<Event>> all() {
 		List<Event> events = eventRepository.findAll(); // Hae kaikki tapahtumat tietokannasta
 		if (!events.isEmpty()) {
-			return ResponseEntity.ok(events);// HTTP 200 OK
+			return ResponseEntity.ok(events); // HTTP 200 OK
 		} else {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
 
+	// Palauttaa tapahtuman id perusteella
 	@GetMapping("/{id}") // http://localhost:8080/api/events/1
-	public ResponseEntity<Event> getEvent(@PathVariable Long id) { // Hae tapahtuma tietokannasta ja palauta vastaus
-		Optional<Event> event = eventRepository.findById(id); // Palauttaa eventin Id:N perusteella
+	public ResponseEntity<Event> getEvent(@PathVariable Long id) {
+		Optional<Event> event = eventRepository.findById(id); // Hae tapahtuma ID:n perusteella
 		if (event.isPresent()) {
 			return ResponseEntity.ok(event.get()); // HTTP 200 OK
 		} else {
@@ -56,67 +60,103 @@ public class EventRestController {
 		}
 	}
 
+	// Palauttaa tapahtuman id:n perusteella sen nimen
 	@GetMapping("/{id}/eventName") // http://localhost:8080/api/events/1/eventName
-	public ResponseEntity<String> getEventName(@PathVariable long id) {
-		Event event = eventRepository.findById(id).orElse(null);
-		if (event != null) {
-			return ResponseEntity.ok(event.getEventName()); // HTTP 200 OK
+	public ResponseEntity<Object> getEventName(@PathVariable long id) {
+		Optional<Event> eventOptional = eventRepository.findById(id);
+		if (eventOptional.isPresent()) {
+			Event event = eventOptional.get();
+			Map<String, String> jsonResponse = new HashMap<>(); // Luo Map-olio JSON-muotoa varten
+			jsonResponse.put("eventName", event.getEventName());
+			return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 
+	// Palauttaa tapahtuman id:n perusteella sen päivämäärän
 	@GetMapping("/{id}/eventDate") // http://localhost:8080/api/events/1/eventDate
-	public ResponseEntity<String> getEventDate(@PathVariable long id) {
-		Event event = eventRepository.findById(id).orElse(null);
-		if (event != null) {
-			return ResponseEntity.ok(event.getEventDate()); // HTTP 200 OK
+	public ResponseEntity<Object> getEventDate(@PathVariable long id) {
+		Optional<Event> eventOptional = eventRepository.findById(id);
+		if (eventOptional.isPresent()) {
+			Event event = eventOptional.get();
+			Map<String, String> jsonResponse = new HashMap<>(); // Luo Map-olio JSON-muotoa varten
+			String eventDate = event.getEventDate();
+			if (eventDate != null) {
+				jsonResponse.put("eventDate", eventDate);
+				return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
+			} else {
+				return ResponseEntity.ok("Event date not available"); // HTTP 200 OK
+			}
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 
+	// Palauttaa tapahtuman id:n perusteella sen kellonajan
 	@GetMapping("/{id}/eventTime") // http://localhost:8080/api/events/1/eventTime
-	public ResponseEntity<String> getEventTime(@PathVariable long id) {
-		Event event = eventRepository.findById(id).orElse(null);
-		if (event != null) {
-			return ResponseEntity.ok(event.getEventTime()); // HTTP 200 OK
-		} else {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-		}
+	public ResponseEntity<Object> getEventTime(@PathVariable long id) {
+	    Optional<Event> eventOptional = eventRepository.findById(id);
+	    if (eventOptional.isPresent()) {
+	        Event event = eventOptional.get();
+	        Map<String, String> jsonResponse = new HashMap<>(); // Luo Map-olio JSON-muotoa varten
+	        String eventTime = event.getEventTime();
+	        if (eventTime != null) {
+	            jsonResponse.put("eventTime", eventTime);
+	            return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
+	        } else {
+	            return ResponseEntity.ok("Event time not available"); // HTTP 200 OK
+	        }
+	    } else {
+	        return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+	    }
 	}
 
+	// Palauttaa tapahtuman id:n perusteella sen lippumäärän
 	@GetMapping("/{id}/ticketCount") // http://localhost:8080/api/events/1/ticketCount
-	public ResponseEntity<Integer> getTicketCount(@PathVariable long id) {
-		Event event = eventRepository.findById(id).orElse(null);
-		if (event != null) {
-			return ResponseEntity.ok(event.getTicketCount()); // HTTP 200 OK
+	public ResponseEntity<Object> getTicketCount(@PathVariable long id) {
+		Optional<Event> eventOptional = eventRepository.findById(id);
+		if (eventOptional.isPresent()) {
+			Event event = eventOptional.get();
+			Map<String, Integer> jsonResponse = new HashMap<>(); // Luo Map-olio JSON-muotoa varten
+			jsonResponse.put("ticketCount", event.getTicketCount());
+			return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
 		} else {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found, jos tapahtumaa ei löytynyt
 		}
 	}
 
+	// Palauttaa tapahtuman id:n perusteella sen lisätiedot
 	@GetMapping("/{id}/description") // http://localhost:8080/api/events/1/description
-	public ResponseEntity<String> getDescription(@PathVariable long id) {
-		Event event = eventRepository.findById(id).orElse(null);
-		if (event != null) {
-			return ResponseEntity.ok(event.getDescription()); // HTTP 200 OK
+	public ResponseEntity<Object> getDescription(@PathVariable long id) {
+		Optional<Event> eventOptional = eventRepository.findById(id);
+		if (eventOptional.isPresent()) {
+			Event event = eventOptional.get();
+			Map<String, String> jsonResponse = new HashMap<>(); // Luo Map-olio JSON-muotoa varten
+			jsonResponse.put("description", event.getDescription());
+			return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 
+	// Palauttaa tapahtuman id:n perusteella sen tapahtumapaikan
 	@GetMapping("/{id}/venue") // http://localhost:8080/api/events/1/venue
 	public ResponseEntity<Venue> getVenue(@PathVariable long id) {
-		Event event = eventRepository.findById(id).orElse(null);
-		if (event != null && event.getVenue() != null) {
-			return ResponseEntity.ok(event.getVenue()); // HTTP 200 OK
+		Optional<Event> eventOptional = eventRepository.findById(id);
+		if (eventOptional.isPresent()) {
+			Event event = eventOptional.get();
+			if (event.getVenue() != null) {
+				return ResponseEntity.ok(event.getVenue()); // HTTP 200 OK
+			} else {
+				return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			}
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 
-	// lisätään uusi event
+	// lisätään uusi tapahtuma
 	@PostMapping("/newEvent") // http://localhost:8080/api/events/newEvent
 	Event newEvent(@RequestBody Event newEvent) {
 
@@ -134,6 +174,7 @@ public class EventRestController {
 		return eventRepository.save(editedEvent);
 	}
 
+	// Poistaa tapahtuman id:n perusteella
 	@DeleteMapping("/{id}") // http://localhost:8080/api/events/1
 	public ResponseEntity<?> deleteEvent(@PathVariable Long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);

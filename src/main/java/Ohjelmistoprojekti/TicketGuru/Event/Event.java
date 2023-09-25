@@ -65,7 +65,7 @@ public class Event {
 		super();
 		this.tickets = tickets;
 		this.ticketTypes = ticketTypes;
-		this.eventName = eventName; 
+		this.eventName = eventName;
 		this.description = description;
 		this.eventDate = eventDate;
 		this.eventTime = eventTime;
