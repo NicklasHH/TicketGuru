@@ -44,6 +44,36 @@ public class EventRestController {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
+	
+    @GetMapping("/{id}/eventName") // http://localhost:8080/api/events/1/eventName
+    public ResponseEntity<String> getEventName(@PathVariable long id) {
+        Event event = eventRepository.findById(id).orElse(null);
+        if (event != null) {
+            return ResponseEntity.ok(event.getEventName()); // HTTP 200 OK
+        } else {
+            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+        }
+    }
+    
+    @GetMapping("/{id}/eventDate") // http://localhost:8080/api/events/1/eventDate
+    public ResponseEntity<String> getEventDate(@PathVariable long id) {
+        Event event = eventRepository.findById(id).orElse(null);
+        if (event != null) {
+            return ResponseEntity.ok(event.getEventDate()); // HTTP 200 OK
+        } else {
+            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+        }
+    }
+    
+    @GetMapping("/{id}/eventTime") // http://localhost:8080/api/events/1/eventTime
+    public ResponseEntity<String> getEventTime(@PathVariable long id) {
+        Event event = eventRepository.findById(id).orElse(null);
+        if (event != null) {
+            return ResponseEntity.ok(event.getEventTime()); // HTTP 200 OK
+        } else {
+            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+        }
+    }
 
 	// lisätään uusi event
 	@PostMapping("/newEvent") // http://localhost:8080/api/events/newEvent
