@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
+
 @RestController
 @RequestMapping("/api/events")
 public class EventRestController {
@@ -23,6 +25,7 @@ public class EventRestController {
 	@Autowired
 	public EventRestController(EventRepository eventRepository) {
 		this.eventRepository = eventRepository;
+
 	}
 
 	@GetMapping // http://localhost:8080/api/events
@@ -44,56 +47,66 @@ public class EventRestController {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
-	
-    @GetMapping("/{id}/eventName") // http://localhost:8080/api/events/1/eventName
-    public ResponseEntity<String> getEventName(@PathVariable long id) {
-        Event event = eventRepository.findById(id).orElse(null);
-        if (event != null) {
-            return ResponseEntity.ok(event.getEventName()); // HTTP 200 OK
-        } else {
-            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-        }
-    }
-    
-    @GetMapping("/{id}/eventDate") // http://localhost:8080/api/events/1/eventDate
-    public ResponseEntity<String> getEventDate(@PathVariable long id) {
-        Event event = eventRepository.findById(id).orElse(null);
-        if (event != null) {
-            return ResponseEntity.ok(event.getEventDate()); // HTTP 200 OK
-        } else {
-            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-        }
-    }
-    
-    @GetMapping("/{id}/eventTime") // http://localhost:8080/api/events/1/eventTime
-    public ResponseEntity<String> getEventTime(@PathVariable long id) {
-        Event event = eventRepository.findById(id).orElse(null);
-        if (event != null) {
-            return ResponseEntity.ok(event.getEventTime()); // HTTP 200 OK
-        } else {
-            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-        }
-    }
-    
-    @GetMapping("/{id}/ticketCount") // http://localhost:8080/api/events/1/ticketCount
-    public ResponseEntity<Integer> getTicketCount(@PathVariable long id) {
-        Event event = eventRepository.findById(id).orElse(null);
-        if (event != null) {
-            return ResponseEntity.ok(event.getTicketCount()); // HTTP 200 OK
-        } else {
-            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-        }
-    }
-    
-    @GetMapping("/{id}/description") // http://localhost:8080/api/events/1/description
-    public ResponseEntity<String> getDescription(@PathVariable long id) {
-        Event event = eventRepository.findById(id).orElse(null);
-        if (event != null) {
-            return ResponseEntity.ok(event.getDescription()); // HTTP 200 OK
-        } else {
-            return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-        }
-    }
+
+	@GetMapping("/{id}/eventName") // http://localhost:8080/api/events/1/eventName
+	public ResponseEntity<String> getEventName(@PathVariable long id) {
+		Event event = eventRepository.findById(id).orElse(null);
+		if (event != null) {
+			return ResponseEntity.ok(event.getEventName()); // HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}
+
+	@GetMapping("/{id}/eventDate") // http://localhost:8080/api/events/1/eventDate
+	public ResponseEntity<String> getEventDate(@PathVariable long id) {
+		Event event = eventRepository.findById(id).orElse(null);
+		if (event != null) {
+			return ResponseEntity.ok(event.getEventDate()); // HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}
+
+	@GetMapping("/{id}/eventTime") // http://localhost:8080/api/events/1/eventTime
+	public ResponseEntity<String> getEventTime(@PathVariable long id) {
+		Event event = eventRepository.findById(id).orElse(null);
+		if (event != null) {
+			return ResponseEntity.ok(event.getEventTime()); // HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}
+
+	@GetMapping("/{id}/ticketCount") // http://localhost:8080/api/events/1/ticketCount
+	public ResponseEntity<Integer> getTicketCount(@PathVariable long id) {
+		Event event = eventRepository.findById(id).orElse(null);
+		if (event != null) {
+			return ResponseEntity.ok(event.getTicketCount()); // HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}
+
+	@GetMapping("/{id}/description") // http://localhost:8080/api/events/1/description
+	public ResponseEntity<String> getDescription(@PathVariable long id) {
+		Event event = eventRepository.findById(id).orElse(null);
+		if (event != null) {
+			return ResponseEntity.ok(event.getDescription()); // HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}
+
+	@GetMapping("/{id}/venue") // http://localhost:8080/api/events/1/venue
+	public ResponseEntity<Venue> getVenue(@PathVariable long id) {
+		Event event = eventRepository.findById(id).orElse(null);
+		if (event != null && event.getVenue() != null) {
+			return ResponseEntity.ok(event.getVenue()); // HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}
 
 	// lisätään uusi event
 	@PostMapping("/newEvent") // http://localhost:8080/api/events/newEvent

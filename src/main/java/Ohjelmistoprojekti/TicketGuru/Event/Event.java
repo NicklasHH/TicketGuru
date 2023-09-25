@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
+import Ohjelmistoprojekti.TicketGuru.TicketType.TicketType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,6 +31,10 @@ public class Event {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
 	private List<Ticket> tickets;
 
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
+	private List<TicketType> ticketTypes;
+
 	@Column(nullable = false)
 	@Size(min = 1, max = 100)
 	private String eventName;
@@ -46,13 +51,26 @@ public class Event {
 	@Column(nullable = false)
 	private int ticketCount;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "venueId")
 	private Venue venue;
 
 	public Event() {
 
+	}
+
+	public Event(List<Ticket> tickets, List<TicketType> ticketTypes, @Size(min = 1, max = 100) String eventName,
+			@Size(min = 1, max = 500) String description, String eventDate, String eventTime, int ticketCount,
+			Venue venue) {
+		super();
+		this.tickets = tickets;
+		this.ticketTypes = ticketTypes;
+		this.eventName = eventName; 
+		this.description = description;
+		this.eventDate = eventDate;
+		this.eventTime = eventTime;
+		this.ticketCount = ticketCount;
+		this.venue = venue;
 	}
 
 	public Event(List<Ticket> tickets, String eventName, String description, String eventDate, String eventTime,
@@ -66,10 +84,8 @@ public class Event {
 		this.ticketCount = ticketCount;
 		this.venue = venue;
 	}
-	
-	
 
-	public long getEventId() { //luotu getterit ja setterit eventId:lle Rest apia varten
+	public long getEventId() { // luotu getterit ja setterit eventId:lle Rest apia varten
 		return eventId;
 	}
 
@@ -133,11 +149,19 @@ public class Event {
 		this.venue = venue;
 	}
 
+	public List<TicketType> getTicketTypes() {
+		return ticketTypes;
+	}
+
+	public void setTicketTypes(List<TicketType> ticketTypes) {
+		this.ticketTypes = ticketTypes;
+	}
+
 	@Override
 	public String toString() {
-		return "Event [eventId=" + eventId + ", tickets=" + tickets + ", eventName=" + eventName + ", description="
-				+ description + ", eventDate=" + eventDate + ", eventTime=" + eventTime + ", ticketCount=" + ticketCount
-				+ ", venue=" + venue + "]";
+		return "Event [eventId=" + eventId + ", tickets=" + tickets + ", ticketTypes=" + ticketTypes + ", eventName="
+				+ eventName + ", description=" + description + ", eventDate=" + eventDate + ", eventTime=" + eventTime
+				+ ", ticketCount=" + ticketCount + ", venue=" + venue + "]";
 	}
 
 }

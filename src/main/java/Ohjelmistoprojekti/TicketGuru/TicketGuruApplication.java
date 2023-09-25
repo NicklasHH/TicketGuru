@@ -1,5 +1,8 @@
 package Ohjelmistoprojekti.TicketGuru;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+/*
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUserRepository;
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
@@ -16,11 +19,10 @@ import Ohjelmistoprojekti.TicketGuru.Transaction.Transaction;
 import Ohjelmistoprojekti.TicketGuru.Transaction.TransactionRepository;
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
 import Ohjelmistoprojekti.TicketGuru.Venue.VenueRepository;
-
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.boot.CommandLineRunner;
+*/
+
 
 @SpringBootApplication
 public class TicketGuruApplication {
@@ -28,26 +30,7 @@ public class TicketGuruApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TicketGuruApplication.class, args);
 	}
-
-
-    @Bean
-    public CommandLineRunner demo(EventRepository eventRepository, AppUserRepository appuserRepository) {
-        return (args) -> {
-            // Luodaan Event entiteetti jos tietokanta on tyhjä
-            if (eventRepository.count() == 0) {
-                Event event = new Event();
-                event.setEventName("Esimerkkitapahtuma");
-                event.setDescription("Esim");
-                event.setEventDate("12-12-2023");
-                event.setEventTime("18:00");
-                event.setTicketCount(100);
-
-                eventRepository.save(event);
-            }      
-        };
-    }            
-            
-
+/*
 	@Bean
 	public CommandLineRunner initData(EventRepository eventRepository, PostalcodeRepository postalcodeRepository,
 			AppUserRepository appUserRepository, RoleRepository roleRepository, TicketRepository ticketRepository,
@@ -71,6 +54,7 @@ public class TicketGuruApplication {
 				event.setEventDate("12-12-2023");
 				event.setEventTime("18:00");
 				event.setTicketCount(100);
+				event.setVenue(null);
 
 				eventRepository.save(event);
 			}
@@ -129,5 +113,5 @@ public class TicketGuruApplication {
 				venueRepository.save(venue);
 			}
 		};
-	}
+	} */
 }
