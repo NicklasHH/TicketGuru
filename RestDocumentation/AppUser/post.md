@@ -20,7 +20,9 @@ Provide below required values.
 {
     "username": "String min=1, max=25",
     "password": "String min=1, max=50",
-    "eventDate" : "String",
+    "role": {
+        "roleId": "roleId"
+    }
 }
 ```
 
@@ -28,13 +30,12 @@ Provide below required values.
 
 ```json
 {
-{
-    "appUserId": 1,
-    "username": "Postman NEW one",
-    "password": "Testing REST api"
+    "username": "uusitunnus",
+    "password": "Testing",
+    "role": {
+        "roleId": 1
+        }
 }
-}
-
 ```
 
 ## Success Response

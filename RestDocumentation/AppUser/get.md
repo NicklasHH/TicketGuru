@@ -27,12 +27,20 @@ Show information about all appusers.
     {
         "appUserId": 1,
         "username": "admin",
-        "password": "admin"
+        "password": "admin",
+        "role": {
+            "roleId": 1,
+            "roleName": "Adminii"
+        }
     },
     {
         "appUserId": 2,
         "username": "käyttis",
-        "password": "salis"
+        "password": "salis",
+        "role": {
+            "roleId": 2,
+            "roleName": "Lipunmyyjä"
+        }
     }
 ]
 ```
@@ -79,7 +87,11 @@ Show information about appuser based on its unique identifier `id`.
 {
     "appUserId": 1,
     "username": "admin",
-    "password": "admin"
+    "password": "admin",
+    "role": {
+        "roleId": 1,
+        "roleName": "Adminii"
+    }
 }
 ```
 
@@ -101,7 +113,7 @@ ___
 **Possible endpoints** :  
 `http://localhost:8080/api/appusers/{id}/username`  
 `http://localhost:8080/api/appusers/{id}/password`  
-`http://localhost:8080/api/appusers/{id}/roleId`<br> 
+`http://localhost:8080/api/appusers/{id}/role`<br> 
 
 **Method** : `GET`
 
