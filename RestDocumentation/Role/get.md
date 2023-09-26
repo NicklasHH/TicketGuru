@@ -26,7 +26,7 @@ Show information about all roles.
 [
     {
         "roleId": 1,
-        "roleName": "Adminii"
+        "roleName": "Admin"
     },
     {
         "roleId": 2,
@@ -76,7 +76,7 @@ Show information about role based on its unique identifier `id`.
 ```json
 {
     "roleId": 1,
-    "roleName": "Adminii"
+    "roleName": "Admin"
 }
 ```
 
