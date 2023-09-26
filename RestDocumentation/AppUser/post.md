@@ -44,12 +44,13 @@ Provide below required values.
 **Content example** :
 ```json
 {
-    "eventId": 6,
-    "eventName": "Postman NEW one, adding new event2",
-    "description": "Testing RestApi, POST endpoint",
-    "eventDate": "02022022",
-    "eventTime": "21:30",
-    "ticketCount": 23
+    "appUserId": 3,
+    "username": "aaaaaa",
+    "password": "Testing",
+    "role": {
+        "roleId": 1,
+        "roleName": null
+    }
 }
 ```
 
