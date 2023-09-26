@@ -2,7 +2,7 @@
 
 Create an AppUser.
 
-**URL** : `localhost:8080/api/appusers/newAppUser`
+**URL** : `http://localhost:8080/api/appusers`
 
 **Method** : `POST`
 
