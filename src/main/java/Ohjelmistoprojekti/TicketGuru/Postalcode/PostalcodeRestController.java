@@ -35,9 +35,9 @@ public class PostalcodeRestController {
 
 	@GetMapping("/{postalcode}") // PostalCode oli määritelty String tietotyypiksi eikä Long.
 	public ResponseEntity<Postalcode> getPostalcode(@PathVariable String postalcode) {
-		Optional<Postalcode> postalcodeObj = postalcodeRepository.findByPostalcode(postalcode);
-		if (postalcodeObj.isPresent()) {
-			return ResponseEntity.ok(postalcodeObj.get());
+		Optional<Postalcode> foundPostalcode  = postalcodeRepository.findByPostalcode(postalcode);
+		if (foundPostalcode .isPresent()) {
+			return ResponseEntity.ok(foundPostalcode .get());
 		} else {
 			return ResponseEntity.notFound().build();
 		}
