@@ -5,12 +5,9 @@ import java.util.Optional;
 
 import Ohjelmistoprojekti.TicketGuru.Role.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/postalcodes")
@@ -44,16 +41,28 @@ public class PostalcodeRestController {
 	}
 
 	@DeleteMapping("/{postalcode}") // http://localhost:8080/api/postalcodes/00100
-	public ResponseEntity<?> deletePostalcode(@PathVariable String postalcode) { // Hae postinumero tietokannasta ja palauta vastaus
-		Optional<Postalcode> postalcodeOptional = postalcodeRepository.findByPostalcode(postalcode); // Palauttaa postinumeron, joka toimii myös Id:nä
-		if (postalcodeOptional.isPresent()) {
-			Postalcode postalcodeEntity = postalcodeOptional.get();
+	public ResponseEntity<Postalcode> deletePostalcode(@PathVariable String postalcode) { // Hae postinumero tietokannasta ja palauta vastaus
+		Optional<Postalcode> foundPostalcode  = postalcodeRepository.findByPostalcode(postalcode); // Palauttaa postinumeron, joka toimii myös Id:nä
+		if (foundPostalcode.isPresent()) {
+			Postalcode postalcodeEntity = foundPostalcode.get();
 			postalcodeRepository.delete(postalcodeEntity); // Poistaa postinumeron
 
 			return ResponseEntity.ok(postalcodeEntity); // HTTP 200 OK, palauttaa poistetun postinumeron tiedot
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
+	}
+
+	@PostMapping("/")
+	public ResponseEntity<Postalcode> addPostalCode(@RequestBody Postalcode postalCode) {
+		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalCode.getPostalcode());
+
+		if (foundPostalcode.isPresent()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).build(); // HTTP 409 jos postikoodi on jo olemassa
+		}
+
+		Postalcode savedPostalcode = postalcodeRepository.save(postalCode);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedPostalcode); // HTTP 201
 	}
 
 }
