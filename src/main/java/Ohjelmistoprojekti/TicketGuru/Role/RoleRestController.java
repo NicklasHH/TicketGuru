@@ -3,6 +3,7 @@ package Ohjelmistoprojekti.TicketGuru.Role;
 import java.util.List;
 import java.util.Optional;
 
+import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +32,16 @@ public class RoleRestController {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
-	
+	@GetMapping("/{id}")
+	public ResponseEntity<Role> getRole(@PathVariable Long id) {
+		Optional<Role> role = roleRepository.findById(id);
+		if (role.isPresent()) {
+			return ResponseEntity.ok(role.get());
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
 	@DeleteMapping("/{id}") // http://localhost:8080/api/roles/1
 	public ResponseEntity<?> deleteRole(@PathVariable Long id) { // Hae rooli tietokannasta ja palauta vastaus
 		Optional<Role> roleOptional = roleRepository.findById(id);// Palauttaa roolin Id:N perusteella
