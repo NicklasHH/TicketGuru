@@ -1,7 +1,8 @@
 package Ohjelmistoprojekti.TicketGuru.Role;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import jakarta.persistence.Column;
@@ -26,15 +27,17 @@ public class Role {
 	@Column(nullable = false)
 	private String roleName;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
-	private List<AppUser> users = new ArrayList<>();
+	private List<AppUser> appUser;
 
 	public Role() {
 	}
 
-	public Role(String roleName, List<AppUser> users) {
+	public Role(@Size(min = 1, max = 50) String roleName, List<AppUser> appUser) {
+		super();
 		this.roleName = roleName;
-		this.users = users;
+		this.appUser = appUser;
 	}
 
 	public Long getRoleId() {
@@ -53,17 +56,17 @@ public class Role {
 		this.roleName = roleName;
 	}
 
-	public List<AppUser> getUsers() {
-		return users;
+	public List<AppUser> getAppUser() {
+		return appUser;
 	}
 
-	public void setUsers(List<AppUser> users) {
-		this.users = users;
+	public void setAppUsers(List<AppUser> appUser) {
+		this.appUser = appUser;
 	}
 
-	@Override
+	@Override 
 	public String toString() {
-		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", users=" + users + "]";
+		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", appUser=" + appUser + "]";
 	}
 
 }
