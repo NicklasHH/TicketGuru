@@ -18,6 +18,7 @@ INSERT INTO Ticket_types(Ticket_type, event_id, price) VALUES ('Eläkeläinen', 
 
 INSERT INTO Transactions(Amount, Transaction_Date) VALUES (15, '20.9.2023');
 INSERT INTO Transactions(Amount, Transaction_Date) VALUES (25, '21.9.2023');
+
 INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id) VALUES (1, 1, 1);
 INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id) VALUES (2, 2, 2);
 INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id, is_Checked) VALUES (2, 2, 2, 1);
