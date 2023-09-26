@@ -18,8 +18,8 @@ Provide below required values.
 
 ```json
 {
-    "postalcode": "String
-    "postOffice": "String
+    "postalcode": "String"
+    "postOffice": "String"
 }
 ```
 
