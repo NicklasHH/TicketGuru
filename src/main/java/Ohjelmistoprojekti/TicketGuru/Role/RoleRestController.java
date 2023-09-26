@@ -23,7 +23,7 @@ public class RoleRestController {
 		this.roleRepository = roleRepository;
 	}
 
-	@GetMapping // http://localhost:8080/api/roles
+	@GetMapping("/") // http://localhost:8080/api/roles
 	ResponseEntity<List<Role>> all() {
 		List<Role> roles = roleRepository.findAll(); // Hae kaikki roolit tietokannasta
 		if (!roles.isEmpty()) {

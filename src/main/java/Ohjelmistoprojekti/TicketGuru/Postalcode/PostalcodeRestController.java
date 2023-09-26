@@ -3,6 +3,7 @@ package Ohjelmistoprojekti.TicketGuru.Postalcode;
 import java.util.List;
 import java.util.Optional;
 
+import Ohjelmistoprojekti.TicketGuru.Role.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,13 +23,23 @@ public class PostalcodeRestController {
 		this.postalcodeRepository = postalcodeRepository;
 	}
 
-	@GetMapping // http://localhost:8080/api/postalcodes
+	@GetMapping("/") // http://localhost:8080/api/postalcodes
 	ResponseEntity<List<Postalcode>> all() {
 		List<Postalcode> postalcodes = postalcodeRepository.findAll(); // Hae kaikki postinumerot tietokannasta
 		if (!postalcodes.isEmpty()) {
 			return ResponseEntity.ok(postalcodes);// HTTP 200 OK
 		} else {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
+		}
+	}
+
+	@GetMapping("/{postalcode}") // PostalCode oli määritelty String tietotyypiksi eikä Long.
+	public ResponseEntity<Postalcode> getPostalcode(@PathVariable String postalcode) {
+		Optional<Postalcode> postalcodeObj = postalcodeRepository.findByPostalcode(postalcode);
+		if (postalcodeObj.isPresent()) {
+			return ResponseEntity.ok(postalcodeObj.get());
+		} else {
+			return ResponseEntity.notFound().build();
 		}
 	}
 

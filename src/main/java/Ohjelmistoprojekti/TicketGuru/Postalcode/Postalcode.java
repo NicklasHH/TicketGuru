@@ -3,6 +3,7 @@ package Ohjelmistoprojekti.TicketGuru.Postalcode;
 import java.util.List;
 
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,6 +21,7 @@ public class Postalcode {
 	@Column(nullable = false)
 	private String postOffice;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "postalcode", fetch = FetchType.EAGER)
 	private List<Venue> venues;
 
