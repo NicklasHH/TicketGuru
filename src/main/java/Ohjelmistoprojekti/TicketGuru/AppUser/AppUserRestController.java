@@ -100,8 +100,9 @@ public class AppUserRestController {
 	}
 
 	// lisätään uusi appuser
-	@PostMapping("/newAppUser") // http://localhost:8080/api/appusers/newAppUser
-	AppUser newAppUser(@RequestBody AppUser newAppUser) {
+	@PostMapping // http://localhost:8080/api/appusers
+	AppUser newAppUser(@RequestBody AppUser newAppUser)
+ {
 
 		System.out.println("Adding new App user: " + newAppUser);
 
