@@ -2,7 +2,7 @@
 
 Show information about all appusers.
 
-**URL** : `http://localhost:8080/appusers`
+**URL** : `http://localhost:8080/api/appusers`
 
 **Method** : `GET`
 
