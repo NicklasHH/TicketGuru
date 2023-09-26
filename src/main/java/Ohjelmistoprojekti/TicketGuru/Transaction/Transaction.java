@@ -2,6 +2,8 @@ package Ohjelmistoprojekti.TicketGuru.Transaction;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +27,7 @@ public class Transaction {
 
 	private String transactionDate;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER)
 	private List<Ticket> tickets;
 
