@@ -2,7 +2,7 @@
 
 Create an AppURoleser.
 
-**URL** : `localhost:8080/api/roles`
+**URL** : `http://localhost:8080/api/roles`
 
 **Method** : `POST`
 
