@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
+import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
+import Ohjelmistoprojekti.TicketGuru.TicketType.TicketType;
+import Ohjelmistoprojekti.TicketGuru.TicketType.TicketTypeRepository;
 import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
-import Ohjelmistoprojekti.TicketGuru.Ticket.*;
-import Ohjelmistoprojekti.TicketGuru.TicketType.*;
 
 @RestController
 @RequestMapping("/api/events")
@@ -96,20 +98,20 @@ public class EventRestController {
 	// Palauttaa tapahtuman id:n perusteella sen kellonajan
 	@GetMapping("/{id}/eventTime") // http://localhost:8080/api/events/1/eventTime
 	public ResponseEntity<Object> getEventTime(@PathVariable long id) {
-	    Optional<Event> eventOptional = eventRepository.findById(id);
-	    if (eventOptional.isPresent()) {
-	        Event event = eventOptional.get();
-	        Map<String, String> jsonResponse = new HashMap<>(); // Luo Map-olio JSON-muotoa varten
-	        String eventTime = event.getEventTime();
-	        if (eventTime != null) {
-	            jsonResponse.put("eventTime", eventTime);
-	            return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
-	        } else {
-	            return ResponseEntity.ok("Event time not available"); // HTTP 200 OK
-	        }
-	    } else {
-	        return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-	    }
+		Optional<Event> eventOptional = eventRepository.findById(id);
+		if (eventOptional.isPresent()) {
+			Event event = eventOptional.get();
+			Map<String, String> jsonResponse = new HashMap<>(); // Luo Map-olio JSON-muotoa varten
+			String eventTime = event.getEventTime();
+			if (eventTime != null) {
+				jsonResponse.put("eventTime", eventTime);
+				return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
+			} else {
+				return ResponseEntity.ok("Event time not available"); // HTTP 200 OK
+			}
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
 	}
 
 	// Palauttaa tapahtuman id:n perusteella sen lippumäärän

@@ -3,6 +3,7 @@ package Ohjelmistoprojekti.TicketGuru.AppUser;
 import Ohjelmistoprojekti.TicketGuru.Role.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,7 +28,7 @@ public class AppUser {
 	@Column(nullable = false)
 	private String password;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "roleId")
 	private Role role;
 
@@ -66,7 +67,7 @@ public class AppUser {
 	}
 
 	public Role getRole() {
-		return role;
+		return role; 
 	}
 
 	public void setRole(Role role) {
