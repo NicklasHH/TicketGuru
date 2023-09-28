@@ -14,18 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-<<<<<<< HEAD
-import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
-import Ohjelmistoprojekti.TicketGuru.Role.Role;
+
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
 import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
 
-
-
-
-
-=======
->>>>>>> c8231c5e3750305e6245676770047582a20d88c4
 @RestController
 @RequestMapping("/api/transactions")
 public class TransactionRestController {
