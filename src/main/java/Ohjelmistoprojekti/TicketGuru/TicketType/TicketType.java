@@ -2,6 +2,8 @@ package Ohjelmistoprojekti.TicketGuru.TicketType;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
 import jakarta.persistence.Column;
@@ -28,9 +30,11 @@ public class TicketType {
 	@Column(nullable = false)
 	private String ticketType;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "ticketType", fetch = FetchType.EAGER)
 	private List<Ticket> tickets;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "eventId")
 	private Event event;
