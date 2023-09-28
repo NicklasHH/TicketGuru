@@ -80,9 +80,7 @@ public class TransactionRestController {
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
-
-														// perusteella
-	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
+	public ResponseEntity<Transaction> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
 		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// Palauttaa myyntitapahtuman Id:N perusteella
 		if (transactionOptional.isPresent()) {
 			Transaction transaction = transactionOptional.get();
