@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
+
 @RestController
 @RequestMapping("/api/tickettypes")
 public class TicketTypeRestController {
@@ -31,6 +33,17 @@ public class TicketTypeRestController {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
+	
+	// Palauttaa tickettypen id:n perusteella
+	@GetMapping("/{id}") // http://localhost:8080/api/tickettypes/1
+	public ResponseEntity<TicketType> getTicketType(@PathVariable Long id){
+		Optional<TicketType> tickettype = ticketTypeRepository.findById(id);
+		if (tickettype.isPresent()) {
+			return ResponseEntity.ok(tickettype.get()); // HTTP OK 200
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
+		}
+	}	
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/tickettypes/1
 	public ResponseEntity<?> deleteTicketType(@PathVariable Long id) { // Hae lipputyyppi tietokannasta ja palauta vastaus
