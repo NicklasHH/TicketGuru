@@ -80,9 +80,9 @@ public class PostalcodeRestController {
 			// Metodi päivittää venues taulun postikoodin NULL:iksi
 			setVenuePostalCodeToNull(postalcode);
 
-			Postalcode postalcodeEntity = foundPostalcode.get();
-			postalcodeRepository.delete(postalcodeEntity);
-			return ResponseEntity.ok(postalcodeEntity); // HTTP 200 OK, palauttaa poistetun p-numeron
+			Postalcode postalcodeEnt = foundPostalcode.get();
+			postalcodeRepository.delete(postalcodeEnt);
+			return ResponseEntity.ok(postalcodeEnt); // HTTP 200 OK, palauttaa poistetun p-numeron
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
