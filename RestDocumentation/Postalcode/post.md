@@ -36,3 +36,9 @@ Provide below required values.
 ## Success Response
 
 **Code** : `201 Created`  
+
+## Error Response
+
+**Condition** : If the postalcode already exist
+
+**Code** : `405 Method Not Allowed`
