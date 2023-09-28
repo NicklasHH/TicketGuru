@@ -101,8 +101,7 @@ public class AppUserRestController {
 
 	// lisätään uusi appuser
 	@PostMapping // http://localhost:8080/api/appusers
-	AppUser newAppUser(@RequestBody AppUser newAppUser)
- {
+	AppUser newAppUser(@RequestBody AppUser newAppUser) {
 
 		System.out.println("Adding new App user: " + newAppUser);
 
@@ -111,11 +110,15 @@ public class AppUserRestController {
 
 	// muokataan olemassa olevaa appuseria
 	@PutMapping("/{id}") // http://localhost:8080/api/appusers/id
-	AppUser editAppUser(@RequestBody AppUser editedAppUser, @PathVariable Long id) {
+	public ResponseEntity<Object> editAppUser(@RequestBody AppUser editedAppUser, @PathVariable Long id) {
+		// Tarkista, onko ID olemassa
+		if (!appUserRepository.existsById(id)) {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
 
 		editedAppUser.setAppUserId(id);
-		System.out.println("Editing AppUser: " + editedAppUser);
-		return appUserRepository.save(editedAppUser);
+		AppUser updatedAppUser = appUserRepository.save(editedAppUser);
+		return ResponseEntity.ok(updatedAppUser); // HTTP 200 OK
 	}
 
 	// Poista appuser id:n perusteella
@@ -130,7 +133,7 @@ public class AppUserRestController {
 			for (Role role : roles) {
 				role.setAppUsers(null);
 			}
-			roleRepository.saveAll(roles); 
+			roleRepository.saveAll(roles);
 
 			appUserRepository.deleteById(id); // Poistaa appuserin Id:n perusteella
 			return ResponseEntity.ok(appUser); // HTTP 200 OK, palauttaa poistetun appuserin tiedot
@@ -138,5 +141,4 @@ public class AppUserRestController {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
-
-}
+} 

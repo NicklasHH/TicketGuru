@@ -28,7 +28,7 @@ Provide postalcode and values to modify.
 ```json
 {
     "postalcode": "00100",
-    "postOffice": "Helsinki"
+    "postOffice": "vaihdettu"
 }
 ```
 

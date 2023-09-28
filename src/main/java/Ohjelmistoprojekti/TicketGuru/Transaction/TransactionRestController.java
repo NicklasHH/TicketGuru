@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import Ohjelmistoprojekti.TicketGuru.Role.Role;
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
@@ -23,6 +24,8 @@ import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
 
 
 
+=======
+>>>>>>> c8231c5e3750305e6245676770047582a20d88c4
 @RestController
 @RequestMapping("/api/transactions")
 public class TransactionRestController {
@@ -37,7 +40,7 @@ public class TransactionRestController {
 	@Autowired 
 	private TicketRepository ticketRepository;
 
-	//Listaa kaikki myyntitapahtumat
+	// Listaa kaikki myyntitapahtumat
 	@GetMapping // http://localhost:8080/api/transactions
 	ResponseEntity<List<Transaction>> all() {
 		List<Transaction> transactions = transactionRepository.findAll(); // Hae kaikki transaktiot tietokannasta
@@ -49,8 +52,8 @@ public class TransactionRestController {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
-	
-	//Hae myyntitapahtuma id:llä
+
+	// Hae myyntitapahtuma id:llä
 	@GetMapping("/{id}") // http://localhost:8080/api/transactions/1
 	public ResponseEntity<Transaction> getTransaction(@PathVariable Long id) {
 		Optional<Transaction> transaction = transactionRepository.findById(id); // Hae tapahtuma ID:n perusteella
@@ -90,6 +93,8 @@ public class TransactionRestController {
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
+
+														// perusteella
 	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
 		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// Palauttaa myyntitapahtuman Id:N perusteella
 		if (transactionOptional.isPresent()) {

@@ -1,7 +1,5 @@
 package Ohjelmistoprojekti.TicketGuru.Venue;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import Ohjelmistoprojekti.TicketGuru.Postalcode.Postalcode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,7 +27,6 @@ public class Venue {
 	@Column(nullable = false)
 	private String streetAddress;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "postalcode")
 	private Postalcode postalcode;
