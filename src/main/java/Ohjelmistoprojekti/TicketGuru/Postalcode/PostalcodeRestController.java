@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,10 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class PostalcodeRestController {
 
 	private final PostalcodeRepository postalcodeRepository;
-
+	private final JdbcTemplate jdbcTemplate; // SQL päivitykseen
 	@Autowired
-	public PostalcodeRestController(PostalcodeRepository postalcodeRepository) {
+	public PostalcodeRestController(PostalcodeRepository postalcodeRepository, JdbcTemplate jdbcTemplate) {
 		this.postalcodeRepository = postalcodeRepository;
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	@GetMapping("/") // http://localhost:8080/api/postalcodes
@@ -39,19 +41,6 @@ public class PostalcodeRestController {
 		}
 	}
 
-	@DeleteMapping("/{postalcode}") // http://localhost:8080/api/postalcodes/00100
-	public ResponseEntity<Postalcode> deletePostalcode(@PathVariable String postalcode) { // Hae postinumero tietokannasta ja palauta vastaus
-		Optional<Postalcode> foundPostalcode  = postalcodeRepository.findByPostalcode(postalcode); // Palauttaa postinumeron, joka toimii myös Id:nä
-		if (foundPostalcode.isPresent()) {
-			Postalcode postalcodeEntity = foundPostalcode.get();
-			postalcodeRepository.delete(postalcodeEntity); // Poistaa postinumeron
-
-			return ResponseEntity.ok(postalcodeEntity); // HTTP 200 OK, palauttaa poistetun postinumeron tiedot
-		} else {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-		}
-	}
-
 	@PostMapping("/")
 	public ResponseEntity<Postalcode> addPostalCode(@RequestBody Postalcode postalCode) {
 		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalCode.getPostalcode());
@@ -62,6 +51,41 @@ public class PostalcodeRestController {
 
 		Postalcode savedPostalcode = postalcodeRepository.save(postalCode);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedPostalcode); // HTTP 201
+	}
+
+	@PutMapping("/{postalcode}") // Muuta  vain post officea. Ei postalcodea joka toimii pääavaimena.
+	public ResponseEntity<Postalcode> updatePostalCode(@PathVariable String postalcode, @RequestBody Postalcode newPostalcode) {
+		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalcode);
+
+		if (!foundPostalcode.isPresent()) {
+			return ResponseEntity.notFound().build(); // HTTP 404 jos postikoodia ei löydy
+		}
+
+		Postalcode putPostalcode = foundPostalcode.get();
+		putPostalcode.setPostOffice(newPostalcode.getPostOffice());
+
+		postalcodeRepository.save(putPostalcode);
+		return ResponseEntity.ok(putPostalcode); // HTTP 200
+	}
+
+	private void setVenuePostalCodeToNull(String postalcode) { //
+		String sql = "UPDATE VENUES SET POSTALCODE = NULL WHERE POSTALCODE = ?";
+		jdbcTemplate.update(sql, postalcode);
+	}
+	@DeleteMapping("/{postalcode}")
+	public ResponseEntity<Postalcode> deletePostalcode(@PathVariable String postalcode) {
+		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalcode);
+		if (foundPostalcode.isPresent()) {
+
+			// Metodi päivittää venues taulun postikoodin NULL:iksi
+			setVenuePostalCodeToNull(postalcode);
+
+			Postalcode postalcodeEntity = foundPostalcode.get();
+			postalcodeRepository.delete(postalcodeEntity);
+			return ResponseEntity.ok(postalcodeEntity); // HTTP 200 OK, palauttaa poistetun p-numeron
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
 	}
 
 }
