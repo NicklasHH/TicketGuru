@@ -161,9 +161,12 @@ public class TicketRestController {
 			transactionRepository.saveAll(transactions);
 			
 			ticketRepository.deleteById(id); // Poistaa lipun Id:n perusteella
+			System.out.println("200 - lipun poisto ok - TicketRestController");
 			return ResponseEntity.ok(ticket); // HTTP 200 OK, palauttaa poistetun lipun tiedot
 		} else {
+			System.out.println("404 - Ei löytynyt poistettavaa - TicketRestController");
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			
 		}
 	}
 }
