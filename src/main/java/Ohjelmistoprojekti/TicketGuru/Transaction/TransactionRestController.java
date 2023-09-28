@@ -45,7 +45,7 @@ public class TransactionRestController {
 	public ResponseEntity<Transaction> getTransaction(@PathVariable Long id) {
 		Optional<Transaction> transaction = transactionRepository.findById(id); // Hae tapahtuma ID:n perusteella
 		if (transaction.isPresent()) {
-			System.out.println("200 - haettu id löytyi - TransactionRestController, id: " + id + ": " + transaction);
+			System.out.println("200 - haettu id löytyi - TransactionRestController, id: " + id );
 			return ResponseEntity.ok(transaction.get()); // HTTP 200 OK
 		} else {
 			System.out.println("404 - haettua id:tä ei löytynyt - TransactionRestController, haettu id: " + id);
@@ -87,7 +87,7 @@ public class TransactionRestController {
 		if (transactionOptional.isPresent()) {
 			Transaction transaction = transactionOptional.get();
 			transactionRepository.deleteById(id); // Poistaa myyntitapahtuman Id:n perusteella
-			System.out.println("200 - myyntitapahtuman poisto ok - TransactionRestController, id: " + id);
+			System.out.println("200 - myyntitapahtuman poisto onnistui - TransactionRestController, id: " + id);
 			return ResponseEntity.ok(transaction); // HTTP 200 OK, palauttaa poistetun myyntitapahtuman tiedot
 		} else {
 			System.out.println("404 - Ei löytynyt poistettavaa - TransactionRestController, id: " + id);
