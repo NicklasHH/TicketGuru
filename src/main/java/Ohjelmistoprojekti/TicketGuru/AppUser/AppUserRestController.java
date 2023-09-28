@@ -141,5 +141,4 @@ public class AppUserRestController {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
-
-}
+} 
