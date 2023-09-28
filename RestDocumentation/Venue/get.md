@@ -117,7 +117,7 @@ Show information about venue based on its unique identifier `id`.
 This endpoint provides information about a single venue based on its unique identifier. In the case of no venue being found with the provided `id`, an HTTP 404 NOT FOUND response is returned with an empty JSON object.
 ___
 
-# Show Specific appuser Details
+# Show Specific venue Details
 
 **Possible endpoints** :  
 `http://localhost:8080/api/venues/{id}/postalcode`  
@@ -150,11 +150,11 @@ ___
 
 ## Error Response
 
-**Condition** :  If the specified endpoint is not found or there are no appusers.
+**Condition** :  If the specified endpoint is not found or there are no venues.
 
 **Code** : `404 NOT FOUND`
 
 **Content** : `{}`
 
 ## Notes
-This endpoint allows you to retrieve specific information about a single appuser based on the specified endpoint, such as username, password or role. If the specified endpoint is valid, an HTTP 200 OK response will be returned with relevant information. If the endpoint is not found or there are no appusers, an HTTP 404 NOT FOUND response is returned with an empty JSON object.
+This endpoint allows you to retrieve specific information about a single venue based on the specified endpoint, such as username, password or role. If the specified endpoint is valid, an HTTP 200 OK response will be returned with relevant information. If the endpoint is not found or there are no venues, an HTTP 404 NOT FOUND response is returned with an empty JSON object.

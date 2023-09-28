@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
-import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
-
 @RestController
 @RequestMapping("/api/transactions")
 public class TransactionRestController {
@@ -29,8 +26,6 @@ public class TransactionRestController {
 		this.transactionRepository = transactionRepository;
 	}
 	
-	@Autowired 
-	private TicketRepository ticketRepository;
 
 	// Listaa kaikki myyntitapahtumat
 	@GetMapping // http://localhost:8080/api/transactions
