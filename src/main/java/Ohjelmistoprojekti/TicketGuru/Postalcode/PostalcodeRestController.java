@@ -41,7 +41,7 @@ public class PostalcodeRestController {
 		}
 	}
 
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<Postalcode> addPostalCode(@RequestBody Postalcode postalCode) {
 		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalCode.getPostalcode());
 

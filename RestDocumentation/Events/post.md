@@ -2,7 +2,7 @@
 
 Create an Event.
 
-**URL** : `localhost:8080/api/events/newEvent`
+**URL** : `localhost:8080/api/events`
 
 **Method** : `POST`
 
