@@ -51,7 +51,7 @@ public class TransactionRestController {
 	}
 
 	// Lisää uusi myyntitapahtuma
-	@PostMapping("/") // http://localhost:8080/api/transactions/
+	@PostMapping // http://localhost:8080/api/transactions
 	Transaction newTransaction(@RequestBody Transaction newTransaction) {
 
 		System.out.println("Adding new transaction: " + newTransaction);
@@ -60,12 +60,12 @@ public class TransactionRestController {
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
-	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae transaktio tietokannasta ja palauta vastaus
-		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// Palauttaa transaktion Id:N perusteella
+	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
+		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// Palauttaa myyntitapahtuman Id:N perusteella
 		if (transactionOptional.isPresent()) {
 			Transaction transaction = transactionOptional.get();
-			transactionRepository.deleteById(id); // Poistaa transaktion Id:n perusteella
-			return ResponseEntity.ok(transaction); // HTTP 200 OK, palauttaa poistetun transaktion tiedot
+			transactionRepository.deleteById(id); // Poistaa myyntitapahtuman Id:n perusteella
+			return ResponseEntity.ok(transaction); // HTTP 200 OK, palauttaa poistetun myyntitapahtuman tiedot
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
