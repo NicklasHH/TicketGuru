@@ -68,7 +68,7 @@ public class VenueRestController {
 	Venue newVenue(@RequestBody Venue newVenue) {
 
 		System.out.println("Adding new venue: " + newVenue);
-
+ 
 		return venueRepository.save(newVenue);
 	}
 
