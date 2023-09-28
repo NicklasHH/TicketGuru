@@ -76,14 +76,17 @@ public class RoleRestController {
 
 		return roleRepository.save(newRole);
 	}
-	
+
 	// muokataan olemassa olevaa roolia
 	@PutMapping("/{id}") // http://localhost:8080/api/roles/id
-	Role editRole(@RequestBody Role editedRole, @PathVariable Long id) {
+	public ResponseEntity<Object> editRole(@RequestBody Role editedRole, @PathVariable Long id) {
 
+		if (!roleRepository.existsById(id)) {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
 		editedRole.setRoleId(id);
-		System.out.println("Editing role: " + editedRole);
-		return roleRepository.save(editedRole);
+		Role updatedRole = roleRepository.save(editedRole);
+		return ResponseEntity.ok(updatedRole);
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/roles/1

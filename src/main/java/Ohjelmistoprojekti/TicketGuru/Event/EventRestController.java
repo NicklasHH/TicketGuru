@@ -159,7 +159,7 @@ public class EventRestController {
 	}
 
 	// lisätään uusi tapahtuma
-	@PostMapping("/") // http://localhost:8080/api/events/
+	@PostMapping // http://localhost:8080/api/events
 	Event newEvent(@RequestBody Event newEvent) {
 
 		System.out.println("Adding new event: " + newEvent);
@@ -169,11 +169,14 @@ public class EventRestController {
 
 	// muokataan olemassa olevaa tapahtumaa
 	@PutMapping("/{id}") // http://localhost:8080/api/events/id
-	Event editEvent(@RequestBody Event editedEvent, @PathVariable Long id) {
+	public ResponseEntity<Object> editEvent(@RequestBody Event editedEvent, @PathVariable Long id) {
 
+		if (!eventRepository.existsById(id)) {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
 		editedEvent.setEventId(id);
-		System.out.println("Editing event: " + editedEvent);
-		return eventRepository.save(editedEvent);
+		Event updatedEvent = eventRepository.save(editedEvent);
+		return ResponseEntity.ok(updatedEvent);
 	}
 
 	// Poistaa tapahtuman id:n perusteella
