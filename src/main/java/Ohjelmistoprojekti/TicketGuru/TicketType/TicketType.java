@@ -19,15 +19,15 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "TicketTypes")
+@Table(name = "Ticket_types")
 public class TicketType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	@Column(name = "ticket_type_id", nullable = false, updatable = false)
 	private Long ticketTypeId;
 
 	@Size(min = 1, max = 50)
-	@Column(nullable = false)
+	@Column(name = "ticket_type", nullable = false)
 	private String ticketType;
 
 	@JsonIgnore
@@ -36,7 +36,7 @@ public class TicketType {
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "eventId")
+	@JoinColumn(name = "event_id")
 	private Event event;
 
 	@Column(nullable = false)

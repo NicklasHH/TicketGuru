@@ -18,7 +18,7 @@ public class Postalcode {
 	@Column(nullable = false)
 	private String postalcode;
 
-	@Column(nullable = false)
+	@Column(name = "post_office", nullable = false)
 	private String postOffice;
 
 	@JsonIgnore

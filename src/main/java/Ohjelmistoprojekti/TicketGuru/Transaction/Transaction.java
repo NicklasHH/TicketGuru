@@ -20,11 +20,12 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
+	@Column(name = "transaction_id", nullable = false)
 	private Long transactionId;
 
 	private double amount;
 
+	@Column(name = "transaction_date")
 	private String transactionDate;
 
 	@JsonIgnore

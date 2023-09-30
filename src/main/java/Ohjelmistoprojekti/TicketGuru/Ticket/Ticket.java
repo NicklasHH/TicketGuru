@@ -18,21 +18,22 @@ import jakarta.persistence.Table;
 public class Ticket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	@Column(name = "ticket_id", nullable = false, updatable = false)
 	private Long ticketId;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "eventId")
+	@JoinColumn(name = "event_id")
 	private Event event;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ticketTypeId")
+	@JoinColumn(name = "ticket_type_id")
 	private TicketType ticketType;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "transactionId")
+	@JoinColumn(name = "transaction_id")
 	private Transaction transaction;
 
+	@Column(name = "is_checked")
 	private Boolean isChecked;
 
 	public Ticket() {

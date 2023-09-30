@@ -13,11 +13,11 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "AppUsers")
+@Table(name = "App_users")
 public class AppUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	@Column(name = "user_id",nullable = false, updatable = false)
 	private Long appUserId;
 
 	@Size(min = 1, max = 25)
@@ -29,7 +29,7 @@ public class AppUser {
 	private String password;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "roleId")
+	@JoinColumn(name = "role_id")
 	private Role role;
 
 	public AppUser() {

@@ -24,7 +24,7 @@ import jakarta.validation.constraints.Size;
 public class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	@Column(name = "event_id", nullable = false, updatable = false)
 	private long eventId;
 
 	@JsonIgnore
@@ -35,20 +35,20 @@ public class Event {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
 	private List<TicketType> ticketTypes;
 
-	@Column(nullable = false)
+	@Column(name = "event_name", nullable = false)
 	@Size(min = 1, max = 100)
 	private String eventName;
 
 	@Size(min = 1, max = 500)
 	private String description;
 
-	@Column(nullable = false)
+	@Column(name = "event_date", nullable = false)
 	private String eventDate;
 
-	@Column(nullable = false)
+	@Column(name = "event_time", nullable = false)
 	private String eventTime;
 
-	@Column(nullable = false)
+	@Column(name = "ticket_count", nullable = false)
 	private int ticketCount;
 
 	@ManyToOne

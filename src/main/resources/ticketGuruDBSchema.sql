@@ -1,115 +1,128 @@
 SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS Roles;
-DROP TABLE IF EXISTS AppUsers;
+DROP TABLE IF EXISTS App_users;
 DROP TABLE IF EXISTS Postalcodes;
 DROP TABLE IF EXISTS Venues;
 DROP TABLE IF EXISTS Transactions;
 DROP TABLE IF EXISTS Events;
-DROP TABLE IF EXISTS TicketTypes;
+DROP TABLE IF EXISTS Ticket_types;
 DROP TABLE IF EXISTS Tickets;
 SET FOREIGN_KEY_CHECKS=1;
 
 
-
 -- Luo Roles-taulu
 CREATE TABLE Roles (
-  roleId BIGINT AUTO_INCREMENT PRIMARY KEY,
-  roleName VARCHAR(255) NOT NULL
+  role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  role_name VARCHAR(255) NOT NULL
 );
--- Lisätään tiedot
-INSERT INTO Roles (roleName) 
-VALUES ('Admin'),
-		('Lipunmyyjä'),
-		('Lipuntarkastaja');
-
 
 -- Luo AppUsers-taulu
-CREATE TABLE AppUsers (
-  userId BIGINT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE App_users (
+  user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  roleId BIGINT NOT NULL,
-  FOREIGN KEY (roleId) REFERENCES Roles(roleId)
+  role_id BIGINT NOT NULL,
+  FOREIGN KEY (role_id) REFERENCES Roles(role_id)
 );
--- Lisätään tiedot
-INSERT INTO AppUsers (username, password, roleId) 
-VALUES ('admin', 'salis1', 1),
-		('käyttis', 'salis2', 2),
-		('HessuHopo', 'salis3', 2);
-
 
 -- Luo Postalcodes-taulu
 CREATE TABLE Postalcodes (
   postalcode VARCHAR(255) PRIMARY KEY NOT NULL,
-  postOffice VARCHAR(255) NOT NULL
+  post_office VARCHAR(255) NOT NULL
 );
--- Lisätään tiedot
-INSERT INTO Postalcodes (postalcode, postOffice) 
+
+-- Luo Venues-taulu
+CREATE TABLE Venues (
+  venue_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  place VARCHAR(255) NOT NULL,
+  street_address VARCHAR(255) NOT NULL,
+  postalcode VARCHAR(255) NOT NULL,
+  FOREIGN KEY (postalcode) REFERENCES Postalcodes(postalcode)
+);
+
+-- Luo Events-taulu
+CREATE TABLE Events (
+  event_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  event_name VARCHAR(255) NOT NULL,
+  event_date DATE NOT NULL,
+  event_time TIME NOT NULL,
+  ticket_count INT NOT NULL,
+  venue_id BIGINT NOT NULL,
+  description TEXT,
+  FOREIGN KEY (venue_id) REFERENCES Venues(venue_id)
+);
+
+-- Luo TicketTypes-taulu
+CREATE TABLE Ticket_types (
+  ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  Ticket_type VARCHAR(255) NOT NULL,
+  event_id BIGINT NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (event_id) REFERENCES Events(event_id)
+);
+
+-- Luo Transactions-taulu
+CREATE TABLE Transactions (
+  transaction_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  Amount DECIMAL(10, 2) NOT NULL,
+  Transaction_date DATE NOT NULL
+);
+
+-- Luo Tickets-taulu
+CREATE TABLE Tickets (
+  ticket_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  ticket_type_id BIGINT NOT NULL,
+  event_id BIGINT NOT NULL,
+  transaction_id BIGINT NOT NULL,
+  is_checked BOOLEAN,
+  FOREIGN KEY (ticket_type_id) REFERENCES Ticket_types(ticket_type_id),
+  FOREIGN KEY (event_id) REFERENCES Events(event_id),
+  FOREIGN KEY (transaction_id) REFERENCES Transactions(transaction_id)
+);
+
+
+-- Lisätään tiedot -> Roles
+INSERT INTO Roles (role_name) 
+VALUES ('Admin'),
+		('Lipunmyyjä'),
+		('Lipuntarkastaja');
+
+-- Lisätään tiedot -> App_users
+INSERT INTO App_users (username, password, role_id) 
+VALUES ('admin', 'admin', 1),
+		('käyttis', 'salasana', 2),
+		('Hessu Hopo', 'salis3', 2);
+
+-- Lisätään tiedot -> Postalcodes
+INSERT INTO Postalcodes (postalcode, post_office) 
 VALUES ('00100', 'Helsinki'),
 		('00200', 'Espoo'),
 		('99999', 'Korvatunturi');
 
+-- Lisätään tiedot -> Venues
+INSERT INTO Venues (place, street_address, postalcode)
+VALUES ('Jäähalli', 'Jäähallintie 1', '00100'),
+		('Vesihalli', 'Vesihallintie 2', '00200'),
+		('Aurinkohalli', 'Aurinkohallintie 3', '99999');
 
--- Luo Venues-taulu
-CREATE TABLE Venues (
-  venueId BIGINT AUTO_INCREMENT PRIMARY KEY,
-  place VARCHAR(255) NOT NULL,
-  streetAddress VARCHAR(255) NOT NULL,
-  postalcode VARCHAR(255) NOT NULL,
-  FOREIGN KEY (postalcode) REFERENCES Postalcodes(postalcode)
-);
--- Lisätään tiedot
-INSERT INTO Venues (place, streetAddress, postalcode)
-VALUES ('Jäähalli', 'Tie a', '00100'),
-		('Vesihalli', 'Tie b', '00200'),
-		('Aurinkohalli', 'Tie c', '99999');
+-- Lisätään tiedot -> Events
+INSERT INTO Events (event_name, event_date, event_time, ticket_count, venue_id, description) 
+VALUES ('Tapahtuma 1', '2023-09-18', '12:00', 100, 2, 'Lisätietoja'),
+		('Tapahtuma 2', '2023-09-19', '15:00', 200, 1, 'Kisätiedoton'),
+		('Tapahtuma 3', '2023-09-20', '18:00', 300, 3, 'Ei voi puhua'),
+		('Tapahtuma 4', '2023-09-21', '19:00', 400, 3, NULL),
+		('Tapahtuma 5', '2023-09-22', '20:00', 500, 3, NULL),
+		('Tapahtuma 6', '2023-09-23', '23:40', 600, 3, NULL);
 
-
--- Luo Events-taulu
-CREATE TABLE Events (
-  eventId BIGINT AUTO_INCREMENT PRIMARY KEY,
-  eventName VARCHAR(255) NOT NULL,
-  eventDate DATE NOT NULL,
-  eventTime TIME NOT NULL,
-  ticketCount INT NOT NULL,
-  venueId BIGINT NOT NULL,
-  description TEXT,
-  FOREIGN KEY (venueId) REFERENCES Venues(venueId)
-);
--- Lisätään tiedot
-INSERT INTO Events (eventName, eventDate, eventTime, ticketCount, venueId, description) 
-VALUES ('eventin nimi1', '2023-09-18', '12:00', 100, 2, 'lisätietoja'),
-		('eventin nimi 2', '2023-09-19', '15:00', 200, 1, 'lisätiedoton'),
-		('eventin nimi 3', '2023-09-20', '18:00', 300, 3, NULL),
-		('eventin nimi 4', '2023-09-20', '18:00', 300, 3, NULL),
-		('eventin nimi 5', '2023-09-20', '18:00', 300, 3, NULL),
-		('eventin nimi 6', '2023-09-20', '18:00', 300, 3, NULL);
-
-
--- Luo TicketTypes-taulu
-CREATE TABLE TicketTypes (
-  ticketTypeId BIGINT AUTO_INCREMENT PRIMARY KEY,
-  TicketType VARCHAR(255) NOT NULL,
-  eventId BIGINT NOT NULL,
-  price DECIMAL(10, 2) NOT NULL,
-  FOREIGN KEY (eventId) REFERENCES Events(eventId)
-);
--- Lisätään tiedot
-INSERT INTO TicketTypes (TicketType, eventId, price)
+-- Lisätään tiedot -> Ticket_types
+INSERT INTO Ticket_types (Ticket_type, event_id, price)
 VALUES ('Lapsi', 2, '5'),
 		('Eläkeläinen', 2, '15'),
 		('Varusmies', 2, '20'),
 		('Normaali', 2, '50');
 
-
--- Luo Transactions-taulu
-CREATE TABLE Transactions (
-  transactionId BIGINT AUTO_INCREMENT PRIMARY KEY,
-  Amount DECIMAL(10, 2) NOT NULL,
-  TransactionDate DATE NOT NULL
-);
--- Lisätään tiedot
-INSERT INTO Transactions (Amount, TransactionDate) 
+-- Lisätään tiedot -> transactions
+INSERT INTO Transactions (Amount, Transaction_date) 
 VALUES (15, '2023-09-20'),
 		(25, '2023-09-21'),
 		(35, '2023-09-22'),
@@ -117,20 +130,8 @@ VALUES (15, '2023-09-20'),
 		(35, '2023-09-22'),
 		(35, '2023-09-22');
 
-
--- Luo Tickets-taulu
-CREATE TABLE Tickets (
-  ticketId BIGINT AUTO_INCREMENT PRIMARY KEY,
-  ticketTypeId BIGINT NOT NULL,
-  eventId BIGINT NOT NULL,
-  transactionId BIGINT NOT NULL,
-  isChecked BOOLEAN,
-  FOREIGN KEY (ticketTypeId) REFERENCES TicketTypes(ticketTypeId),
-  FOREIGN KEY (eventId) REFERENCES Events(eventId),
-  FOREIGN KEY (transactionId) REFERENCES Transactions(transactionId)
-);
--- Lisätään tiedot
-INSERT INTO Tickets (ticketTypeId, eventId, transactionId, isChecked) 
+-- Lisätään tiedot -> Tickets
+INSERT INTO Tickets (ticket_type_id, event_id, transaction_id, is_checked) 
 VALUES (1, 1, 1, 0),
 		(2, 2, 2, 0),
 		(2, 2, 2, 0),
@@ -138,12 +139,13 @@ VALUES (1, 1, 1, 0),
 		(2, 2, 2, 0),
 		(2, 2, 2, 1);
 
+		
 
 SELECT * FROM  Roles;
-SELECT * FROM  AppUsers;
+SELECT * FROM  App_users;
 SELECT * FROM  Postalcodes;
 SELECT * FROM  Venues;
 SELECT * FROM  Transactions;
 SELECT * FROM  Events;
-SELECT * FROM  TicketTypes;
+SELECT * FROM  Ticket_types;
 SELECT * FROM  Tickets;

@@ -20,11 +20,11 @@ import jakarta.validation.constraints.Size;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	@Column(name = "role_id", nullable = false, updatable = false)
 	private Long roleId;
 
 	@Size(min = 1, max = 50)
-	@Column(nullable = false)
+	@Column(name = "role_name",nullable = false)
 	private String roleName;
 
 	@JsonIgnore

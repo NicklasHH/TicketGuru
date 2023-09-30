@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Size;
 public class Venue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	@Column(name = "venue_id", nullable = false, updatable = false)
 	private long venueId;
 
 	@Size(min = 1, max = 150)
@@ -24,7 +24,7 @@ public class Venue {
 	private String place;
 
 	@Size(min = 1, max = 150)
-	@Column(nullable = false)
+	@Column(name = "street_address", nullable = false)
 	private String streetAddress;
 
 	@ManyToOne
