@@ -65,7 +65,7 @@ ___
 * [Show single](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Transaction/get.md): `GET /api/transactions/{id}`
 * [Show details](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Transaction/get.md): `GET /api/transactions/{id}/*`
 * [New](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Transaction/post.md): `POST /api/transactions`
-* [Edit](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/TicketType/put.md): `PUT /api/transactions/{id}`
+* [Edit](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Transaction/put.md): `PUT /api/transactions/{id}`
 * [Delete](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Transaction/put.md): `DELETE /api/transactions/{id}`
 ___
 [**Venue**](https://github.com/NicklasHH/TicketGuru/tree/master/RestDocumentation/Venue)
