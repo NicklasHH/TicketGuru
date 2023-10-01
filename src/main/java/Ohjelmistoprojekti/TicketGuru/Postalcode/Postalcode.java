@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 @Table(name = "Postalcodes")
 public class Postalcode {
 	@Id
-	@Column(nullable = false)
+	@Column(name = "postalcode", nullable = false)
 	private String postalcode;
 
 	@Column(name = "post_office", nullable = false)

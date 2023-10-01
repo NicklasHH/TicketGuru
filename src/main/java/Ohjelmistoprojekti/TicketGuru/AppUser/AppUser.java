@@ -17,15 +17,15 @@ import jakarta.validation.constraints.Size;
 public class AppUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id",nullable = false, updatable = false)
+	@Column(name = "user_id", nullable = false, updatable = false)
 	private Long appUserId;
 
 	@Size(min = 1, max = 25)
-	@Column(nullable = false, unique = true)
+	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 
 	@Size(min = 1, max = 50)
-	@Column(nullable = false)
+	@Column(name = "password", nullable = false)
 	private String password;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -67,7 +67,7 @@ public class AppUser {
 	}
 
 	public Role getRole() {
-		return role; 
+		return role;
 	}
 
 	public void setRole(Role role) {

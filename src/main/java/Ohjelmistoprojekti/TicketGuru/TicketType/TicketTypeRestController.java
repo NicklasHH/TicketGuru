@@ -31,21 +31,23 @@ public class TicketTypeRestController {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
-	
+
 	// Palauttaa tickettypen id:n perusteella
 	@GetMapping("/{id}") // http://localhost:8080/api/tickettypes/1
-	public ResponseEntity<TicketType> getTicketType(@PathVariable Long id){
+	public ResponseEntity<TicketType> getTicketType(@PathVariable Long id) {
 		Optional<TicketType> tickettype = ticketTypeRepository.findById(id);
 		if (tickettype.isPresent()) {
 			return ResponseEntity.ok(tickettype.get()); // HTTP OK 200
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
 		}
-	}	
+	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/tickettypes/1
-	public ResponseEntity<?> deleteTicketType(@PathVariable Long id) { // Hae lipputyyppi tietokannasta ja palauta vastaus
-		Optional<TicketType> ticketTypeOptional = ticketTypeRepository.findById(id); // Palauttaa lipputyypin Id:N perusteella
+	public ResponseEntity<?> deleteTicketType(@PathVariable Long id) { // Hae lipputyyppi tietokannasta ja palauta
+																		// vastaus
+		Optional<TicketType> ticketTypeOptional = ticketTypeRepository.findById(id); // Palauttaa lipputyypin Id:N
+																						// perusteella
 		if (ticketTypeOptional.isPresent()) {
 			TicketType ticketType = ticketTypeOptional.get();
 			ticketTypeRepository.deleteById(id); // Poistaa lipputyypin Id:n perusteella

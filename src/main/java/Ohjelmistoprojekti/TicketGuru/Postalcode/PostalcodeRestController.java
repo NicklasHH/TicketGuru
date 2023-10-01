@@ -15,6 +15,7 @@ public class PostalcodeRestController {
 
 	private final PostalcodeRepository postalcodeRepository;
 	private final JdbcTemplate jdbcTemplate; // SQL päivitykseen
+
 	@Autowired
 	public PostalcodeRestController(PostalcodeRepository postalcodeRepository, JdbcTemplate jdbcTemplate) {
 		this.postalcodeRepository = postalcodeRepository;
@@ -33,9 +34,9 @@ public class PostalcodeRestController {
 
 	@GetMapping("/{postalcode}") // PostalCode oli määritelty String tietotyypiksi eikä Long.
 	public ResponseEntity<Postalcode> getPostalcode(@PathVariable String postalcode) {
-		Optional<Postalcode> foundPostalcode  = postalcodeRepository.findByPostalcode(postalcode);
-		if (foundPostalcode .isPresent()) {
-			return ResponseEntity.ok(foundPostalcode .get());
+		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalcode);
+		if (foundPostalcode.isPresent()) {
+			return ResponseEntity.ok(foundPostalcode.get());
 		} else {
 			return ResponseEntity.notFound().build();
 		}
@@ -53,8 +54,9 @@ public class PostalcodeRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedPostalcode); // HTTP 201
 	}
 
-	@PutMapping("/{postalcode}") // Muuta  vain post officea. Ei postalcodea joka toimii pääavaimena.
-	public ResponseEntity<Postalcode> updatePostalCode(@PathVariable String postalcode, @RequestBody Postalcode newPostalcode) {
+	@PutMapping("/{postalcode}") // Muuta vain post officea. Ei postalcodea joka toimii pääavaimena.
+	public ResponseEntity<Postalcode> updatePostalCode(@PathVariable String postalcode,
+			@RequestBody Postalcode newPostalcode) {
 		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalcode);
 
 		if (!foundPostalcode.isPresent()) {
@@ -72,6 +74,7 @@ public class PostalcodeRestController {
 		String sql = "UPDATE VENUES SET POSTALCODE = NULL WHERE POSTALCODE = ?";
 		jdbcTemplate.update(sql, postalcode);
 	}
+
 	@DeleteMapping("/{postalcode}")
 	public ResponseEntity<Postalcode> deletePostalcode(@PathVariable String postalcode) {
 		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalcode);

@@ -20,7 +20,7 @@ public class Venue {
 	private long venueId;
 
 	@Size(min = 1, max = 150)
-	@Column(nullable = false)
+	@Column(name = "place", nullable = false)
 	private String place;
 
 	@Size(min = 1, max = 150)

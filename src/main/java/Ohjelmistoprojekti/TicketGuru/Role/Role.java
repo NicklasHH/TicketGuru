@@ -24,7 +24,7 @@ public class Role {
 	private Long roleId;
 
 	@Size(min = 1, max = 50)
-	@Column(name = "role_name",nullable = false)
+	@Column(name = "role_name", nullable = false)
 	private String roleName;
 
 	@JsonIgnore
@@ -64,7 +64,7 @@ public class Role {
 		this.appUser = appUser;
 	}
 
-	@Override 
+	@Override
 	public String toString() {
 		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", appUser=" + appUser + "]";
 	}

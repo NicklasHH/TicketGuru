@@ -55,7 +55,7 @@ CREATE TABLE Events (
 -- Luo TicketTypes-taulu
 CREATE TABLE Ticket_types (
   ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  Ticket_type VARCHAR(255) NOT NULL,
+  ticket_type VARCHAR(255) NOT NULL,
   event_id BIGINT NOT NULL,
   price DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (event_id) REFERENCES Events(event_id)
@@ -64,8 +64,8 @@ CREATE TABLE Ticket_types (
 -- Luo Transactions-taulu
 CREATE TABLE Transactions (
   transaction_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  Amount DECIMAL(10, 2) NOT NULL,
-  Transaction_date DATE NOT NULL
+  amount DECIMAL(10, 2) NOT NULL,
+  transaction_date DATE NOT NULL
 );
 
 -- Luo Tickets-taulu
@@ -108,21 +108,21 @@ VALUES ('Jäähalli', 'Jäähallintie 1', '00100'),
 -- Lisätään tiedot -> Events
 INSERT INTO Events (event_name, event_date, event_time, ticket_count, venue_id, description) 
 VALUES ('Tapahtuma 1', '2023-09-18', '12:00', 100, 2, 'Lisätietoja'),
-		('Tapahtuma 2', '2023-09-19', '15:00', 200, 1, 'Kisätiedoton'),
+		('Tapahtuma 2', '2023-09-19', '15:00', 200, 1, 'Lisätiedoton'),
 		('Tapahtuma 3', '2023-09-20', '18:00', 300, 3, 'Ei voi puhua'),
 		('Tapahtuma 4', '2023-09-21', '19:00', 400, 3, NULL),
 		('Tapahtuma 5', '2023-09-22', '20:00', 500, 3, NULL),
 		('Tapahtuma 6', '2023-09-23', '23:40', 600, 3, NULL);
 
 -- Lisätään tiedot -> Ticket_types
-INSERT INTO Ticket_types (Ticket_type, event_id, price)
+INSERT INTO Ticket_types (ticket_type, event_id, price)
 VALUES ('Lapsi', 2, '5'),
 		('Eläkeläinen', 2, '15'),
 		('Varusmies', 2, '20'),
 		('Normaali', 2, '50');
 
 -- Lisätään tiedot -> transactions
-INSERT INTO Transactions (Amount, Transaction_date) 
+INSERT INTO Transactions (amount, transaction_date) 
 VALUES (15, '2023-09-20'),
 		(25, '2023-09-21'),
 		(35, '2023-09-22'),

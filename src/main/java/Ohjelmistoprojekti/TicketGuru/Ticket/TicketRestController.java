@@ -32,10 +32,10 @@ public class TicketRestController {
 	public TicketRestController(TicketRepository ticketRepository) {
 		this.ticketRepository = ticketRepository;
 	}
-	
+
 	@Autowired
 	private TicketTypeRepository ticketTypeRepository;
-	
+
 	@Autowired
 	private TransactionRepository transactionRepository;
 
@@ -49,7 +49,7 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
-	
+
 	// lippu id:n perusteella
 	@GetMapping("/{id}") // http://localhost:8080/api/tickets/1
 	public ResponseEntity<Ticket> getTicket(@PathVariable Long id) {
@@ -60,7 +60,7 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	// lippu tarkistettu
 	@GetMapping("/{id}/isChecked") // http://localhost:8080/api/tickets/1/isChecked
 	public ResponseEntity<Object> getPassword(@PathVariable long id) {
@@ -74,7 +74,7 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	// lipun tyyppi
 	@GetMapping("/{id}/ticketType") // http://localhost:8080/api/tickets/1/ticketType
 	public ResponseEntity<TicketType> getTicketType(@PathVariable long id) {
@@ -91,7 +91,7 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	// lipun tapahtuma
 	@GetMapping("/{id}/event") // http://localhost:8080/api/tickets/1/event
 	public ResponseEntity<Event> getEvent(@PathVariable long id) {
@@ -108,7 +108,7 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	// lipun myynti
 	@GetMapping("/{id}/transaction") // http://localhost:8080/api/tickets/1/transaction
 	public ResponseEntity<Transaction> getTransaction(@PathVariable long id) {
@@ -125,14 +125,14 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	// uusi lippu
 	@PostMapping("/") // http://localhost:8080/api/tickets/
 	Ticket newTicket(@RequestBody Ticket newTicket) {
 		System.out.println("Adding new ticket: " + newTicket);
 		return ticketRepository.save(newTicket);
 	}
-	
+
 	// muokkaa lippua
 	@PutMapping("/{id}") // http://localhost:8080/api/tickets/1
 	Ticket editTicket(@RequestBody Ticket editedTicket, @PathVariable Long id) {
@@ -153,20 +153,20 @@ public class TicketRestController {
 				ticketType.setTickets(null);
 			}
 			ticketTypeRepository.saveAll(ticketTypes);
-			
+
 			List<Transaction> transactions = transactionRepository.findByTickets_TicketId(id);
 			for (Transaction transaction : transactions) {
 				transaction.setTickets(null);
 			}
 			transactionRepository.saveAll(transactions);
-			
+
 			ticketRepository.deleteById(id); // Poistaa lipun Id:n perusteella
 			System.out.println("200 - lipun poisto ok - TicketRestController");
 			return ResponseEntity.ok(ticket); // HTTP 200 OK, palauttaa poistetun lipun tiedot
 		} else {
 			System.out.println("404 - Ei löytynyt poistettavaa - TicketRestController");
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-			
+
 		}
 	}
 }

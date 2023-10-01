@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TicketController {
-	
-	//private static final Logger log = LoggerFactory.getLogger(TicketController.class);
 
-	//@Autowired
-	//TicketRepository trepository;
-	
-	@RequestMapping("/index") //http://localhost:8080/index
+	// private static final Logger log =
+	// LoggerFactory.getLogger(TicketController.class);
+
+	// @Autowired
+	// TicketRepository trepository;
+
+	@RequestMapping("/index") // http://localhost:8080/index
 	public String showMainPage() {
-		//log.info("RETURN INDEX.HTML");
-		return "index.html";  //index.html
+		// log.info("RETURN INDEX.HTML");
+		return "index.html"; // index.html
 	}
 }
