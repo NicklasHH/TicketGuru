@@ -169,7 +169,7 @@ Show information about ticket based on its unique identifier `id`.
 `http://localhost:8080/api/tickets/{id}/ticketType`  
 `http://localhost:8080/api/tickets/{id}/event`  
 `http://localhost:8080/api/tickets/{id}/transaction`
-`http://localhost:8080/api/tickets/{id}/isChecked`<br> 
+`http://localhost:8080/api/tickets/{id}/isChecked`
 
 **Method** : `GET`
 
