@@ -166,10 +166,10 @@ Show information about ticket based on its unique identifier `id`.
 # Show Specific ticket Details
 
 **Possible endpoints** :  
-`http://localhost:8080/api/tickets/{id}/ticketType`  
-`http://localhost:8080/api/tickets/{id}/event`  
-`http://localhost:8080/api/tickets/{id}/transaction`
-`http://localhost:8080/api/tickets/{id}/isChecked`
+`http://localhost:8080/api/tickets/{id}/ticketType`<br> 
+`http://localhost:8080/api/tickets/{id}/event`<br> 
+`http://localhost:8080/api/tickets/{id}/transaction`<br> 
+`http://localhost:8080/api/tickets/{id}/isChecked`<br> 
 
 **Method** : `GET`
 
