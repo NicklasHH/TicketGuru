@@ -39,6 +39,6 @@ Provide ID and values to modify.
 
 ## Error response  
 
-**Code** : `404Not Found`  
+**Code** : `404 Not Found`  
 
 **Message** : `The requested resource could not be found.`
