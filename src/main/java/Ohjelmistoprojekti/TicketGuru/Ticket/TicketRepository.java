@@ -8,5 +8,7 @@ public interface TicketRepository extends CrudRepository<Ticket, Long> {
 	List<Ticket> findAll();
 
 	List<Ticket> findByEvent_EventId(Long eventId);
+	
+	List<Ticket> findByTicketType_TicketTypeId(Long ticketTypeId);
 
 }

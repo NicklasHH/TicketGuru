@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
+import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
 
 @RestController
 @RequestMapping("/api/tickettypes")
@@ -26,6 +30,9 @@ public class TicketTypeRestController {
 	public TicketTypeRestController(TicketTypeRepository ticketTypeRepository) {
 		this.ticketTypeRepository = ticketTypeRepository;
 	}
+	
+	@Autowired
+	private TicketRepository ticketRepository;
 
 	// Listaa kaikki lipputyypit
 	@GetMapping // http://localhost:8080/api/tickettypes
@@ -64,14 +71,20 @@ public class TicketTypeRestController {
 	}
 	
 	// Luodaan uusi lipputyyppi
-	@PostMapping("/{id}") // http://localhost8080/api/tickettypes/1
-	TicketType newTicketType(@RequestBody TicketType newTicketType) {
-		System.out.print("Adding new ticket type: " + newTicketType);
-		return ticketTypeRepository.save(newTicketType);
+	@PostMapping // http://localhost8080/api/tickettypes
+	public ResponseEntity<TicketType> addTicketType(@RequestBody TicketType ticketType) {
+		Optional<TicketType> foundTicketType = ticketTypeRepository.findByTicketType(ticketType.getTicketType());
+		
+		if(foundTicketType.isPresent()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).build(); // HTTP 409 jos lipputyyppi on jo olemassa
+		}
+		
+		TicketType savedTicketType = ticketTypeRepository.save(ticketType);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicketType); // HTTP 201
 	}
 	
 	// Muokataan lipputyyppiä
-	@PutMapping("/id") // http://localhost808/api/tickettypes/1
+	@PutMapping("/{id}") // http://localhost808/api/tickettypes/1
 	public ResponseEntity<Object> updateTicketType(@RequestBody TicketType editedTicketType, @PathVariable long id) {
 		if (!ticketTypeRepository.existsById(id)) {
 			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
@@ -88,6 +101,13 @@ public class TicketTypeRestController {
 																						// perusteella
 		if (ticketTypeOptional.isPresent()) {
 			TicketType ticketType = ticketTypeOptional.get();
+			
+			// Hae ja päivitä liittyvät liput
+			List<Ticket> tickets = ticketRepository.findByTicketType_TicketTypeId(id);
+			for(Ticket ticket : tickets) {
+				ticket.setTicketType(null); // asettta lipputyypin nulliksi
+			}
+			
 			ticketTypeRepository.deleteById(id); // Poistaa lipputyypin Id:n perusteella
 			return ResponseEntity.ok(ticketType); // HTTP 200 OK, palauttaa poistetun lipputyypin tiedot
 		} else {
