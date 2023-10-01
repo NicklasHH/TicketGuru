@@ -127,7 +127,7 @@ public class TicketRestController {
 	}
 
 	// uusi lippu
-	@PostMapping("/") // http://localhost:8080/api/tickets/
+	@PostMapping // http://localhost:8080/api/tickets/
 	Ticket newTicket(@RequestBody Ticket newTicket) {
 		System.out.println("Adding new ticket: " + newTicket);
 		return ticketRepository.save(newTicket);
@@ -135,10 +135,13 @@ public class TicketRestController {
 
 	// muokkaa lippua
 	@PutMapping("/{id}") // http://localhost:8080/api/tickets/1
-	Ticket editTicket(@RequestBody Ticket editedTicket, @PathVariable Long id) {
+	public ResponseEntity<Object> editTicket(@RequestBody Ticket editedTicket, @PathVariable Long id) {
+		if (!ticketRepository.existsById(id)) {
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
 		editedTicket.setTicketId(id);
-		System.out.println("Editing ticket: " + editedTicket);
-		return ticketRepository.save(editedTicket);
+		Ticket updatedTicket = ticketRepository.save(editedTicket);
+		return ResponseEntity.ok(updatedTicket); // HTTP 200 OK
 	}
 
 	// poista lippu
