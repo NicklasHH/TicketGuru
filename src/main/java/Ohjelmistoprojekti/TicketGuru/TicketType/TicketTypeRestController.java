@@ -1,6 +1,8 @@
 package Ohjelmistoprojekti.TicketGuru.TicketType;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +27,7 @@ public class TicketTypeRestController {
 		this.ticketTypeRepository = ticketTypeRepository;
 	}
 
+	// Listaa kaikki lipputyypit
 	@GetMapping // http://localhost:8080/api/tickettypes
 	ResponseEntity<List<TicketType>> all() {
 		List<TicketType> ticketTypes = ticketTypeRepository.findAll(); // Hae kaikki lipputyypit tietokannasta
@@ -32,15 +38,47 @@ public class TicketTypeRestController {
 		}
 	}
 
-	// Palauttaa tickettypen id:n perusteella
+	// Palauttaa lipputyypin id:n perusteella
 	@GetMapping("/{id}") // http://localhost:8080/api/tickettypes/1
 	public ResponseEntity<TicketType> getTicketType(@PathVariable Long id) {
-		Optional<TicketType> tickettype = ticketTypeRepository.findById(id);
-		if (tickettype.isPresent()) {
-			return ResponseEntity.ok(tickettype.get()); // HTTP OK 200
+		Optional<TicketType> tickettypeOptional = ticketTypeRepository.findById(id);
+		if (tickettypeOptional.isPresent()) {
+			return ResponseEntity.ok(tickettypeOptional.get()); // HTTP OK 200
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
 		}
+	}
+	
+	// Palauttaa lipputyypin id:n perusteella sen hinnan
+	@GetMapping("/{id}/price") // http://localhost:8080/api/ticekttypes/1/price
+	public ResponseEntity<Object> getPrice(@PathVariable Long id) {
+		Optional<TicketType> tickettypeOptional = ticketTypeRepository.findById(id);
+		if (tickettypeOptional.isPresent()) {
+			TicketType tickettype = tickettypeOptional.get();
+			Map<String, Double> jsonResponse = new HashMap<>();
+			jsonResponse.put("price", tickettype.getPrice());
+			return ResponseEntity.ok(jsonResponse); // HTTP OK 200
+		} else {
+			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
+		}
+	}
+	
+	// Luodaan uusi lipputyyppi
+	@PostMapping("/{id}") // http://localhost8080/api/tickettypes/1
+	TicketType newTicketType(@RequestBody TicketType newTicketType) {
+		System.out.print("Adding new ticket type: " + newTicketType);
+		return ticketTypeRepository.save(newTicketType);
+	}
+	
+	// Muokataan lipputyyppiä
+	@PutMapping("/id") // http://localhost808/api/tickettypes/1
+	public ResponseEntity<Object> updateTicketType(@RequestBody TicketType editedTicketType, @PathVariable long id) {
+		if (!ticketTypeRepository.existsById(id)) {
+			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
+		}
+		editedTicketType.setTicketTypeId(id);
+		TicketType updatedTicketType = ticketTypeRepository.save(editedTicketType);
+		return ResponseEntity.ok(updatedTicketType); // HTTP OK 200
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/tickettypes/1
