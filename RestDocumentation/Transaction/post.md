@@ -49,6 +49,7 @@ Provide below required values.
 ## Error response  
 
 **Code** : `400 Bad Request`  
+
 **Data example**
 
 ```json
