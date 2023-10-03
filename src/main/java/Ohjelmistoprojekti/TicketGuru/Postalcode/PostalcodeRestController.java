@@ -22,7 +22,7 @@ public class PostalcodeRestController {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	@GetMapping("/") // http://localhost:8080/api/postalcodes
+	@GetMapping // http://localhost:8080/api/postalcodes
 	ResponseEntity<List<Postalcode>> all() {
 		List<Postalcode> postalcodes = postalcodeRepository.findAll(); // Hae kaikki postinumerot tietokannasta
 		if (!postalcodes.isEmpty()) {
