@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +55,8 @@ public class TransactionRestController {
 	// Lisää uusi myyntitapahtuma
 	@PostMapping // http://localhost:8080/api/transactions
 	Transaction newTransaction(@RequestBody Transaction newTransaction) {
+		
+		
 
 		System.out.println("200 - luotu uusi myyntitapahtuma - TransactionRestController:  " + newTransaction);
 
