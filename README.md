@@ -187,7 +187,7 @@ _Transactions-taulu sisältää maksutapahtumat._
 |-----------------|---------|----------------------------------------------------------|
 | transactionId   | long PK | transactionid toimii yksilöllisenä tunnisteena, not null |
 | amount          | Double  | maksutapahtuman summa, not null                          |
-| transactionDate | String  | maksutapahtuman päivämäärä, not null                     |
+| transactionDate | LocalDate  | maksutapahtuman päivämäärä, not null, yyyy-MM-dd      |
 
 ---
 
