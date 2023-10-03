@@ -1,7 +1,9 @@
 package Ohjelmistoprojekti.TicketGuru.Transaction;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
@@ -26,7 +28,9 @@ public class Transaction {
 	private double amount;
 
 	@Column(name = "transaction_date")
-	private String transactionDate;
+	//private String transactionDate;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate transactionDate;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER)
@@ -35,7 +39,7 @@ public class Transaction {
 	public Transaction() {
 	}
 
-	public Transaction(double amount, String transactionDate, List<Ticket> tickets) {
+	public Transaction(double amount, LocalDate transactionDate, List<Ticket> tickets) {
 		super();
 		this.amount = amount;
 		this.transactionDate = transactionDate;
@@ -58,11 +62,11 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public String getTransactionDate() {
+	public LocalDate getTransactionDate() {
 		return transactionDate;
 	}
 
-	public void setTransactionDate(String transactionDate) {
+	public void setTransactionDate(LocalDate transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 
