@@ -10,14 +10,20 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "Postalcodes")
 public class Postalcode {
 	@Id
 	@Column(name = "postalcode", nullable = false)
+	@NotNull(message = "Postalcode cannot be null")
+	@Size(min = 5 , max = 5)
 	private String postalcode;
 
+	@NotEmpty
 	@Column(name = "post_office", nullable = false)
 	private String postOffice;
 
