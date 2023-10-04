@@ -18,8 +18,8 @@ Provide postalcode and values to modify.
 
 ```json
 {
-    "postalcode": "String"
-    "postOffice": "String"
+    "postalcode": "String" @Validation rules: Size = 5, NotNull
+    "postOffice": "String" @Validation rule: NotEmpty
 }
 ```
 
