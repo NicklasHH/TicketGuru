@@ -8,5 +8,8 @@ public interface AppUserRepository extends CrudRepository<AppUser, Long> {
 	List<AppUser> findAll();
 
 	List<AppUser> findByRole_RoleId(Long roleId);
-	// AppUser findByUsername(String username);
+
+	AppUser findByUsername(String username);
+
+	boolean existsByUsername(String username);
 }

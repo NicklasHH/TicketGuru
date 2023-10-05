@@ -6,28 +6,36 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUser;
 import Ohjelmistoprojekti.TicketGuru.AppUser.AppUserRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/roles")
 public class RoleRestController {
 
 	private final RoleRepository roleRepository;
+	private final RoleService roleService;
 
 	@Autowired
-	public RoleRestController(RoleRepository roleRepository) {
+	public RoleRestController(RoleRepository roleRepository, RoleService roleService) {
 		this.roleRepository = roleRepository;
+		this.roleService = roleService;
 	}
 
 	@Autowired
@@ -69,24 +77,31 @@ public class RoleRestController {
 	}
 
 	// lisätään uusi rooli
-	@PostMapping // http://localhost:8080/api/appusers
-	Role newRole(@RequestBody Role newRole) {
+	@PostMapping // http://localhost:8080/api/roles
+	public ResponseEntity<Object> createRole(@Valid @RequestBody Role newRole) {
+		ResponseEntity<Object> validationResponse = roleService.validateRole(newRole);
 
-		System.out.println("Adding new role: " + newRole);
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
 
-		return roleRepository.save(newRole);
+		Role savedRole = roleRepository.save(newRole);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedRole);
 	}
 
 	// muokataan olemassa olevaa roolia
 	@PutMapping("/{id}") // http://localhost:8080/api/roles/id
-	public ResponseEntity<Object> editRole(@RequestBody Role editedRole, @PathVariable Long id) {
+	public ResponseEntity<Object> updateRole(@Valid @RequestBody Role editedRole, @PathVariable Long id) {
+		ResponseEntity<Object> validationResponse = roleService.validateRole(editedRole);
 
-		if (!roleRepository.existsById(id)) {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
 		}
+
 		editedRole.setRoleId(id);
 		Role updatedRole = roleRepository.save(editedRole);
-		return ResponseEntity.ok(updatedRole);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(updatedRole);
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/roles/1
@@ -107,6 +122,19 @@ public class RoleRestController {
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
+	}
+
+	// Validointi virheiden käsittely
+	@ResponseStatus(HttpStatus.BAD_REQUEST) // HTTP 400 Bad request
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> { // Hakee kaikki virheet
+			String fieldName = ((FieldError) error).getField(); // Haetaan virheen aiheuttaneen kentän nimi
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return errors;
 	}
 
 }

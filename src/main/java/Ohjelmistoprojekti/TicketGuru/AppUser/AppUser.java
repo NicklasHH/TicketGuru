@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -20,14 +21,17 @@ public class AppUser {
 	@Column(name = "user_id", nullable = false, updatable = false)
 	private Long appUserId;
 
+	@NotNull
 	@Size(min = 1, max = 25)
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 
+	@NotNull
 	@Size(min = 1, max = 50)
 	@Column(name = "password", nullable = false)
 	private String password;
 
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_id")
 	private Role role;

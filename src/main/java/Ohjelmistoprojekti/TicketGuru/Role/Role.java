@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -24,6 +25,7 @@ public class Role {
 	private Long roleId;
 
 	@Size(min = 1, max = 50)
+	@NotNull
 	@Column(name = "role_name", nullable = false)
 	private String roleName;
 

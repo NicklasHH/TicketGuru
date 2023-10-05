@@ -6,28 +6,36 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import Ohjelmistoprojekti.TicketGuru.Role.Role;
 import Ohjelmistoprojekti.TicketGuru.Role.RoleRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/appusers")
 public class AppUserRestController {
 
 	private final AppUserRepository appUserRepository;
+	private final AppUserService appUserService;
 
 	@Autowired
-	public AppUserRestController(AppUserRepository appUserRepository) {
+	public AppUserRestController(AppUserRepository appUserRepository, AppUserService appUserService) {
 		this.appUserRepository = appUserRepository;
+		this.appUserService = appUserService;
 	}
 
 	@Autowired
@@ -101,24 +109,30 @@ public class AppUserRestController {
 
 	// lisätään uusi appuser
 	@PostMapping // http://localhost:8080/api/appusers
-	AppUser newAppUser(@RequestBody AppUser newAppUser) {
+	public ResponseEntity<Object> createAppUser(@Valid @RequestBody AppUser newAppUser) {
+		ResponseEntity<Object> validationResponse = appUserService.validateAppUser(newAppUser);
 
-		System.out.println("Adding new App user: " + newAppUser);
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
 
-		return appUserRepository.save(newAppUser);
+		AppUser savedAppUser = appUserRepository.save(newAppUser);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedAppUser);
 	}
 
 	// muokataan olemassa olevaa appuseria
 	@PutMapping("/{id}") // http://localhost:8080/api/appusers/id
-	public ResponseEntity<Object> editAppUser(@RequestBody AppUser editedAppUser, @PathVariable Long id) {
-		// Tarkista, onko ID olemassa
-		if (!appUserRepository.existsById(id)) {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+	public ResponseEntity<Object> updateAppUser(@Valid @RequestBody AppUser editedAppUser, @PathVariable Long id) {
+		ResponseEntity<Object> validationResponse = appUserService.validateAppUser(editedAppUser);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
 		}
 
 		editedAppUser.setAppUserId(id);
 		AppUser updatedAppUser = appUserRepository.save(editedAppUser);
-		return ResponseEntity.ok(updatedAppUser); // HTTP 200 OK
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(updatedAppUser);
 	}
 
 	// Poista appuser id:n perusteella
@@ -140,5 +154,18 @@ public class AppUserRestController {
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
+	}
+
+	// Validointi virheiden käsittely
+	@ResponseStatus(HttpStatus.BAD_REQUEST) // HTTP 400 Bad request
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> { // Hakee kaikki virheet
+			String fieldName = ((FieldError) error).getField(); // Haetaan virheen aiheuttaneen kentän nimi
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return errors;
 	}
 }
