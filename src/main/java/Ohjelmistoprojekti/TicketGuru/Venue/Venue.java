@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -19,14 +20,17 @@ public class Venue {
 	@Column(name = "venue_id", nullable = false, updatable = false)
 	private long venueId;
 
+	@NotNull
 	@Size(min = 1, max = 150)
 	@Column(name = "place", nullable = false)
 	private String place;
 
+	@NotNull
 	@Size(min = 1, max = 150)
 	@Column(name = "street_address", nullable = false)
 	private String streetAddress;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "postalcode")
 	private Postalcode postalcode;
