@@ -21,15 +21,16 @@ delete single venue based on its unique identifier `id`.
 **Code** : `200 OK`
 
 **Content example** : This example response contains the details of the venue that will be removed.
+
 ```json
 {
-    "venueId": 1,
-    "place": "Jäähalli",
-    "streetAddress": "jäähallintie 1",
-    "postalcode": {
-        "postalcode": "00100",
-        "postOffice": "Helsinki"
-    }
+  "venueId": 1,
+  "place": "Jäähalli",
+  "streetAddress": "jäähallintie 1",
+  "postalcode": {
+    "postalcode": "00100",
+    "postOffice": "Helsinki"
+  }
 }
 ```
 

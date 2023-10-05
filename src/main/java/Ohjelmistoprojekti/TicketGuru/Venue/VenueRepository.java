@@ -6,5 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface VenueRepository extends CrudRepository<Venue, Long> {
 	List<Venue> findAll();
-	boolean existsByPlace(String place);
+
+	List<Venue> findByPlace(String place);
 }

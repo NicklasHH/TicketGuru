@@ -1,5 +1,7 @@
 package Ohjelmistoprojekti.TicketGuru.Venue;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +17,35 @@ public class VenueService {
 		this.venueRepository = venueRepository;
 	}
 
-	public ResponseEntity<Object> validateVenue(Venue venue) {
+	public ResponseEntity<Object> checkDuplicatePut(Venue editedVenue, long id) {
+		List<Venue> allVenues = venueRepository.findAll();
 
-		if (venueRepository.existsByPlace(venue.getPlace())) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Paikan nimi on jo käytössä.");
+		for (Venue otherVenue : allVenues) {
+			if (otherVenue.getPlace().equals(editedVenue.getPlace())) {
+				if (otherVenue.getVenueId() != id) {
+					return ResponseEntity.status(HttpStatus.CONFLICT)
+							.body("Paikka nimellä " + editedVenue.getPlace() + " on jo olemassa toisella id:llä.");
+				}
+			}
 		}
+
+		return ResponseEntity.ok(null);
+	}
+
+	public ResponseEntity<Object> checkDuplicatePost(Venue newVenue) {
+		List<Venue> duplicateVenues = venueRepository.findByPlace(newVenue.getPlace());
+
+		for (Venue existingVenue : duplicateVenues) {
+			if (existingVenue.getVenueId() != 0) {
+				return ResponseEntity.status(HttpStatus.CONFLICT)
+						.body("Paikka nimelä " + newVenue.getPlace() + " on jo olemassa toisella id:llä.");
+			}
+		}
+
+		return ResponseEntity.ok(null);
+	}
+
+	public ResponseEntity<Object> validateVenue(Venue venue) {
 
 		if (venue.getPlace() == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Paikan nimi ei voi olla tyhjä");

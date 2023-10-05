@@ -18,11 +18,11 @@ Provide below required values.
 
 ```json
 {
-    "username": "String min=1, max=25",
-    "password": "String min=1, max=50",
-    "role": {
-        "roleId": "roleId"
-    }
+  "username": "String min=1, max=25",
+  "password": "String min=1, max=50",
+  "role": {
+    "roleId": "roleId"
+  }
 }
 ```
 
@@ -30,34 +30,46 @@ Provide below required values.
 
 ```json
 {
-    "username": "uusitunnus",
-    "password": "Testing",
-    "role": {
-        "roleId": 1
-        }
+  "username": "uusitunnus1",
+  "password": "Testing",
+  "role": {
+    "roleId": 1
+  }
 }
 ```
 
 ## Success Response
 
-**Code** : `200 OK`  
+**Code** : `201 Created`
 
 **Content example** :
+
 ```json
 {
-    "appUserId": 3,
-    "username": "aaaaaa",
-    "password": "Testing",
-    "role": {
-        "roleId": 1,
-        "roleName": null
-    }
+  "appUserId": 4,
+  "username": "uusitunnus",
+  "password": "Testing",
+  "role": {
+    "roleId": 1,
+    "roleName": null
+  }
 }
 ```
 
-## Error response  
+## Error response
 
-**Code** : `400 Bad Request`  
+**Code** : `409 Conflict`
 
-**Message** : `JSON parse error`
+**Data example** :
 
+```json
+{
+  "username": "Admin",
+  "password": "Testing",
+  "role": {
+    "roleId": 1
+  }
+}
+```
+
+**Message** : `Käyttäjätunnus on jo käytössä.`

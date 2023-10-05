@@ -26,26 +26,32 @@ Provide below required values.
 
 ```json
 {
-    "roleName": "Lipuntarkastaja"
+    "roleName": "Lipuntarkastaja2"
 }
 
 ```
 
 ## Success Response
 
-**Code** : `200 OK`  
+**Code** : `201 Created`  
 
 **Content example** :
 ```json
 {
-    "roleId": 3,
-    "roleName": "Lipuntarkastaja"
+    "roleName": "Lipuntarkastaja2"
 }
 ```
 
 ## Error response  
 
-**Code** : `400 Bad Request`  
+**Code** : `409 Conflict` 
 
-**Message** : `JSON parse error`
+**Content example** :
+```json
+{
+    "roleName": "Lipuntarkastaja2"
+}
+```
+
+**Message** : `Roolin nimi on jo käytössä.`
 

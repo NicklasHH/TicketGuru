@@ -30,13 +30,22 @@ Show information about all appusers.
         "password": "admin",
         "role": {
             "roleId": 1,
-            "roleName": "Adminii"
+            "roleName": "Admin"
         }
     },
     {
         "appUserId": 2,
         "username": "käyttis",
-        "password": "salis",
+        "password": "salasana",
+        "role": {
+            "roleId": 2,
+            "roleName": "Lipunmyyjä"
+        }
+    },
+    {
+        "appUserId": 3,
+        "username": "Hessu Hopo",
+        "password": "salis3",
         "role": {
             "roleId": 2,
             "roleName": "Lipunmyyjä"
@@ -90,7 +99,7 @@ Show information about appuser based on its unique identifier `id`.
     "password": "admin",
     "role": {
         "roleId": 1,
-        "roleName": "Adminii"
+        "roleName": "Admin"
     }
 }
 ```

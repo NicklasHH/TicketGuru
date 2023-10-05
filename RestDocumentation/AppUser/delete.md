@@ -21,15 +21,16 @@ delete single appuser based on its unique identifier `id`.
 **Code** : `200 OK`
 
 **Content example** : This example response contains the details of the appuser that will be removed.
+
 ```json
 {
-    "appUserId": 1,
-    "username": "uusi username",
-    "password": "Testing RestApi, EDIT endpoint",
-    "role": {
-        "roleId": 1,
-        "roleName": "Admin"
-    }
+  "appUserId": 4,
+  "username": "uusitunnus123",
+  "password": "salasana",
+  "role": {
+    "roleId": 1,
+    "roleName": "Admin"
+  }
 }
 ```
 

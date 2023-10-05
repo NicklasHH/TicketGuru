@@ -23,8 +23,8 @@ delete single role based on its unique identifier `id`.
 **Content example** : This example response contains the details of the role that will be removed.
 ```json
 {
-    "roleId": 3,
-    "roleName": "Lipuntarkastaja"
+    "roleId": 4,
+    "roleName": "Lipuntarkastaja2"
 }
 ```
 

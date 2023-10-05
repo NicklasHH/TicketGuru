@@ -81,6 +81,12 @@ public class RoleRestController {
 	public ResponseEntity<Object> createRole(@Valid @RequestBody Role newRole) {
 		ResponseEntity<Object> validationResponse = roleService.validateRole(newRole);
 
+		// Kutsu VenueService:n checkDuplicatePost-metodia
+		ResponseEntity<Object> checkDuplicate = roleService.checkDuplicatePost(newRole);
+		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
+			return checkDuplicate;
+		}
+
 		if (validationResponse.getStatusCode() != HttpStatus.OK) {
 			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
 		}
@@ -92,6 +98,16 @@ public class RoleRestController {
 	// muokataan olemassa olevaa roolia
 	@PutMapping("/{id}") // http://localhost:8080/api/roles/id
 	public ResponseEntity<Object> updateRole(@Valid @RequestBody Role editedRole, @PathVariable Long id) {
+		if (!roleRepository.existsById(id)) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Roolia ei löytynyt id:llä " + id);
+		}
+
+		// Kutsu RoleService:n checkDuplicatePut-metodia
+		ResponseEntity<Object> checkDuplicate = roleService.checkDuplicatePut(editedRole, id);
+		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
+			return checkDuplicate;
+		}
+
 		ResponseEntity<Object> validationResponse = roleService.validateRole(editedRole);
 
 		if (validationResponse.getStatusCode() != HttpStatus.OK) {

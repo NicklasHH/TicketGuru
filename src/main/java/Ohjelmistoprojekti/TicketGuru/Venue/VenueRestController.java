@@ -109,11 +109,21 @@ public class VenueRestController {
 
 	// muokataan olemassa olevaa tapahtumapaikkaa
 	@PutMapping("/{id}") // http://localhost:8080/api/venues/id
-	public ResponseEntity<Object> updateVenue(@Valid @RequestBody Venue editedVenue, @PathVariable Long id) {
+	public ResponseEntity<Object> updateVenue(@Valid @RequestBody Venue editedVenue, @PathVariable long id) {
+		if (!venueRepository.existsById(id)) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tapahtumapaikkaa ei löytynyt id:llä " + id);
+		}
+
+		// Kutsu VenueService:n checkDuplicatePut-metodia
+		ResponseEntity<Object> checkDuplicate = venueService.checkDuplicatePut(editedVenue, id);
+		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
+			return checkDuplicate;
+		}
+
 		ResponseEntity<Object> validationResponse = venueService.validateVenue(editedVenue);
 
 		if (validationResponse.getStatusCode() != HttpStatus.OK) {
-			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+			return validationResponse;
 		}
 
 		editedVenue.setVenueId(id);
@@ -122,13 +132,19 @@ public class VenueRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedVenue);
 	}
 
-	// lisätään uusi venue
+	// Lisätään uusi venue
 	@PostMapping // http://localhost:8080/api/venues
 	public ResponseEntity<Object> createVenue(@Valid @RequestBody Venue newVenue) {
 		ResponseEntity<Object> validationResponse = venueService.validateVenue(newVenue);
 
+		// Kutsu VenueService:n checkDuplicatePost-metodia
+		ResponseEntity<Object> checkDuplicate = venueService.checkDuplicatePost(newVenue);
+		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
+			return checkDuplicate;
+		}
+
 		if (validationResponse.getStatusCode() != HttpStatus.OK) {
-			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+			return validationResponse;
 		}
 
 		Venue savedVenue = venueRepository.save(newVenue);

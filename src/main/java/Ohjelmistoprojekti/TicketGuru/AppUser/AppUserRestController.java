@@ -112,6 +112,12 @@ public class AppUserRestController {
 	public ResponseEntity<Object> createAppUser(@Valid @RequestBody AppUser newAppUser) {
 		ResponseEntity<Object> validationResponse = appUserService.validateAppUser(newAppUser);
 
+		// Kutsu AppUserService:n checkDuplicatePost-metodia
+		ResponseEntity<Object> checkDuplicate = appUserService.checkDuplicatePost(newAppUser);
+		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
+			return checkDuplicate;
+		}
+
 		if (validationResponse.getStatusCode() != HttpStatus.OK) {
 			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
 		}
@@ -123,6 +129,16 @@ public class AppUserRestController {
 	// muokataan olemassa olevaa appuseria
 	@PutMapping("/{id}") // http://localhost:8080/api/appusers/id
 	public ResponseEntity<Object> updateAppUser(@Valid @RequestBody AppUser editedAppUser, @PathVariable Long id) {
+		if (!appUserRepository.existsById(id)) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("AppUseria ei löytynyt id:llä " + id);
+		}
+
+		// Kutsu AppUserService:n checkDuplicatePut-metodia
+		ResponseEntity<Object> checkDuplicate = appUserService.checkDuplicatePut(editedAppUser, id);
+		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
+			return checkDuplicate;
+		}
+
 		ResponseEntity<Object> validationResponse = appUserService.validateAppUser(editedAppUser);
 
 		if (validationResponse.getStatusCode() != HttpStatus.OK) {

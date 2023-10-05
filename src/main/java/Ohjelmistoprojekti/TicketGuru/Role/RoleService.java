@@ -1,5 +1,7 @@
 package Ohjelmistoprojekti.TicketGuru.Role;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +17,35 @@ public class RoleService {
 		this.roleRepository = roleRepository;
 	}
 
-	public ResponseEntity<Object> validateRole(Role role) {
+	public ResponseEntity<Object> checkDuplicatePut(Role editedRole, long id) {
+		List<Role> allRoles = roleRepository.findAll(); // Hae kaikki Role-tiedot
 
-		if (roleRepository.existsByRoleName(role.getRoleName())) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Roolin nimi on jo käytössä.");
+		for (Role otherRole : allRoles) {
+			if (otherRole.getRoleName().equals(editedRole.getRoleName())) {
+				if (otherRole.getRoleId() != id) {
+					return ResponseEntity.status(HttpStatus.CONFLICT)
+							.body("Rooli nimellä " + editedRole.getRoleName() + " on jo olemassa toisella id:llä.");
+				}
+			}
 		}
+
+		return ResponseEntity.ok(null);
+	}
+
+	public ResponseEntity<Object> checkDuplicatePost(Role newRole) {
+		List<Role> duplicateRoles = roleRepository.findByRoleName(newRole.getRoleName());
+
+		for (Role existingRole : duplicateRoles) {
+			if (existingRole.getRoleId() != 0) {
+				return ResponseEntity.status(HttpStatus.CONFLICT)
+						.body("Rooli nimelä " + newRole.getRoleName() + " on jo olemassa toisella id:llä.");
+			}
+		}
+
+		return ResponseEntity.ok(null);
+	}
+
+	public ResponseEntity<Object> validateRole(Role role) {
 
 		if (role.getRoleName() == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Roolin nimi ei voi olla tyhjä");

@@ -10,7 +10,7 @@ Edit an venue.
 
 **Auth required** : No
 
-**Permissions required** : None 
+**Permissions required** : None
 
 **Data constraints**
 
@@ -18,12 +18,11 @@ Provide ID and values to modify.
 
 ```json
 {
-    "venueId": "long id",
-    "place": "String min=1, max=150",
-    "streetAddress": "String min=1, max=150",
-        "postalcode": {
-        "postalcode": "String min=5, max=5"
-        }
+  "place": "String min=1, max=150",
+  "streetAddress": "String min=1, max=150",
+  "postalcode": {
+    "postalcode": "String min=5, max=5"
+  }
 }
 ```
 
@@ -31,34 +30,46 @@ Provide ID and values to modify.
 
 ```json
 {
-    "eventId": 1,
-    "place": "Postman",
-    "streetAddress": "Testing RestApi, adding new event, round1",
-    "postalcode": {
-        "postalcode": "00200"
-        }
+  "place": "Paikka",
+  "streetAddress": "Testing RestApi, adding new event, round1",
+  "postalcode": {
+    "postalcode": "00200"
+  }
 }
 ```
 
 ## Success Response
 
-**Code** : `200 OK`
+**Code** : `201 Created`
 
 **Content example** : This example response contains the details of the edited venue.
+
 ```json
 {
-    "venueId": 1,
-    "place": "Postman",
-    "streetAddress": "Testing RestApi, adding new event, round1",
-    "postalcode": {
-        "postalcode": "00200",
-        "postOffice": "Espoo"
-    }
+  "venueId": 4,
+  "place": "Paikka",
+  "streetAddress": "Testing RestApi, adding new event, round1",
+  "postalcode": {
+    "postalcode": "00200",
+    "postOffice": "Espoo"
+  }
 }
 ```
 
-## Error response  
+## Error response
 
-**Code** : `400 Bad Request`  
+**Code** : `409 Conflict`
 
-**Message** : `JSON parse error`
+**Data example**
+
+```json
+{
+  "place": "Paikka",
+  "streetAddress": "Testing RestApi, adding new event, round1",
+  "postalcode": {
+    "postalcode": "0020"
+  }
+}
+```
+
+**Message** : `Paikan postinumeron on oltava 5 numeroa`

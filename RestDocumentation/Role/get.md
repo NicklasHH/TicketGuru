@@ -31,6 +31,10 @@ Show information about all roles.
     {
         "roleId": 2,
         "roleName": "Lipunmyyjä"
+    },
+    {
+        "roleId": 3,
+        "roleName": "Lipuntarkastaja"
     }
 ]
 ```
@@ -118,7 +122,7 @@ ___
 
 ```json
 {
-    "rolename": "Adminii"
+    "rolename": "Admin"
 }
 ```
 

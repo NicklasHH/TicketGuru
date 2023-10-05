@@ -10,7 +10,7 @@ Edit an Appuser.
 
 **Auth required** : No
 
-**Permissions required** : None 
+**Permissions required** : None
 
 **Data constraints**
 
@@ -18,12 +18,11 @@ Provide ID and values to modify.
 
 ```json
 {
-    "appUserId": "long id",
-    "username": "String min=1, max=25",
-    "password": "String min=1, max=50",
-        "role": {
-        "roleId": "int"
-        }
+  "username": "String min=1, max=25",
+  "password": "String min=1, max=50",
+  "role": {
+    "roleId": "int"
+  }
 }
 ```
 
@@ -31,21 +30,48 @@ Provide ID and values to modify.
 
 ```json
 {
-    "appUserId": 1,
-    "username": "uusi username",
-    "password": "Testing RestApi, EDIT endpoint",
-        "role": {
-        "roleId": 1
-        }
+  "username": "uusitunnus123",
+  "password": "salasana",
+  "role": {
+    "roleId": 1
+  }
 }
 ```
 
 ## Success Response
 
-**Code** : `200 OK`
+**Code** : `201 Created`
 
-## Error response  
+**Data example**
 
-**Code** : `400 Bad Request`  
+```json
+{
+  "username": "uusitunnus123",
+  "password": "salasana",
+  "role": {
+    "roleId": 1,
+    "roleName": "Admin"
+  }
+}
+```
 
-**Message** : `JSON parse error`
+## Error response
+
+**Code** : `409 Conflict`
+
+**Data example**
+
+```json
+{
+  "username": "admin",
+  "password": "salasana"
+}
+```
+
+**Message** :
+
+```json
+{
+  "role": "must not be null"
+}
+```

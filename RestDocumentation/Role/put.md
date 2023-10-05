@@ -10,7 +10,7 @@ Edit an Appuser.
 
 **Auth required** : No
 
-**Permissions required** : None 
+**Permissions required** : None
 
 **Data constraints**
 
@@ -18,24 +18,41 @@ Provide ID and values to modify.
 
 ```json
 {
-    "roleName": "String min=1, max=50"
+  "roleName": "String min=1, max=50"
 }
 ```
 
 **Data example**
 
 ```json
-    {
-        "roleName": "Adminii"
-    }
+{
+  "roleName": "Admini"
+}
 ```
 
 ## Success Response
 
-**Code** : `200 OK`
+**Code** : `201 Created`
 
-## Error response  
+**Data example**
 
-**Code** : `400 Bad Request`  
+```json
+{
+  "roleName": "Admini"
+}
+```
 
-**Message** : `JSON parse error`
+## Error response
+
+**Code** : `409 Conflict`
+
+**Data example**
+
+```json
+{
+  "roleName": "Admini"
+}
+```
+
+**Message** :`Roolin nimi on jo käytössä.`
+
