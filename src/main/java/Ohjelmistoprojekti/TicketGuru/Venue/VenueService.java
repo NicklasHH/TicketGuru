@@ -57,6 +57,10 @@ public class VenueService {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Paikan postinumero ei voi olla tyhjä");
 		}
 
+		if (venue.getPostalcode() == null) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Postinumero ei voi olla tyhjä");
+		}
+
 		if (venue.getPostalcode().getPostalcode().length() != 5) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Paikan postinumeron on oltava 5 numeroa");
 		}

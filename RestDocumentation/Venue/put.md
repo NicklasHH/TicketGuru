@@ -30,31 +30,47 @@ Provide ID and values to modify.
 
 ```json
 {
-  "place": "Paikka",
-  "streetAddress": "Testing RestApi, adding new event, round1",
+  "place": "Aurinkohalli",
+  "streetAddress": "Muokattu tie",
+  "postalcode": {
+    "postalcode": "99999"
+  }
+}
+```
+
+---
+
+## Success Response
+
+**Code** : `201 Created`
+
+**Data example**
+
+```json
+{
+  "place": "Aurinkohalli",
+  "streetAddress": "Uusi tie",
   "postalcode": {
     "postalcode": "00200"
   }
 }
 ```
 
-## Success Response
-
-**Code** : `201 Created`
-
-**Content example** : This example response contains the details of the edited venue.
+**Content example**
 
 ```json
 {
-  "venueId": 4,
-  "place": "Paikka",
-  "streetAddress": "Testing RestApi, adding new event, round1",
+  "venueId": 3,
+  "place": "Aurinkohalli",
+  "streetAddress": "Uusi tie",
   "postalcode": {
     "postalcode": "00200",
     "postOffice": "Espoo"
   }
 }
 ```
+
+---
 
 ## Error response
 
@@ -64,12 +80,30 @@ Provide ID and values to modify.
 
 ```json
 {
-  "place": "Paikka",
-  "streetAddress": "Testing RestApi, adding new event, round1",
+  "place": "Jäähalli",
+  "streetAddress": "Uusi tie",
   "postalcode": {
-    "postalcode": "0020"
+    "postalcode": "00200"
   }
 }
 ```
 
-**Message** : `Paikan postinumeron on oltava 5 numeroa`
+**Message** : `Paikka nimellä Jäähalli on jo olemassa toisella id:llä.`
+
+---
+
+**Code** : `409 Conflict`
+
+**Data example**
+
+```json
+{
+  "place": "Aurinkohalli",
+  "streetAddress": "Muokattu tie",
+  "postalcode": {
+    "postalcode": "9999"
+  }
+}
+```
+
+**Message** : `Paikan postinumeron on oltava 5 numeroa.`

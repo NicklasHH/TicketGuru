@@ -24,33 +24,33 @@ Show information about all appusers.
 
 ```json
 [
-    {
-        "appUserId": 1,
-        "username": "admin",
-        "password": "admin",
-        "role": {
-            "roleId": 1,
-            "roleName": "Admin"
-        }
-    },
-    {
-        "appUserId": 2,
-        "username": "käyttis",
-        "password": "salasana",
-        "role": {
-            "roleId": 2,
-            "roleName": "Lipunmyyjä"
-        }
-    },
-    {
-        "appUserId": 3,
-        "username": "Hessu Hopo",
-        "password": "salis3",
-        "role": {
-            "roleId": 2,
-            "roleName": "Lipunmyyjä"
-        }
+  {
+    "appUserId": 1,
+    "username": "admin",
+    "password": "admin",
+    "role": {
+      "roleId": 1,
+      "roleName": "Admin"
     }
+  },
+  {
+    "appUserId": 2,
+    "username": "käyttis",
+    "password": "salasana",
+    "role": {
+      "roleId": 2,
+      "roleName": "Lipunmyyjä"
+    }
+  },
+  {
+    "appUserId": 3,
+    "username": "Hessu Hopo",
+    "password": "salis3",
+    "role": {
+      "roleId": 2,
+      "roleName": "Lipunmyyjä"
+    }
+  }
 ]
 ```
 
@@ -65,8 +65,8 @@ Show information about all appusers.
 ## Notes
 
 This example response provides information about all appusers. In the case of no appusers, an HTTP 404 NOT FOUND response is returned with an empty JSON object.
-___
 
+---
 
 # Show single appuser
 
@@ -94,13 +94,13 @@ Show information about appuser based on its unique identifier `id`.
 
 ```json
 {
-    "appUserId": 1,
-    "username": "admin",
-    "password": "admin",
-    "role": {
-        "roleId": 1,
-        "roleName": "Admin"
-    }
+  "appUserId": 1,
+  "username": "admin",
+  "password": "admin",
+  "role": {
+    "roleId": 1,
+    "roleName": "Admin"
+  }
 }
 ```
 
@@ -115,14 +115,15 @@ Show information about appuser based on its unique identifier `id`.
 ## Notes
 
 This endpoint provides information about a single appuser based on its unique identifier. In the case of no appuser being found with the provided `id`, an HTTP 404 NOT FOUND response is returned with an empty JSON object.
-___
+
+---
 
 # Show Specific appuser Details
 
 **Possible endpoints** :  
 `http://localhost:8080/api/appusers/{id}/username`  
 `http://localhost:8080/api/appusers/{id}/password`  
-`http://localhost:8080/api/appusers/{id}/role`<br> 
+`http://localhost:8080/api/appusers/{id}/role`<br>
 
 **Method** : `GET`
 
@@ -140,21 +141,22 @@ ___
 
 **Code** : `200 OK`
 
-**Content example from** : `http://localhost:8080/api/appusers/1/username` 
+**Content example from** : `http://localhost:8080/api/appusers/1/username`
 
 ```json
 {
-    "username": "admin"
+  "username": "admin"
 }
 ```
 
 ## Error Response
 
-**Condition** :  If the specified endpoint is not found or there are no appusers.
+**Condition** : If the specified endpoint is not found or there are no appusers.
 
 **Code** : `404 NOT FOUND`
 
 **Content** : `{}`
 
 ## Notes
+
 This endpoint allows you to retrieve specific information about a single appuser based on the specified endpoint, such as username, password or role. If the specified endpoint is valid, an HTTP 200 OK response will be returned with relevant information. If the endpoint is not found or there are no appusers, an HTTP 404 NOT FOUND response is returned with an empty JSON object.

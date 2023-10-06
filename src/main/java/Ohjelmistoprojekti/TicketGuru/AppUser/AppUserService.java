@@ -24,7 +24,7 @@ public class AppUserService {
 			if (otherAppUser.getUsername().equals(editedAppUser.getUsername())) {
 				if (otherAppUser.getAppUserId() != id) {
 					return ResponseEntity.status(HttpStatus.CONFLICT)
-							.body("Paikka nimellä " + editedAppUser.getUsername() + " on jo olemassa toisella id:llä.");
+							.body("Appuser nimellä " + editedAppUser.getUsername() + " on jo olemassa toisella id:llä.");
 				}
 			}
 		}
@@ -46,6 +46,13 @@ public class AppUserService {
 	}
 
 	public ResponseEntity<Object> validateAppUser(AppUser appUser) {
+		if (appUser.getRole() == null) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Rooli ei voi olla tyhjä");
+		}
+
+		if (appUser.getRole().getRoleId() == null) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Roolin ID ei voi olla tyhjä");
+		}
 
 		if (appUser.getPassword().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Salasana ei voi olla tyhjä");

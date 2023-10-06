@@ -14,6 +14,8 @@ delete single venue based on its unique identifier `id`.
 
 **Data constraints** : `{}`
 
+---
+
 ## Success Response
 
 **Condition** : If the venue is found
@@ -33,6 +35,8 @@ delete single venue based on its unique identifier `id`.
   }
 }
 ```
+
+---
 
 ## Error Response
 

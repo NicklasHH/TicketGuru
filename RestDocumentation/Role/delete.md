@@ -14,6 +14,8 @@ delete single role based on its unique identifier `id`.
 
 **Data constraints** : `{}`
 
+---
+
 ## Success Response
 
 **Condition** : If the role is found
@@ -21,12 +23,15 @@ delete single role based on its unique identifier `id`.
 **Code** : `200 OK`
 
 **Content example** : This example response contains the details of the role that will be removed.
+
 ```json
 {
-    "roleId": 4,
-    "roleName": "Lipuntarkastaja2"
+  "roleId": 4,
+  "roleName": "Lipuntarkastaja2"
 }
 ```
+
+---
 
 ## Error Response
 

@@ -18,11 +18,11 @@ Provide below required values.
 
 ```json
 {
-    "eventName": "String min=1, max=100",
-    "description": "String min=1, max=500",
-    "eventDate" : "String",
-    "eventTime" : "String",
-    "ticketCount" : "int"
+  "eventName": "String min=1, max=100",
+  "description": "String min=1, max=500",
+  "eventDate": "String",
+  "eventTime": "String",
+  "ticketCount": "int"
 }
 ```
 
@@ -30,34 +30,33 @@ Provide below required values.
 
 ```json
 {
-    "eventName": "Postman",
-    "description": "Testing RestApi",
-    "eventDate": "02022022",
-    "eventTime": "21:30",
-    "ticketCount": 23
+  "eventName": "Postman",
+  "description": "Testing RestApi",
+  "eventDate": "02022022",
+  "eventTime": "21:30",
+  "ticketCount": 23
 }
-
 ```
 
 ## Success Response
 
-**Code** : `200 OK`  
+**Code** : `200 OK`
 
 **Content example** :
+
 ```json
 {
-    "eventId": 6,
-    "eventName": "Postman NEW one, adding new event2",
-    "description": "Testing RestApi, POST endpoint",
-    "eventDate": "02022022",
-    "eventTime": "21:30",
-    "ticketCount": 23
+  "eventId": 6,
+  "eventName": "Postman NEW one, adding new event2",
+  "description": "Testing RestApi, POST endpoint",
+  "eventDate": "02022022",
+  "eventTime": "21:30",
+  "ticketCount": 23
 }
 ```
 
-## Error response  
+## Error response
 
-**Code** : `400 Bad Request`  
+**Code** : `400 Bad Request`
 
 **Message** : `JSON parse error`
-

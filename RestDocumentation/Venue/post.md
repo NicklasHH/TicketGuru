@@ -8,9 +8,9 @@ Create an Venue.
 
 **Content-Type** : `application/json`
 
-<!--**Auth required** : Yes
+**Auth required** : No
 
-**Permissions required** : None -->
+**Permissions required** : None
 
 **Data constraints**
 
@@ -31,30 +31,46 @@ Provide below required values.
 ```json
 {
   "place": "Postman",
-  "streetAddress": "Testing RestApi, adding new event, round1",
+  "streetAddress": "Testing RestApi, adding new venue",
   "postalcode": {
     "postalcode": "00200"
   }
 }
 ```
 
+---
+
 ## Success Response
 
 **Code** : `201 Created`
+
+**Data example**
+
+```json
+{
+  "place": "Ilmahalli",
+  "streetAddress": "Ilmailutie 23",
+  "postalcode": {
+    "postalcode": "00200"
+  }
+}
+```
 
 **Content example** :
 
 ```json
 {
   "venueId": 4,
-  "place": "Postman",
-  "streetAddress": "Testing RestApi, adding new event, round1",
+  "place": "Ilmahalli",
+  "streetAddress": "Ilmailutie 23",
   "postalcode": {
     "postalcode": "00200",
     "postOffice": null
   }
 }
 ```
+
+---
 
 ## Error response
 
@@ -64,14 +80,12 @@ Provide below required values.
 
 ```json
 {
-  "venueId": 4,
-  "place": "Postman",
-  "streetAddress": "Testing RestApi, adding new event, round1",
+  "place": "Vesihalli",
+  "streetAddress": "Vesihallintie 23",
   "postalcode": {
-    "postalcode": "00200",
-    "postOffice": null
+    "postalcode": "00200"
   }
 }
 ```
 
-**Message** : `Paikan nimi on jo käytössä.`
+**Message** : `Paikka nimelä Vesihalli on jo olemassa toisella id:llä.`

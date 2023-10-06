@@ -9,7 +9,5 @@ public interface RoleRepository extends CrudRepository<Role, Long> {
 
 	List<Role> findByAppUser_AppUserId(Long appUserId);
 
-	boolean existsByRoleName(String roleName);
-
 	List<Role> findByRoleName(String roleName);
 }

@@ -26,9 +26,11 @@ Provide ID and values to modify.
 
 ```json
 {
-  "roleName": "Admini"
+  "roleName": "Lipuntarkastaja2"
 }
 ```
+
+---
 
 ## Success Response
 
@@ -38,9 +40,20 @@ Provide ID and values to modify.
 
 ```json
 {
-  "roleName": "Admini"
+  "roleName": "Lipuntarkastaja2"
 }
 ```
+
+**Content example** :
+
+```json
+{
+  "roleId": 4,
+  "roleName": "Lipuntarkastaja2"
+}
+```
+
+---
 
 ## Error response
 
@@ -50,9 +63,8 @@ Provide ID and values to modify.
 
 ```json
 {
-  "roleName": "Admini"
+  "roleName": "Admin"
 }
 ```
 
 **Message** :`Roolin nimi on jo käytössä.`
-

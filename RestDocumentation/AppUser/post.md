@@ -8,9 +8,9 @@ Create an AppUser.
 
 **Content-Type** : `application/json`
 
-<!--**Auth required** : Yes
+**Auth required** : No
 
-**Permissions required** : None -->
+**Permissions required** : None
 
 **Data constraints**
 
@@ -26,6 +26,24 @@ Provide below required values.
 }
 ```
 
+**Data example** : `Creating new username`
+
+```json
+{
+  "username": "uusitunnus1",
+  "password": "Testing",
+  "role": {
+    "roleId": 1
+  }
+}
+```
+
+---
+
+## Success Response
+
+**Code** : `201 Created`
+
 **Data example**
 
 ```json
@@ -38,16 +56,12 @@ Provide below required values.
 }
 ```
 
-## Success Response
-
-**Code** : `201 Created`
-
 **Content example** :
 
 ```json
 {
   "appUserId": 4,
-  "username": "uusitunnus",
+  "username": "uusitunnus1",
   "password": "Testing",
   "role": {
     "roleId": 1,
@@ -56,11 +70,13 @@ Provide below required values.
 }
 ```
 
+---
+
 ## Error response
 
 **Code** : `409 Conflict`
 
-**Data example** :
+**Content example** : `In this example, username Admin is allready taken.`
 
 ```json
 {
@@ -72,4 +88,4 @@ Provide below required values.
 }
 ```
 
-**Message** : `Käyttäjätunnus on jo käytössä.`
+**Message** : `Appuser nimelä Admin on jo olemassa toisella id:llä.`

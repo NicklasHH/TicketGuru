@@ -10,7 +10,7 @@ Edit an Event.
 
 **Auth required** : No
 
-**Permissions required** : None 
+**Permissions required** : None
 
 **Data constraints**
 
@@ -18,12 +18,12 @@ Provide ID and values to modify.
 
 ```json
 {
-    "eventID" : "long id",
-    "eventName": "String min=1, max=100",
-    "description": "String min=1, max=500",
-    "eventDate" : "String",
-    "eventTime" : "String",
-    "ticketCount" : "int"
+  "eventID": "long id",
+  "eventName": "String min=1, max=100",
+  "description": "String min=1, max=500",
+  "eventDate": "String",
+  "eventTime": "String",
+  "ticketCount": "int"
 }
 ```
 
@@ -31,12 +31,12 @@ Provide ID and values to modify.
 
 ```json
 {
-    "eventId": 1,
-    "eventName": "Postman edited event id 1",
-    "description": "Testing RestApi, EDIT endpoint",
-    "eventDate": "01012023",
-    "eventTime": "21:30",
-    "ticketCount": 23
+  "eventId": 1,
+  "eventName": "Postman edited event id 1",
+  "description": "Testing RestApi, EDIT endpoint",
+  "eventDate": "01012023",
+  "eventTime": "21:30",
+  "ticketCount": 23
 }
 ```
 
@@ -44,8 +44,8 @@ Provide ID and values to modify.
 
 **Code** : `200 OK`
 
-## Error response  
+## Error response
 
-**Code** : `400 Bad Request`  
+**Code** : `400 Bad Request`
 
 **Message** : `JSON parse error`

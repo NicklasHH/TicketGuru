@@ -8,9 +8,9 @@ Create an AppURoleser.
 
 **Content-Type** : `application/json`
 
-<!--**Auth required** : Yes
+**Auth required** : No
 
-**Permissions required** : None -->
+**Permissions required** : None
 
 **Data constraints**
 
@@ -18,7 +18,7 @@ Provide below required values.
 
 ```json
 {
-    "roleName": "String min=1, max=50",
+  "roleName": "String min=1, max=50"
 }
 ```
 
@@ -26,32 +26,45 @@ Provide below required values.
 
 ```json
 {
-    "roleName": "Lipuntarkastaja2"
+  "roleName": "Lipuntarkastaja2"
 }
-
 ```
+
+---
 
 ## Success Response
 
-**Code** : `201 Created`  
+**Code** : `201 Created`
 
-**Content example** :
+**Data example**
+
 ```json
 {
-    "roleName": "Lipuntarkastaja2"
+  "roleName": "Lipuntarkastaja2"
 }
 ```
 
-## Error response  
-
-**Code** : `409 Conflict` 
-
 **Content example** :
+
 ```json
 {
-    "roleName": "Lipuntarkastaja2"
+  "roleId": 4,
+  "roleName": "Lipuntarkastaja2"
+}
+```
+
+---
+
+## Error response
+
+**Code** : `409 Conflict`
+
+**Content example** :
+
+```json
+{
+  "roleName": "Admin"
 }
 ```
 
 **Message** : `Roolin nimi on jo käytössä.`
-

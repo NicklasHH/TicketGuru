@@ -30,13 +30,15 @@ Provide ID and values to modify.
 
 ```json
 {
-  "username": "uusitunnus123",
-  "password": "salasana",
+  "username": "vaihdettu tunnus",
+  "password": "salasanaaa",
   "role": {
-    "roleId": 1
+    "roleId": 3
   }
 }
 ```
+
+---
 
 ## Success Response
 
@@ -46,14 +48,29 @@ Provide ID and values to modify.
 
 ```json
 {
-  "username": "uusitunnus123",
-  "password": "salasana",
+  "username": "vaihdettu tunnus",
+  "password": "salasanaaa",
   "role": {
-    "roleId": 1,
-    "roleName": "Admin"
+    "roleId": 3
   }
 }
 ```
+
+**Content example** :
+
+```json
+{
+  "appUserId": 3,
+  "username": "vaihdettu tunnus",
+  "password": "salasanaaa",
+  "role": {
+    "roleId": 3,
+    "roleName": "Lipuntarkastaja"
+  }
+}
+```
+
+---
 
 ## Error response
 
@@ -63,7 +80,7 @@ Provide ID and values to modify.
 
 ```json
 {
-  "username": "admin",
+  "username": "toinen tunnus",
   "password": "salasana"
 }
 ```
@@ -75,3 +92,19 @@ Provide ID and values to modify.
   "role": "must not be null"
 }
 ```
+
+---
+
+**Data example**
+
+```json
+{
+  "username": "admin",
+  "password": "salasanaaa",
+  "role": {
+    "roleId": 3
+  }
+}
+```
+
+**Message** : `Appuser nimelä Admin on jo olemassa toisella id:llä.`
