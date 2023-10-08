@@ -26,18 +26,27 @@ Show information about all transactions.
 [
     {
         "transactionId": 1,
-        "amount": 15.0,
-        "transactionDate": "20.9.2023"
+        "amount": 2333.0,
+        "transactionOk": true,
+        "transactionDate": "2023-10-08",
+        "transactionTime": "22:31:02",
+        "timestamp": "Last time edited: 2023-10-08 22:31:02"
     },
     {
         "transactionId": 2,
-        "amount": 25.0,
-        "transactionDate": "21.9.2023"
+        "amount": 2333.0,
+        "transactionOk": true,
+        "transactionDate": "2023-10-08",
+        "transactionTime": "22:31:03",
+        "timestamp": "Last time edited: 2023-10-08 22:31:03"
     },
     {
-        "transactionId": 3,
-        "amount": 1500.0,
-        "transactionDate": "28.9.2023 POSTMAN"
+        "transactionId": 4,
+        "amount": 2333.0,
+        "transactionOk": true,
+        "transactionDate": "2023-10-08",
+        "transactionTime": "22:31:04",
+        "timestamp": "Last time edited: 2023-10-08 22:31:04"
     }
 ]
 ```
@@ -83,9 +92,12 @@ Show information about sales transaction based on its unique identifier `transac
 
 ```json
 {
-    "transactionId": 5,
-    "amount": 1500.0,
-    "transactionDate": "01.10.2023 POSTMAN"
+    "transactionId": 1,
+    "amount": 2333.0,
+    "transactionOk": true,
+    "transactionDate": "2023-10-08",
+    "transactionTime": "22:31:02",
+    "timestamp": "Last time edited: 2023-10-08 22:31:02"
 }
 ```
 
