@@ -18,8 +18,9 @@ Provide below required values.
 
 ```json
 {
-    "amount": 1500,
-    "transactionDate" : "01.10.2023 new POSTMAN "
+    "amount": "double",
+    "transactionOk": "boolean"
+
 }
 ```
 
@@ -27,9 +28,9 @@ Provide below required values.
 
 ```json
 {
-    "transactionId": 6,
-    "amount": 1500.0,
-    "transactionDate": "01.10.2023 new POSTMAN "
+    "amount": "123456.8",
+    "transactionOk": "true"
+
 }
 ```
 
@@ -40,9 +41,12 @@ Provide below required values.
 **Content example** :
 ```json
 {
-    "transactionId": 6,
-    "amount": 1500.0,
-    "transactionDate": "01.10.2023 new POSTMAN "
+    "transactionId": 22,
+    "amount": 123456.8,
+    "transactionOk": true,
+    "transactionDate": "2023-10-08",
+    "transactionTime": "22:19:44",
+    "timestamp": "Last time edited: 2023-10-08 22:19:44"
 }
 ```
 
@@ -54,12 +58,35 @@ Provide below required values.
 
 ```json
 {
-    "amount": error,
-    "transactionDate" : "01.10.2023 new POSTMAN ",
+    "amount": "has to be number",
+    "transactionOk" : "false"
     
 }
 ```
 
 
-**Message** : `JSON parse error: Unrecognized token 'error': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')`
+**Message** : `JSON parse error: Cannot deserialize value of type `double` from String \"has to be number\": not a valid `double` value (as String to convert)`  
+
+**Code** : `400 Bad Request`  
+
+**Data example**
+
+```json
+{
+	"amount": 1234,
+    "transactionOk" : "false"
+    
+}
+```
+
+
+**Message** :  
+
+```json
+{
+    "transactionOk": "must be true"
+}
+```
+
+
 
