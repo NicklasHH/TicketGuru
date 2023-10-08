@@ -20,16 +20,17 @@ Delete single sales transaction based on its unique identifier `transactionId`.
 
 **Code** : `200 OK`
 
-**Content example** : This example response contains the details of the removed sales transaction.
+**Content example** : This example response contains the details of the removed sales transaction.  
+```json
 {
-    "transactionId": 24,
-    "amount": 123456.8,
+    "transactionId": 25,
+    "amount": 2333.0,
     "transactionOk": true,
     "transactionDate": "2023-10-08",
-    "transactionTime": "22:21:48",
-    "timestamp": "Last time edited: 2023-10-08 22:21:48"
+    "transactionTime": "22:28:49",
+    "timestamp": "Last time edited: 2023-10-08 22:28:49"
 }
-
+```
 ## Error Response
 
 **Condition** : If the sales transaction is not found with the given `transactionId`
