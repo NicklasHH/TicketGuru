@@ -23,11 +23,10 @@ Provide below required values.
 }
 ```
 
-**Data example**
+**Data example** `creating new tickettype`
 
 ```json
 {
-    "ticketTypeId": 4,
     "ticketType": "Opiskelija",
     "price": 10.0
 }
@@ -37,6 +36,16 @@ Provide below required values.
 ## Success Response
 
 **Code** : `200 OK`  
+
+**Data example**:
+
+```json
+{
+    "ticketType": "Opiskelija",
+    "price": 10.0
+}
+
+```
 
 **Content example** :
 ```json
@@ -50,7 +59,7 @@ Provide below required values.
 
 ## Error response  
 
-**Code** : `400 Bad Request`  
+**Condition**: If the tickettype already exists.
 
-**Message** : `JSON parse error`
+**Code** : `409 Conflict`  
 
