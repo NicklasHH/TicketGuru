@@ -18,8 +18,12 @@ Provide ID and values to modify.
 
 ```json
 {
-    "amount": 1500,
-    "transactionDate" : "edited POSTMAN 01102023"
+    
+    "amount": double,
+    "transactionOk": boolean,
+    "transactionDate":  "String min=10, max=10 yyyy-MM-dd",
+    "transactionTime": "String min=8, max=8 hh-mm-ss"
+    
 }
 ```
 
@@ -27,18 +31,59 @@ Provide ID and values to modify.
 
 ```json
 {
-    "transactionId": 6,
-    "amount": 1500.0,
-    "transactionDate": "edited POSTMAN 01102023"
+    
+    "amount": 156.0,
+    "transactionOk": true,
+    "transactionDate": "2023-10-08",
+    "transactionTime": "21:22:39"
+    
 }
 ```
 
 ## Success Response
 
-**Code** : `200 OK`
+**Code** : `200 OK`  
+
+```json
+{
+    "transactionId": 4,
+    "amount": 156.0,
+    "transactionOk": true,
+    "transactionDate": "2023-10-08",
+    "transactionTime": "21:22:39",
+    "timestamp": "Last time edited: 2023-10-08 22:12:35"
+}
+```
 
 ## Error response  
 
+Id does not exist:  
+
 **Code** : `404 Not Found`  
 
-**Message** : `The requested resource could not be found.`
+**Message** : `The requested resource could not be found.`  
+
+Unexpected input:  
+```json
+{
+    
+    "amount": 156.0,
+    "transactionOk": false,
+    "transactionDate": "This is not ",
+    "transactionTime": "valid input"
+    
+}
+```
+
+**Code** : `400 Bad Request`  
+
+**Message** :  
+
+```json
+{
+    "transactionTime": "size must be between 8 and 8",
+    "transactionDate": "size must be between 10 and 10",
+    "transactionOk": "must be true"
+}
+```
+
