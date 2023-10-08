@@ -18,7 +18,6 @@ Provide ID and values to modify.
 
 ```json
 {
-	"ticketTypeId": "Long id",
     "ticketType": "String min=1, max=50",
     "price": "Double min=1, max=10"
 }
@@ -28,7 +27,6 @@ Provide ID and values to modify.
 
 ```json
 {
-    "ticketTypeId": 1,
     "ticketType": "Edited Lapsi",
     "price": 6.0
 }
@@ -36,7 +34,26 @@ Provide ID and values to modify.
 
 ## Success Response
 
-**Code** : `200 OK`
+**Code** : `201 Created`
+
+**Data example**:
+
+```json
+{
+    "ticketType": "Edited Lapsi",
+    "price": 6.0
+}
+```
+
+**Content example**:
+
+```json
+{
+    "ticketTypeId": 1,
+    "ticketType": "Edited Lapsi",
+    "price": 6.0
+}
+```
 
 ## Error response  
 
