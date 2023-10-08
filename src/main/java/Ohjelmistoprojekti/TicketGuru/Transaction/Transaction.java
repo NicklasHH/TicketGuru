@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.AssertFalse;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -30,10 +31,10 @@ public class Transaction {
 	private Long transactionId;
 
 	@NotNull
-	private double amount; //voisiko/miten Ticket lähettää tämän tiedon? 
+	private double amount; //voisiko/miten Ticket lähettää tämän tiedon Transactionille? 
 	
 	@NotNull
-	@AssertFalse //8.10
+	@AssertTrue //8.10
 	@Column (name = "transaction_ok") //Voisiko tämä tieto olla yhteydessä Ticketiin? 
 	private boolean transactionOk = false; 
 
