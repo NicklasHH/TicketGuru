@@ -82,6 +82,7 @@ Provide ID and values to modify.
 ## Error response  
 
 Id does not exist:  
+
 **Code** : `404 Not Found`  
 
 **Message** : `Tickettiä ei löytynyt id:llä 8.`  
