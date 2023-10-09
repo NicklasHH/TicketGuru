@@ -61,4 +61,4 @@ delete single ticket based on its unique identifier `id`.
 
 **Code** : `404 NOT FOUND`
 
-**Content** : `{}`
+**Message** : `Tickettiä ei löytynyt id:llä 8.`  
