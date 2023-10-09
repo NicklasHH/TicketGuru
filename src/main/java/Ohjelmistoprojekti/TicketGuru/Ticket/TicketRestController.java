@@ -6,20 +6,26 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketType;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketTypeRepository;
 import Ohjelmistoprojekti.TicketGuru.Transaction.Transaction;
 import Ohjelmistoprojekti.TicketGuru.Transaction.TransactionRepository;
+import jakarta.validation.Valid;
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
 
 @RestController
@@ -128,16 +134,16 @@ public class TicketRestController {
 
 	// uusi lippu
 	@PostMapping // http://localhost:8080/api/tickets/
-	Ticket newTicket(@RequestBody Ticket newTicket) {
+	Ticket newTicket(@Valid @RequestBody Ticket newTicket) {
 		System.out.println("Adding new ticket: " + newTicket);
 		return ticketRepository.save(newTicket);
 	}
 
 	// muokkaa lippua
 	@PutMapping("/{id}") // http://localhost:8080/api/tickets/1
-	public ResponseEntity<Object> editTicket(@RequestBody Ticket editedTicket, @PathVariable Long id) {
+	public ResponseEntity<Object> editTicket(@Valid @RequestBody Ticket editedTicket, @PathVariable Long id) {
 		if (!ticketRepository.existsById(id)) {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404 Not Found
 		}
 		editedTicket.setTicketId(id);
 		Ticket updatedTicket = ticketRepository.save(editedTicket);
@@ -168,8 +174,20 @@ public class TicketRestController {
 			return ResponseEntity.ok(ticket); // HTTP 200 OK, palauttaa poistetun lipun tiedot
 		} else {
 			System.out.println("404 - Ei löytynyt poistettavaa - TicketRestController");
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404 Not Found
 
 		}
 	}
+	    // Validointi virheiden käsittely
+	    @ResponseStatus(HttpStatus.BAD_REQUEST) // HTTP 400 Bad request
+	    @ExceptionHandler(MethodArgumentNotValidException.class)
+	    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+	        Map<String, String> errors = new HashMap<>();
+	        ex.getBindingResult().getAllErrors().forEach((error) -> { // Hakee kaikki virheet
+	            String fieldName = ((FieldError) error).getField(); // Haetaan virheen aiheuttaneen kentän nimi
+	            String errorMessage = error.getDefaultMessage();
+	            errors.put(fieldName, errorMessage);
+	        });
+	        return errors;
+	    }
 }

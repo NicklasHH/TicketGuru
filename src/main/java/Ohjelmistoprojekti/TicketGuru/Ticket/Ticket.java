@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Tickets")
@@ -21,18 +22,22 @@ public class Ticket {
 	@Column(name = "ticket_id", nullable = false, updatable = false)
 	private Long ticketId;
 
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "event_id")
 	private Event event;
 
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ticket_type_id")
 	private TicketType ticketType;
 
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "transaction_id")
 	private Transaction transaction;
 
+	@NotNull(message = "isChecked cannot be null, true or false expected")
 	@Column(name = "is_checked")
 	private Boolean isChecked;
 
