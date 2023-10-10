@@ -16,7 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.AssertFalse;
+//import jakarta.validation.constraints.AssertFalse;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -60,7 +60,7 @@ public class Transaction {
 	@Column (name = "transaction_time")
 	private String transactionTime;
 	
-	private String timestamp; //for testing, prints the last time transaction has been edited
+//	private String timestamp; //for testing, prints the last time transaction has been edited
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER)
@@ -76,13 +76,23 @@ public class Transaction {
 	public Transaction() {
 	}
 	
-	public Transaction(double amount, boolean transactionOk, String transactionDate, String transactionTime, String timestamp, List<Ticket> tickets) {
+	/*public Transaction(double amount, boolean transactionOk, String transactionDate, String transactionTime, String timestamp, List<Ticket> tickets) {
 		super();
 		this.amount = amount;
 		this.transactionOk = transactionOk;
 		this.transactionDate = transactionDate;
 		this.transactionTime = transactionTime;
 		this.timestamp = timestamp;
+		this.tickets = tickets;
+		
+	}*/
+	
+	public Transaction(double amount, boolean transactionOk, String transactionDate, String transactionTime, List<Ticket> tickets) {
+		super();
+		this.amount = amount;
+		this.transactionOk = transactionOk;
+		this.transactionDate = transactionDate;
+		this.transactionTime = transactionTime;
 		this.tickets = tickets;
 		
 	}
@@ -177,13 +187,13 @@ public class Transaction {
 			System.out.println("TRANSACTION TRUE");
 			setTransactionDate(sldtDate); //Myyntitapahtuma-aika merkitään vasta kun myyntitapahtuma ok
 			setTransactionTime(sldtTime);
-			setTimestamp("Last time edited: " + sldtDate + " " + sldtTime);
+			//setTimestamp("Last time edited: " + sldtDate + " " + sldtTime);
 
 		} else if (!transactionOk) {
 			System.out.println("TRANSACTION FALSE");
 			setTransactionDate(sldtDate); 
 			setTransactionTime(sldtTime);
-			setTimestamp("Last time edited: " + sldtDate + " " + sldtTime);
+			//setTimestamp("Last time edited: " + sldtDate + " " + sldtTime);
 			
 		}
 
@@ -213,14 +223,14 @@ public class Transaction {
 		
 	}
 	
-	
+	/*
 	public String getTimestamp() {
 		return timestamp;
 	}
 
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
-	}
+	}*/
 
 	public List<Ticket> getTickets() {
 		return tickets;
@@ -233,9 +243,19 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", amount=" + amount + ", transactionOk=" + transactionOk
+				+ ", transactionDate=" + transactionDate + ", transactionTime=" + transactionTime + ", tickets="
+				+ tickets + "]";
+	}
+
+	/*
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", amount=" + amount + ", transactionOk=" + transactionOk
 				+ ", transactionDate=" + transactionDate + ", transactionTime=" + transactionTime + ", timestamp="
 				+ timestamp + ", tickets=" + tickets + "]";
-	}
+	}*/
+	
+	
 	
 	
 	

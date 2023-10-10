@@ -122,13 +122,13 @@ VALUES ('Lapsi', 2, '5'),
 		('Normaali', 2, '50');
 
 -- Lisätään tiedot -> transactions
-INSERT INTO Transactions (amount, transaction_date) 
-VALUES (15, '2023-09-20'),
-		(25, '2023-09-21'),
-		(35, '2023-09-22'),
-		(35, '2023-09-22'),
-		(35, '2023-09-22'),
-		(35, '2023-09-22');
+INSERT INTO Transactions (amount, transaction_ok, transaction_date, transaction_time) 
+VALUES (15, true, "2023-10-10", "10:10:10"),
+		(25, true, "2023-10-10", "10:10:10"),
+		(35, true, "2023-10-10", "10:10:10"),
+		(35, true, "2023-10-10", "10:10:10"),
+		(35, true, "2023-10-10", "10:10:10"),
+		(35, true, "2023-10-10", "10:10:10");
 
 -- Lisätään tiedot -> Tickets
 INSERT INTO Tickets (ticket_type_id, event_id, transaction_id, is_checked) 
