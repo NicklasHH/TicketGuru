@@ -5,16 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
 
 import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
 import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
@@ -160,11 +157,9 @@ public class EventRestController {
 
 	// lisätään uusi tapahtuma
 	@PostMapping // http://localhost:8080/api/events
-	Event newEvent(@RequestBody Event newEvent) {
-
-		System.out.println("Adding new event: " + newEvent);
-
-		return eventRepository.save(newEvent);
+	public ResponseEntity<Event> newEvent(@Valid @RequestBody Event newEvent) {
+		Event saveNewEvent = eventRepository.save(newEvent);
+		return ResponseEntity.status(HttpStatus.CREATED).body(saveNewEvent);
 	}
 
 	// muokataan olemassa olevaa tapahtumaa
@@ -205,6 +200,19 @@ public class EventRestController {
 		} else {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
+	}
+
+	// Validointi virheiden käsittely
+	@ResponseStatus(HttpStatus.BAD_REQUEST) // HTTP 400 Bad request
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> { // Hakee kaikki virheet
+			String fieldName = ((FieldError) error).getField(); // Haetaan virheen aiheuttaneen kentän nimi
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return errors;
 	}
 
 }

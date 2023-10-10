@@ -17,6 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -36,11 +37,13 @@ public class Event {
 	private List<TicketType> ticketTypes;
 
 	@Column(name = "event_name", nullable = false)
+	@NotEmpty(message = "Event name cant be null")
 	@Size(min = 1, max = 100)
 	private String eventName;
 
 	@Column(name = "description")
-	@Size(min = 1, max = 500)
+	@NotEmpty(message = "Description is mandatory")
+	@Size(min = 1, max = 500,message = "Event name should be between 1 and 100 characters")
 	private String description;
 
 	@Column(name = "event_date", nullable = false)
