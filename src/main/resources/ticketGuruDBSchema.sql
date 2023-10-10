@@ -56,7 +56,8 @@ CREATE TABLE Events (
 CREATE TABLE Ticket_types (
   ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   ticket_type VARCHAR(255) NOT NULL,
-  event_id BIGINT NOT NULL,
+  --event_id BIGINT NOT NULL, <- oli näin, muutettu 10102023
+  event_id BIGINT NOT NULL ,
   price DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (event_id) REFERENCES Events(event_id)
 );
@@ -65,7 +66,9 @@ CREATE TABLE Ticket_types (
 CREATE TABLE Transactions (
   transaction_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   amount DECIMAL(10, 2) NOT NULL,
-  transaction_date DATE NOT NULL
+  transaction_ok BOOLEAN,
+  transaction_date VARCHAR(10) NOT NULL,
+  transaction_time VARCHAR(8) NOT NULL
 );
 
 -- Luo Tickets-taulu
