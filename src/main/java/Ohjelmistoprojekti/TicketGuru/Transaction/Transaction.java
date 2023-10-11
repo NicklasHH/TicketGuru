@@ -15,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -30,6 +31,7 @@ public class Transaction {
 	@NotNull
 	private double amount; // voisiko/miten Ticket lähettää tämän tiedon Transactionille?
 
+	@AssertTrue
 	@NotNull
 	@Column(name = "transaction_ok") // Voisiko tämä tieto olla yhteydessä Ticketiin?
 	private boolean transactionOk = false;
