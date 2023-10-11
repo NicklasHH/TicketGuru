@@ -75,7 +75,7 @@ CREATE TABLE Tickets (
   ticket_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   ticket_type_id BIGINT,
   event_id BIGINT ,
-  transaction_id BIGINT ,
+  transaction_id BIGINT,
   is_checked BOOLEAN,
   FOREIGN KEY (ticket_type_id) REFERENCES Ticket_types(ticket_type_id),
   FOREIGN KEY (event_id) REFERENCES Events(event_id),

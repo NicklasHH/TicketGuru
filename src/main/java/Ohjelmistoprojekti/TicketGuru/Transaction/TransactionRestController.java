@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import Ohjelmistoprojekti.TicketGuru.Ticket.Ticket;
+import Ohjelmistoprojekti.TicketGuru.Ticket.TicketRepository;
 import jakarta.validation.Valid;
 
 @RestController
@@ -33,6 +35,9 @@ public class TransactionRestController {
 	public TransactionRestController(TransactionRepository transactionRepository) {
 		this.transactionRepository = transactionRepository;
 	}
+	
+	@Autowired
+	private TicketRepository ticketRepository;
 
 	// Listaa kaikki myyntitapahtumat
 	@GetMapping // http://localhost:8080/api/transactions
@@ -92,7 +97,7 @@ public class TransactionRestController {
 		return ResponseEntity.ok(editedTransaction); // HTTP 200 OK
 	}
 
-	@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
+	/*@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
 	public ResponseEntity<Transaction> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
 																					
 		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// Palauttaa myyntitapahtuman id:n perusteella
@@ -105,6 +110,30 @@ public class TransactionRestController {
 		} else {
 			System.out.println("404 - Ei löytynyt poistettavaa - TransactionRestController, id: " + id);
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}*/
+	
+	//11102023
+	@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
+	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
+		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// 
+		if (transactionOptional.isPresent()) {
+			Transaction transaction = transactionOptional.get();
+
+			//Hae kaikki tähän kyseiseen myyntitapahtumaan liitetyt liput
+			List<Ticket> tickets = ticketRepository.findByTransaction_TransactionId(id);
+			for (Ticket ticket : tickets) {
+				ticket.setTransaction(null);
+			}
+			ticketRepository.saveAll(tickets);
+
+			transactionRepository.deleteById(id); // Poistetaan myyntitapahtuma id:n perusteella
+			System.out.println("200 - myyntitapahtuman poisto onnistui - TransactionRestController, id: " + id);
+			return ResponseEntity.ok(transaction); // 200
+		} else {
+			System.out.println("404 - Ei löytynyt poistettavaa - TransactionRestController, id: " + id);
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			
 		}
 	}
 	
