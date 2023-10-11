@@ -113,6 +113,7 @@ public class TicketTypeRestController {
 			for(Ticket ticket : tickets) {
 				ticket.setTicketType(null); // asettta lipputyypin nulliksi
 			}
+			ticketRepository.saveAll(tickets);
 			
 			ticketTypeRepository.deleteById(id); // Poistaa lipputyypin Id:n perusteella
 			return ResponseEntity.ok(ticketType); // HTTP 200 OK, palauttaa poistetun lipputyypin tiedot

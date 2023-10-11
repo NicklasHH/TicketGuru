@@ -30,7 +30,7 @@ public class Venue {
 	@Column(name = "street_address", nullable = false)
 	private String streetAddress;
 
-	@NotNull
+	
 	@ManyToOne
 	@JoinColumn(name = "postalcode")
 	private Postalcode postalcode;

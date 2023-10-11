@@ -27,7 +27,7 @@ public class TicketType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ticket_type_id", nullable = false, updatable = false)
 	private Long ticketTypeId;
-	
+
 	@Column(name = "ticket_type", nullable = false)
 	@NotNull(message = "Tickettype cannot be null")
 	@Size(min = 1, max = 50)
@@ -37,7 +37,6 @@ public class TicketType {
 	@OneToMany(mappedBy = "ticketType", fetch = FetchType.EAGER)
 	private List<Ticket> tickets;
 
-	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "event_id")
 	private Event event;

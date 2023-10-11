@@ -21,7 +21,7 @@ CREATE TABLE App_users (
   user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  role_id BIGINT NOT NULL,
+  role_id BIGINT,
   FOREIGN KEY (role_id) REFERENCES Roles(role_id)
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE Venues (
   venue_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   place VARCHAR(255) NOT NULL,
   street_address VARCHAR(255) NOT NULL,
-  postalcode VARCHAR(255) NOT NULL,
+  postalcode VARCHAR(255),
   FOREIGN KEY (postalcode) REFERENCES Postalcodes(postalcode)
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE Events (
   event_date DATE NOT NULL,
   event_time TIME NOT NULL,
   ticket_count INT NOT NULL,
-  venue_id BIGINT NOT NULL,
+  venue_id BIGINT,
   description TEXT,
   FOREIGN KEY (venue_id) REFERENCES Venues(venue_id)
 );
@@ -56,8 +56,7 @@ CREATE TABLE Events (
 CREATE TABLE Ticket_types (
   ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   ticket_type VARCHAR(255) NOT NULL,
-  --event_id BIGINT NOT NULL, <- oli näin, muutettu 10102023
-  event_id BIGINT NOT NULL ,
+  event_id BIGINT ,
   price DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (event_id) REFERENCES Events(event_id)
 );
@@ -74,9 +73,9 @@ CREATE TABLE Transactions (
 -- Luo Tickets-taulu
 CREATE TABLE Tickets (
   ticket_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  ticket_type_id BIGINT NOT NULL,
-  event_id BIGINT NOT NULL,
-  transaction_id BIGINT NOT NULL,
+  ticket_type_id BIGINT,
+  event_id BIGINT ,
+  transaction_id BIGINT ,
   is_checked BOOLEAN,
   FOREIGN KEY (ticket_type_id) REFERENCES Ticket_types(ticket_type_id),
   FOREIGN KEY (event_id) REFERENCES Events(event_id),
@@ -126,12 +125,12 @@ VALUES ('Lapsi', 2, '5'),
 
 -- Lisätään tiedot -> transactions
 INSERT INTO Transactions (amount, transaction_ok, transaction_date, transaction_time) 
-VALUES (15, true, "2023-10-10", "10:10:10"),
-		(25, true, "2023-10-10", "10:10:10"),
-		(35, true, "2023-10-10", "10:10:10"),
-		(35, true, "2023-10-10", "10:10:10"),
-		(35, true, "2023-10-10", "10:10:10"),
-		(35, true, "2023-10-10", "10:10:10");
+VALUES (15, 0, "2023-10-10", "10:10:10"),
+		(25, 1, "2023-10-10", "10:10:10"),
+		(35, 0, "2023-10-10", "10:10:10"),
+		(35, 1, "2023-10-10", "10:10:10"),
+		(35, 0, "2023-10-10", "10:10:10"),
+		(35, 1, "2023-10-10", "10:10:10");
 
 -- Lisätään tiedot -> Tickets
 INSERT INTO Tickets (ticket_type_id, event_id, transaction_id, is_checked) 

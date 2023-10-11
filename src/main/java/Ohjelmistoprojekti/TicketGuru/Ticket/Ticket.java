@@ -22,17 +22,14 @@ public class Ticket {
 	@Column(name = "ticket_id", nullable = false, updatable = false)
 	private Long ticketId;
 
-	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "event_id")
 	private Event event;
 
-	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ticket_type_id")
 	private TicketType ticketType;
 
-	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "transaction_id")
 	private Transaction transaction;
