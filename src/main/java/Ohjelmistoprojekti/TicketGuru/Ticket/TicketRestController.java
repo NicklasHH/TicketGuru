@@ -124,10 +124,10 @@ public class TicketRestController {
 			if (ticket.getTransaction() != null) {
 				Transaction transaction = ticket.getTransaction();
 				return ResponseEntity.ok(transaction);
-			} else {
+			} else {				
 				return ResponseEntity.notFound().build();
 			}
-		} else {
+		} else {			
 			return ResponseEntity.notFound().build();
 		}
 	}
