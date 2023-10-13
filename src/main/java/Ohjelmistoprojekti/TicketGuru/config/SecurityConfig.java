@@ -43,7 +43,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorize -> {
-                    authorize.anyRequest().authenticated();
+                    authorize.anyRequest().authenticated(); // Kaikki polut vaativat autentikoinnin
+//                    authorize.requestMatchers("/esimerkki").permitAll(); // Sallii kaikki polut kaikille
+//                    authorize.requestMatchers("/adminEsimerkki").hasRole("ADMIN"); // Vaatii admin roolin
                 }
                 )
 //                .formLogin(Customizer.withDefaults())
