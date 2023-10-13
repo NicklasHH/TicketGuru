@@ -46,7 +46,7 @@ public class SecurityConfig {
                     authorize.anyRequest().authenticated();
                 }
                 )
-                .formLogin(Customizer.withDefaults())
+//                .formLogin(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())
                 // Sallii H2-Consoleen pääsyn
