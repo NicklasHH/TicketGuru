@@ -1,11 +1,15 @@
 package Ohjelmistoprojekti.TicketGuru.Venue;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import Ohjelmistoprojekti.TicketGuru.Postalcode.PostalcodeRepository;
+import Ohjelmistoprojekti.TicketGuru.Postalcode.Postalcode;
 
 @Service
 public class VenueService {
@@ -16,6 +20,8 @@ public class VenueService {
 	public VenueService(VenueRepository venueRepository) {
 		this.venueRepository = venueRepository;
 	}
+	@Autowired
+	private PostalcodeRepository postalcodeRepository;
 
 	public ResponseEntity<Object> checkDuplicatePut(Venue editedVenue, long id) {
 		List<Venue> allVenues = venueRepository.findAll();
@@ -46,7 +52,11 @@ public class VenueService {
 	}
 
 	public ResponseEntity<Object> validateVenue(Venue venue) {
-
+		Optional<Postalcode> postalcodeOptional = postalcodeRepository.findByPostalcode(venue.getPostalcode().getPostalcode());
+		if (postalcodeOptional.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Postinumeroa ei löytynyt");
+		}
+		
 		if (venue.getPlace() == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Paikan nimi ei voi olla tyhjä");
 		}
