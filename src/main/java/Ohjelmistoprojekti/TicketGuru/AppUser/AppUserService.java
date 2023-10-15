@@ -1,11 +1,15 @@
 package Ohjelmistoprojekti.TicketGuru.AppUser;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import Ohjelmistoprojekti.TicketGuru.Role.RoleRepository;
+import Ohjelmistoprojekti.TicketGuru.Role.Role;
 
 @Service
 public class AppUserService {
@@ -17,14 +21,17 @@ public class AppUserService {
 		this.appUserRepository = appUserRepository;
 	}
 
+	@Autowired
+	private RoleRepository roleRepository;
+
 	public ResponseEntity<Object> checkDuplicatePut(AppUser editedAppUser, long id) {
 		List<AppUser> allAppUsers = appUserRepository.findAll();
 
 		for (AppUser otherAppUser : allAppUsers) {
 			if (otherAppUser.getUsername().equals(editedAppUser.getUsername())) {
 				if (otherAppUser.getAppUserId() != id) {
-					return ResponseEntity.status(HttpStatus.CONFLICT)
-							.body("Appuser nimellä " + editedAppUser.getUsername() + " on jo olemassa toisella id:llä.");
+					return ResponseEntity.status(HttpStatus.CONFLICT).body(
+							"Appuser nimellä " + editedAppUser.getUsername() + " on jo olemassa toisella id:llä.");
 				}
 			}
 		}
@@ -46,8 +53,9 @@ public class AppUserService {
 	}
 
 	public ResponseEntity<Object> validateAppUser(AppUser appUser) {
-		if (appUser.getRole() == null) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Rooli ei voi olla tyhjä");
+		Optional<Role> roleOptional = roleRepository.findById(appUser.getRole().getRoleId());
+		if (roleOptional.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Roolin ID:tä ei löytynyt");
 		}
 
 		if (appUser.getRole().getRoleId() == null) {
