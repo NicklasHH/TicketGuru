@@ -91,9 +91,9 @@ VALUES ('Admin'),
 
 -- Lisätään tiedot -> App_users
 INSERT INTO App_users (username, password, role_id) 
-VALUES ('admin', 'admin', 1),
-		('käyttis', 'salasana', 2),
-		('Hessu Hopo', 'salis3', 2);
+VALUES ('admin', '$2a$10$A/WjQTrfD8k7bH648/IzZuvRye1NmMHt4AJ.nmzZKY.sXo6u2QnSS', 1), -- PW:admin
+		('lipunmyyjä', '$2a$10$tpkvJ649LdZnHKyfOG.P.eH8sLCmZd5diUXRhhlEXL02bvG8xzogy', 2),-- PW:lipunmyyjä
+		('lipuntarkastaja', '$2a$10$uvLB4RZLN.tQMxwWXjUZMOajujEuTdYcqWNUGsd4EycZ/Onhz1AY6', 2);-- PW:lipuntarkastaja
 
 -- Lisätään tiedot -> Postalcodes
 INSERT INTO Postalcodes (postalcode, post_office) 
@@ -143,11 +143,11 @@ VALUES (1, 1, 1, 0),
 
 		
 
-SELECT * FROM  Roles;
-SELECT * FROM  App_users;
-SELECT * FROM  Postalcodes;
-SELECT * FROM  Venues;
-SELECT * FROM  Transactions;
-SELECT * FROM  Events;
-SELECT * FROM  Ticket_types;
-SELECT * FROM  Tickets;
+-- SELECT * FROM  Roles;
+-- SELECT * FROM  App_users;
+-- SELECT * FROM  Postalcodes;
+-- SELECT * FROM  Venues;
+-- SELECT * FROM  Transactions;
+-- SELECT * FROM  Events;
+-- SELECT * FROM  Ticket_types;
+-- SELECT * FROM  Tickets;
