@@ -20,7 +20,7 @@ public class Postalcode {
 	@Id
 	@Column(name = "postalcode", nullable = false)
 	@NotNull(message = "Postalcode cannot be null")
-	@Size(min = 5 , max = 5)
+	@Size(min = 5, max = 5)
 	private String postalcode;
 
 	@NotEmpty

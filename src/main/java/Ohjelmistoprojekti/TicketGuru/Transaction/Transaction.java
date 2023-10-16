@@ -31,7 +31,7 @@ public class Transaction {
 	@NotNull
 	private double amount; // voisiko/miten Ticket lähettää tämän tiedon Transactionille?
 
-	//@AssertTrue
+	// @AssertTrue
 	@NotNull
 	@Column(name = "transaction_ok") // Voisiko tämä tieto olla yhteydessä Ticketiin?
 	private boolean transactionOk = false;

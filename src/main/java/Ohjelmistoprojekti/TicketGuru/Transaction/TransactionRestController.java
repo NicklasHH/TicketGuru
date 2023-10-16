@@ -35,7 +35,7 @@ public class TransactionRestController {
 	public TransactionRestController(TransactionRepository transactionRepository) {
 		this.transactionRepository = transactionRepository;
 	}
-	
+
 	@Autowired
 	private TicketRepository ticketRepository;
 
@@ -68,21 +68,21 @@ public class TransactionRestController {
 	// Lisää uusi myyntitapahtuma
 	@PostMapping // http://localhost:8080/api/transactions
 	Transaction newTransaction(@Valid @RequestBody Transaction newTransaction) {
-		
+
 		if (!newTransaction.isTransactionOk()) {
-			System.out.println("200 - transactionOk == false -luotu uusi myyntitapahtuma - TransactionRestController:  " + newTransaction);
+			System.out.println("200 - transactionOk == false -luotu uusi myyntitapahtuma - TransactionRestController:  "
+					+ newTransaction);
 		} else {
 			System.out.println("200 - luotu uusi myyntitapahtuma - TransactionRestController:  " + newTransaction);
 		}
-		
-		
 
 		return transactionRepository.save(newTransaction);
 	}
 
 	// Muokkaa myyntitapahtumaa
 	@PutMapping("/{id}") // http://localhost:8080/api/appusers/id
-	public ResponseEntity<Object> editTransaction(@Valid @RequestBody Transaction editedTransaction, @PathVariable Long id) {
+	public ResponseEntity<Object> editTransaction(@Valid @RequestBody Transaction editedTransaction,
+			@PathVariable Long id) {
 		// Jos id:tä ei ole
 		if (!transactionRepository.existsById(id)) {
 
@@ -97,30 +97,34 @@ public class TransactionRestController {
 		return ResponseEntity.ok(editedTransaction); // HTTP 200 OK
 	}
 
-	/*@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
-	public ResponseEntity<Transaction> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
-																					
-		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// Palauttaa myyntitapahtuman id:n perusteella
-																						
-		if (transactionOptional.isPresent()) {
-			Transaction transaction = transactionOptional.get();
-			transactionRepository.deleteById(id); // Poistaa myyntitapahtuman Id:n perusteella
-			System.out.println("200 - myyntitapahtuman poisto onnistui - TransactionRestController, id: " + id);
-			return ResponseEntity.ok(transaction); // HTTP 200 OK, palauttaa poistetun myyntitapahtuman tiedot
-		} else {
-			System.out.println("404 - Ei löytynyt poistettavaa - TransactionRestController, id: " + id);
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-		}
-	}*/
-	
-	//11102023
+	/*
+	 * @DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1 public
+	 * ResponseEntity<Transaction> deleteTransaction(@PathVariable Long id) { // Hae
+	 * myyntitapahtuma tietokannasta ja palauta vastaus
+	 * 
+	 * Optional<Transaction> transactionOptional =
+	 * transactionRepository.findById(id);// Palauttaa myyntitapahtuman id:n
+	 * perusteella
+	 * 
+	 * if (transactionOptional.isPresent()) { Transaction transaction =
+	 * transactionOptional.get(); transactionRepository.deleteById(id); // Poistaa
+	 * myyntitapahtuman Id:n perusteella System.out.
+	 * println("200 - myyntitapahtuman poisto onnistui - TransactionRestController, id: "
+	 * + id); return ResponseEntity.ok(transaction); // HTTP 200 OK, palauttaa
+	 * poistetun myyntitapahtuman tiedot } else { System.out.
+	 * println("404 - Ei löytynyt poistettavaa - TransactionRestController, id: " +
+	 * id); return ResponseEntity.notFound().build(); // HTTP 404 Not Found } }
+	 */
+
+	// 11102023
 	@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
-	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta vastaus
-		Optional<Transaction> transactionOptional = transactionRepository.findById(id);// 
+	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta
+																		// vastaus
+		Optional<Transaction> transactionOptional = transactionRepository.findById(id);//
 		if (transactionOptional.isPresent()) {
 			Transaction transaction = transactionOptional.get();
 
-			//Hae kaikki tähän kyseiseen myyntitapahtumaan liitetyt liput
+			// Hae kaikki tähän kyseiseen myyntitapahtumaan liitetyt liput
 			List<Ticket> tickets = ticketRepository.findByTransaction_TransactionId(id);
 			for (Ticket ticket : tickets) {
 				ticket.setTransaction(null);
@@ -133,26 +137,22 @@ public class TransactionRestController {
 		} else {
 			System.out.println("404 - Ei löytynyt poistettavaa - TransactionRestController, id: " + id);
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
-			
+
 		}
 	}
-	
-	
-	
-    // Validointivirheiden käsittely
-    @ResponseStatus(HttpStatus.BAD_REQUEST) //400
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> { 
-            String fieldName = ((FieldError) error).getField();             
-            String errorMessage = error.getDefaultMessage();         
-            errors.put(fieldName, errorMessage); 
-        });        
-        System.out.println("VALIDOINTIVIRHE: " + errors);
-        return errors; 
-    }
 
-	
-	
+	// Validointivirheiden käsittely
+	@ResponseStatus(HttpStatus.BAD_REQUEST) // 400
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		System.out.println("VALIDOINTIVIRHE: " + errors);
+		return errors;
+	}
+
 }

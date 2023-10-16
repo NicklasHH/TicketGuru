@@ -124,10 +124,10 @@ public class TicketRestController {
 			if (ticket.getTransaction() != null) {
 				Transaction transaction = ticket.getTransaction();
 				return ResponseEntity.ok(transaction);
-			} else {				
+			} else {
 				return ResponseEntity.notFound().build();
 			}
-		} else {			
+		} else {
 			return ResponseEntity.notFound().build();
 		}
 	}
@@ -143,7 +143,8 @@ public class TicketRestController {
 	@PutMapping("/{id}") // http://localhost:8080/api/tickets/1
 	public ResponseEntity<Object> editTicket(@Valid @RequestBody Ticket editedTicket, @PathVariable Long id) {
 		if (!ticketRepository.existsById(id)) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404 Not Found
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404
+																											// Not Found
 		}
 		editedTicket.setTicketId(id);
 		Ticket updatedTicket = ticketRepository.save(editedTicket);
@@ -174,20 +175,22 @@ public class TicketRestController {
 			return ResponseEntity.ok(ticket); // HTTP 200 OK, palauttaa poistetun lipun tiedot
 		} else {
 			System.out.println("404 - Ei löytynyt poistettavaa - TicketRestController");
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404 Not Found
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404
+																											// Not Found
 
 		}
 	}
-	    // Validointi virheiden käsittely
-	    @ResponseStatus(HttpStatus.BAD_REQUEST) // HTTP 400 Bad request
-	    @ExceptionHandler(MethodArgumentNotValidException.class)
-	    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-	        Map<String, String> errors = new HashMap<>();
-	        ex.getBindingResult().getAllErrors().forEach((error) -> { // Hakee kaikki virheet
-	            String fieldName = ((FieldError) error).getField(); // Haetaan virheen aiheuttaneen kentän nimi
-	            String errorMessage = error.getDefaultMessage();
-	            errors.put(fieldName, errorMessage);
-	        });
-	        return errors;
-	    }
+
+	// Validointi virheiden käsittely
+	@ResponseStatus(HttpStatus.BAD_REQUEST) // HTTP 400 Bad request
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> { // Hakee kaikki virheet
+			String fieldName = ((FieldError) error).getField(); // Haetaan virheen aiheuttaneen kentän nimi
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return errors;
+	}
 }
