@@ -20,6 +20,7 @@ public class VenueService {
 	public VenueService(VenueRepository venueRepository) {
 		this.venueRepository = venueRepository;
 	}
+
 	@Autowired
 	private PostalcodeRepository postalcodeRepository;
 
@@ -52,11 +53,12 @@ public class VenueService {
 	}
 
 	public ResponseEntity<Object> validateVenue(Venue venue) {
-		Optional<Postalcode> postalcodeOptional = postalcodeRepository.findByPostalcode(venue.getPostalcode().getPostalcode());
+		Optional<Postalcode> postalcodeOptional = postalcodeRepository
+				.findByPostalcode(venue.getPostalcode().getPostalcode());
 		if (postalcodeOptional.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Postinumeroa ei löytynyt");
 		}
-		
+
 		if (venue.getPlace() == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Paikan nimi ei voi olla tyhjä");
 		}

@@ -43,7 +43,7 @@ public class Event {
 
 	@Column(name = "description")
 	@NotEmpty(message = "Description is mandatory")
-	@Size(min = 1, max = 500,message = "Event name should be between 1 and 100 characters")
+	@Size(min = 1, max = 500, message = "Event name should be between 1 and 100 characters")
 	private String description;
 
 	@Column(name = "event_date", nullable = false)

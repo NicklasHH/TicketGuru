@@ -35,7 +35,7 @@ public class TicketTypeRestController {
 	public TicketTypeRestController(TicketTypeRepository ticketTypeRepository) {
 		this.ticketTypeRepository = ticketTypeRepository;
 	}
-	
+
 	@Autowired
 	private TicketRepository ticketRepository;
 
@@ -60,7 +60,7 @@ public class TicketTypeRestController {
 			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
 		}
 	}
-	
+
 	// Palauttaa lipputyypin id:n perusteella sen hinnan
 	@GetMapping("/{id}/price") // http://localhost:8080/api/ticekttypes/1/price
 	public ResponseEntity<Object> getPrice(@PathVariable Long id) {
@@ -74,25 +74,30 @@ public class TicketTypeRestController {
 			return ResponseEntity.notFound().build(); // HTTP ERROR 404 NOT FOUND
 		}
 	}
-	
+
 	// Luodaan uusi lipputyyppi
 	@PostMapping // http://localhost8080/api/tickettypes
 	public ResponseEntity<TicketType> addTicketType(@Valid @RequestBody TicketType ticketType) {
 		Optional<TicketType> foundTicketType = ticketTypeRepository.findByTicketType(ticketType.getTicketType());
-		
-		if(foundTicketType.isPresent()) {
+
+		if (foundTicketType.isPresent()) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); // HTTP 409 jos lipputyyppi on jo olemassa
 		}
-		
+
 		TicketType savedTicketType = ticketTypeRepository.save(ticketType);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicketType); // HTTP 201
 	}
-	
+
 	// Muokataan lipputyyppiä
 	@PutMapping("/{id}") // http://localhost808/api/tickettypes/1
-	public ResponseEntity<Object> updateTicketType(@Valid @RequestBody TicketType editedTicketType, @PathVariable long id) {
+	public ResponseEntity<Object> updateTicketType(@Valid @RequestBody TicketType editedTicketType,
+			@PathVariable long id) {
 		if (!ticketTypeRepository.existsById(id)) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettypea ei löytynyt id:llä " + id); // HTTP ERROR 404 NOT FOUND
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettypea ei löytynyt id:llä " + id); // HTTP
+																												// ERROR
+																												// 404
+																												// NOT
+																												// FOUND
 		}
 
 		editedTicketType.setTicketTypeId(id);
@@ -107,22 +112,22 @@ public class TicketTypeRestController {
 																						// perusteella
 		if (ticketTypeOptional.isPresent()) {
 			TicketType ticketType = ticketTypeOptional.get();
-			
+
 			// Hae ja päivitä liittyvät liput
 			List<Ticket> tickets = ticketRepository.findByTicketType_TicketTypeId(id);
-			for(Ticket ticket : tickets) {
+			for (Ticket ticket : tickets) {
 				ticket.setTicketType(null); // asettta lipputyypin nulliksi
 			}
 			ticketRepository.saveAll(tickets);
-			
+
 			ticketTypeRepository.deleteById(id); // Poistaa lipputyypin Id:n perusteella
 			return ResponseEntity.ok(ticketType); // HTTP 200 OK, palauttaa poistetun lipputyypin tiedot
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
-		
-		
+
 	}
+
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Map<String, String> handleValidationdExceptions(MethodArgumentNotValidException ex) {
