@@ -1,5 +1,7 @@
 package Ohjelmistoprojekti.TicketGuru.AppUser;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import Ohjelmistoprojekti.TicketGuru.Role.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -26,10 +29,12 @@ public class AppUser {
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 
-	@NotNull
-	@Size(min = 1, max = 50)
+	@NotNull(message = "Salasana ei saa olla tyhjä ja sen tulee olla 5-50 merkkiä.")
 	@Column(name = "password", nullable = false)
 	private String password;
+
+	@Transient
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_id")
@@ -66,7 +71,13 @@ public class AppUser {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		System.out.println(password);
+		if (password.length() < 5 || password.length() > 50) {
+			System.out.println("AppUser.java Salasanan pitää olla 5-50 merkkiä");
+		} else {
+			this.password = passwordEncoder.encode(password);
+		}
+
 	}
 
 	public Role getRole() {
