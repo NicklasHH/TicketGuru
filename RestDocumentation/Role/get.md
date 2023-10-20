@@ -8,7 +8,7 @@ Show information about all roles.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -63,7 +63,7 @@ Show information about role based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -107,7 +107,7 @@ This endpoint provides information about a single role based on its unique ident
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 

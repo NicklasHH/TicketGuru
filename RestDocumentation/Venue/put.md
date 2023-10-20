@@ -8,7 +8,7 @@ Edit an venue.
 
 **Content-Type** : `application/json`
 
-**Auth required** : No
+**Auth required** : YES
 
 **Permissions required** : None
 

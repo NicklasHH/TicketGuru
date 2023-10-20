@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,6 +42,7 @@ public class AppUserRestController {
 	@Autowired
 	private RoleRepository roleRepository;
 
+	@PreAuthorize("hasAuthority('Admin')")
 	@GetMapping // http://localhost:8080/api/appusers
 	ResponseEntity<List<AppUser>> all() {
 		List<AppUser> appusers = appUserRepository.findAll(); // Hae kaikki appuserit tietokannasta
@@ -77,6 +79,7 @@ public class AppUserRestController {
 	}
 
 	// Palauttaa appuserin id:n perusteella sen salasanan
+	@PreAuthorize("hasAuthority('Admin')")
 	@GetMapping("/{id}/password") // http://localhost:8080/api/appusers/1/password
 	public ResponseEntity<Object> getPassword(@PathVariable long id) {
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);

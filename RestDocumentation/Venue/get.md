@@ -8,7 +8,7 @@ Show information about all Venues.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -78,7 +78,7 @@ Show information about venue based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -129,7 +129,7 @@ This endpoint provides information about a single venue based on its unique iden
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 

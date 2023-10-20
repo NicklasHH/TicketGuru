@@ -8,9 +8,9 @@ Show information about all appusers.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
-**Permission required** : NO
+**Permission required** : Yes, "Admin"
 
 **Data constraints** : `{}`
 
@@ -78,7 +78,7 @@ Show information about appuser based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -129,9 +129,9 @@ This endpoint provides information about a single appuser based on its unique id
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
-**Permission required** : NO
+**Permission required** : /password required role "Admin"
 
 **Data constraints** : `{}`
 
