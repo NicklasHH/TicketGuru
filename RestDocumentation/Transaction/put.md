@@ -19,8 +19,8 @@ Provide ID and values to modify.
 ```json
 {
     
-    "amount": double,
-    "transactionOk": boolean,
+    "amount": "double",
+    "transactionOk": "boolean",
     "transactionDate":  "String min=10, max=10 yyyy-MM-dd",
     "transactionTime": "String min=8, max=8 hh-mm-ss"
     
