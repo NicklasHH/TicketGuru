@@ -8,7 +8,7 @@ Show information about all transactions.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
