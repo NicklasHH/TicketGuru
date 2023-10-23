@@ -76,7 +76,7 @@ Show information about sales transaction based on its unique identifier `transac
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
