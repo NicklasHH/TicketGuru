@@ -8,7 +8,7 @@ Delete single sales transaction based on its unique identifier `transactionId`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
