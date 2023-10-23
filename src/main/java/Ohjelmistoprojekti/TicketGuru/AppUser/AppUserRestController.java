@@ -54,6 +54,7 @@ public class AppUserRestController {
 	}
 
 	// Palauttaa appuserin id perusteella
+	@PreAuthorize("hasAuthority('Admin')")
 	@GetMapping("/{id}") // http://localhost:8080/api/appusers/1
 	public ResponseEntity<AppUser> getEvent(@PathVariable Long id) {
 		Optional<AppUser> appUser = appUserRepository.findById(id); // Hae appuser ID:n perusteella
@@ -65,6 +66,7 @@ public class AppUserRestController {
 	}
 
 	// Palauttaa appuserin id:n perusteella sen käyttäjätunnuksen
+	@PreAuthorize("hasAuthority('Admin')")
 	@GetMapping("/{id}/username") // http://localhost:8080/api/appusers/1/username
 	public ResponseEntity<Object> getUsername(@PathVariable long id) {
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);
@@ -94,6 +96,7 @@ public class AppUserRestController {
 	}
 
 	// Palauttaa appuserin id:n perusteella sen roolin
+	@PreAuthorize("hasAuthority('Admin')")
 	@GetMapping("/{id}/role") // http://localhost:8080/api/appusers/1/role
 	public ResponseEntity<Role> getRole(@PathVariable long id) {
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);
@@ -111,6 +114,7 @@ public class AppUserRestController {
 	}
 
 	// lisätään uusi appuser
+	@PreAuthorize("hasAuthority('Admin')")
 	@PostMapping // http://localhost:8080/api/appusers
 	public ResponseEntity<Object> createAppUser(@Valid @RequestBody AppUser newAppUser) {
 		ResponseEntity<Object> validationResponse = appUserService.validateAppUser(newAppUser);
@@ -130,6 +134,7 @@ public class AppUserRestController {
 	}
 
 	// muokataan olemassa olevaa appuseria
+	@PreAuthorize("hasAuthority('Admin')")
 	@PutMapping("/{id}") // http://localhost:8080/api/appusers/id
 	public ResponseEntity<Object> updateAppUser(@Valid @RequestBody AppUser editedAppUser, @PathVariable Long id) {
 		if (!appUserRepository.existsById(id)) {
@@ -155,6 +160,7 @@ public class AppUserRestController {
 	}
 
 	// Poista appuser id:n perusteella
+	@PreAuthorize("hasAuthority('Admin')")
 	@DeleteMapping("/{id}") // http://localhost:8080/api/appusers/1
 	public ResponseEntity<?> deleteAppUser(@PathVariable Long id) { // Hae appuser tietokannasta ja palauta vastaus
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);// Palauttaa appuserin Id:N perusteella
