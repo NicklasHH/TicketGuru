@@ -27,7 +27,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests((authorize) -> authorize
 				.anyRequest().authenticated()) 
 
-				.formLogin(Customizer.withDefaults()) // Konfiguroi oletusarvoisen kirjautumisen
+//				.formLogin(Customizer.withDefaults()) // Konfiguroi oletusarvoisen kirjautumisen
 				.csrf(AbstractHttpConfigurer::disable) // Poistaa käytöstä CSRF-suojauksen
 				.httpBasic(Customizer.withDefaults()) // Konfiguroi oletusarvoisen HTTP Basic -autentikoinnin
 				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())); // Sallii H2-Consoleen pääsyn ja asettaa kehysasetukset
