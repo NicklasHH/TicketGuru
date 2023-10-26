@@ -61,20 +61,18 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.eclipse.jkube</groupId>
-            <artifactId>openshift-maven-plugin</artifactId>
-            <version>1.14.0</version>
-        </dependency>
 
+<!--		<dependency>
+			<groupId>org.eclipse.jkube</groupId>
+			<artifactId>openshift-maven-plugin</artifactId>
+			<version>1.14.0</version>
+		</dependency>
+-->
 	</dependencies>
-
 
 	<build>
 		<plugins>
@@ -82,7 +80,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
+			<plugin>
+				<groupId>org.eclipse.jkube</groupId>
+				<artifactId>openshift-maven-plugin</artifactId>
+				<version>1.14.0</version>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
