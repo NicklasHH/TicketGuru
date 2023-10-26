@@ -25,6 +25,7 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authorize) -> authorize
+			    .requestMatchers("/h2-console/**").permitAll() // Sallitaan kaikki H2 Console -reitit ilman autentikointia
 				.anyRequest().authenticated()) 
 
 //				.formLogin(Customizer.withDefaults()) // Konfiguroi oletusarvoisen kirjautumisen

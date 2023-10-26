@@ -3,20 +3,20 @@ spec:
     spec:
       containers:
         - env:
-          - name: mariadb
-            valueFrom:
-              secretKeyRef:
-                key: database-user
-                name: mysql-secret
-          - name: MYSQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: database-password
-                name: mysql-secret
-          - name: MYSQL_DATABASE
-            valueFrom:
-              secretKeyRef:
-                key: database-name
-                name: mysql-secret
-          - name: SPRING_PROFILES_ACTIVE
-            value: rahti
+            - name: MARIADB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: database-user
+                  name: mariadb
+            - name: MARIADB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: database-password
+                  name: mariadb
+            - name: MARIADB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: database-name
+                  name: mariadb
+            - name: SPRING_PROFILES_ACTIVE
+              value: rahti
