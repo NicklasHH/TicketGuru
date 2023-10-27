@@ -30,10 +30,12 @@ import jakarta.validation.Valid;
 public class TicketTypeRestController {
 
 	private final TicketTypeRepository ticketTypeRepository;
+	private final TicketTypeService ticketTypeService;
 
 	@Autowired
-	public TicketTypeRestController(TicketTypeRepository ticketTypeRepository) {
+	public TicketTypeRestController(TicketTypeRepository ticketTypeRepository, TicketTypeService ticketTypeService) {
 		this.ticketTypeRepository = ticketTypeRepository;
+		this.ticketTypeService = ticketTypeService;
 	}
 
 	@Autowired
@@ -77,32 +79,34 @@ public class TicketTypeRestController {
 
 	// Luodaan uusi lipputyyppi
 	@PostMapping // http://localhost8080/api/tickettypes
-	public ResponseEntity<TicketType> addTicketType(@Valid @RequestBody TicketType ticketType) {
-		Optional<TicketType> foundTicketType = ticketTypeRepository.findByTicketType(ticketType.getTicketType());
+	public ResponseEntity<Object> createTicketType(@Valid @RequestBody TicketType newTicketType) {
+		ResponseEntity<Object> validationResponse = ticketTypeService.validateTicketType(newTicketType);
 
-		if (foundTicketType.isPresent()) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).build(); // HTTP 409 jos lipputyyppi on jo olemassa
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
 		}
 
-		TicketType savedTicketType = ticketTypeRepository.save(ticketType);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicketType); // HTTP 201
+		TicketType savedTicketType = ticketTypeRepository.save(newTicketType);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicketType);
 	}
 
 	// Muokataan lipputyyppiä
 	@PutMapping("/{id}") // http://localhost808/api/tickettypes/1
-	public ResponseEntity<Object> updateTicketType(@Valid @RequestBody TicketType editedTicketType,
-			@PathVariable long id) {
+	public ResponseEntity<Object> updateTicketType(@Valid @RequestBody TicketType editedTicketType, @PathVariable Long id) {
 		if (!ticketTypeRepository.existsById(id)) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettypea ei löytynyt id:llä " + id); // HTTP
-																												// ERROR
-																												// 404
-																												// NOT
-																												// FOUND
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("TicketTypeä ei löytynyt id:llä " + id);
+		}
+
+		ResponseEntity<Object> validationResponse = ticketTypeService.validateTicketType(editedTicketType);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
 		}
 
 		editedTicketType.setTicketTypeId(id);
 		TicketType updatedTicketType = ticketTypeRepository.save(editedTicketType);
-		return ResponseEntity.ok(updatedTicketType); // HTTP OK 200
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(updatedTicketType);
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/tickettypes/1

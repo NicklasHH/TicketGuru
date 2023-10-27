@@ -21,22 +21,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketType;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketTypeRepository;
 import Ohjelmistoprojekti.TicketGuru.Transaction.Transaction;
 import Ohjelmistoprojekti.TicketGuru.Transaction.TransactionRepository;
 import jakarta.validation.Valid;
-import Ohjelmistoprojekti.TicketGuru.Event.Event;
 
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketRestController {
 
 	private final TicketRepository ticketRepository;
+	private final TicketService ticketService;
 
 	@Autowired
-	public TicketRestController(TicketRepository ticketRepository) {
+	public TicketRestController(TicketRepository ticketRepository, TicketService ticketService) {
 		this.ticketRepository = ticketRepository;
+		this.ticketService = ticketService;
 	}
 
 	@Autowired
@@ -134,21 +136,34 @@ public class TicketRestController {
 
 	// uusi lippu
 	@PostMapping // http://localhost:8080/api/tickets/
-	Ticket newTicket(@Valid @RequestBody Ticket newTicket) {
-		System.out.println("Adding new ticket: " + newTicket);
-		return ticketRepository.save(newTicket);
+	public ResponseEntity<Object> createTicket(@Valid @RequestBody Ticket newTicket) {
+		ResponseEntity<Object> validationResponse = ticketService.validateTicket(newTicket);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
+
+		Ticket savedTicket = ticketRepository.save(newTicket);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicket);
 	}
 
 	// muokkaa lippua
 	@PutMapping("/{id}") // http://localhost:8080/api/tickets/1
-	public ResponseEntity<Object> editTicket(@Valid @RequestBody Ticket editedTicket, @PathVariable Long id) {
+	public ResponseEntity<Object> updateTicket(@Valid @RequestBody Ticket editedTicket, @PathVariable Long id) {
 		if (!ticketRepository.existsById(id)) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404
-																											// Not Found
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id);
 		}
+
+		ResponseEntity<Object> validationResponse = ticketService.validateTicket(editedTicket);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
+
 		editedTicket.setTicketId(id);
 		Ticket updatedTicket = ticketRepository.save(editedTicket);
-		return ResponseEntity.ok(updatedTicket); // HTTP 200 OK
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(updatedTicket);
 	}
 
 	// poista lippu

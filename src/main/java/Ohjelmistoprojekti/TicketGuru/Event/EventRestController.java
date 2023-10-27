@@ -24,10 +24,12 @@ import Ohjelmistoprojekti.TicketGuru.Venue.Venue;
 public class EventRestController {
 
 	private final EventRepository eventRepository;
+	private final EventService eventService;
 
 	@Autowired
-	public EventRestController(EventRepository eventRepository) {
+	public EventRestController(EventRepository eventRepository, EventService eventService) {
 		this.eventRepository = eventRepository;
+		this.eventService = eventService;
 
 	}
 
@@ -157,21 +159,34 @@ public class EventRestController {
 
 	// lisätään uusi tapahtuma
 	@PostMapping // http://localhost:8080/api/events
-	public ResponseEntity<Event> newEvent(@Valid @RequestBody Event newEvent) {
-		Event saveNewEvent = eventRepository.save(newEvent);
-		return ResponseEntity.status(HttpStatus.CREATED).body(saveNewEvent);
+	public ResponseEntity<Object> createEvent(@Valid @RequestBody Event newEvent) {
+		ResponseEntity<Object> validationResponse = eventService.validateEvent(newEvent);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
+
+		Event savedEvent = eventRepository.save(newEvent);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedEvent);
 	}
 
 	// muokataan olemassa olevaa tapahtumaa
 	@PutMapping("/{id}") // http://localhost:8080/api/events/id
-	public ResponseEntity<Object> editEvent(@RequestBody Event editedEvent, @PathVariable Long id) {
-
+	public ResponseEntity<Object> updateEvent(@Valid @RequestBody Event editedEvent, @PathVariable Long id) {
 		if (!eventRepository.existsById(id)) {
-			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Eventtiä ei löytynyt id:llä " + id);
 		}
+
+		ResponseEntity<Object> validationResponse = eventService.validateEvent(editedEvent);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
+
 		editedEvent.setEventId(id);
 		Event updatedEvent = eventRepository.save(editedEvent);
-		return ResponseEntity.ok(updatedEvent);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(updatedEvent);
 	}
 
 	// Poistaa tapahtuman id:n perusteella
