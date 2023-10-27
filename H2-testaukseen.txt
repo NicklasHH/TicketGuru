@@ -1,12 +1,13 @@
 INSERT INTO Roles (role_name) VALUES ('Admin');
-INSERT INTO Roles (role_name) VALUES ('Työntekijä');
+INSERT INTO Roles (role_name) VALUES ('Lipunmyyjä');
+INSERT INTO Roles (role_name) VALUES ('Lipuntarkastaja');
 INSERT INTO Roles (role_name) VALUES ('Testirooli');
 INSERT INTO Roles (role_name) VALUES ('Asiakas');
 
 INSERT INTO App_Users(username, password, role_Id) VALUES ('admin', '$2a$10$A/WjQTrfD8k7bH648/IzZuvRye1NmMHt4AJ.nmzZKY.sXo6u2QnSS', 1);
 INSERT INTO App_Users(username, password, role_Id) VALUES ('lipunmyyjä', '$2a$10$tpkvJ649LdZnHKyfOG.P.eH8sLCmZd5diUXRhhlEXL02bvG8xzogy', 2);
-INSERT INTO App_Users(username, password, role_Id) VALUES ('lipuntarkastaja', '$2a$10$uvLB4RZLN.tQMxwWXjUZMOajujEuTdYcqWNUGsd4EycZ/Onhz1AY6', 2);
-INSERT INTO App_Users(username, password, role_Id) VALUES ('testi', '$2a$10$.Uhl.dZRcoYx1cmcBg6GJ.jx2aEliCF0t5IQKRM.nmdRMU2UDpbku', 3);
+INSERT INTO App_Users(username, password, role_Id) VALUES ('lipuntarkastaja', '$2a$10$uvLB4RZLN.tQMxwWXjUZMOajujEuTdYcqWNUGsd4EycZ/Onhz1AY6', 3);
+INSERT INTO App_Users(username, password, role_Id) VALUES ('testi', '$2a$10$.Uhl.dZRcoYx1cmcBg6GJ.jx2aEliCF0t5IQKRM.nmdRMU2UDpbku', 4);
 
 
 INSERT INTO Postalcodes (postalcode, post_Office) VALUES ('00100', 'Helsinki');

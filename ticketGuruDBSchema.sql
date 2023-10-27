@@ -86,7 +86,8 @@ CREATE TABLE Tickets (
 -- Lisätään tiedot -> Roles
 INSERT INTO Roles (role_name) 
 VALUES ('Admin'),
-		('Työntekijä'),
+		('Lipunmyyjä'),
+		('Lipuntarkastaja'),
 		('Testirooli'),
 		('Asiakas');
 
@@ -94,8 +95,8 @@ VALUES ('Admin'),
 INSERT INTO App_users (username, password, role_id) 
 VALUES ('admin', '$2a$10$A/WjQTrfD8k7bH648/IzZuvRye1NmMHt4AJ.nmzZKY.sXo6u2QnSS', 1), -- PW:admin
 		('lipunmyyjä', '$2a$10$tpkvJ649LdZnHKyfOG.P.eH8sLCmZd5diUXRhhlEXL02bvG8xzogy', 2),-- PW:lipunmyyjä
-		('lipuntarkastaja', '$2a$10$uvLB4RZLN.tQMxwWXjUZMOajujEuTdYcqWNUGsd4EycZ/Onhz1AY6', 2),-- PW:lipuntarkastaja
-		('testi', '$2a$10$.Uhl.dZRcoYx1cmcBg6GJ.jx2aEliCF0t5IQKRM.nmdRMU2UDpbku', 3);-- PW:testi
+		('lipuntarkastaja', '$2a$10$uvLB4RZLN.tQMxwWXjUZMOajujEuTdYcqWNUGsd4EycZ/Onhz1AY6', 3),-- PW:lipuntarkastaja
+		('testi', '$2a$10$.Uhl.dZRcoYx1cmcBg6GJ.jx2aEliCF0t5IQKRM.nmdRMU2UDpbku', 4);-- PW:testi
 
 -- Lisätään tiedot -> Postalcodes
 INSERT INTO Postalcodes (postalcode, post_office) 
