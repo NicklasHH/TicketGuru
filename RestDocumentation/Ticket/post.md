@@ -8,9 +8,9 @@ Create an Ticket.
 
 **Content-Type** : `application/json`
 
-<!--**Auth required** : Yes
+**Auth required** : Yes
 
-**Permissions required** : None -->
+**Permissions required** : None 
 
 **Data constraints**
 

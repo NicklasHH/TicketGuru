@@ -8,9 +8,9 @@ Create an Event.
 
 **Content-Type** : `application/json`
 
-<!--**Auth required** : Yes
+**Auth required** : YES
 
-**Permissions required** : None -->
+**Permission required** : NO
 
 **Data constraints**
 

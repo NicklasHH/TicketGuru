@@ -8,7 +8,7 @@ Show information about all postalcodes.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -53,7 +53,7 @@ Show information about postalcode based on its unique identifier `string`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 

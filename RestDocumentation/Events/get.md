@@ -8,7 +8,7 @@ Show information about all events.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -67,7 +67,7 @@ Show information about single event based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -120,7 +120,7 @@ This endpoint provides information about a single event based on its unique iden
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 

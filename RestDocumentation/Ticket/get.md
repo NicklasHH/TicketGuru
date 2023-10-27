@@ -8,7 +8,7 @@ Show information about all tickets.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -107,7 +107,7 @@ Show information about ticket based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
@@ -175,7 +175,7 @@ Show information about ticket based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Permission required** : NO
 
