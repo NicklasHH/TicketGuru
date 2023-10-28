@@ -3,17 +3,17 @@ spec:
     spec:
       containers:
         - env:
-            - name: MYSQL_USER
+            - name: MARIADB_USER
               valueFrom:
                 secretKeyRef:
                   key: database-user
                   name: mariadb
-            - name: MYSQL_PASSWORD
+            - name: MARIADB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: database-password
                   name: mariadb
-            - name: MYSQL_DATABASE
+            - name: MARIADB_DATABASE
               valueFrom:
                 secretKeyRef:
                   key: database-name
