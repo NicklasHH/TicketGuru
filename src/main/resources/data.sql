@@ -6,6 +6,75 @@ DROP TABLE IF EXISTS Ticket_types;
 DROP TABLE IF EXISTS Events;
 DROP TABLE IF EXISTS Venues;
 DROP TABLE IF EXISTS Postalcodes;
+ 
+
+CREATE TABLE Roles (
+  role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  role_name VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE App_users (
+  user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role_id BIGINT,
+  FOREIGN KEY (role_id) REFERENCES Roles(role_id)
+);
+
+
+CREATE TABLE Postalcodes (
+  postalcode VARCHAR(255) PRIMARY KEY NOT NULL,
+  post_office VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE Venues (
+  venue_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  place VARCHAR(255) NOT NULL,
+  street_address VARCHAR(255) NOT NULL,
+  postalcode VARCHAR(255),
+  FOREIGN KEY (postalcode) REFERENCES Postalcodes(postalcode)
+);
+
+
+CREATE TABLE Events (
+  event_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  event_name VARCHAR(255) NOT NULL,
+  event_date DATE NOT NULL,
+  event_time TIME NOT NULL,
+  ticket_count INT NOT NULL,
+  venue_id BIGINT,
+  description TEXT,
+  FOREIGN KEY (venue_id) REFERENCES Venues(venue_id)
+);
+
+CREATE TABLE Ticket_types (
+  ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  ticket_type VARCHAR(255) NOT NULL,
+  event_id BIGINT ,
+  price DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (event_id) REFERENCES Events(event_id)
+);
+
+CREATE TABLE Transactions (
+  transaction_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  amount DECIMAL(10, 2) NOT NULL,
+  transaction_ok BOOLEAN,
+  transaction_date VARCHAR(10) NOT NULL,
+  transaction_time VARCHAR(8) NOT NULL
+);
+
+CREATE TABLE Tickets (
+  ticket_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  ticket_type_id BIGINT,
+  event_id BIGINT ,
+  transaction_id BIGINT,
+  is_checked BOOLEAN,
+  FOREIGN KEY (ticket_type_id) REFERENCES Ticket_types(ticket_type_id),
+  FOREIGN KEY (event_id) REFERENCES Events(event_id),
+  FOREIGN KEY (transaction_id) REFERENCES Transactions(transaction_id)
+);
 
 INSERT INTO Roles (role_name) VALUES ('Admin');
 INSERT INTO Roles (role_name) VALUES ('Lipunmyyjä');
@@ -55,6 +124,7 @@ INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id, is_Checked) VALUES
 INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id, is_Checked) VALUES (2, 2, 2, 0);
 INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id, is_Checked) VALUES (2, 2, 2, 0);
 INSERT INTO Tickets(Ticket_Type_Id, Event_id, transaction_Id, is_Checked) VALUES (2, 2, 2, 1);
+
 
 SELECT * FROM Roles;
 SELECT * FROM App_users;
