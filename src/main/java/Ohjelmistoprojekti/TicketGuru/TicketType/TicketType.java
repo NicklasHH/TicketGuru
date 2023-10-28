@@ -2,6 +2,8 @@ package Ohjelmistoprojekti.TicketGuru.TicketType;
 
 import java.util.List;
 
+import javax.validation.constraints.Digits;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
@@ -16,7 +18,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 

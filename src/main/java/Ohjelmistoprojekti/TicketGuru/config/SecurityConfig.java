@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -25,10 +26,11 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authorize) -> authorize
-			    .requestMatchers("/h2-console/**").permitAll() // Sallitaan kaikki H2 Console -reitit ilman autentikointia
-				.anyRequest().authenticated()) 
+	            .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                .requestMatchers("/api/postalcodes", "/").permitAll() // Salli kaikille pääsy tähän reittiin
+				.anyRequest().authenticated()
+				) 
 
-//				.formLogin(Customizer.withDefaults()) // Konfiguroi oletusarvoisen kirjautumisen
 				.csrf(AbstractHttpConfigurer::disable) // Poistaa käytöstä CSRF-suojauksen
 				.httpBasic(Customizer.withDefaults()) // Konfiguroi oletusarvoisen HTTP Basic -autentikoinnin
 				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())); // Sallii H2-Consoleen pääsyn ja asettaa kehysasetukset
