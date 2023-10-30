@@ -55,7 +55,6 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
    - Pystyä tarkastamaan lipun yksilöllisen tunnistenumeron (ovella)
    - Pystyä merkitsemään järjestelmään tarkastamani lipun käytetyksi
 
-
 ### Käyttäjäroolit
 
 1. Käyttöjärjestelmän ylläpitäjä (admin, tekee järjestelmään muutokset/päivitykset)
@@ -84,98 +83,109 @@ Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisäll�
 ## Taulut, taulujen attribuutit ja näiden selitys
 
 ### AppUsers
+##### Taulun nimi: app_users
 
 _AppUsers-taulu sisältää käyttäjätunnukset, joita vaaditaan järjestelmän käyttämiseen._
-| Kenttä    | Tyyppi      | Kuvaus                                   |
-|-----------|-------------|------------------------------------------|
-| appUserid | Long PK     | Käyttäjän yksilöllinen tunnite, not null |
-| username  | varchar(25) | Tilin nimimerkki, not null               |
-| password  | varchar(50) | Tilin salasana, not null                 |
-| roleId    | int FK      | Viittaus Roles-tauluun, not null         |
+
+| Kenttä   | Tyyppi      | Kuvaus                                         |
+|----------|-------------|------------------------------------------------|
+| user_id  | BIGINT PK   | Käyttäjän yksilöllinen tunnite, AUTO_INCREMENT |
+| username | VARCHAR(25) | Tilin nimimerkki, not null                     |
+| password | VARCHAR(50) | Tilin salasana, not null                       |
+| role_id  | BIGINT FK   | Viittaus Roles-tauluun                         |
 
 ---
 
 ### Roles
+##### Taulun nimi: roles
 
 _Roles-taulu sisältää käyttäjätunnuksien roolit. Yhdellä käyttäjätunnuksella on yksi rooli._
-| Kenttä   | Tyyppi      | Kuvaus                                 |
-|----------|-------------|----------------------------------------|
-| roleId   | Long PK     | Roolin yksilöllinen tunniste, not null |
-| roleName | varchar(50) | Roolin nimi, not null                  |
+| Kenttä    | Tyyppi      | Kuvaus                                       |
+|-----------|-------------|----------------------------------------------|
+| role_id   | BIGINT PK   | Roolin yksilöllinen tunniste, AUTO_INCREMENT |
+| role_name | varchar(50) | Roolin nimi, not null                        |
 
 ---
 
 ### TicketTypes
+##### Taulun nimi: ticket_types
 
 _TicketTypes-taulu sisältää lipputyypit. Yhdellä lipulla on yksi lipputyyppi._
-| Kenttä       | Tyyppi      | Kuvaus                                      |
-|--------------|-------------|---------------------------------------------|
-| ticketTypeId | Long PK     | Lipputyypin yksilöllinen tunniste, not null |
-| ticketType   | varchar(50) | Lipun tyyppi, not null                      |
-| eventId      | int FK      | Viittaus Events-tauluun, not null           |
-| price        | double      | Lipputyypin hinta, not null                 |
+| Kenttä         | Tyyppi        | Kuvaus                                           |
+|----------------|---------------|--------------------------------------------------|
+| ticket_type_id | VARCHAR PK    | Lipputyypin yksilöllinen tunniste,AUTO_INCREMENT |
+| ticket_type    | VARCHAR(50)   | Lipun tyyppi, not null                           |
+| event_id       | BIGINT FK     | Viittaus Events-tauluun                          |
+| price          | DECIMAL(10,2) | Lipputyypin hinta, not null                      |
 
 ---
 
 ### Tickets
+##### Taulun nimi: tickets
 
 _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden tapahtuman ja yhden lipputyypin tiedot._
-| Kenttä        | Tyyppi  | Kuvaus                                              |
-|---------------|---------|-----------------------------------------------------|
-| ticketId      | Long PK | Lipun yksilöllinen tunniste, not null               |
-| ticketTypeId  | int FK  | Viittaus TicketTypes-tauluun, not null              |
-| eventId       | int FK  | Viittaus Events-tauluun, not null                   |
-| transactionId | int FK  | Viittaus transactions-tauluun, not null             |
-| isChecked     | Boolean | Onko lippu tarkistettu, true = tarkistettu not null |
+| Kenttä         | Tyyppi    | Kuvaus                                      |
+|----------------|-----------|---------------------------------------------|
+| ticket_id      | BIGINT PK | Lipun yksilöllinen tunniste, AUTO_INCREMENT |
+| ticket_type_id | BIGINT FK | Viittaus TicketTypes-tauluun                |
+| event_id       | BIGINT FK | Viittaus Events-tauluun                     |
+| transaction_id | BIGINT FK | Viittaus transactions-tauluun               |
+| is_checked     | BOOLEAN   | Onko lippu tarkistettu, true = tarkistettu  |
+
 ---
 
 ### Events
+##### Taulun nimi: events
 
 _Events-taulu sisältää tapahtuman tiedot._
-| Kenttä      | Tyyppi       | Kuvaus                                                  |
-|-------------|--------------|---------------------------------------------------------|
-| eventId     | Long PK      | Tapahtuman yksilöllinen tunniste, not null              |
-| eventName   | varchar(100) | Tapahtuman nimi, not null                               |
-| eventDate   | String       | Tapahtuman päivämäärä, not null                         |
-| eventTime   | String       | Tapahtuman kellonaika, not null                         |
-| ticketCount | int          | Tapahtuman lippujen määrä, not null                     |
-| venueId     | int FK       | Tapahtuman paikan id, viittaus Venues-tauluun, not null |
-| description | varchar(500) | Tapahtuman kuvaus                                       |
+| Kenttä       | Tyyppi       | Kuvaus                                                  |
+|--------------|--------------|---------------------------------------------------------|
+| event_id     | BIGINT PK    | Tapahtuman yksilöllinen tunniste, AUTO_INCREMENT        |
+| event_name   | VARCHAR(100) | Tapahtuman nimi, not null                               |
+| event_date   | DATE         | Tapahtuman päivämäärä, not null                         |
+| event_time   | TIME         | Tapahtuman kellonaika, not null                         |
+| ticket_count | INT          | Tapahtuman lippujen määrä, not null                     |
+| venue_id     | BIGINT FK    | Tapahtuman paikan id, viittaus Venues-tauluun, not null |
+| description  | TEXT         | Tapahtuman kuvaus                                       |
 
 ---
 
 ### Venues
+##### Taulun nimi: venues
 
 _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä tapahtumapaikassa._
 
-| Kenttä        | Tyyppi       | Kuvaus                                                       |
-|---------------|--------------|--------------------------------------------------------------|
-| venueId       | long PK      | Yksilöllinen tunniste, tapahtumapaikka, not null             |
-| place         | varchar(150) | Tapahtumapaikan nimi, not null                               |
-| streetAddress | varchar(150) | Tapahtumapaikan katuosoite, not null                         |
-| postalcode    | int FK       | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
+| Kenttä         | Tyyppi        | Kuvaus                                                       |
+|----------------|---------------|--------------------------------------------------------------|
+| venue_id       | BIGINT PK     | Yksilöllinen tunniste, tapahtumapaikka, AUTO_INCREMENT       |
+| place          | VARCHAR(150)  | Tapahtumapaikan nimi, not null                               |
+| street_address | VARCHAR(150)  | Tapahtumapaikan katuosoite, not null                         |
+| postalcode     | VARCHAR(5) FK | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
 
 ---
 
 ### Postcodes
+##### Taulun nimi: postalcodes
 
 _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaikat. Yksi tapahtumapaikka sisältää vain yhden postinumeron._
-| Kenttä     | Tyyppi       | Kuvaus                                                 |
-|------------|--------------|--------------------------------------------------------|
-| postalcode | varchar(5)   | Postinumero toimii yksilöllisenä tunnisteena, not null |
-| postOffice | varchar(150) | Postitoimipaikka, not null                             |
+| Kenttä      | Tyyppi        | Kuvaus                                                 |
+|-------------|---------------|--------------------------------------------------------|
+| postalcode  | VARCHAR(5) PK | Postinumero toimii yksilöllisenä tunnisteena, not null |
+| post_office | VARCHAR(150)  | Postitoimipaikka, not null                             |
 
 ---
 
 ### Transactions
+##### Taulun nimi: transactions
 
 _Transactions-taulu sisältää maksutapahtumat._
-| Kenttä          | Tyyppi  | Kuvaus                                                   |
-|-----------------|---------|----------------------------------------------------------|
-| transactionId   | long PK | transactionid toimii yksilöllisenä tunnisteena, not null |
-| amount          | Double  | maksutapahtuman summa, not null                          |
-| transactionDate | String  | maksutapahtuman päivämäärä, not null, yyyy-mm-dd         |
-| transactionTime | String  | maksutapahtuman kellonaika, not null, hh:mm:ss           |
+| Kenttä           | Tyyppi      | Kuvaus                                                          |
+|------------------|-------------|-----------------------------------------------------------------|
+| transaction_id   | BIGINT PK   | transaction id toimii yksilöllisenä tunnisteena, AUTO_INCREMENT |
+| amount           | DECIMAL     | maksutapahtuman summa, not null                                 |
+| transaction_ok   | BOOLEAN     | maksutapahtuma on mennyt läpi                                   |
+| transaction_date | VARCHAR(10) | maksutapahtuman kellonaika, not null, yyyy-mm-dd                |
+| transaction_time | VARCHAR(8)  | maksutapahtuman kellonaika, not null, hh:mm:ss                  |
 
 ---
 

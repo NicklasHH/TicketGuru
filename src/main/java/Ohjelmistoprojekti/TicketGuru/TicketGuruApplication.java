@@ -18,5 +18,4 @@ public class TicketGuruApplication {
 		System.out.println(ldt);
 
 	}
-
 }

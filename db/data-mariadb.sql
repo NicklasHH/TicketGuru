@@ -21,33 +21,33 @@ SET FOREIGN_KEY_CHECKS=1;
 
 CREATE TABLE roles (
   role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  role_name VARCHAR(255) NOT NULL
+  role_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE app_users (
   user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
+  username VARCHAR(25) NOT NULL,
+  password VARCHAR(50) NOT NULL,
   role_id BIGINT,
   FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
 
 CREATE TABLE postalcodes (
-  postalcode VARCHAR(255) PRIMARY KEY NOT NULL,
-  post_office VARCHAR(255) NOT NULL
+  postalcode VARCHAR(5) PRIMARY KEY NOT NULL,
+  post_office VARCHAR(150) NOT NULL
 );
 
 CREATE TABLE venues (
   venue_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  place VARCHAR(255) NOT NULL,
-  street_address VARCHAR(255) NOT NULL,
-  postalcode VARCHAR(255),
+  place VARCHAR(150) NOT NULL,
+  street_address VARCHAR(150) NOT NULL,
+  postalcode VARCHAR(5),
   FOREIGN KEY (postalcode) REFERENCES postalcodes(postalcode)
 );
 
 CREATE TABLE events (
   event_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  event_name VARCHAR(255) NOT NULL,
+  event_name VARCHAR(100) NOT NULL,
   event_date DATE NOT NULL,
   event_time TIME NOT NULL,
   ticket_count INT NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE events (
 
 CREATE TABLE ticket_types (
   ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  ticket_type VARCHAR(255) NOT NULL,
+  ticket_type VARCHAR(50) NOT NULL,
   event_id BIGINT ,
   price DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (event_id) REFERENCES events(event_id)
