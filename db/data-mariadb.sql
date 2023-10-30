@@ -57,7 +57,7 @@ CREATE TABLE events (
 );
 
 CREATE TABLE ticket_types (
-  ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  ticket_type_id VARCHAR AUTO_INCREMENT PRIMARY KEY,
   ticket_type VARCHAR(50) NOT NULL,
   event_id BIGINT ,
   price DECIMAL(10, 2) NOT NULL,
