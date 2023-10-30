@@ -28,8 +28,8 @@ public class SecurityConfig {
 		http.authorizeHttpRequests((authorize) -> authorize
 	            .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 .requestMatchers("/api/postalcodes", "/").permitAll() // Salli kaikille pääsy tähän reittiin
-				.anyRequest().permitAll()
-//				.anyRequest().authenticated()
+//				.anyRequest().permitAll()
+				.anyRequest().authenticated()
 				) 
 
 				.csrf(AbstractHttpConfigurer::disable) // Poistaa käytöstä CSRF-suojauksen
