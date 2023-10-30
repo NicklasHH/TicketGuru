@@ -145,7 +145,7 @@ _Events-taulu sisältää tapahtuman tiedot._
 | event_date   | DATE         | Tapahtuman päivämäärä, not null                         |
 | event_time   | TIME         | Tapahtuman kellonaika, not null                         |
 | ticket_count | INT          | Tapahtuman lippujen määrä, not null                     |
-| venue_id     | BIGINT FK    | Tapahtuman paikan id, viittaus Venues-tauluun, not null |
+| venue_id     | BIGINT FK    | Tapahtuman paikan id, viittaus Venues-tauluun           |
 | description  | TEXT         | Tapahtuman kuvaus                                       |
 
 ---
