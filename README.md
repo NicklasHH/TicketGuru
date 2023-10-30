@@ -22,15 +22,13 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 1. **Admin-käyttäjänä haluan...**
 
-   - Että jokaisella lipulla on oma uniikki tunnuksensa
-   - Että jokainen myyty lippu merkitään (järjestelmässä) myydyksi
    - Pystyä hallitsemaan käyttäjätilejä
    - Pystyä hallitsemaan käyttäjätilien oikeuksia (permissions)
-   - Mahdollisuuden tarkastaa lippujen myynti- ja varastotilanteen
    - Pystyä tarkastelemaan ja hallitsemaan tapahtumien tietoja ja kategorioita
 
 2. **Lipunmyyjänä haluan...**
 
+   - Että jokaisella lipulla on oma uniikki tunnuksensa
    - Tarjota lippuja myyntiin eri ikäryhmille
    - Asettaa lippujen ennakkomyynnille aloitus- ja lopetuspäivämäärän
    - Asettaa kullekin tapahtumalle myytävien lippujen määrän
@@ -48,32 +46,21 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
    - Pystyä tulostamaan kerralla myymättömät liput, kun ennakkomyynti on päättynyt
    - Pystyä tulostamaan myyntihetkellä yksittäisiä lippuja
    - Pystyä tarkastelemaan myyntitapahtumia
+   - Että jokainen myyty lippu merkitään (järjestelmässä) myydyksi
+   - Mahdollisuuden tarkastaa lippujen myynti- ja varastotilanteen
 
 3. **Lipuntarkastajana haluan...**
 
+   - Että jokaisella lipulla on oma uniikki tunnuksensa
    - Pystyä tarkastamaan lipun yksilöllisen tunnistenumeron (ovella)
    - Pystyä merkitsemään järjestelmään tarkastamani lipun käytetyksi
 
-4. **Tapahtumanjärjestäjänä haluan...**
-
-   - Asettaa lippuja myytäväksi järjestämiini tapahtumiin
-   - Ilmoittaa lipunmyyjälle tapahtumapaikan ja -ajan
-   - Ilmoittaa lipunmyyjälle tapahtumaan myytävien lippujen määrän
-   - Seurata myyntiä
-
-5. **Asiakkaana haluan...**
-   - Ostaa lippuja itseäni kiinnostaviin tapahtumiin
-     -Saatavilla olevat maksuvaihtoehdot, kuten luottokortin, mobiilimaksun tai laskun
-   - Tietoa itseäni kiinnostavista tapahtumista (missä ja milloin)
-   - Pitää lipunmyyntipisteen tietoisena, että verkkokaupalle olisi kysyntää
 
 ### Käyttäjäroolit
 
 1. Käyttöjärjestelmän ylläpitäjä (admin, tekee järjestelmään muutokset/päivitykset)
 2. Lipunmyyjä (käyttää järjestelmää)
 3. Lipuntarkastaja (käyttää järjestelmää lippujen tarkastamiseen)
-4. Tapahtumanjärjestäjä (antaa lipunmyyjälle tiedot uusista tapahtumista, saa myyntiraportit tarvittaessa lipunmyyjältä)
-5. Asiakas (ostaa lippuja lipunmyyjältä)
 
 ---
 
