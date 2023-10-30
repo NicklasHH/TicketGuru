@@ -160,7 +160,7 @@ _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä
 | venue_id       | BIGINT PK     | Yksilöllinen tunniste, tapahtumapaikka, AUTO_INCREMENT       |
 | place          | VARCHAR(150)  | Tapahtumapaikan nimi, not null                               |
 | street_address | VARCHAR(150)  | Tapahtumapaikan katuosoite, not null                         |
-| postalcode     | VARCHAR(5) FK | Viittaus postinroon, postalCode PostCodes-taulussa, not null |
+| postalcode     | VARCHAR(5) FK | Viittaus postinroon, postalCode PostCodes-taulussa           |
 
 ---
 
