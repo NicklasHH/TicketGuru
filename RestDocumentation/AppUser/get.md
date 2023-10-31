@@ -8,9 +8,9 @@ Show information about all appusers.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : Role:Admin
+**Authority required** : Role: Admin
 
 **Data constraints** : `{}`
 
