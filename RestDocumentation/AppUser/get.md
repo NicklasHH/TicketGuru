@@ -2,7 +2,7 @@
 
 Show information about all appusers.
 
-**URL** : `http://localhost:8080/api/appusers`
+**Endpoint** : `/api/appusers`
 
 **Method** : `GET`
 
@@ -10,7 +10,7 @@ Show information about all appusers.
 
 **Auth required** : YES
 
-**Permission required** : Yes, "Admin"
+**Permission required** : Role:Admin
 
 **Data constraints** : `{}`
 
@@ -72,7 +72,7 @@ This example response provides information about all appusers. In the case of no
 
 Show information about appuser based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/appusers/{id}`
+**Endpoint** : `/api/appusers/{id}`
 
 **Method** : `GET`
 
@@ -80,7 +80,7 @@ Show information about appuser based on its unique identifier `id`.
 
 **Auth required** : YES
 
-**Permission required** : NO
+**Permission required** : Role:Admin
 
 **Data constraints** : `{}`
 
@@ -121,9 +121,9 @@ This endpoint provides information about a single appuser based on its unique id
 # Show Specific appuser Details
 
 **Possible endpoints** :  
-`http://localhost:8080/api/appusers/{id}/username`  
-`http://localhost:8080/api/appusers/{id}/password`  
-`http://localhost:8080/api/appusers/{id}/role`<br>
+`/api/appusers/{id}/username`  
+`/api/appusers/{id}/password`  
+`/api/appusers/{id}/role`<br>
 
 **Method** : `GET`
 
@@ -131,7 +131,7 @@ This endpoint provides information about a single appuser based on its unique id
 
 **Auth required** : YES
 
-**Permission required** : /password required role "Admin"
+**Permission required** : Role:Admin
 
 **Data constraints** : `{}`
 
@@ -141,7 +141,7 @@ This endpoint provides information about a single appuser based on its unique id
 
 **Code** : `200 OK`
 
-**Content example from** : `http://localhost:8080/api/appusers/1/username`
+**Content example from** : `/api/appusers/1/username`
 
 ```json
 {
