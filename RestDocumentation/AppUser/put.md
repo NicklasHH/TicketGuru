@@ -2,7 +2,7 @@
 
 Edit an Appuser.
 
-**URL** : `http://localhost:8080/api/appusers/{id}`
+**Endpoint** : `/api/appusers/{id}`
 
 **Method** : `PUT`
 
