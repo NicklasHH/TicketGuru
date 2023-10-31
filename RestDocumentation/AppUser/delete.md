@@ -2,7 +2,7 @@
 
 delete single appuser based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/appusers/{id}`
+**Endpoint ** : `/api/appusers/{id}`
 
 **Method** : `DELETE`
 
@@ -10,7 +10,7 @@ delete single appuser based on its unique identifier `id`.
 
 **Auth required** : YES
 
-**Permission required** : NO
+**Permission required** : Role:Admin
 
 **Data constraints** : `{}`
 
