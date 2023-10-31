@@ -8,9 +8,9 @@ Create an AppUser.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : Role:Admin
+**Authority required** : None
 
 **Data constraints**
 
