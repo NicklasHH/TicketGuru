@@ -67,7 +67,7 @@ Järjestelmän kehittämisessä käytetään Spring Bootia, ohjelmointikielenä 
 
 Käyttöliittymään kirjautuessa on olennaista kirjautuuko järjestelmään lipunmyyjänä vai lipuntarkastajana. Admin-oikeuksia käytetään järjestelmän kehittämiseen ja muutosten tekoon.
 
-![Näyttömallinnukset](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDokumentation/TicketGuruN%C3%A4ytt%C3%B6kuva.png)
+![Näyttömallinnukset](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/TicketGuruN%C3%A4ytt%C3%B6kuva.png)
 Voit avata kuvan isommaksi klikkaamalla sitä
 
 ---
@@ -76,7 +76,7 @@ Voit avata kuvan isommaksi klikkaamalla sitä
 
 Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisällään taulujen nimet, näiden väliset suhteet, pää- ja viiteavaimet, sekä taulujen tietoelementit. Alempana on esitetty myös taulujen tarkemmat selitykset ja perustelut.
 
-![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDokumentation/Tietokantakaavio.V2.png)
+![Tietokannan kaavio](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/Tietokantakaavio.V2.png)
 
 ---
 
