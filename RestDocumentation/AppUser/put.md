@@ -8,9 +8,9 @@ Edit an Appuser.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : None
+**Authority required** : None
 
 **Data constraints**
 
