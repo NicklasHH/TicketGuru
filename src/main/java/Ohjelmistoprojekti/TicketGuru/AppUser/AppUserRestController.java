@@ -79,7 +79,6 @@ public class AppUserRestController {
 	}
 
 	// Palauttaa appuserin id:n perusteella sen salasanan
-	@PreAuthorize("hasAuthority('Admin')")
 	@GetMapping("/{id}/password") // http://localhost:8080/api/appusers/1/password
 	public ResponseEntity<Object> getPassword(@PathVariable long id) {
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);
