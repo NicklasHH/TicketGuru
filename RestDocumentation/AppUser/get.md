@@ -78,9 +78,9 @@ Show information about appuser based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : Role:Admin
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -129,9 +129,9 @@ This endpoint provides information about a single appuser based on its unique id
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : Role:Admin
+**Authority required** : None
 
 **Data constraints** : `{}`
 
