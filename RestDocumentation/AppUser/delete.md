@@ -8,9 +8,9 @@ delete single appuser based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : Role:Admin
+**Authority required** : None
 
 **Data constraints** : `{}`
 
