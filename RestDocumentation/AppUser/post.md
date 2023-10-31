@@ -2,15 +2,15 @@
 
 Create an AppUser.
 
-**URL** : `http://localhost:8080/api/appusers`
+**Endpoint** : `/api/appusers`
 
 **Method** : `POST`
 
 **Content-Type** : `application/json`
 
-**Auth required** : No
+**Auth required** : YES
 
-**Permissions required** : None
+**Permissions required** : Role:Admin
 
 **Data constraints**
 
