@@ -2,7 +2,7 @@
 
 delete single appuser based on its unique identifier `id`.
 
-**Endpoint ** : `/api/appusers/{id}`
+**Endpoint** : `/api/appusers/{id}`
 
 **Method** : `DELETE`
 
