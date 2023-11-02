@@ -82,3 +82,5 @@ public class Venue {
 	}
 
 }
+
+//Käyty läpi 01-11-2023

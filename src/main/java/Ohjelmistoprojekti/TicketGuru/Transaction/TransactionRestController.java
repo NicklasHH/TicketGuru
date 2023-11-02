@@ -39,8 +39,8 @@ public class TransactionRestController {
 	@Autowired
 	private TicketRepository ticketRepository;
 
-	// Listaa kaikki myyntitapahtumat
-	@GetMapping // http://localhost:8080/api/transactions
+	// Listaa kaikki myyntitapahtumat GET http://localhost:8080/api/transactions
+	@GetMapping 
 	ResponseEntity<List<Transaction>> all() {
 		List<Transaction> transactions = transactionRepository.findAll(); // Hae kaikki transaktiot tietokannasta
 		if (!transactions.isEmpty()) {
@@ -52,8 +52,8 @@ public class TransactionRestController {
 		}
 	}
 
-	// Hae myyntitapahtuma id:llä
-	@GetMapping("/{id}") // http://localhost:8080/api/transactions/1
+	// Hae myyntitapahtuma id:llä GET http://localhost:8080/api/transactions/1
+	@GetMapping("/{id}") 
 	public ResponseEntity<Transaction> getTransaction(@PathVariable Long id) {
 		Optional<Transaction> transaction = transactionRepository.findById(id); // Hae tapahtuma ID:n perusteella
 		if (transaction.isPresent()) {
@@ -65,8 +65,8 @@ public class TransactionRestController {
 		}
 	}
 
-	// Lisää uusi myyntitapahtuma
-	@PostMapping // http://localhost:8080/api/transactions
+	// Lisää uusi myyntitapahtuma POST http://localhost:8080/api/transactions
+	@PostMapping 
 	Transaction newTransaction(@Valid @RequestBody Transaction newTransaction) {
 
 		if (!newTransaction.isTransactionOk()) {
@@ -79,8 +79,8 @@ public class TransactionRestController {
 		return transactionRepository.save(newTransaction);
 	}
 
-	// Muokkaa myyntitapahtumaa
-	@PutMapping("/{id}") // http://localhost:8080/api/appusers/id
+	// Muokkaa myyntitapahtumaa PUT http://localhost:8080/api/appusers/id
+	@PutMapping("/{id}") 
 	public ResponseEntity<Object> editTransaction(@Valid @RequestBody Transaction editedTransaction,
 			@PathVariable Long id) {
 		// Jos id:tä ei ole
@@ -97,27 +97,8 @@ public class TransactionRestController {
 		return ResponseEntity.ok(editedTransaction); // HTTP 200 OK
 	}
 
-	/*
-	 * @DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1 public
-	 * ResponseEntity<Transaction> deleteTransaction(@PathVariable Long id) { // Hae
-	 * myyntitapahtuma tietokannasta ja palauta vastaus
-	 * 
-	 * Optional<Transaction> transactionOptional =
-	 * transactionRepository.findById(id);// Palauttaa myyntitapahtuman id:n
-	 * perusteella
-	 * 
-	 * if (transactionOptional.isPresent()) { Transaction transaction =
-	 * transactionOptional.get(); transactionRepository.deleteById(id); // Poistaa
-	 * myyntitapahtuman Id:n perusteella System.out.
-	 * println("200 - myyntitapahtuman poisto onnistui - TransactionRestController, id: "
-	 * + id); return ResponseEntity.ok(transaction); // HTTP 200 OK, palauttaa
-	 * poistetun myyntitapahtuman tiedot } else { System.out.
-	 * println("404 - Ei löytynyt poistettavaa - TransactionRestController, id: " +
-	 * id); return ResponseEntity.notFound().build(); // HTTP 404 Not Found } }
-	 */
-
-	// 11102023
-	@DeleteMapping("/{id}") // http://localhost:8080/api/transactions/1
+	//Poista myyntitapahtuma id:n perusteella DELETE http://localhost:8080/api/transactions/1
+	@DeleteMapping("/{id}") 
 	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta
 																		// vastaus
 		Optional<Transaction> transactionOptional = transactionRepository.findById(id);//
@@ -156,3 +137,5 @@ public class TransactionRestController {
 	}
 
 }
+
+//Käyty läpi 01-11-2023

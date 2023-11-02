@@ -81,3 +81,5 @@ public class VenueService {
 	}
 
 }
+
+//Käyty läpi 01-11-2023

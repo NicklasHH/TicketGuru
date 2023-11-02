@@ -9,3 +9,5 @@ public interface VenueRepository extends CrudRepository<Venue, Long> {
 
 	List<Venue> findByPlace(String place);
 }
+
+//Käyty läpi 01-11-2023

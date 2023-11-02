@@ -10,3 +10,6 @@ public interface TransactionRepository extends CrudRepository<Transaction, Long>
 	List<Transaction> findByTickets_TicketId(Long ticketId);
 
 }
+
+
+//Käyty läpi 01-11-2023
