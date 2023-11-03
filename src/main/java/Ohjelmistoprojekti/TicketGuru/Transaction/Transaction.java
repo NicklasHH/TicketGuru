@@ -27,13 +27,11 @@ public class Transaction {
 	private Long transactionId;
 
 	@NotNull
-	private double amount; 
+	private double amount;
 
-	
 	@NotNull
 	@Column(name = "transaction_ok")
 	private boolean transactionOk = false;
-
 
 	@NotNull
 	@Size(min = 10, max = 10) // "yyyy-dd-mm"
@@ -45,14 +43,12 @@ public class Transaction {
 	@Column(name = "transaction_time")
 	private String transactionTime;
 
-
 	@JsonIgnore
 	@OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER)
 	private List<Ticket> tickets;
 
 	public Transaction() {
 	}
-
 
 	public Transaction(double amount, boolean transactionOk, String transactionDate, String transactionTime,
 			List<Ticket> tickets) {
@@ -142,16 +138,14 @@ public class Transaction {
 		System.out.println(sldtDate);
 
 		if (transactionOk) {
-			System.out.println("TRANSACTION TRUE"); 
-			setTransactionDate(sldtDate); 
+			System.out.println("TRANSACTION TRUE");
+			setTransactionDate(sldtDate);
 			setTransactionTime(sldtTime);
-			
 
 		} else if (!transactionOk) {
 			System.out.println("TRANSACTION FALSE");
 			setTransactionDate(sldtDate);
 			setTransactionTime(sldtTime);
-			
 
 		}
 
@@ -177,7 +171,6 @@ public class Transaction {
 
 	}
 
-
 	public List<Ticket> getTickets() {
 		return tickets;
 	}
@@ -194,6 +187,5 @@ public class Transaction {
 	}
 
 }
-
 
 //Käyty läpi 01-11-2023

@@ -11,5 +11,4 @@ public interface TransactionRepository extends CrudRepository<Transaction, Long>
 
 }
 
-
 //Käyty läpi 01-11-2023

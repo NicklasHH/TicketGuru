@@ -17,34 +17,33 @@ import Ohjelmistoprojekti.TicketGuru.Event.EventRepository;
 @Service
 public class TicketService {
 
-		
+	@Autowired
+	private TicketTypeRepository ticketTypeRepository;
+	@Autowired
+	private TransactionRepository transactionRepository;
+	@Autowired
+	private EventRepository eventRepository;
 
-		@Autowired
-		private TicketTypeRepository ticketTypeRepository;
-		@Autowired
-		private TransactionRepository transactionRepository;
-		@Autowired
-		private EventRepository eventRepository;
-		
-		public ResponseEntity<Object> validateTicket(Ticket ticket) {
-			
-			Optional<TicketType> ticketTypeOptional = ticketTypeRepository.findById(ticket.getTicketType().getTicketTypeId());
-			if (ticketTypeOptional.isEmpty()){
-			    return ResponseEntity.status(HttpStatus.CONFLICT).body("Ticket Type ID:tä ei löytynyt");
-			}
+	public ResponseEntity<Object> validateTicket(Ticket ticket) {
 
-			Optional<Transaction> transactionOptional = transactionRepository.findById(ticket.getTransaction().getTransactionId());
-			if (transactionOptional.isEmpty()){
-			    return ResponseEntity.status(HttpStatus.CONFLICT).body("Transaction ID:tä ei löytynyt");
-			}
-
-			Optional<Event> eventOptional = eventRepository.findById(ticket.getEvent().getEventId());
-			if (eventOptional.isEmpty()){
-			    return ResponseEntity.status(HttpStatus.CONFLICT).body("Event ID:tä ei löytynyt");
-			}
-			
-			return ResponseEntity.ok(null); // Kaikki tarkistukset menivät läpi
+		Optional<TicketType> ticketTypeOptional = ticketTypeRepository
+				.findById(ticket.getTicketType().getTicketTypeId());
+		if (ticketTypeOptional.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Ticket Type ID:tä ei löytynyt");
 		}
 
+		Optional<Transaction> transactionOptional = transactionRepository
+				.findById(ticket.getTransaction().getTransactionId());
+		if (transactionOptional.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Transaction ID:tä ei löytynyt");
+		}
+
+		Optional<Event> eventOptional = eventRepository.findById(ticket.getEvent().getEventId());
+		if (eventOptional.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Event ID:tä ei löytynyt");
+		}
+
+		return ResponseEntity.ok(null); // Kaikki tarkistukset menivät läpi
+	}
 
 }

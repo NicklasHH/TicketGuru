@@ -39,7 +39,6 @@ public class PostalcodeRestController {
 		this.jdbcTemplate = jdbcTemplate;
 		this.postalcodeService = postalcodeService;
 	}
-	
 
 	// Hae kaikki posinumerot http://localhost:8080/api/postalcodes
 	@GetMapping
@@ -52,7 +51,8 @@ public class PostalcodeRestController {
 		}
 	}
 
-	// Palauttaa kaikki postinumerot postinumeron perusteella http://localhost:8080/api/postalcodes/00100
+	// Palauttaa kaikki postinumerot postinumeron perusteella
+	// http://localhost:8080/api/postalcodes/00100
 	@GetMapping("/{postalcode}")
 	public ResponseEntity<Postalcode> getPostalcode(@PathVariable String postalcode) {
 		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalcode);
@@ -64,28 +64,25 @@ public class PostalcodeRestController {
 	}
 
 	@PutMapping("/{postalcode}") // Muokkaa postinumeroa http://localhost:8080/api/postalcode/00100
-	public ResponseEntity<Object> updatePostalCode(@RequestBody Postalcode editedPostalcode, @PathVariable String postalcode) {
-	    editedPostalcode.setPostalcode(postalcode);
+	public ResponseEntity<Object> updatePostalCode(@RequestBody Postalcode editedPostalcode,
+			@PathVariable String postalcode) {
+		editedPostalcode.setPostalcode(postalcode);
 
-		if(!postalcodeRepository.findByPostalcode(postalcode).isPresent()){
+		if (!postalcodeRepository.findByPostalcode(postalcode).isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Postinumeroa ei löydy: " + postalcode);
 		}
 
+		ResponseEntity<Object> validationResponse = postalcodeService.validatePostalcode(editedPostalcode);
 
-	    ResponseEntity<Object> validationResponse = postalcodeService.validatePostalcode(editedPostalcode);
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse;
+		}
 
-	    if (validationResponse.getStatusCode() != HttpStatus.OK) {
-	        return validationResponse;
-	    }
+		editedPostalcode.setPostalcode(postalcode);
+		Postalcode updatedPostalcode = postalcodeRepository.save(editedPostalcode);
 
-	    editedPostalcode.setPostalcode(postalcode);
-	    Postalcode updatedPostalcode = postalcodeRepository.save(editedPostalcode);
-
-	    return ResponseEntity.status(HttpStatus.OK).body(updatedPostalcode);
+		return ResponseEntity.status(HttpStatus.OK).body(updatedPostalcode);
 	}
-
-
-
 
 	// Lisätään uusi postinumero http://localhost:8080/api/postalcodes
 	@PostMapping
@@ -105,15 +102,14 @@ public class PostalcodeRestController {
 		Postalcode savedPostalcode = postalcodeRepository.save(newPostalcode);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedPostalcode);
 	}
-	
-	
 
 	private void setVenuePostalCodeToNull(String postalcode) { //
 		String sql = "UPDATE VENUES SET POSTALCODE = NULL WHERE POSTALCODE = ?";
 		jdbcTemplate.update(sql, postalcode);
 	}
 
-	// Poista postinumero postinumeron perusteella http://localhost:8080/api/venues/00100
+	// Poista postinumero postinumeron perusteella
+	// http://localhost:8080/api/venues/00100
 	@DeleteMapping("/{postalcode}")
 	public ResponseEntity<Postalcode> deletePostalcode(@PathVariable String postalcode) {
 		Optional<Postalcode> foundPostalcode = postalcodeRepository.findByPostalcode(postalcode);

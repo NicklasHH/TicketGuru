@@ -47,8 +47,8 @@ public class TicketRestController {
 	@Autowired
 	private TransactionRepository transactionRepository;
 
-	// kaikki liput
-	@GetMapping // http://localhost:8080/api/tickets
+	// Palauttaa kaikki liput http://localhost:8080/api/tickets
+	@GetMapping
 	ResponseEntity<List<Ticket>> all() {
 		List<Ticket> tickets = ticketRepository.findAll(); // Hae kaikki liput tietokannasta
 		if (!tickets.isEmpty()) {
@@ -58,8 +58,8 @@ public class TicketRestController {
 		}
 	}
 
-	// lippu id:n perusteella
-	@GetMapping("/{id}") // http://localhost:8080/api/tickets/1
+	// Palauttaa lipun id perusteella http://localhost:8080/api/tickets/1
+	@GetMapping("/{id}")
 	public ResponseEntity<Ticket> getTicket(@PathVariable Long id) {
 		Optional<Ticket> ticket = ticketRepository.findById(id);
 		if (ticket.isPresent()) {
@@ -69,8 +69,8 @@ public class TicketRestController {
 		}
 	}
 
-	// lippu tarkistettu
-	@GetMapping("/{id}/isChecked") // http://localhost:8080/api/tickets/1/isChecked
+	// lippu tarkistettu http://localhost:8080/api/tickets/1/isChecked
+	@GetMapping("/{id}/isChecked")
 	public ResponseEntity<Object> getPassword(@PathVariable long id) {
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
 		if (ticketOptional.isPresent()) {
@@ -83,8 +83,9 @@ public class TicketRestController {
 		}
 	}
 
-	// lipun tyyppi
-	@GetMapping("/{id}/ticketType") // http://localhost:8080/api/tickets/1/ticketType
+	// Palauttaa lipun tyypin id perusteella
+	// http://localhost:8080/api/tickets/1/ticketType
+	@GetMapping("/{id}/ticketType")
 	public ResponseEntity<TicketType> getTicketType(@PathVariable long id) {
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
 		if (ticketOptional.isPresent()) {
@@ -100,8 +101,8 @@ public class TicketRestController {
 		}
 	}
 
-	// lipun tapahtuma
-	@GetMapping("/{id}/event") // http://localhost:8080/api/tickets/1/event
+	// Palauttaa eventin id perusteella http://localhost:8080/api/tickets/1/event
+	@GetMapping("/{id}/event")
 	public ResponseEntity<Event> getEvent(@PathVariable long id) {
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
 		if (ticketOptional.isPresent()) {
@@ -117,8 +118,9 @@ public class TicketRestController {
 		}
 	}
 
-	// lipun myynti
-	@GetMapping("/{id}/transaction") // http://localhost:8080/api/tickets/1/transaction
+	// Palauttaa transactionin id perusteella
+	// http://localhost:8080/api/tickets/1/transaction
+	@GetMapping("/{id}/transaction")
 	public ResponseEntity<Transaction> getTransaction(@PathVariable long id) {
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
 		if (ticketOptional.isPresent()) {
@@ -134,21 +136,8 @@ public class TicketRestController {
 		}
 	}
 
-	// uusi lippu
-	@PostMapping // http://localhost:8080/api/tickets/
-	public ResponseEntity<Object> createTicket(@Valid @RequestBody Ticket newTicket) {
-		ResponseEntity<Object> validationResponse = ticketService.validateTicket(newTicket);
-
-		if (validationResponse.getStatusCode() != HttpStatus.OK) {
-			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
-		}
-
-		Ticket savedTicket = ticketRepository.save(newTicket);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicket);
-	}
-
-	// muokkaa lippua
-	@PutMapping("/{id}") // http://localhost:8080/api/tickets/1
+	// mMokkaa lippua id perusteella http://localhost:8080/api/tickets/1
+	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateTicket(@Valid @RequestBody Ticket editedTicket, @PathVariable Long id) {
 		if (!ticketRepository.existsById(id)) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id);
@@ -166,8 +155,21 @@ public class TicketRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedTicket);
 	}
 
-	// poista lippu
-	@DeleteMapping("/{id}") // http://localhost:8080/api/tickets/1
+	// Uusi lippu http://localhost:8080/api/tickets/
+	@PostMapping
+	public ResponseEntity<Object> createTicket(@Valid @RequestBody Ticket newTicket) {
+		ResponseEntity<Object> validationResponse = ticketService.validateTicket(newTicket);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
+
+		Ticket savedTicket = ticketRepository.save(newTicket);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicket);
+	}
+
+	// Poista lippu id perusteella http://localhost:8080/api/tickets/1
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteTicket(@PathVariable Long id) { // Hae lippu tietokannasta ja palauta vastaus
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);// Palauttaa lipun Id:N perusteella
 		if (ticketOptional.isPresent()) {
@@ -186,13 +188,9 @@ public class TicketRestController {
 			transactionRepository.saveAll(transactions);
 
 			ticketRepository.deleteById(id); // Poistaa lipun Id:n perusteella
-			System.out.println("200 - lipun poisto ok - TicketRestController");
 			return ResponseEntity.ok(ticket); // HTTP 200 OK, palauttaa poistetun lipun tiedot
 		} else {
-			System.out.println("404 - Ei löytynyt poistettavaa - TicketRestController");
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tickettiä ei löytynyt id:llä " + id); // HTTP 404
-																											// Not Found
-
+			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 

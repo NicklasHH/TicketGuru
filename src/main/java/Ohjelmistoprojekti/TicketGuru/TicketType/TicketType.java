@@ -30,7 +30,7 @@ public class TicketType {
 	private Long ticketTypeId;
 
 	@Column(name = "ticket_type", nullable = false)
-	@NotNull(message = "Tickettype cannot be null")
+	@NotNull(message = "Tyyppi ei voi olla tyhjä")
 	@Size(min = 1, max = 50)
 	private String ticketType;
 
@@ -43,7 +43,7 @@ public class TicketType {
 	private Event event;
 
 	@Column(name = "price", nullable = false)
-	@NotNull(message = "Price cannot be null")
+	@NotNull(message = "Hinta ei voi olla tyhjä")
 	@Digits(integer = 10, fraction = 2)
 	private double price;
 

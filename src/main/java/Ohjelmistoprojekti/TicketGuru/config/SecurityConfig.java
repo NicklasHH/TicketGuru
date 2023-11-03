@@ -25,16 +25,18 @@ public class SecurityConfig {
 	// Määrittää tietoturvasuodattimen asetukset
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests((authorize) -> authorize
-	            .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-                .requestMatchers("/api/postalcodes", "/").permitAll() // Salli kaikille pääsy tähän reittiin
+		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers(new AntPathRequestMatcher("/h2-console/**"))
+				.permitAll().requestMatchers("/api/postalcodes", "/").permitAll() // Salli kaikille pääsy tähän reittiin
 //				.anyRequest().permitAll()
-				.anyRequest().authenticated()
-				) 
+				.anyRequest().authenticated())
 
 				.csrf(AbstractHttpConfigurer::disable) // Poistaa käytöstä CSRF-suojauksen
 				.httpBasic(Customizer.withDefaults()) // Konfiguroi oletusarvoisen HTTP Basic -autentikoinnin
-				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())); // Sallii H2-Consoleen pääsyn ja asettaa kehysasetukset
+				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())); // Sallii
+																										// H2-Consoleen
+																										// pääsyn ja
+																										// asettaa
+																										// kehysasetukset
 
 		return http.build();
 	}

@@ -76,7 +76,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen päivämäärän http://localhost:8080/api/events/1/eventDate
+	// Palauttaa tapahtuman id:n perusteella sen päivämäärän
+	// http://localhost:8080/api/events/1/eventDate
 	@GetMapping("/{id}/eventDate")
 	public ResponseEntity<Object> getEventDate(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
@@ -95,7 +96,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen kellonajan http://localhost:8080/api/events/1/eventTime
+	// Palauttaa tapahtuman id:n perusteella sen kellonajan
+	// http://localhost:8080/api/events/1/eventTime
 	@GetMapping("/{id}/eventTime")
 	public ResponseEntity<Object> getEventTime(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
@@ -114,7 +116,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen lippumäärän http://localhost:8080/api/events/1/ticketCount
+	// Palauttaa tapahtuman id:n perusteella sen lippumäärän
+	// http://localhost:8080/api/events/1/ticketCount
 	@GetMapping("/{id}/ticketCount")
 	public ResponseEntity<Object> getTicketCount(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
@@ -128,7 +131,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen lisätiedot http://localhost:8080/api/events/1/description
+	// Palauttaa tapahtuman id:n perusteella sen lisätiedot
+	// http://localhost:8080/api/events/1/description
 	@GetMapping("/{id}/description")
 	public ResponseEntity<Object> getDescription(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
@@ -142,7 +146,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen tapahtumapaikan http://localhost:8080/api/events/1/venue
+	// Palauttaa tapahtuman id:n perusteella sen tapahtumapaikan
+	// http://localhost:8080/api/events/1/venue
 	@GetMapping("/{id}/venue")
 	public ResponseEntity<Venue> getVenue(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);

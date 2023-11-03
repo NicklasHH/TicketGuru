@@ -65,7 +65,8 @@ public class AppUserRestController {
 		}
 	}
 
-	// Palauttaa appuserin id:n perusteella sen käyttäjätunnuksen http://localhost:8080/api/appusers/1/username
+	// Palauttaa appuserin id:n perusteella sen käyttäjätunnuksen
+	// http://localhost:8080/api/appusers/1/username
 	@GetMapping("/{id}/username")
 	public ResponseEntity<Object> getUsername(@PathVariable long id) {
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);
@@ -79,7 +80,8 @@ public class AppUserRestController {
 		}
 	}
 
-	// Palauttaa appuserin id:n perusteella sen salasanan http://localhost:8080/api/appusers/1/password
+	// Palauttaa appuserin id:n perusteella sen salasanan
+	// http://localhost:8080/api/appusers/1/password
 	@GetMapping("/{id}/password")
 	public ResponseEntity<Object> getPassword(@PathVariable long id) {
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);
@@ -93,7 +95,8 @@ public class AppUserRestController {
 		}
 	}
 
-	// Palauttaa appuserin id:n perusteella sen roolin http://localhost:8080/api/appusers/1/role
+	// Palauttaa appuserin id:n perusteella sen roolin
+	// http://localhost:8080/api/appusers/1/role
 	@GetMapping("/{id}/role")
 	public ResponseEntity<Role> getRole(@PathVariable long id) {
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);
@@ -155,7 +158,7 @@ public class AppUserRestController {
 	}
 
 	// Poista appuser id:n perusteella http://localhost:8080/api/appusers/1
-	@DeleteMapping("/{id}") 
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteAppUser(@PathVariable Long id) { // Hae appuser tietokannasta ja palauta vastaus
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);// Palauttaa appuserin Id:N perusteella
 		if (appUserOptional.isPresent()) {

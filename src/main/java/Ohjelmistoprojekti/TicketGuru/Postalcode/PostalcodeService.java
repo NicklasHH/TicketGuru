@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class PostalcodeService {
 
@@ -20,10 +19,10 @@ public class PostalcodeService {
 		this.postalcodeRepository = postalcodeRepository;
 	}
 
-
 	public ResponseEntity<Object> checkDuplicatePost(Postalcode newPostalcode) {
 		Optional<Postalcode> postalcodeOptional = postalcodeRepository.findByPostalcode(newPostalcode.getPostalcode());
-		List<Postalcode> duplicatePostalcodes = postalcodeOptional.map(Collections::singletonList).orElse(Collections.emptyList());
+		List<Postalcode> duplicatePostalcodes = postalcodeOptional.map(Collections::singletonList)
+				.orElse(Collections.emptyList());
 
 		for (Postalcode existinPostalcode : duplicatePostalcodes) {
 			if (existinPostalcode.getPostalcode() != null) {
@@ -41,10 +40,9 @@ public class PostalcodeService {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Postinumeron on oltava 5 numeroa.");
 		}
 
-		if (postalcode.getPostOffice().length()< 2) {
+		if (postalcode.getPostOffice().length() < 2) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Postitoimipaikan on oltava vähintään 2 kirjainta");
 		}
-
 
 		return ResponseEntity.ok(null); // Kaikki tarkistukset menivät läpi
 	}

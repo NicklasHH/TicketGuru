@@ -62,8 +62,9 @@ public class RoleRestController {
 		}
 	}
 
-	// Palauttaa roolin id:n perusteella roolin nimen http://localhost:8080/api/roles/1/rolename
-	@GetMapping("/{id}/rolename") 
+	// Palauttaa roolin id:n perusteella roolin nimen
+	// http://localhost:8080/api/roles/1/rolename
+	@GetMapping("/{id}/rolename")
 	public ResponseEntity<Object> getRole(@PathVariable long id) {
 		Optional<Role> roleOptional = roleRepository.findById(id);
 		if (roleOptional.isPresent()) {

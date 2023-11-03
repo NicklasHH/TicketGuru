@@ -43,7 +43,7 @@ public class VenueRestController {
 	private EventRepository eventRepository;
 
 	// Hae kaikki tapahtumapaikat GET http://localhost:8080/api/venues
-	@GetMapping 
+	@GetMapping
 	ResponseEntity<List<Venue>> all() {
 		List<Venue> venues = venueRepository.findAll(); // Hae kaikki tapahtumapaikat tietokannasta
 		if (!venues.isEmpty()) {
@@ -53,8 +53,9 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa tapahtumapaikan id:n perusteella GET http://localhost:8080/api/venues/1
-	@GetMapping("/{id}") 
+	// Palauttaa tapahtumapaikan id:n perusteella GET
+	// http://localhost:8080/api/venues/1
+	@GetMapping("/{id}")
 	public ResponseEntity<Venue> getVenue(@PathVariable Long id) {
 		Optional<Venue> venue = venueRepository.findById(id); // Hae venue ID:n perusteella
 		if (venue.isPresent()) {
@@ -64,8 +65,9 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa tapahtumapaikan postinumeron id:n perusteella GET http://localhost:8080/api/venues/1/postalcode
-	@GetMapping("/{id}/postalcode") 
+	// Palauttaa tapahtumapaikan postinumeron id:n perusteella GET
+	// http://localhost:8080/api/venues/1/postalcode
+	@GetMapping("/{id}/postalcode")
 	public ResponseEntity<Postalcode> getPostalcode(@PathVariable long id) {
 		Optional<Venue> venueOptional = venueRepository.findById(id);
 		if (venueOptional.isPresent()) {
@@ -80,8 +82,9 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa tapahtumapaikan id:n perusteella GET http://localhost:8080/api/venues/1/place
-	@GetMapping("/{id}/place") 
+	// Palauttaa tapahtumapaikan id:n perusteella GET
+	// http://localhost:8080/api/venues/1/place
+	@GetMapping("/{id}/place")
 	public ResponseEntity<Object> getPlace(@PathVariable long id) {
 		Optional<Venue> venueOptional = venueRepository.findById(id);
 		if (venueOptional.isPresent()) {
@@ -94,7 +97,8 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa katuosoitteen id:n perusteella GET http://localhost:8080/api/venues/1/streetaddress
+	// Palauttaa katuosoitteen id:n perusteella GET
+	// http://localhost:8080/api/venues/1/streetaddress
 	@GetMapping("/{id}/streetaddress")
 	public ResponseEntity<Object> getstreetaddress(@PathVariable long id) {
 		Optional<Venue> venueOptional = venueRepository.findById(id);
@@ -108,8 +112,9 @@ public class VenueRestController {
 		}
 	}
 
-	// Muokataan olemassa olevaa tapahtumapaikkaa id:n perusteella PUT http://localhost:8080/api/venues/id
-	@PutMapping("/{id}") 
+	// Muokataan olemassa olevaa tapahtumapaikkaa id:n perusteella PUT
+	// http://localhost:8080/api/venues/id
+	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateVenue(@Valid @RequestBody Venue editedVenue, @PathVariable long id) {
 		if (!venueRepository.existsById(id)) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tapahtumapaikkaa ei löytynyt id:llä " + id);
@@ -133,7 +138,7 @@ public class VenueRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedVenue);
 	}
 
-	// Lisätään uusi tapahtumapaikka  POST http://localhost:8080/api/venues
+	// Lisätään uusi tapahtumapaikka POST http://localhost:8080/api/venues
 	@PostMapping
 	public ResponseEntity<Object> createVenue(@Valid @RequestBody Venue newVenue) {
 		ResponseEntity<Object> validationResponse = venueService.validateVenue(newVenue);
@@ -152,9 +157,11 @@ public class VenueRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedVenue);
 	}
 
-	// Poista tapahtumapaikka id:n perusteella DELETE http://localhost:8080/api/venues/1
-	@DeleteMapping("/{id}") 
-	public ResponseEntity<?> deleteVenue(@PathVariable Long id) { // Hae tapahtumapaikka tietokannasta ja palauta vastaus
+	// Poista tapahtumapaikka id:n perusteella DELETE
+	// http://localhost:8080/api/venues/1
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteVenue(@PathVariable Long id) { // Hae tapahtumapaikka tietokannasta ja palauta
+																	// vastaus
 		Optional<Venue> venueOptional = venueRepository.findById(id);// Palauttaa tapahtumapaikan id:n perusteella
 		if (venueOptional.isPresent()) {
 			Venue venue = venueOptional.get();

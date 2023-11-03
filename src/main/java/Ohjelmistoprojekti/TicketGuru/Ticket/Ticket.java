@@ -34,7 +34,7 @@ public class Ticket {
 	@JoinColumn(name = "transaction_id")
 	private Transaction transaction;
 
-	@NotNull(message = "isChecked cannot be null, true or false expected")
+	@NotNull(message = "True tai False vaihtoehdot")
 	@Column(name = "is_checked")
 	private Boolean isChecked;
 
