@@ -41,12 +41,11 @@ Provide below required values.
 **Content example** :
 ```json
 {
-    "transactionId": 22,
+    "transactionId": 12,
     "amount": 123456.8,
     "transactionOk": true,
-    "transactionDate": "2023-10-08",
-    "transactionTime": "22:19:44",
-    "timestamp": "Last time edited: 2023-10-08 22:19:44"
+    "transactionDate": "2023-11-03",
+    "transactionTime": "19:09:04"
 }
 ```
 
@@ -67,26 +66,7 @@ Provide below required values.
 
 **Message** : `JSON parse error: Cannot deserialize value of type `double` from String \"has to be number\": not a valid `double` value (as String to convert)`  
 
-**Code** : `400 Bad Request`  
 
-**Data example**
-
-```json
-{
-	"amount": 1234,
-    "transactionOk" : "false"
-    
-}
-```
-
-
-**Message** :  
-
-```json
-{
-    "transactionOk": "must be true"
-}
-```
 
 
 
