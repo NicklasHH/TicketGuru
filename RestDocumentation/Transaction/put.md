@@ -46,12 +46,11 @@ Provide ID and values to modify.
 
 ```json
 {
-    "transactionId": 4,
+    "transactionId": 8,
     "amount": 156.0,
     "transactionOk": true,
     "transactionDate": "2023-10-08",
-    "transactionTime": "21:22:39",
-    "timestamp": "Last time edited: 2023-10-08 22:12:35"
+    "transactionTime": "21:22:39"
 }
 ```
 
@@ -82,8 +81,7 @@ Unexpected input:
 ```json
 {
     "transactionTime": "size must be between 8 and 8",
-    "transactionDate": "size must be between 10 and 10",
-    "transactionOk": "must be true"
+    "transactionDate": "size must be between 10 and 10"
 }
 ```
 
