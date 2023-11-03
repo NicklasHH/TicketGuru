@@ -27,17 +27,46 @@ Show information about all tickettypes.
     {
         "ticketTypeId": 1,
         "ticketType": "Lapsi",
+        "event": {
+            "eventId": 2,
+            "eventName": "Tapahtuma 2",
+            "description": "Lisätiedoton",
+            "eventDate": "2023-09-19",
+            "eventTime": "15:00:00",
+            "ticketCount": 200,
+            "venue": {
+                "venueId": 1,
+                "place": "Jäähalli",
+                "streetAddress": "Jäähallintie 1",
+                "postalcode": {
+                    "postalcode": "00100",
+                    "postOffice": "Helsinki"
+                }
+            }
+        },
         "price": 5.0
     },
     {
         "ticketTypeId": 2,
         "ticketType": "Eläkeläinen",
+        "event": {
+            "eventId": 2,
+            "eventName": "Tapahtuma 2",
+            "description": "Lisätiedoton",
+            "eventDate": "2023-09-19",
+            "eventTime": "15:00:00",
+            "ticketCount": 200,
+            "venue": {
+                "venueId": 1,
+                "place": "Jäähalli",
+                "streetAddress": "Jäähallintie 1",
+                "postalcode": {
+                    "postalcode": "00100",
+                    "postOffice": "Helsinki"
+                }
+            }
+        },
         "price": 15.0
-    },
-    {
-        "ticketTypeId": 3,
-        "ticketType": "Varusmies",
-        "price": 10.0
     }
 ]
 ```
@@ -82,11 +111,26 @@ Show information about tickettype based on its unique identifier `id`.
 
 ```json
 {
-    {
-        "ticketTypeId": 1,
-        "ticketType": "Lapsi",
-        "price": 5.0
-    }
+    "ticketTypeId": 1,
+    "ticketType": "Lapsi",
+    "event": {
+        "eventId": 2,
+        "eventName": "Tapahtuma 2",
+        "description": "Lisätiedoton",
+        "eventDate": "2023-09-19",
+        "eventTime": "15:00:00",
+        "ticketCount": 200,
+        "venue": {
+            "venueId": 1,
+            "place": "Jäähalli",
+            "streetAddress": "Jäähallintie 1",
+            "postalcode": {
+                "postalcode": "00100",
+                "postOffice": "Helsinki"
+            }
+        }
+    },
+    "price": 5.0
 }
 ```
 
@@ -106,7 +150,7 @@ ___
 # Show Specific appuser Details
 
 **Possible endpoints** :  
-`/api/appusers/{id}/price`<br> 
+`/api/tickettypes/{id}/price`<br> 
 
 **Method** : `GET`
 
