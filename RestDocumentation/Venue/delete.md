@@ -2,15 +2,15 @@
 
 delete single venue based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/venues/{id}`
+**Endpoint** : `/api/venues/{id}`
 
 **Method** : `DELETE`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 

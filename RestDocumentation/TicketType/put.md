@@ -2,15 +2,15 @@
 
 Edit a tickettype.
 
-**URL** : `http://localhost:8080/api/tickettypes/{id}`
+**Endpoint** : `/api/tickettypes/{id}`
 
 **Method** : `PUT`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : None 
+**Authority required** : None
 
 **Data constraints**
 

@@ -2,15 +2,15 @@
 
 Create an Venue.
 
-**URL** : `http://localhost:8080/api/venues`
+**Endpoint** : `/api/venues`
 
 **Method** : `POST`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : None
+**Authority required** : None
 
 **Data constraints**
 

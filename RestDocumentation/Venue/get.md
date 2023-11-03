@@ -2,15 +2,15 @@
 
 Show information about all Venues.
 
-**URL** : `http://localhost:8080/api/venues`
+**Endpoint** : `/api/venues`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -72,15 +72,15 @@ This example response provides information about all venues. In the case of no v
 
 Show information about venue based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/venues/{id}`
+**Endpoint** : `/api/venues/{id}`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -121,17 +121,17 @@ This endpoint provides information about a single venue based on its unique iden
 # Show Specific venue Details
 
 **Possible endpoints** :  
-`http://localhost:8080/api/venues/{id}/postalcode`  
-`http://localhost:8080/api/venues/{id}/place`  
-`http://localhost:8080/api/venues/{id}/streetaddress`<br>
+`/api/venues/{id}/postalcode`  
+`/api/venues/{id}/place`  
+`/api/venues/{id}/streetaddress`<br>
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -141,7 +141,7 @@ This endpoint provides information about a single venue based on its unique iden
 
 **Code** : `200 OK`
 
-**Content example from** : `http://localhost:8080/api/venues/1/place`
+**Content example from** : `/api/venues/1/place`
 
 ```json
 {

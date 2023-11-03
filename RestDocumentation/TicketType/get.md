@@ -2,15 +2,15 @@
 
 Show information about all tickettypes.
 
-**URL** : `http://localhost:8080/api/tickettypes`
+**Endpoint** : `/api/tickettypes`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -60,15 +60,15 @@ ___
 
 Show information about tickettype based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/tickettypes/{id}`
+**Endpoint** : `/api/tickettypes/{id}`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -106,15 +106,15 @@ ___
 # Show Specific appuser Details
 
 **Possible endpoints** :  
-`http://localhost:8080/api/appusers/{id}/price`<br> 
+`/api/appusers/{id}/price`<br> 
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 

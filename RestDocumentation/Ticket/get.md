@@ -2,15 +2,15 @@
 
 Show information about all tickets.
 
-**URL** : `http://localhost:8080/api/tickets`
+**Endpoint** : `/api/tickets`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -101,7 +101,7 @@ Show information about all tickets.
 
 Show information about ticket based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/tickets/{id}`
+**Endpoint** : `/api/tickets/{id}`
 
 **Method** : `GET`
 
@@ -166,10 +166,10 @@ Show information about ticket based on its unique identifier `id`.
 # Show Specific ticket Details
 
 **Possible endpoints** :  
-`http://localhost:8080/api/tickets/{id}/ticketType`<br> 
-`http://localhost:8080/api/tickets/{id}/event`<br> 
-`http://localhost:8080/api/tickets/{id}/transaction`<br> 
-`http://localhost:8080/api/tickets/{id}/isChecked`<br> 
+`/api/tickets/{id}/ticketType`<br> 
+`/api/tickets/{id}/event`<br> 
+`/api/tickets/{id}/transaction`<br> 
+`/api/tickets/{id}/isChecked`<br> 
 
 **Method** : `GET`
 
@@ -187,7 +187,7 @@ Show information about ticket based on its unique identifier `id`.
 
 **Code** : `200 OK`
 
-**Content example from** : `http://localhost:8080/api/tickets/1/ticketType` 
+**Content example from** : `/api/tickets/1/ticketType` 
 
 ```json
 {

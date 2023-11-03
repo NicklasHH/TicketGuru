@@ -2,15 +2,15 @@
 
 Create an Ticket.
 
-**URL** : `http://localhost:8080/api/tickets`
+**Endpoint** : `/api/tickets`
 
 **Method** : `POST`
 
 **Content-Type** : `application/json`
 
-**Auth required** : Yes
+**Authentication required** : YES
 
-**Permissions required** : None 
+**Authority required** : None
 
 **Data constraints**
 

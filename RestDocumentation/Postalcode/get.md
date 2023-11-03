@@ -8,9 +8,9 @@ Show information about all postalcodes.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -47,15 +47,15 @@ Show information about all postalcodes.
 
 Show information about postalcode based on its unique identifier `string`.
 
-**URL** : `http://localhost:8080/api/postalcodes/{postalcode}`
+**Endpoint** : `/api/postalcodes/{postalcode}`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 

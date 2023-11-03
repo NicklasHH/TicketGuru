@@ -2,15 +2,15 @@
 
 delete single ticket based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/tickets/{id}`
+**Endpoint** : `/api/tickets/{id}`
 
 **Method** : `DELETE`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 

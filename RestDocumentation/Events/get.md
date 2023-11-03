@@ -8,9 +8,9 @@ Show information about all events.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -67,9 +67,9 @@ Show information about single event based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -109,20 +109,20 @@ This endpoint provides information about a single event based on its unique iden
 # Show Specific Event Details
 
 **Possible endpoints** :  
-`http://localhost:8080/api/events/{id}/eventName`  
-`http://localhost:8080/api/events/{id}/eventDate`  
-`http://localhost:8080/api/events/{id}/eventTime`<br>
-`http://localhost:8080/api/events/{id}/ticketCount`<br>
-`http://localhost:8080/api/events/{id}/description`  
-`http://localhost:8080/api/events/{id}/venue`
+`/api/events/{id}/eventName`  
+`/api/events/{id}/eventDate`  
+`/api/events/{id}/eventTime`<br>
+`/api/events/{id}/ticketCount`<br>
+`/api/events/{id}/description`  
+`/api/events/{id}/venue`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : NO
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -132,7 +132,7 @@ This endpoint provides information about a single event based on its unique iden
 
 **Code** : `200 OK`
 
-**Content example from** : `http://localhost:8080/api/events/{id}/venue`
+**Content example from** : `/api/events/1/venue`
 
 ```json
 {

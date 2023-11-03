@@ -2,15 +2,15 @@
 
 Create a tickettype.
 
-**URL** : `localhost:8080/api/tickettypes`
+**Endpoint** : `/api/tickettypes`
 
 **Method** : `POST`
 
 **Content-Type** : `application/json`
 
-**Auth required** : Yes
+**Authentication required** : YES
 
-**Permissions required** : None
+**Authority required** : None
 
 **Data constraints**
 

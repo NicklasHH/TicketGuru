@@ -2,15 +2,15 @@
 
 Edit an venue.
 
-**URL** : `http://localhost:8080/api/venues/{id}`
+**Endpoint** : `/api/venues/{id}`
 
 **Method** : `PUT`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : None
+**Authority required** : None
 
 **Data constraints**
 

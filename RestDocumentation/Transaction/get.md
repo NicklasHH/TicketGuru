@@ -2,15 +2,15 @@
 
 Show information about all transactions.
 
-**URL** : `http://localhost:8080/api/transactions`
+**Endpoint** : `/api/transactions`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -70,15 +70,15 @@ ___
 
 Show information about sales transaction based on its unique identifier `transactionId`.
 
-**URL** : `http://localhost:8080/api/transactions/{transactionId}`
+**Endpoint** : `/api/transactions/{transactionId}`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 

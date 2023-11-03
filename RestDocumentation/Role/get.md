@@ -57,15 +57,15 @@ This example response provides information about all roles. In the case of no ro
 
 Show information about role based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/roles/{id}`
+**Endpoint** : `/api/roles/{id}`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -101,15 +101,15 @@ This endpoint provides information about a single role based on its unique ident
 # Show Specific role Details
 
 **Possible endpoints** :  
-`http://localhost:8080/api/roles/{id}/rolename`
+`/api/roles/{id}/rolename`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -119,7 +119,7 @@ This endpoint provides information about a single role based on its unique ident
 
 **Code** : `200 OK`
 
-**Content example from** : `http://localhost:8080/api/roles/1/rolename`
+**Content example from** : `/api/roles/1/rolename`
 
 ```json
 {

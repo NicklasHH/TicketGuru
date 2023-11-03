@@ -2,15 +2,15 @@
 
 Edit sales transaction.
 
-**URL** : `http://localhost:8080/api/transactions/{transactionId}`
+**Endpoint** : `/api/transactions/{transactionId}`
 
 **Method** : `PUT`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : None 
+**Authority required** : None
 
 **Data constraints**
 
