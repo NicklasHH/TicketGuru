@@ -18,7 +18,6 @@ Provide ID and values to modify.
 
 ```json
 {
-    "ticketId": "long id",
     "event": {"eventId": "eventId"},
     "ticketType": {"ticketTypeId": "ticketTypeId"},
     "transaction": {"transactionId": "transactionId"},
@@ -30,10 +29,9 @@ Provide ID and values to modify.
 
 ```json
 {
-    "ticketId": 1,
     "event": {"eventId": 1},
     "ticketType": {"ticketTypeId": 1},
-    "transaction": {"transactionId": 1},
+    "transaction": {"transactionId": 2},
     "isChecked": true
 }
 ```
@@ -44,36 +42,52 @@ Provide ID and values to modify.
 
 ```json
 {
-    "ticketId": 1,
+    "ticketId": 13,
     "event": {
         "eventId": 1,
-        "eventName": "eventin nimi 1",
-        "description": "lisätiedot",
-        "eventDate": "18.9.2029",
-        "eventTime": "12.00",
+        "eventName": "Tapahtuma 1",
+        "description": "Lisätietoja",
+        "eventDate": "2023-09-18",
+        "eventTime": "12:00:00",
         "ticketCount": 100,
         "venue": {
-            "venueId": 1,
-            "place": "Jäähalli",
-            "streetAddress": "jäähallintie 1",
+            "venueId": 2,
+            "place": "Vesihalli",
+            "streetAddress": "Vesihallintie 2",
             "postalcode": {
-                "postalcode": "00100",
-                "postOffice": "Helsinki"
+                "postalcode": "00200",
+                "postOffice": "Espoo"
             }
         }
     },
     "ticketType": {
         "ticketTypeId": 1,
-        "ticketType": "Edited Lapsi",
-        "price": 6.0
+        "ticketType": "Lapsi",
+        "event": {
+            "eventId": 2,
+            "eventName": "Tapahtuma 2",
+            "description": "Lisätiedoton",
+            "eventDate": "2023-09-19",
+            "eventTime": "15:00:00",
+            "ticketCount": 200,
+            "venue": {
+                "venueId": 1,
+                "place": "Jäähalli",
+                "streetAddress": "Jäähallintie 1",
+                "postalcode": {
+                    "postalcode": "00100",
+                    "postOffice": "Helsinki"
+                }
+            }
+        },
+        "price": 5.0
     },
     "transaction": {
-        "transactionId": 1,
-        "amount": 1500.0,
+        "transactionId": 2,
+        "amount": 25.0,
         "transactionOk": true,
-        "transactionDate": "2023-10-09",
-        "transactionTime": "03:25:29",
-        "timestamp": "Last time edited: 2023-10-09 03:25:29"
+        "transactionDate": "2023-10-10",
+        "transactionTime": "10:10:10"
     },
     "isChecked": true
 }
@@ -85,26 +99,28 @@ Id does not exist:
 
 **Code** : `404 Not Found`  
 
-**Message** : `Tickettiä ei löytynyt id:llä 8.`  
+**Message** : `Tickettiä ei löytynyt id:llä 13000`  
 
 Unexpected input:  
 ```json
 {
-    "ticketId": 1,
-    "event": {"eventId": 1},
-    "ticketType": {"ticketTypeId": 1},
-    "transaction": null,
+    "event": {"eventId": 120023},
+    "ticketType": {"ticketTypeId": 12345},
+    "transaction": {"transactionId": 12345},
     "isChecked": null
 }
 ```
 
-**Code** : `400 Bad Request`  
+**Code** : `409 Conflict`  
 
 **Message** :  
 
 ```json
 {
-    "isChecked": "isChecked cannot be null, true or false expected",
-    "transaction": "must not be null"
+    "event": "Event ID:tä ei löytynyt",
+    "ticketType": "Ticket Type ID:tä ei löytynyt",
+    "transaction": "Transaction ID:tä ei löytynyt",
+    "isChecked": "True tai False vaihtoehdot"
+    
 }
 ```
