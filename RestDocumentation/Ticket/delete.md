@@ -26,32 +26,51 @@ delete single ticket based on its unique identifier `id`.
     "ticketId": 1,
     "event": {
         "eventId": 1,
-        "eventName": "eventin nimi 1",
-        "description": "lisätiedot",
-        "eventDate": "18.9.2029",
-        "eventTime": "12.00",
+        "eventName": "Tapahtuma 1",
+        "description": "Lisätietoja",
+        "eventDate": "2023-09-18",
+        "eventTime": "12:00:00",
         "ticketCount": 100,
         "venue": {
-            "venueId": 1,
-            "place": "a",
-            "streetAddress": "b",
+            "venueId": 2,
+            "place": "Vesihalli",
+            "streetAddress": "Vesihallintie 2",
             "postalcode": {
-                "postalcode": "00100",
-                "postOffice": "Helsinki"
+                "postalcode": "00200",
+                "postOffice": "Espoo"
             }
         }
     },
     "ticketType": {
         "ticketTypeId": 1,
         "ticketType": "Lapsi",
+        "event": {
+            "eventId": 2,
+            "eventName": "Tapahtuma 2",
+            "description": "Lisätiedoton",
+            "eventDate": "2023-09-19",
+            "eventTime": "15:00:00",
+            "ticketCount": 200,
+            "venue": {
+                "venueId": 1,
+                "place": "Jäähalli",
+                "streetAddress": "Jäähallintie 1",
+                "postalcode": {
+                    "postalcode": "00100",
+                    "postOffice": "Helsinki"
+                }
+            }
+        },
         "price": 5.0
     },
     "transaction": {
-        "transactionId": 1,
-        "amount": 15.0,
-        "transactionDate": "20.9.2023"
+        "transactionId": 2,
+        "amount": 25.0,
+        "transactionOk": true,
+        "transactionDate": "2023-10-10",
+        "transactionTime": "10:10:10"
     },
-    "isChecked": null
+    "isChecked": true
 }
 ```
 
