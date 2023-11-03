@@ -19,7 +19,7 @@ import jakarta.validation.constraints.Size;
 public class Postalcode {
 	@Id
 	@Column(name = "postalcode", nullable = false)
-	@NotNull(message = "Postalcode cannot be null")
+	@NotNull(message = "Postinumero ei voi olla tyhjä")
 	@Size(min = 5, max = 5)
 	private String postalcode;
 

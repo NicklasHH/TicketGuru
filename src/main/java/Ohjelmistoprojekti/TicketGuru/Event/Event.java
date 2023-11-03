@@ -37,13 +37,12 @@ public class Event {
 	private List<TicketType> ticketTypes;
 
 	@Column(name = "event_name", nullable = false)
-	@NotEmpty(message = "Event name cant be null")
+	@NotEmpty(message = "Eventin nimi ei voi olla thjä")
 	@Size(min = 1, max = 100)
 	private String eventName;
 
 	@Column(name = "description")
-	@NotEmpty(message = "Description is mandatory")
-	@Size(min = 1, max = 500, message = "Event name should be between 1 and 100 characters")
+	@Size(min = 1, max = 500, message = "Lisätietojen merkkimäärä 1-500")
 	private String description;
 
 	@Column(name = "event_date", nullable = false)

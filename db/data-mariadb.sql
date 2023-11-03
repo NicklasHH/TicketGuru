@@ -27,7 +27,7 @@ CREATE TABLE roles (
 CREATE TABLE app_users (
   user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(25) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   role_id BIGINT,
   FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
@@ -57,7 +57,7 @@ CREATE TABLE events (
 );
 
 CREATE TABLE ticket_types (
-  ticket_type_id VARCHAR AUTO_INCREMENT PRIMARY KEY,
+  ticket_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   ticket_type VARCHAR(50) NOT NULL,
   event_id BIGINT ,
   price DECIMAL(10, 2) NOT NULL,

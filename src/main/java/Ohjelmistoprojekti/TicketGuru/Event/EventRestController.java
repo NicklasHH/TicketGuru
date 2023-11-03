@@ -39,8 +39,8 @@ public class EventRestController {
 	@Autowired
 	private TicketTypeRepository ticketTypeRepository;
 
-	// Palauttaa kaikki tapahtumat tietokannasta.
-	@GetMapping // http://localhost:8080/api/events
+	// Palauttaa kaikki tapahtumat tietokannasta http://localhost:8080/api/events
+	@GetMapping
 	ResponseEntity<List<Event>> all() {
 		List<Event> events = eventRepository.findAll(); // Hae kaikki tapahtumat tietokannasta
 		if (!events.isEmpty()) {
@@ -50,8 +50,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id perusteella
-	@GetMapping("/{id}") // http://localhost:8080/api/events/1
+	// Palauttaa tapahtuman id perusteella http://localhost:8080/api/events/1
+	@GetMapping("/{id}")
 	public ResponseEntity<Event> getEvent(@PathVariable Long id) {
 		Optional<Event> event = eventRepository.findById(id); // Hae tapahtuma ID:n perusteella
 		if (event.isPresent()) {
@@ -62,7 +62,8 @@ public class EventRestController {
 	}
 
 	// Palauttaa tapahtuman id:n perusteella sen nimen
-	@GetMapping("/{id}/eventName") // http://localhost:8080/api/events/1/eventName
+	// http://localhost:8080/api/events/1/eventName
+	@GetMapping("/{id}/eventName")
 	public ResponseEntity<Object> getEventName(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
@@ -75,8 +76,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen päivämäärän
-	@GetMapping("/{id}/eventDate") // http://localhost:8080/api/events/1/eventDate
+	// Palauttaa tapahtuman id:n perusteella sen päivämäärän http://localhost:8080/api/events/1/eventDate
+	@GetMapping("/{id}/eventDate")
 	public ResponseEntity<Object> getEventDate(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
@@ -87,15 +88,15 @@ public class EventRestController {
 				jsonResponse.put("eventDate", eventDate);
 				return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
 			} else {
-				return ResponseEntity.ok("Event date not available"); // HTTP 200 OK
+				return ResponseEntity.ok("eventDate ei ole saatavilla"); // HTTP 200 OK
 			}
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen kellonajan
-	@GetMapping("/{id}/eventTime") // http://localhost:8080/api/events/1/eventTime
+	// Palauttaa tapahtuman id:n perusteella sen kellonajan http://localhost:8080/api/events/1/eventTime
+	@GetMapping("/{id}/eventTime")
 	public ResponseEntity<Object> getEventTime(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
@@ -106,15 +107,15 @@ public class EventRestController {
 				jsonResponse.put("eventTime", eventTime);
 				return ResponseEntity.ok(jsonResponse); // HTTP 200 OK
 			} else {
-				return ResponseEntity.ok("Event time not available"); // HTTP 200 OK
+				return ResponseEntity.ok("eventTime ei ole saatavilla"); // HTTP 200 OK
 			}
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen lippumäärän
-	@GetMapping("/{id}/ticketCount") // http://localhost:8080/api/events/1/ticketCount
+	// Palauttaa tapahtuman id:n perusteella sen lippumäärän http://localhost:8080/api/events/1/ticketCount
+	@GetMapping("/{id}/ticketCount")
 	public ResponseEntity<Object> getTicketCount(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
@@ -127,8 +128,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen lisätiedot
-	@GetMapping("/{id}/description") // http://localhost:8080/api/events/1/description
+	// Palauttaa tapahtuman id:n perusteella sen lisätiedot http://localhost:8080/api/events/1/description
+	@GetMapping("/{id}/description")
 	public ResponseEntity<Object> getDescription(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
@@ -141,8 +142,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id:n perusteella sen tapahtumapaikan
-	@GetMapping("/{id}/venue") // http://localhost:8080/api/events/1/venue
+	// Palauttaa tapahtuman id:n perusteella sen tapahtumapaikan http://localhost:8080/api/events/1/venue
+	@GetMapping("/{id}/venue")
 	public ResponseEntity<Venue> getVenue(@PathVariable long id) {
 		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
@@ -157,21 +158,8 @@ public class EventRestController {
 		}
 	}
 
-	// lisätään uusi tapahtuma
-	@PostMapping // http://localhost:8080/api/events
-	public ResponseEntity<Object> createEvent(@Valid @RequestBody Event newEvent) {
-		ResponseEntity<Object> validationResponse = eventService.validateEvent(newEvent);
-
-		if (validationResponse.getStatusCode() != HttpStatus.OK) {
-			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
-		}
-
-		Event savedEvent = eventRepository.save(newEvent);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedEvent);
-	}
-
-	// muokataan olemassa olevaa tapahtumaa
-	@PutMapping("/{id}") // http://localhost:8080/api/events/id
+	// muokataan olemassa olevaa tapahtumaa http://localhost:8080/api/events/id
+	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateEvent(@Valid @RequestBody Event editedEvent, @PathVariable Long id) {
 		if (!eventRepository.existsById(id)) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Eventtiä ei löytynyt id:llä " + id);
@@ -180,7 +168,7 @@ public class EventRestController {
 		ResponseEntity<Object> validationResponse = eventService.validateEvent(editedEvent);
 
 		if (validationResponse.getStatusCode() != HttpStatus.OK) {
-			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+			return validationResponse;
 		}
 
 		editedEvent.setEventId(id);
@@ -189,9 +177,23 @@ public class EventRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedEvent);
 	}
 
-	// Poistaa tapahtuman id:n perusteella
-	@DeleteMapping("/{id}") // http://localhost:8080/api/events/1
+	// lisätään uusi tapahtuma http://localhost:8080/api/events
+	@PostMapping
+	public ResponseEntity<Object> createEvent(@Valid @RequestBody Event newEvent) {
+		ResponseEntity<Object> validationResponse = eventService.validateEvent(newEvent);
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse;
+		}
+
+		Event savedEvent = eventRepository.save(newEvent);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedEvent);
+	}
+
+	// Poistaa tapahtuman id:n perusteella http://localhost:8080/api/events/1
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteEvent(@PathVariable Long id) {
+
 		Optional<Event> eventOptional = eventRepository.findById(id);
 		if (eventOptional.isPresent()) {
 			Event event = eventOptional.get();
@@ -210,7 +212,7 @@ public class EventRestController {
 			}
 			ticketTypeRepository.saveAll(ticketTypes);
 
-			eventRepository.deleteById(id); // Poista eventti
+			eventRepository.deleteById(id); // Poista eventti id:n perusteella
 			return ResponseEntity.ok(event);// HTTP 200 OK
 		} else {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found

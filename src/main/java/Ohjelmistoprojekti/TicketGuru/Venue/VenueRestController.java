@@ -154,8 +154,7 @@ public class VenueRestController {
 
 	// Poista tapahtumapaikka id:n perusteella DELETE http://localhost:8080/api/venues/1
 	@DeleteMapping("/{id}") 
-	public ResponseEntity<?> deleteVenue(@PathVariable Long id) { // Hae tapahtumapaikka tietokannasta ja palauta
-																	// vastaus
+	public ResponseEntity<?> deleteVenue(@PathVariable Long id) { // Hae tapahtumapaikka tietokannasta ja palauta vastaus
 		Optional<Venue> venueOptional = venueRepository.findById(id);// Palauttaa tapahtumapaikan id:n perusteella
 		if (venueOptional.isPresent()) {
 			Venue venue = venueOptional.get();

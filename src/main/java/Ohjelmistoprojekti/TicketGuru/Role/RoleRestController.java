@@ -51,7 +51,7 @@ public class RoleRestController {
 		}
 	}
 
-	// Palauttaa roolin id perusteella
+	// Palauttaa roolin id perusteella http://localhost:8080/api/roles/1
 	@GetMapping("/{id}")
 	public ResponseEntity<Role> getRole(@PathVariable Long id) {
 		Optional<Role> role = roleRepository.findById(id);
@@ -62,8 +62,8 @@ public class RoleRestController {
 		}
 	}
 
-	// Palauttaa roolin id:n perusteella roolin nimen
-	@GetMapping("/{id}/rolename") // http://localhost:8080/api/roles/1/rolename
+	// Palauttaa roolin id:n perusteella roolin nimen http://localhost:8080/api/roles/1/rolename
+	@GetMapping("/{id}/rolename") 
 	public ResponseEntity<Object> getRole(@PathVariable long id) {
 		Optional<Role> roleOptional = roleRepository.findById(id);
 		if (roleOptional.isPresent()) {
@@ -76,27 +76,8 @@ public class RoleRestController {
 		}
 	}
 
-	// lisätään uusi rooli
-	@PostMapping // http://localhost:8080/api/roles
-	public ResponseEntity<Object> createRole(@Valid @RequestBody Role newRole) {
-		ResponseEntity<Object> validationResponse = roleService.validateRole(newRole);
-
-		// Kutsu VenueService:n checkDuplicatePost-metodia
-		ResponseEntity<Object> checkDuplicate = roleService.checkDuplicatePost(newRole);
-		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
-			return checkDuplicate;
-		}
-
-		if (validationResponse.getStatusCode() != HttpStatus.OK) {
-			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
-		}
-
-		Role savedRole = roleRepository.save(newRole);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedRole);
-	}
-
-	// muokataan olemassa olevaa roolia
-	@PutMapping("/{id}") // http://localhost:8080/api/roles/id
+	// muokataan olemassa olevaa roolia http://localhost:8080/api/roles/id
+	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateRole(@Valid @RequestBody Role editedRole, @PathVariable Long id) {
 		if (!roleRepository.existsById(id)) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Roolia ei löytynyt id:llä " + id);
@@ -118,6 +99,25 @@ public class RoleRestController {
 		Role updatedRole = roleRepository.save(editedRole);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedRole);
+	}
+
+	// lisätään uusi rooli http://localhost:8080/api/roles
+	@PostMapping
+	public ResponseEntity<Object> createRole(@Valid @RequestBody Role newRole) {
+		ResponseEntity<Object> validationResponse = roleService.validateRole(newRole);
+
+		// Kutsu VenueService:n checkDuplicatePost-metodia
+		ResponseEntity<Object> checkDuplicate = roleService.checkDuplicatePost(newRole);
+		if (checkDuplicate.getStatusCode() != HttpStatus.OK) {
+			return checkDuplicate;
+		}
+
+		if (validationResponse.getStatusCode() != HttpStatus.OK) {
+			return validationResponse; // Palauta virhe, jos tarkistuksissa on ongelmia
+		}
+
+		Role savedRole = roleRepository.save(newRole);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedRole);
 	}
 
 	@DeleteMapping("/{id}") // http://localhost:8080/api/roles/1
