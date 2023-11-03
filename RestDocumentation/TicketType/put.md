@@ -19,16 +19,20 @@ Provide ID and values to modify.
 ```json
 {
     "ticketType": "String min=1, max=50",
-    "price": "Double min=1, max=10"
+    "event": {"eventId" : "long id"},
+    "price": "Double min=1, max=10",
+    
+    
 }
 ```
 
-**Data example**
+**Data example** `editing existing tickettype`
 
 ```json
 {
-    "ticketType": "Edited Lapsi",
-    "price": 6.0
+    "ticketType": "Postman muokattu",
+    "event": {"eventId": 2},
+    "price": 10.0
 }
 ```
 
@@ -50,8 +54,25 @@ Provide ID and values to modify.
 ```json
 {
     "ticketTypeId": 1,
-    "ticketType": "Edited Lapsi",
-    "price": 6.0
+    "ticketType": "Postman muokattu",
+    "event": {
+        "eventId": 2,
+        "eventName": "Tapahtuma 2",
+        "description": "Lisätiedoton",
+        "eventDate": "2023-09-19",
+        "eventTime": "15:00:00",
+        "ticketCount": 200,
+        "venue": {
+            "venueId": 1,
+            "place": "Jäähalli",
+            "streetAddress": "Jäähallintie 1",
+            "postalcode": {
+                "postalcode": "00100",
+                "postOffice": "Helsinki"
+            }
+        }
+    },
+    "price": 10.0
 }
 ```
 
