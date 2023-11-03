@@ -39,7 +39,7 @@ public class Event {
 	@Column(name = "event_name", nullable = false)
 	@NotEmpty(message = "Eventin nimi ei voi olla thjä")
 	@Size(min = 1, max = 100)
-	private String eventName;
+	private String eventName; 
 
 	@Column(name = "description")
 	@Size(min = 1, max = 500, message = "Lisätietojen merkkimäärä 1-500")
