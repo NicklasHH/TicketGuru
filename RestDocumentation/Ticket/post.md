@@ -96,7 +96,7 @@ Unexpected input:
 }
 ```
 
-**Code** : `400 Bad Request`  
+**Code** : `409 Conflict`  
 
 **Message** :  
 
