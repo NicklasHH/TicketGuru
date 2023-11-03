@@ -2,15 +2,15 @@
 
 Create an Postalcode.
 
-**URL** : `localhost:8080/api/events/postalcodes`
+**Endpoint** : `/api/postalcodes`
 
 **Method** : `POST`
 
 **Content-Type** : `application/json`
 
-<**Auth required** : Yes
+**Authentication required** : NO
 
-**Permissions required** : None 
+**Authority required** : None
 
 **Data constraints**
 
@@ -18,8 +18,8 @@ Provide below required values.
 
 ```json
 {
-    "postalcode": "String" @Validation rules: Size = 5, NotNull
-    "postOffice": "String" @Validation rule: NotEmpty
+    "postalcode": "String min=5, max=5",
+    "postOffice": "String"
 }
 ```
 
@@ -41,4 +41,4 @@ Provide below required values.
 
 **Condition** : If the postalcode already exist
 
-**Code** : `405 Method Not Allowed`
+**Message** : `Postinumero 00162 on jo olemassa.`

@@ -2,13 +2,13 @@
 
 Show information about all postalcodes.
 
-**URL** : `http://localhost:8080/api/postalcodes`
+**Endpoint** : `/api/postalcodes`
 
 **Method** : `GET`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Auth required** : NO
 
 **Permission required** : NO
 
@@ -53,7 +53,7 @@ Show information about postalcode based on its unique identifier `string`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Auth required** : NO
 
 **Permission required** : NO
 

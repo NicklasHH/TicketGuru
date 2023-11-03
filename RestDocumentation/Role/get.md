@@ -2,7 +2,7 @@
 
 Show information about all roles.
 
-**URL** : `http://localhost:8080/api/roles`
+**Endpoint** : `/api/roles`
 
 **Method** : `GET`
 

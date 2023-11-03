@@ -48,4 +48,4 @@ delete single appuser based on its unique identifier `id`.
 
 ## Notes
 
-This example response allows you to review the details of the appuser before its deletion. Please note that once you receive an HTTP 200 OK response, the appuser will be permanently deleted.
+Note that once you receive an HTTP 200 OK response, the appuser will be permanently deleted.

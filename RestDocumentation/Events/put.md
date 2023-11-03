@@ -2,15 +2,15 @@
 
 Edit an Event.
 
-**URL** : `http://localhost:8080/api/events/{id}`
+**Endpoint** : `/api/appusers/{id}`
 
 **Method** : `PUT`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : None
+**Authority required** : None
 
 **Data constraints**
 
@@ -38,14 +38,68 @@ Provide ID and values to modify.
   "eventTime": "21:30",
   "ticketCount": 23
 }
-```
+``` 
+---
 
 ## Success Response
 
 **Code** : `200 OK`
 
+**Data example**
+
+```json
+{
+    "eventName": "Postman edited event id 1",
+    "description": "Testing RestApi, EDIT endpoint",
+    "eventDate": "2023-10-27",
+    "eventTime": "21:30",
+    "ticketCount": 23,
+        "venue": {
+        "venueId": 2
+        }
+}
+```
+
+**Content example** :
+
+```json
+{
+    "eventId": 2,
+    "eventName": "Postman edited event id 1",
+    "description": "Testing RestApi, EDIT endpoint",
+    "eventDate": "2023-10-27",
+    "eventTime": "21:30",
+    "ticketCount": 23,
+    "venue": {
+        "venueId": 2,
+        "place": "Vesihalli",
+        "streetAddress": "vesihallintie 2",
+        "postalcode": {
+            "postalcode": "00200",
+            "postOffice": "Espoo"
+        }
+    }
+}
+```
+---
+
 ## Error response
 
-**Code** : `400 Bad Request`
+**Code** : `409 Conflict`
 
-**Message** : `JSON parse error`
+**Data example**
+
+```json
+{
+    "eventName": "Postman edited event id 1",
+    "description": "Testing RestApi, EDIT endpoint",
+    "eventDate": "2023-10-27",
+    "eventTime": "21:30",
+    "ticketCount": 23,
+        "venue": {
+        "venueId": 5
+        }
+}
+```
+
+**Message** :`Venue ID:tä ei löytynyt`

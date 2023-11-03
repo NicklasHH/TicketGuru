@@ -2,15 +2,15 @@
 
 Create an Event.
 
-**URL** : `localhost:8080/api/events`
+**Endpoint** : `/api/events`
 
 **Method** : `POST`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints**
 

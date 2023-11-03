@@ -2,17 +2,19 @@
 
 delete single postalcode based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/postalcode/{postcode}`
+**Endpoint** : `/api/postalcode/{postcode}`
 
 **Method** : `DELETE`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : NO
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
+
+---
 
 ## Success Response
 
@@ -20,10 +22,27 @@ delete single postalcode based on its unique identifier `id`.
 
 **Code** : `200 OK`
 
+**Content example** : This example response contains the details of the postalcodes that will be removed.
+
+```json
+{
+    "postalcode": "99999",
+    "postOffice": "Korvatunturi"
+}
+```
+
+---
+
 ## Error Response
 
-**Condition** : If the postalcode is not found with the given `Postalcode String`
+**Condition** : If the postalcode is not found with the given `id`
 
 **Code** : `404 NOT FOUND`
+
+**Content** : `{}`
+
+## Notes
+
+Note that once you receive an HTTP 200 OK response, the postalcode will be permanently deleted.
 
 

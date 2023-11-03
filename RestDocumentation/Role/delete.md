@@ -2,15 +2,15 @@
 
 delete single role based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/roles/{id}`
+**Endpoint** : `/api/roles/{id}`
 
 **Method** : `DELETE`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
 
@@ -43,4 +43,4 @@ delete single role based on its unique identifier `id`.
 
 ## Notes
 
-This example response allows you to review the details of the role before its deletion. Please note that once you receive an HTTP 200 OK response, the role will be permanently deleted.
+Note that once you receive an HTTP 200 OK response, the role will be permanently deleted.

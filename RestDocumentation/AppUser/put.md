@@ -42,7 +42,7 @@ Provide ID and values to modify.
 
 ## Success Response
 
-**Code** : `201 Created`
+**Code** : `200 OK`
 
 **Data example**
 

@@ -2,17 +2,19 @@
 
 delete single event based on its unique identifier `id`.
 
-**URL** : `http://localhost:8080/api/events/{id}`
+**Endpoint** : `/api/events/{id}`
 
 **Method** : `DELETE`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : None
 
 **Data constraints** : `{}`
+
+---
 
 ## Success Response
 
@@ -43,4 +45,4 @@ delete single event based on its unique identifier `id`.
 
 ## Notes
 
-This example response allows you to review the details of the event before its deletion. Please note that once you receive an HTTP 200 OK response, the event will be permanently deleted.
+Note that once you receive an HTTP 200 OK response, the event will be permanently deleted.

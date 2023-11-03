@@ -2,15 +2,15 @@
 
 Create an AppURoleser.
 
-**URL** : `http://localhost:8080/api/roles`
+**Endpoint** : `/api/roles`
 
 **Method** : `POST`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permissions required** : None
+**Authority required** : None
 
 **Data constraints**
 

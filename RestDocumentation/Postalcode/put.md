@@ -2,15 +2,15 @@
 
 Edit an Postalcode.
 
-**URL** : `http://localhost:8080/api/postalcodes/{postalcode}`
+**Endpoint** : `/api/postalcodes/{postalcode}`
 
 **Method** : `PUT`
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : NO
 
-**Permissions required** : None 
+**Authority required** : None
 
 **Data constraints**
 
@@ -18,12 +18,33 @@ Provide postalcode and values to modify.
 
 ```json
 {
-    "postalcode": "String" @Validation rules: Size = 5, NotNull
-    "postOffice": "String" @Validation rule: NotEmpty
+  "postOffice": "String"
 }
 ```
 
 **Data example**
+
+```json
+{
+  "postOffice": "vaihdettu"
+}
+```
+
+---
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Data example**
+
+```json
+{
+    "postOffice": "vaihdettu"
+}
+```
+
+**Content example** :
 
 ```json
 {
@@ -32,12 +53,18 @@ Provide postalcode and values to modify.
 }
 ```
 
-## Success Response
+---
 
-**Code** : `200 OK`
+## Error response
 
-## Error response  
+**Code** : `409 Conflict`
 
-**Code** : `400 Bad Request`  
+**Data example**
 
-**Message** : `JSON parse error`
+```json
+{
+  "postOffice": ""
+}
+```
+
+**Message** : `Postitoimipaikan on oltava vähintään 2 kirjainta`

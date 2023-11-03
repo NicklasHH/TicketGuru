@@ -2,7 +2,7 @@
 
 Show information about all events.
 
-**URL** : `http://localhost:8080/api/events`
+**Endpoint** : `/api/events`
 
 **Method** : `GET`
 
@@ -67,7 +67,7 @@ Show information about single event based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Auth required** : NO
 
 **Permission required** : NO
 
@@ -120,7 +120,7 @@ This endpoint provides information about a single event based on its unique iden
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Auth required** : NO
 
 **Permission required** : NO
 
