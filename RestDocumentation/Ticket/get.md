@@ -10,7 +10,7 @@ Show information about all tickets.
 
 **Authentication required** : YES
 
-**Authority required** : None
+**Authority required** : Role: Admin  
 
 **Data constraints** : `{}`
 
@@ -28,46 +28,15 @@ Show information about all tickets.
         "ticketId": 1,
         "event": {
             "eventId": 1,
-            "eventName": "eventin nimi 1",
-            "description": "lisätiedot",
-            "eventDate": "18.9.2029",
-            "eventTime": "12.00",
+            "eventName": "Tapahtuma 1",
+            "description": "Lisätietoja",
+            "eventDate": "2023-09-18",
+            "eventTime": "12:00:00",
             "ticketCount": 100,
             "venue": {
-                "venueId": 1,
-                "place": "a",
-                "streetAddress": "b",
-                "postalcode": {
-                    "postalcode": "00100",
-                    "postOffice": "Helsinki"
-                }
-            }
-        },
-        "ticketType": {
-            "ticketTypeId": 1,
-            "ticketType": "Lapsi",
-            "price": 5.0
-        },
-        "transaction": {
-            "transactionId": 1,
-            "amount": 15.0,
-            "transactionDate": "20.9.2023"
-        },
-        "isChecked": null
-    },
-    {
-        "ticketId": 2,
-        "event": {
-            "eventId": 2,
-            "eventName": "eventin nimi 2",
-            "description": "lisätiedot",
-            "eventDate": "19.9.2029",
-            "eventTime": "15.00",
-            "ticketCount": 200,
-            "venue": {
                 "venueId": 2,
-                "place": "c",
-                "streetAddress": "d",
+                "place": "Vesihalli",
+                "streetAddress": "Vesihallintie 2",
                 "postalcode": {
                     "postalcode": "00200",
                     "postOffice": "Espoo"
@@ -75,16 +44,85 @@ Show information about all tickets.
             }
         },
         "ticketType": {
+            "ticketTypeId": 1,
+            "ticketType": "Lapsi",
+            "event": {
+                "eventId": 2,
+                "eventName": "Tapahtuma 2",
+                "description": "Lisätiedoton",
+                "eventDate": "2023-09-19",
+                "eventTime": "15:00:00",
+                "ticketCount": 200,
+                "venue": {
+                    "venueId": 1,
+                    "place": "Jäähalli",
+                    "streetAddress": "Jäähallintie 1",
+                    "postalcode": {
+                        "postalcode": "00100",
+                        "postOffice": "Helsinki"
+                    }
+                }
+            },
+            "price": 5.0
+        },
+        "transaction": {
+            "transactionId": 1,
+            "amount": 15.0,
+            "transactionOk": false,
+            "transactionDate": "2023-10-10",
+            "transactionTime": "10:10:10"
+        },
+        "isChecked": false
+    },
+    {
+        "ticketId": 2,
+        "event": {
+            "eventId": 2,
+            "eventName": "Tapahtuma 2",
+            "description": "Lisätiedoton",
+            "eventDate": "2023-09-19",
+            "eventTime": "15:00:00",
+            "ticketCount": 200,
+            "venue": {
+                "venueId": 1,
+                "place": "Jäähalli",
+                "streetAddress": "Jäähallintie 1",
+                "postalcode": {
+                    "postalcode": "00100",
+                    "postOffice": "Helsinki"
+                }
+            }
+        },
+        "ticketType": {
             "ticketTypeId": 2,
             "ticketType": "Eläkeläinen",
+            "event": {
+                "eventId": 2,
+                "eventName": "Tapahtuma 2",
+                "description": "Lisätiedoton",
+                "eventDate": "2023-09-19",
+                "eventTime": "15:00:00",
+                "ticketCount": 200,
+                "venue": {
+                    "venueId": 1,
+                    "place": "Jäähalli",
+                    "streetAddress": "Jäähallintie 1",
+                    "postalcode": {
+                        "postalcode": "00100",
+                        "postOffice": "Helsinki"
+                    }
+                }
+            },
             "price": 15.0
         },
         "transaction": {
             "transactionId": 2,
             "amount": 25.0,
-            "transactionDate": "21.9.2023"
+            "transactionOk": true,
+            "transactionDate": "2023-10-10",
+            "transactionTime": "10:10:10"
         },
-        "isChecked": null
+        "isChecked": false
     }
 ]
 ```
@@ -107,9 +145,9 @@ Show information about ticket based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : Role: Admin  
 
 **Data constraints** : `{}`
 
@@ -175,9 +213,9 @@ Show information about ticket based on its unique identifier `id`.
 
 **Content-Type** : `application/json`
 
-**Auth required** : YES
+**Authentication required** : YES
 
-**Permission required** : NO
+**Authority required** : Role: Admin  
 
 **Data constraints** : `{}`
 
