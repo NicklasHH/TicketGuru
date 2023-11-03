@@ -26,27 +26,24 @@ Show information about all transactions.
 [
     {
         "transactionId": 1,
-        "amount": 2333.0,
-        "transactionOk": true,
-        "transactionDate": "2023-10-08",
-        "transactionTime": "22:31:02",
-        "timestamp": "Last time edited: 2023-10-08 22:31:02"
+        "amount": 15.0,
+        "transactionOk": false,
+        "transactionDate": "2023-10-10",
+        "transactionTime": "10:10:10"
     },
     {
         "transactionId": 2,
-        "amount": 2333.0,
+        "amount": 25.0,
         "transactionOk": true,
-        "transactionDate": "2023-10-08",
-        "transactionTime": "22:31:03",
-        "timestamp": "Last time edited: 2023-10-08 22:31:03"
+        "transactionDate": "2023-10-10",
+        "transactionTime": "10:10:10"
     },
     {
-        "transactionId": 4,
-        "amount": 2333.0,
-        "transactionOk": true,
-        "transactionDate": "2023-10-08",
-        "transactionTime": "22:31:04",
-        "timestamp": "Last time edited: 2023-10-08 22:31:04"
+        "transactionId": 3,
+        "amount": 35.0,
+        "transactionOk": false,
+        "transactionDate": "2023-10-10",
+        "transactionTime": "10:10:10"
     }
 ]
 ```
@@ -92,12 +89,11 @@ Show information about sales transaction based on its unique identifier `transac
 
 ```json
 {
-    "transactionId": 1,
-    "amount": 2333.0,
+    "transactionId": 8,
+    "amount": 123456.8,
     "transactionOk": true,
-    "transactionDate": "2023-10-08",
-    "transactionTime": "22:31:02",
-    "timestamp": "Last time edited: 2023-10-08 22:31:02"
+    "transactionDate": "2023-11-03",
+    "transactionTime": "19:06:50"
 }
 ```
 
