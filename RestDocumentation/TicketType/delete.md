@@ -25,8 +25,25 @@ Delete single tickettype based on its unique identifier `id`.
 ```json
 {
     "ticketTypeId": 1,
-    "ticketType": "Lapsi",
-    "price": 5.0
+    "ticketType": "Postman muokattu",
+    "event": {
+        "eventId": 2,
+        "eventName": "Tapahtuma 2",
+        "description": "Lisätiedoton",
+        "eventDate": "2023-09-19",
+        "eventTime": "15:00:00",
+        "ticketCount": 200,
+        "venue": {
+            "venueId": 1,
+            "place": "Jäähalli",
+            "streetAddress": "Jäähallintie 1",
+            "postalcode": {
+                "postalcode": "00100",
+                "postOffice": "Helsinki"
+            }
+        }
+    },
+    "price": 10.0
 }
 ```
 
@@ -40,4 +57,4 @@ Delete single tickettype based on its unique identifier `id`.
 
 ## Notes
 
-This example response allows you to review the details of the tickettype before its deletion. Please note that once you receive an HTTP 200 OK response, the tickettype will be permanently deleted.
+This example response allows you to review the details of the tickettype that has been deleted. Please note that once you receive an HTTP 200 OK response, the tickettype is permanently deleted.
