@@ -20,8 +20,12 @@ Provide below required values.
 {
     "event": {"eventId": "eventId"},
     "ticketType": {"ticketTypeId": "ticketTypeId"},
-    "transaction": {"transactionId": "transactionId"},
-    "isChecked": "Boolean"
+    "transaction": {
+        "transactionId": "transactionId",
+        "amount" : "double", 
+        "transactionOk" : "boolean"    
+    },
+    "isChecked": "boolean"
 }
 ```
 
@@ -29,9 +33,19 @@ Provide below required values.
 
 ```json
 {
-    "event": {"eventId": 1},
-    "ticketType": {"ticketTypeId": 1},
-    "transaction": {"transactionId": 1},
+    "event": {
+        "eventId": 1
+    },
+    "ticketType": {
+        "ticketTypeId": 1
+    },
+    "transaction": {
+        "transactionId": 1,
+        "amount" : 23, 
+        "transactionOk" : true
+
+    
+    },
     "isChecked": true
 }
 ```
@@ -43,39 +57,31 @@ Provide below required values.
 **Content example** :
 ```json
 {
-        "ticketId": 1,
-        "event": {
-            "eventId": 1,
-            "eventName": "eventin nimi 1",
-            "description": "lisätiedot",
-            "eventDate": "18.9.2029",
-            "eventTime": "12.00",
-            "ticketCount": 100,
-            "venue": {
-                "venueId": 1,
-                "place": "Jäähalli",
-                "streetAddress": "jäähallintie 1",
-                "postalcode": {
-                    "postalcode": "00100",
-                    "postOffice": "Helsinki"
-                }
-            }
-        },
-        "ticketType": {
-            "ticketTypeId": 1,
-            "ticketType": "Edited Lapsi",
-            "price": 6.0
-        },
-        "transaction": {
-            "transactionId": 1,
-            "amount": 1500.0,
-            "transactionOk": true,
-            "transactionDate": "2023-10-09",
-            "transactionTime": "03:25:29",
-            "timestamp": "Last time edited: 2023-10-09 03:25:29"
-        },
-        "isChecked": true
-    }
+    "ticketId": 13,
+    "event": {
+        "eventId": 1,
+        "eventName": null,
+        "description": null,
+        "eventDate": null,
+        "eventTime": null,
+        "ticketCount": 0,
+        "venue": null
+    },
+    "ticketType": {
+        "ticketTypeId": 1,
+        "ticketType": null,
+        "event": null,
+        "price": 0.0
+    },
+    "transaction": {
+        "transactionId": 1,
+        "amount": 23.0,
+        "transactionOk": true,
+        "transactionDate": "2023-11-03",
+        "transactionTime": "18:04:37"
+    },
+    "isChecked": true
+}
 ```
 
 ## Error response  
@@ -83,9 +89,9 @@ Provide below required values.
 Unexpected input:  
 ```json
 {
-    "event": {"eventId": 1},
-    "ticketType": {"ticketTypeId": 1},
-    "transaction": null,
+    "event": {"eventId": 120023},
+    "ticketType": {"ticketTypeId": 12345},
+    "transaction": {"transactionId": 12345},
     "isChecked": null
 }
 ```
@@ -96,7 +102,10 @@ Unexpected input:
 
 ```json
 {
-    "isChecked": "isChecked cannot be null, true or false expected",
-    "transaction": "must not be null"
+    "event": "Event ID:tä ei löytynyt",
+    "ticketType": "Ticket Type ID:tä ei löytynyt",
+    "transaction": "Transaction ID:tä ei löytynyt",
+    "isChecked": "True tai False vaihtoehdot"
+    
 }
 ```
