@@ -48,8 +48,8 @@ Provide below required values.
 
 ```json
 {
-  "place": "Ilmahalli",
-  "streetAddress": "Ilmailutie 23",
+  "place": "Postman2",
+  "streetAddress": "Testing RestApi, adding new venue",
   "postalcode": {
     "postalcode": "00200"
   }
@@ -60,13 +60,13 @@ Provide below required values.
 
 ```json
 {
-  "venueId": 4,
-  "place": "Ilmahalli",
-  "streetAddress": "Ilmailutie 23",
-  "postalcode": {
-    "postalcode": "00200",
-    "postOffice": null
-  }
+    "venueId": 5,
+    "place": "Postman2",
+    "streetAddress": "Testing RestApi, adding new venue",
+    "postalcode": {
+        "postalcode": "00200",
+        "postOffice": null
+    }
 }
 ```
 
@@ -80,12 +80,12 @@ Provide below required values.
 
 ```json
 {
-  "place": "Vesihalli",
-  "streetAddress": "Vesihallintie 23",
+  "place": "Postman2",
+  "streetAddress": "Testing RestApi, adding new venue",
   "postalcode": {
     "postalcode": "00200"
   }
 }
 ```
 
-**Message** : `Paikka nimelä Vesihalli on jo olemassa toisella id:llä.`
+**Message** : `Paikka nimelä Postman2 on jo olemassa toisella id:llä.`
