@@ -19,7 +19,10 @@ Provide below required values.
 ```json
 {
     "ticketType": "String min=1, max=50",
-    "price": "Double min=1, max=10"
+    "event": {"eventId" : "long id"},
+    "price": "Double min=1, max=10",
+    
+    
 }
 ```
 
@@ -27,7 +30,8 @@ Provide below required values.
 
 ```json
 {
-    "ticketType": "Opiskelija",
+    "ticketType": "Postman",
+    "event": {"eventId": 2},
     "price": 10.0
 }
 
@@ -41,25 +45,43 @@ Provide below required values.
 
 ```json
 {
-    "ticketType": "Opiskelija",
+    "ticketType": "Postman opiskelee",
+    "event": {"eventId": 2},
     "price": 10.0
 }
-
 ```
 
 **Content example** :
 ```json
 {
-
-    "ticketTypeId": 4,
-    "ticketType": "Opiskelija",
+    "ticketTypeId": 10,
+    "ticketType": "Postman opiskelee",
+    "event": {
+        "eventId": 2,
+        "eventName": null,
+        "description": null,
+        "eventDate": null,
+        "eventTime": null,
+        "ticketCount": 0,
+        "venue": null
+    },
     "price": 10.0
 }
 ```
 
 ## Error response  
 
-**Condition**: If the tickettype already exists.
 
 **Code** : `409 Conflict`  
 
+**Content example** : `In this example eventId is not found`
+
+```json
+{
+    "ticketType": "Postman opiskelee",
+    "event": {"eventId": 223},
+    "price": 10.0
+}
+```
+
+**Message** : `Event ID:tä ei löytynyt`
