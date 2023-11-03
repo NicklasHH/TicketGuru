@@ -20,13 +20,11 @@ Provide ID and values to modify.
 {
     "ticketType": "String min=1, max=50",
     "event": {"eventId" : "long id"},
-    "price": "Double min=1, max=10",
-    
-    
+    "price": "Double min=1, max=10",  
 }
 ```
 
-**Data example** `editing existing tickettype`
+**Data example** `edit existing tickettype`
 
 ```json
 {
