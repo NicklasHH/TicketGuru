@@ -57,4 +57,4 @@ Delete single tickettype based on its unique identifier `id`.
 
 ## Notes
 
-This example response allows you to review the details of the tickettype that has been deleted. Please note that once you receive an HTTP 200 OK response, the tickettype is permanently deleted.
+This example response allows you to review the details of the tickettype that has been deleted. Please note that once you have received an HTTP 200 OK response, the tickettype is permanently deleted.
