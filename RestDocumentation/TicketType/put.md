@@ -78,4 +78,4 @@ Provide ID and values to modify.
 
 **Code** : `404 Not Found`  
 
-**Message** : `The requested resource could not be found.`
+**Message** : `TicketTypeä ei löytynyt id:llä 16`
