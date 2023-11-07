@@ -29,7 +29,7 @@ public class SecurityConfig {
 				.permitAll().requestMatchers("/api/postalcodes", "/").permitAll() // Salli kaikille pääsy tähän reittiin
 //				.anyRequest().permitAll()
 				.anyRequest().authenticated())
-
+				.cors(Customizer.withDefaults()) // Ottaa CORS asetukset käyttöön
 				.csrf(AbstractHttpConfigurer::disable) // Poistaa käytöstä CSRF-suojauksen
 				.httpBasic(Customizer.withDefaults()) // Konfiguroi oletusarvoisen HTTP Basic -autentikoinnin
 				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())); // Sallii

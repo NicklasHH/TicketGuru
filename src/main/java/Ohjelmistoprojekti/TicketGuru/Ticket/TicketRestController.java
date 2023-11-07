@@ -184,6 +184,7 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
+
 	@PatchMapping("/{id}/check")
 	public ResponseEntity<?> checkTicket(@PathVariable Long id) {
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
