@@ -2,7 +2,7 @@
 
 Update the ticket's <strong> isChecked </strong>boolean to true.
 
-**Endpoint** : `/api/tickets/{id}/check`
+**Endpoint** : `/api/tickets/{ticketId}/check`
 
 **Method** : `PATCH`
 
@@ -70,8 +70,6 @@ Update the ticket's <strong> isChecked </strong>boolean to true.
 ```
 
 ## Error response  
-Code: 404 Not Found
-
-Id does not exist:  
 
 **Code** : `404 Not Found`  
+**Code** : `405 Method Not Allowed` 
