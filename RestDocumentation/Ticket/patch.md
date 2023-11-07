@@ -2,7 +2,7 @@
 
 Update the ticket's <strong> isChecked </strong>boolean to true.
 
-**Endpoint** : `/api/tickets/{id}/check`
+**Endpoint** : `/api/tickets/{ticketId}/check`
 
 **Method** : `PATCH`
 
