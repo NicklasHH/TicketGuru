@@ -1,6 +1,6 @@
 # Set Ticket as Used
 
-Update the ticket's <strong>isChecked</strong>boolean to true.
+Update the ticket's <strong> isChecked </strong>boolean to true.
 
 **Endpoint** : `/api/tickets/{id}/check`
 
