@@ -10,16 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketType;
@@ -191,6 +182,18 @@ public class TicketRestController {
 			return ResponseEntity.ok(ticket); // HTTP 200 OK, palauttaa poistetun lipun tiedot
 		} else {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+		}
+	}
+	@PatchMapping("/{id}/check")
+	public ResponseEntity<?> checkTicket(@PathVariable Long id) {
+		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
+		if (ticketOptional.isPresent()) {
+			Ticket ticket = ticketOptional.get();
+			ticket.setIsChecked(true); // Asetaa isChecked arvon true
+			ticketRepository.save(ticket);
+			return ResponseEntity.ok(ticket);
+		} else {
+			return ResponseEntity.notFound().build(); // Jos lippua ei löydy 404
 		}
 	}
 
