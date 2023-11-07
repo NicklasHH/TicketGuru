@@ -72,3 +72,4 @@ Update the ticket's <strong> isChecked </strong>boolean to true.
 ## Error response  
 
 **Code** : `404 Not Found`  
+**Code** : `405 Method Not Allowed` 
