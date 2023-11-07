@@ -70,8 +70,5 @@ Update the ticket's <strong> isChecked </strong>boolean to true.
 ```
 
 ## Error response  
-Code: 404 Not Found
-
-Id does not exist:  
 
 **Code** : `404 Not Found`  
