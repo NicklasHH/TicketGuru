@@ -10,7 +10,7 @@ Show information about all tickets.
 
 **Authentication required** : YES
 
-**Authority required** : Role: Admin  
+**Authority required** : None  
 
 **Data constraints** : `{}`
 
@@ -147,7 +147,7 @@ Show information about ticket based on its unique identifier `id`.
 
 **Authentication required** : YES
 
-**Authority required** : Role: Admin  
+**Authority required** : None 
 
 **Data constraints** : `{}`
 
@@ -215,7 +215,7 @@ Show information about ticket based on its unique identifier `id`.
 
 **Authentication required** : YES
 
-**Authority required** : Role: Admin  
+**Authority required** : None 
 
 **Data constraints** : `{}`
 
@@ -242,3 +242,49 @@ Show information about ticket based on its unique identifier `id`.
 **Code** : `404 NOT FOUND`
 
 **Content** : `{}`
+
+-------------------------------------------------------------------------------------
+# Show single ticket info in QR code
+
+Show information about ticket based on its unique identifier `id` in QR code
+
+**Endpoint** : `/api/tickets/qr/{id}`
+
+**Method** : `GET`
+
+**Content-Type** : `image/png`
+
+**Authentication required** : YES
+
+**Authority required** : None  
+
+**Data constraints** : `image`
+
+## Success Response
+
+**Condition** : If the specified `id` is found
+
+**Code** : `200 OK`
+
+**Content example** : This example response contains details of the identified ticket.
+
+```
+text inside of QR code: 
+Ticket_id
+isChecked
+Event_id
+```
+
+## Error Response
+
+**Condition** : If there is no ticket with given `id`
+
+**Code** : `200`
+
+**Content example** : This example response contains details of the qr code.
+
+```
+text inside of QR code:
+Ei lippua
+```
+
