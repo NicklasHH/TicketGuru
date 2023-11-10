@@ -274,6 +274,8 @@ Ticket_id
 isChecked
 Event_id
 ```
+![image](https://github.com/NicklasHH/TicketGuru/assets/117033936/093d9f53-1387-4617-b837-642d655f5283)
+
 
 ## Error Response
 
@@ -287,4 +289,6 @@ Event_id
 text inside of QR code:
 Ei lippua
 ```
+![image](https://github.com/NicklasHH/TicketGuru/assets/117033936/1575a902-763e-4e47-9093-cf633d4ca558)
+
 
