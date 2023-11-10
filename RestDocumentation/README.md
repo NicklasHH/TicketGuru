@@ -49,6 +49,7 @@ ___
 * [Show all](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/get.md): `GET /api/tickets`
 * [Show single](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/get.md): `GET /api/tickets/{id}`
 * [Show details](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/get.md): `GET /api/tickets/{id}/*`
+* [Show single ticket info in QR code](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/get.md#show-single-ticket-info-in-qr-code): `GET /api//tickets/qr/{id}/*`
 * [New](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/post.md): `POST /api/tickets`
 * [Edit](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/put.md): `PUT /api/tickets/{id}`
 * [Delete](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/delete.md): `DELETE /api/tickets/{id}`
