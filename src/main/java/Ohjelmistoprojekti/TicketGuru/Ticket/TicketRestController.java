@@ -1,5 +1,6 @@
 package Ohjelmistoprojekti.TicketGuru.Ticket;
 
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,11 +8,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import Ohjelmistoprojekti.TicketGuru.TicketGuruApplication;
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketType;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketTypeRepository;
@@ -47,6 +50,22 @@ public class TicketRestController {
 		} else {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
+	}
+
+	@GetMapping(value = "/qr/{id}", produces = MediaType.IMAGE_PNG_VALUE)
+	public BufferedImage barbecueEAN13Barcode(@PathVariable Long id) throws Exception {
+		Optional<Ticket> ticket = ticketRepository.findById(id);
+		if (ticket.isPresent()) {
+			String info;
+			info = ticket.get().getTicketId().toString() + "\n";
+			info = info + ticket.get().getIsChecked() + "\n";
+			info = info + ticket.get().getEvent().getEventName() + "\n";
+			
+			return (TicketGuruApplication.generateQRCodeImage(info));
+		} else {
+			return (TicketGuruApplication.generateQRCodeImage("Ei lippua"));
+		}
+
 	}
 
 	// Palauttaa lipun id perusteella http://localhost:8080/api/tickets/1
@@ -127,7 +146,7 @@ public class TicketRestController {
 		}
 	}
 
-	// mMokkaa lippua id perusteella http://localhost:8080/api/tickets/1
+	// Muokkaa lippua id perusteella http://localhost:8080/api/tickets/1
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateTicket(@Valid @RequestBody Ticket editedTicket, @PathVariable Long id) {
 		if (!ticketRepository.existsById(id)) {
@@ -198,6 +217,12 @@ public class TicketRestController {
 		}
 	}
 
+	/*
+	 * @GetMapping(value = "/qr/{id}", produces = MediaType.IMAGE_PNG_VALUE) public
+	 * BufferedImage barbecueEAN13Barcode(@PathVariable("id") String barcode) throws
+	 * Exception { return (TicketGuruApplication.generateQRCodeImage(barcode +
+	 * "moi")); }
+	 */
 	// Validointi virheiden käsittely
 	@ResponseStatus(HttpStatus.BAD_REQUEST) // HTTP 400 Bad request
 	@ExceptionHandler(MethodArgumentNotValidException.class)
