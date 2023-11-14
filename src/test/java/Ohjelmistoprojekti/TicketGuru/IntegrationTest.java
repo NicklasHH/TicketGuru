@@ -19,7 +19,7 @@ public class IntegrationTest {
     private MockMvc mockMvc;
 
     @Test
-    @WithMockUser(username = "admin", password = "admin", roles = "USER")
+    @WithMockUser(username = "admin", password = "admin", roles = "Admin")
     public void testGetTicketById() throws Exception {
         mockMvc.perform(get("/api/tickets/1"))
                 .andExpect(status().isOk())
