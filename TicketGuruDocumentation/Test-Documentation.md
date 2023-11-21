@@ -46,13 +46,14 @@ spring.datasource.password=root`
 ```
 
 ## 6. Test Results and Analysis
-- **Results**: Postalcode 9999 should return "Korvatunturi" and E2E should generate a ticker for user.
+- **Results**: The tests successfully demonstrated that the postal code API correctly returns "Korvatunturi" for postal code 99999, and the ticket purchasing process works as expected.
 - **Analysis**: If all tested passes that means Postalcode api is working correctly and user can buy a ticket
   
 ## 7. Conclusions and Next Steps
-All test are working correctly at the moment.
+- **Conclusions**: The current testing phase has successfully verified the essential functionalities of the TicketGuru system, ensuring that key features like role management, ticket purhace works as expected
 - **Recommendations**: Test all API endpoints and CRUD classes.
   
 ## 8. Appendices and References
-**GitHub Repository and source code**: https://github.com/NicklasHH/TicketGuru
+**GitHub Repository and source code**: 
+https://github.com/NicklasHH/TicketGuru
 ---
