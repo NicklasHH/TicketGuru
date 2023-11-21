@@ -46,12 +46,13 @@ spring.datasource.password=root`
 ```
 
 ## 6. Test Results and Analysis
-- **Results**: Postalcode 9999 should return "Korvatunturi"
-- - **Analysis**: Discuss what these results indicate about your system's performance and reliability.
+- **Results**: Postalcode 9999 should return "Korvatunturi" and E2E should generate a ticker for user.
+- **Analysis**: If all tested passes that means Postalcode api is working correctly and user can buy a ticket
   
 ## 7. Conclusions and Next Steps
-Offer an assessment of the overall impact of the testing efforts and suggest potential improvements or future actions.
+All test are working correctly at the moment.
 - **Recommendations**: Test all API endpoints and CRUD classes.
+  
 ## 8. Appendices and References
 **GitHub Repository and source code**: https://github.com/NicklasHH/TicketGuru
 ---
