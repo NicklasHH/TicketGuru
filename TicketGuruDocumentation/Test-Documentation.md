@@ -8,10 +8,9 @@ This document provides an overview of the testing processes and results for tick
 - **Configuration**:
   - Spring Boot version: (3.0.1)
   - Database configuration:
-  
-`spring.datasource.url=jdbc:mariadb://localhost:3306/ticketguru
+```spring.datasource.url=jdbc:mariadb://localhost:3306/ticketguru
 spring.datasource.username=root
-spring.datasource.password=root`
+spring.datasource.password=root```
 
   - Security settings: Use MockMvc for API test
     
