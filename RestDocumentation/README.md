@@ -53,6 +53,8 @@ ___
 * [New](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/post.md): `POST /api/tickets`
 * [Edit](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/put.md): `PUT /api/tickets/{id}`
 * [Delete](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/delete.md): `DELETE /api/tickets/{id}`
+* [Show how many tickets left by eventId](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/ticketsLeftByEventId.md): `GET /api/tickets/ticketsLeft/{id}`
+* [Show tickets by eventId](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/Ticket/getAllByEventId.md): `GET /api/tickets/eventSales/{id}`
 ___
 [**TicketType**](https://github.com/NicklasHH/TicketGuru/tree/master/RestDocumentation/TicketType)
 * [Show all](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/TicketType/get.md): `GET /api/tickettypes`
