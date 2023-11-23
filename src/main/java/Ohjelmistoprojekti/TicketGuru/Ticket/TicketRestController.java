@@ -12,10 +12,21 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import Ohjelmistoprojekti.TicketGuru.TicketGuruApplication;
 import Ohjelmistoprojekti.TicketGuru.Event.Event;
+import Ohjelmistoprojekti.TicketGuru.Event.EventRepository;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketType;
 import Ohjelmistoprojekti.TicketGuru.TicketType.TicketTypeRepository;
 import Ohjelmistoprojekti.TicketGuru.Transaction.Transaction;
@@ -41,6 +52,9 @@ public class TicketRestController {
 	@Autowired
 	private TransactionRepository transactionRepository;
 
+	@Autowired
+	private EventRepository eventRepository;
+
 	// Palauttaa kaikki liput http://localhost:8080/api/tickets
 	@GetMapping
 	ResponseEntity<List<Ticket>> all() {
@@ -60,7 +74,7 @@ public class TicketRestController {
 			info = ticket.get().getTicketId().toString() + "\n";
 			info = info + ticket.get().getIsChecked() + "\n";
 			info = info + ticket.get().getEvent().getEventName() + "\n";
-			
+
 			return (TicketGuruApplication.generateQRCodeImage(info));
 		} else {
 			return (TicketGuruApplication.generateQRCodeImage("Ei lippua"));
@@ -214,6 +228,43 @@ public class TicketRestController {
 			return ResponseEntity.ok(ticket);
 		} else {
 			return ResponseEntity.notFound().build(); // Jos lippua ei löydy 404
+		}
+	}
+
+	// Haetaan kaikki liput tietyn eventId:n mukaan
+	@GetMapping("/eventSales/{id}")
+	ResponseEntity<List<Ticket>> allTickets(@PathVariable Long id) {
+		List<Ticket> tickets = ticketRepository.findByEvent_EventId(id);
+		if (!tickets.isEmpty()) {
+			return ResponseEntity.ok(tickets);// HTTP 200 OK
+		} else {
+			return ResponseEntity.notFound().build();// HTTP 404 Not Found
+		}
+	}
+
+	// Haetaan jäljellä olevien lippujen määrä eventId:n mukaan
+	@GetMapping("/ticketsLeft/{id}")
+	ResponseEntity<Integer> getAllTickets(@PathVariable Long id) {
+		List<Ticket> tickets = ticketRepository.findByEvent_EventId(id);
+		int ticketsLeft = 0;
+		if (!tickets.isEmpty()) {
+			Optional<Event> event = eventRepository.findById(id);
+			if (!event.isEmpty()) {
+				int allTickets = event.get().getTicketCount();
+				int soldTickets = tickets.size();
+				ticketsLeft = allTickets - soldTickets;
+				return ResponseEntity.ok(ticketsLeft);// HTTP 200 OK
+			}
+
+			else {
+				return ResponseEntity.ok(event.get().getTicketCount());
+			}
+		} else {
+			Optional<Event> event = eventRepository.findById(id);
+			if (!event.isEmpty()) {
+				return ResponseEntity.ok(event.get().getTicketCount());
+			}
+			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}
 
