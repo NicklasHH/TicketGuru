@@ -189,7 +189,7 @@ _Transactions-taulu sisältää maksutapahtumat._
 
 ---
 
-<!--
+
 ## Tekninen kuvaus
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
@@ -243,4 +243,3 @@ käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimi
 Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat
 järjestelmän pariin !
 
--->
