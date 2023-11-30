@@ -213,6 +213,7 @@ _Transactions-taulu sisältää maksutapahtumat._
 - Ohjelmakoodi on käyty läpi niin, että nimeämiset ja koodaus sekä kommentointi olisi yhdenmukaista.
 - Pääsääntöisesti esimerkiksi REST APIn syötteiden tarkistus tehdään kunkin osion entiteetti sekä service luokassa ja jälkimmäiseen onkin helppo lisätä lisää tarkistuksia.
 
+![Arkkitehtuurin kuvaus](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/ArkkitehtuuriKuvaus.png)
 
 **TEKEMÄTTÄ**
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
