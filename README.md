@@ -83,6 +83,7 @@ Järjstelmän tiedot on kuvattu alla olevassa kaaviossa. Kaavio pitää sisäll�
 ## Taulut, taulujen attribuutit ja näiden selitys
 
 ### AppUsers
+
 ##### Taulun nimi: app_users
 
 _AppUsers-taulu sisältää käyttäjätunnukset, joita vaaditaan järjestelmän käyttämiseen._
@@ -97,6 +98,7 @@ _AppUsers-taulu sisältää käyttäjätunnukset, joita vaaditaan järjestelmän
 ---
 
 ### Roles
+
 ##### Taulun nimi: roles
 
 _Roles-taulu sisältää käyttäjätunnuksien roolit. Yhdellä käyttäjätunnuksella on yksi rooli._
@@ -108,6 +110,7 @@ _Roles-taulu sisältää käyttäjätunnuksien roolit. Yhdellä käyttäjätunnu
 ---
 
 ### TicketTypes
+
 ##### Taulun nimi: ticket_types
 
 _TicketTypes-taulu sisältää lipputyypit. Yhdellä lipulla on yksi lipputyyppi._
@@ -121,6 +124,7 @@ _TicketTypes-taulu sisältää lipputyypit. Yhdellä lipulla on yksi lipputyyppi
 ---
 
 ### Tickets
+
 ##### Taulun nimi: tickets
 
 _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden tapahtuman ja yhden lipputyypin tiedot._
@@ -135,36 +139,39 @@ _Tickets-taulu sisältää lipun tiedot. Yksi lippu sisältää yhden tapahtuman
 ---
 
 ### Events
+
 ##### Taulun nimi: events
 
 _Events-taulu sisältää tapahtuman tiedot._
-| Kenttä       | Tyyppi       | Kuvaus                                                  |
-|--------------|--------------|---------------------------------------------------------|
-| event_id     | BIGINT PK    | Tapahtuman yksilöllinen tunniste, AUTO_INCREMENT        |
-| event_name   | VARCHAR(100) | Tapahtuman nimi, not null                               |
-| event_date   | DATE         | Tapahtuman päivämäärä, not null                         |
-| event_time   | TIME         | Tapahtuman kellonaika, not null                         |
-| ticket_count | INT          | Tapahtuman lippujen määrä, not null                     |
-| venue_id     | BIGINT FK    | Tapahtuman paikan id, viittaus Venues-tauluun           |
-| description  | TEXT         | Tapahtuman kuvaus                                       |
+| Kenttä       | Tyyppi       | Kuvaus                                           |
+|--------------|--------------|--------------------------------------------------|
+| event_id     | BIGINT PK    | Tapahtuman yksilöllinen tunniste, AUTO_INCREMENT |
+| event_name   | VARCHAR(100) | Tapahtuman nimi, not null                        |
+| event_date   | DATE         | Tapahtuman päivämäärä, not null                  |
+| event_time   | TIME         | Tapahtuman kellonaika, not null                  |
+| ticket_count | INT          | Tapahtuman lippujen määrä, not null              |
+| venue_id     | BIGINT FK    | Tapahtuman paikan id, viittaus Venues-tauluun    |
+| description  | TEXT         | Tapahtuman kuvaus                                |
 
 ---
 
 ### Venues
+
 ##### Taulun nimi: venues
 
 _Venues-taulu sisältää tapahtumapaikat. Yksi tapahtuma voi olla vain yhdessä tapahtumapaikassa._
 
-| Kenttä         | Tyyppi        | Kuvaus                                                       |
-|----------------|---------------|--------------------------------------------------------------|
-| venue_id       | BIGINT PK     | Yksilöllinen tunniste, tapahtumapaikka, AUTO_INCREMENT       |
-| place          | VARCHAR(150)  | Tapahtumapaikan nimi, not null                               |
-| street_address | VARCHAR(150)  | Tapahtumapaikan katuosoite, not null                         |
-| postalcode     | VARCHAR(5) FK | Viittaus postinroon, postalCode PostCodes-taulussa           |
+| Kenttä         | Tyyppi        | Kuvaus                                                 |
+|----------------|---------------|--------------------------------------------------------|
+| venue_id       | BIGINT PK     | Yksilöllinen tunniste, tapahtumapaikka, AUTO_INCREMENT |
+| place          | VARCHAR(150)  | Tapahtumapaikan nimi, not null                         |
+| street_address | VARCHAR(150)  | Tapahtumapaikan katuosoite, not null                   |
+| postalcode     | VARCHAR(5) FK | Viittaus postinroon, postalCode PostCodes-taulussa     |
 
 ---
 
 ### Postcodes
+
 ##### Taulun nimi: postalcodes
 
 _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaikat. Yksi tapahtumapaikka sisältää vain yhden postinumeron._
@@ -176,6 +183,7 @@ _Postcodes-taulu sisältää postinumerot, ja niihin linkittyvät postitoimipaik
 ---
 
 ### Transactions
+
 ##### Taulun nimi: transactions
 
 _Transactions-taulu sisältää maksutapahtumat._
@@ -189,57 +197,113 @@ _Transactions-taulu sisältää maksutapahtumat._
 
 ---
 
-
 ## Tekninen kuvaus
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
 ratkaisut, esim.
 
--   Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma)
-    ja komponenttien väliset yhteydet (vaikkapa tähän tyyliin:
-    https://security.ufl.edu/it-workers/risk-assessment/creating-an-information-systemdata-flow-diagram/)
--   Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
--   Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää
-    UML-sekvenssikaavioilla.
--   Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
+- Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma)
+  ja komponenttien väliset yhteydet (vaikkapa tähän tyyliin:
+  https://security.ufl.edu/it-workers/risk-assessment/creating-an-information-systemdata-flow-diagram/)
+- Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
+- Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää
+  UML-sekvenssikaavioilla.
+- Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
 
 Tämän lisäksi
 
--   ohjelmakoodin tulee olla kommentoitua
--   luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa
-    johdonmukaisia nimeämiskäytäntöjä
--   ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta
-    vältytään
+- ohjelmakoodin tulee olla kommentoitua
+- luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa
+  johdonmukaisia nimeämiskäytäntöjä
+- ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta
+  vältytään
+
+---
 
 ## Testaus
 
-Tässä kohdin selvitetään, miten ohjelmiston oikea toiminta varmistetaan
-testaamalla projektin aikana: millaisia testauksia tehdään ja missä vaiheessa.
-Testauksen tarkemmat sisällöt ja testisuoritusten tulosten raportit kirjataan
-erillisiin dokumentteihin.
+Testauksesta on oma dokumentaatio: LINKKI TÄHÄN
 
-Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu.
+Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä päähän(E2E) testeillä. Näitä testejä suoritetaan, kun kyseiseen testattavaan osioon tehdään muutoksia.
+
+**Järjestelmän tunnetut ongelmat:**
+
+- Jkuben skiptests ei toimi, joten testit on kommentoitava ulos Rahtiin julkaistaessa.
+- Rahdin julkaisun yhteydessä useimmiten katoaa routen määrittelyt.
+
+---
 
 ## Asennustiedot
 
-Järjestelmän asennus on syytä dokumentoida kahdesta näkökulmasta:
+**Kehitysympäristö:** `Eclipse`
+**Tuotantoympäristö:** `Rahti`
+**Tietokanta:** `MariaDB`
+**Tietokannan luonti:** `https://github.com/NicklasHH/TicketGuru/tree/master/db`
+**Käynnistysasetukset:** `https://github.com/NicklasHH/TicketGuru/tree/master/src/main/resources`
+<br>
+**Lisää Tietokannasta:**
 
--   järjestelmän kehitysympäristö: miten järjestelmän kehitysympäristön saisi
-    rakennettua johonkin toiseen koneeseen
+- Tietokantaa asennettaessa tulee huomioida, että tietokannan käyttäjällä on vaadittavat oikeudet.
+- Tietokannan luontia varten on useita eri scriptejä, riippuen mitä halutaan tehdä.(Tyhjät taulut, pelkät tiedot, taulut ja tiedot)
+  <br>
 
--   järjestelmän asentaminen tuotantoympäristöön: miten järjestelmän saisi
-    asennettua johonkin uuteen ympäristöön.
+**Tuotantoympäristön luonti**
 
-Asennusohjeesta tulisi ainakin käydä ilmi, miten käytettävä tietokanta ja
-käyttäjät tulee ohjelmistoa asentaessa määritellä (käytettävä tietokanta,
-käyttäjätunnus, salasana, tietokannan luonti yms.).
+1. Luo projekti
+2. Luo tietokantapalvelu
+3. Julkaise Spring Boot projekti
+4. Tietokannan konfigurointi
+
+Yksityiskohtaisemmat ohjeet julkaisuun löytyy opettajan kasaamasta materiaalista: https://mruonavaara.github.io/hh-csc-docs/ohje_spring_rahti/#rahti-projektin-luonti
+<br>
+
+**Paikallisen kehitysympäristön käyttöönotto-ohje:**
+
+1. Asenna eclipse
+2. Lataa tämä projekti GitHubista: `git clone` https://github.com/NicklasHH/TicketGuru
+3. File -> Import -> Excisting maven projects -> etsi ja valitse äsken kloonattu kansio
+4. Varmista oikea profiili käytettävän tietokannan mukaan application.propertiesistä (H2, mariadb)
+5. Käynnistä projekti klikkaamalla hiiren oikealla painikkeella: `TicketGuruApplication.java` ja paina `Run as java application`
+6. Avaa selaimen osoiterivillä: http://localhost:8080/
+
+_Sisäänkirjautumistiedot_
+| Käyttäjätunnus  | Salasana        |
+|-----------------|-----------------|
+| admin           | admin           |
+| lipunmyyjä      | lipunmyyjä      |
+| lipuntarkastaja | lipuntarkastaja |
+
+<br>
+
+**MariaDB tietokannan ohje**  
+Mariadb-tietokantaa käytettäessä sinun tarvitsee määritellä `application.properties` tiedostossa `spring.profiles.default=MariaDB`
+
+1. Lataa HeidiSQL ja asenna se
+2. Lataa MariaDB ja asenna se: Käyttäjätunnus ja salasana on suotavaa asettaa `root`, Jos et käytä `root` niin määrittele käyttäjätunnus ja salasana tiedostoon `application-MariaDB.properties`
+3. Avaa HeidiSQL -> Uusi istunto juurikansiossa -> Määrittele MariaDB käyttäjätunnus ja salasana -> Avaa -> Klikkaa hiiren oikealla äsken luotua istuntoa -> Luo uusi -> Tietokanta -> Avautuneeseen tietokantaan: Luo uusi kysely -> Kopioi tähän projektin juuressa olevan db kansion sisältä `data-mariadb.sql` tiedoston sisältö. -> Suorita SQL kysely.
+
+<br>
+
+**H2 tietokannan ohje**
+H2-tietokantaa käytettäessä sinun tarvitsee määritellä `application.properties` tiedostossa `spring.profiles.default=h2` jonka jälkeen sinulla on H2-tietokanta käytössä. Sovelluksessa on käytössä ominaisuus, jonka avulla tietokantaan rakennetaan automaattisesti tietokanta seuraavalla komennolla: `spring.sql.init.schema-locations=file:db/data-h2.sql`
+H2-tietokantaan pääset käsiksi osoitteessa: http://localhost:8080/h2-console/
+<br>
+
+
+---
 
 ## Käynnistys- ja käyttöohje
 
-Tyypillisesti tässä riittää kertoa ohjelman käynnistykseen tarvittava URL sekä
-mahdolliset kirjautumiseen tarvittavat tunnukset. Jos järjestelmän
-käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimintajärjestykseen liittyviä asioita, nekin kerrotaan tässä yhteydessä.
+[**Etusivulle:**](https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/) https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/
 
-Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat
-järjestelmän pariin !
+[**Endpointtien listaukseen:**](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api) https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api
+<br>
 
+**Sisäänkirjautumistiedot**
+| Käyttäjätunnus  | Salasana        |
+|-----------------|-----------------|
+| admin           | admin           |
+| lipunmyyjä      | lipunmyyjä      |
+| lipuntarkastaja | lipuntarkastaja |
+
+---
