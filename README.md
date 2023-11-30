@@ -199,38 +199,27 @@ _Transactions-taulu sisältää maksutapahtumat._
 
 ## Tekninen kuvaus
 **Palvelintoteutus**
+Julkaisussa on käytetty hyödyksi Mavenin Jkube lisäosaa, jonka avulla projekti on julkaistu Rahdin palvelimelle.  
+
+Myös MariaDB tietokanta on julkaistu Rahdin palvelimelle ja sitä varten on luotu tietokannan luontiscripti SQL kielellä. [Tietokannan luontilauseet sisältävä kansio](https://github.com/NicklasHH/TicketGuru/tree/master/db)
 
 **Järjestelmän komponentit**
+Järjestelmän komponentit pitävät sisällään kaikkien luokkien GET ja SET metodit,CRUD toiminnot REST API:lle, QR koodin tekemisen lipun tiedoista, yksittäisen lipun tarkistuksen ID perusteella, sekä jäljellä olevien lippujen määrän laskemisen tapahtuman ID perusteella.
 
-**Komponenttien yhteydet**
+
+**Arkkitehtuuri**
+![Arkkitehtuurin kuvaus](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/ArkkitehtuuriKuvaus.png)
 
 **Keskeiset rajapinnat**
+Rajapintoja varten on tarkempi dokumentaatio, mikä sisältää jokaisen käytettävissä olevien endpointtien kuvauksen, esimerkkisisällön sekä muun olennaisen tiedon. [Rajapintojen dokumentaatioon pääset tästä](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api)
 
-
+Endpointeista saatavilla olevat tiedot mukailevat tietokantakaavion sisältöä: [Tietokantakaavioon pääset tästä](https://github.com/NicklasHH/TicketGuru#tietokanta)
 
 **Yleistä tietoa teknisestä osuudesta**
 - Ohjelmassa on käytössä endpointtien autentikointi sekä auktorisointi, joka mahdollistaa käyttäjätunnuksen ja salasanan perusteella tietojen näyttämisen.
 - Ohjelmakoodi on käyty läpi niin, että nimeämiset ja koodaus sekä kommentointi olisi yhdenmukaista.
-- Pääsääntöisesti esimerkiksi REST APIn syötteiden tarkistus tehdään kunkin osion entiteetti sekä service luokassa ja jälkimmäiseen onkin helppo lisätä lisää tarkistuksia.
+- Pääsääntöisesti esimerkiksi REST APIn syötteiden tarkistus tehdään kunkin osion entiteetti sekä service luokassa ja jälkimmäiseen onkin helppo lisätä uusia tarkistuksia.
 
-![Arkkitehtuurin kuvaus](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/ArkkitehtuuriKuvaus.png)
-
-**TEKEMÄTTÄ**
-Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
-ratkaisut, esim. Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma)
-  ja komponenttien väliset yhteydet (vaikkapa tähän tyyliin:
-  https://security.ufl.edu/it-workers/risk-assessment/creating-an-information-systemdata-flow-diagram/)
-Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
-Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää UML-sekvenssikaavioilla.
-
-
-**TEHTY**  
-
-Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
-ohjelmakoodin tulee olla kommentoitua
-luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa
-  johdonmukaisia nimeämiskäytäntöjä
-ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta vältytään
 
 ---
 
@@ -238,7 +227,7 @@ ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toisto
 
 Testauksesta on oma dokumentaatio: https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/TestiDokumentaatio.md#testausdokumentaatio-tickergurulle
 
-Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä päähän(E2E) testeillä. Näitä testejä suoritetaan, kun kyseiseen testattavaan osioon tehdään muutoksia.
+Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä päähän(E2E) testeillä. Näitä testejä suoritetaan, kun kyseiseen testattavaan osioon tehdään muutoksia. [Testauksen koodeihin pääset tästä](https://github.com/NicklasHH/TicketGuru/tree/master/src/test/java/Ohjelmistoprojekti/TicketGuru)
 
 **Järjestelmän tunnetut ongelmat:**
 
