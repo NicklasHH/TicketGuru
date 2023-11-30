@@ -197,20 +197,20 @@ _Transactions-taulu sisältää maksutapahtumat._
 
 ---
 
-## Tekninen kuvaus
-**Palvelintoteutus**
+## Tekninen kuvaus  
+**Palvelintoteutus**  
 Julkaisussa on käytetty hyödyksi Mavenin Jkube lisäosaa, jonka avulla projekti on julkaistu Rahdin palvelimelle.  
 
 Myös MariaDB tietokanta on julkaistu Rahdin palvelimelle ja sitä varten on luotu tietokannan luontiscripti SQL kielellä. [Tietokannan luontilauseet sisältävä kansio](https://github.com/NicklasHH/TicketGuru/tree/master/db)
 
-**Järjestelmän komponentit**
+**Järjestelmän komponentit**  
 Järjestelmän komponentit pitävät sisällään kaikkien luokkien GET ja SET metodit,CRUD toiminnot REST API:lle, QR koodin tekemisen lipun tiedoista, yksittäisen lipun tarkistuksen ID perusteella, sekä jäljellä olevien lippujen määrän laskemisen tapahtuman ID perusteella.
 
 
-**Arkkitehtuuri**
+**Arkkitehtuuri**  
 ![Arkkitehtuurin kuvaus](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/ArkkitehtuuriKuvaus.png)
 
-**Keskeiset rajapinnat**
+**Keskeiset rajapinnat**  
 Rajapintoja varten on tarkempi dokumentaatio, mikä sisältää jokaisen käytettävissä olevien endpointtien kuvauksen, esimerkkisisällön sekä muun olennaisen tiedon. [Rajapintojen dokumentaatioon pääset tästä](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api)
 
 Endpointeista saatavilla olevat tiedot mukailevat tietokantakaavion sisältöä: [Tietokantakaavioon pääset tästä](https://github.com/NicklasHH/TicketGuru#tietokanta)
@@ -238,19 +238,19 @@ Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä 
 
 ## Asennustiedot
 
-**Kehitysympäristö:** `Eclipse`
-**Tuotantoympäristö:** `Rahti`
-**Tietokanta:** `MariaDB`
-**Tietokannan luonti:** `https://github.com/NicklasHH/TicketGuru/tree/master/db`
-**Käynnistysasetukset:** `https://github.com/NicklasHH/TicketGuru/tree/master/src/main/resources`
+**Kehitysympäristö:** `Eclipse`  
+**Tuotantoympäristö:** `Rahti`  
+**Tietokanta:** `MariaDB`  
+**Tietokannan luonti:** `https://github.com/NicklasHH/TicketGuru/tree/master/db`  
+**Käynnistysasetukset:** `https://github.com/NicklasHH/TicketGuru/tree/master/src/main/resources`  
 <br>
-**Lisää Tietokannasta:**
+**Lisää Tietokannasta:**  
 
 - Tietokantaa asennettaessa tulee huomioida, että tietokannan käyttäjällä on vaadittavat oikeudet.
 - Tietokannan luontia varten on useita eri scriptejä, riippuen mitä halutaan tehdä.(Tyhjät taulut, pelkät tiedot, taulut ja tiedot)
   <br>
 
-**Tuotantoympäristön luonti**
+**Tuotantoympäristön luonti**  
 
 1. Luo projekti
 2. Luo tietokantapalvelu
@@ -260,12 +260,12 @@ Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä 
 Yksityiskohtaisemmat ohjeet julkaisuun löytyy opettajan kasaamasta materiaalista: https://mruonavaara.github.io/hh-csc-docs/ohje_spring_rahti/#rahti-projektin-luonti
 <br>
 
-**Paikallisen kehitysympäristön käyttöönotto-ohje:**
+**Paikallisen kehitysympäristön käyttöönotto-ohje:**  
 
-1. Asenna eclipse
-2. Lataa tämä projekti GitHubista: `git clone` https://github.com/NicklasHH/TicketGuru
-3. File -> Import -> Excisting maven projects -> etsi ja valitse äsken kloonattu kansio
-4. Varmista oikea profiili käytettävän tietokannan mukaan application.propertiesistä (H2, mariadb)
+1. Asenna eclipse  
+2. Lataa tämä projekti GitHubista: `git clone` https://github.com/NicklasHH/TicketGuru  
+3. File -> Import -> Excisting maven projects -> etsi ja valitse äsken kloonattu kansio  
+4. Varmista oikea profiili käytettävän tietokannan mukaan application.propertiesistä (H2, mariadb)   
 5. Käynnistä projekti klikkaamalla hiiren oikealla painikkeella: `TicketGuruApplication.java` ja paina `Run as java application`
 6. Avaa selaimen osoiterivillä: http://localhost:8080/
 
@@ -295,7 +295,7 @@ H2-tietokantaan pääset käsiksi osoitteessa: http://localhost:8080/h2-console/
 
 ---
 
-## Käynnistys- ja käyttöohje
+## Käynnistys- ja käyttöohje  
 
 [**Etusivulle:**](https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/) https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/
 
