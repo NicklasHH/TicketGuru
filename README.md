@@ -198,25 +198,38 @@ _Transactions-taulu sisältää maksutapahtumat._
 ---
 
 ## Tekninen kuvaus
+**Palvelintoteutus**
 
+**Järjestelmän komponentit**
+
+**Komponenttien yhteydet**
+
+**Keskeiset rajapinnat**
+
+
+
+**Yleistä tietoa teknisestä osuudesta**
+- Ohjelmassa on käytössä endpointtien autentikointi sekä auktorisointi, joka mahdollistaa käyttäjätunnuksen ja salasanan perusteella tietojen näyttämisen.
+- Ohjelmakoodi on käyty läpi niin, että nimeämiset ja koodaus sekä kommentointi olisi yhdenmukaista.
+- Pääsääntöisesti esimerkiksi REST APIn syötteiden tarkistus tehdään kunkin osion entiteetti sekä service luokassa ja jälkimmäiseen onkin helppo lisätä lisää tarkistuksia.
+
+
+**TEKEMÄTTÄ**
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
-ratkaisut, esim.
-
-- Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma)
+ratkaisut, esim. Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma)
   ja komponenttien väliset yhteydet (vaikkapa tähän tyyliin:
   https://security.ufl.edu/it-workers/risk-assessment/creating-an-information-systemdata-flow-diagram/)
-- Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
-- Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää
-  UML-sekvenssikaavioilla.
-- Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
+Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
+Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää UML-sekvenssikaavioilla.
 
-Tämän lisäksi
 
-- ohjelmakoodin tulee olla kommentoitua
-- luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa
+**TEHTY**  
+
+Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
+ohjelmakoodin tulee olla kommentoitua
+luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa
   johdonmukaisia nimeämiskäytäntöjä
-- ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta
-  vältytään
+ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta vältytään
 
 ---
 
