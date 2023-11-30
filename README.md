@@ -235,7 +235,7 @@ ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toisto
 
 ## Testaus
 
-Testauksesta on oma dokumentaatio: LINKKI TÄHÄN
+Testauksesta on oma dokumentaatio: https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/TestiDokumentaatio.md#testausdokumentaatio-tickergurulle
 
 Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä päähän(E2E) testeillä. Näitä testejä suoritetaan, kun kyseiseen testattavaan osioon tehdään muutoksia.
 
