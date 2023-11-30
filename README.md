@@ -257,7 +257,7 @@ Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä 
 3. Julkaise Spring Boot projekti
 4. Tietokannan konfigurointi
 
-Yksityiskohtaisemmat ohjeet julkaisuun löytyy opettajan kasaamasta materiaalista: https://mruonavaara.github.io/hh-csc-docs/ohje_spring_rahti/#rahti-projektin-luonti
+Yksityiskohtaisemmat ohjeet julkaisuun löytyy opettajan kasaamasta materiaalista: https://mruonavaara.github.io/hh-csc-docs/ohje_spring_rahti/#rahti-projektin-luonti  
 <br>
 
 **Paikallisen kehitysympäristön käyttöönotto-ohje:**  
@@ -287,7 +287,7 @@ Mariadb-tietokantaa käytettäessä sinun tarvitsee määritellä `application.p
 
 <br>
 
-**H2 tietokannan ohje**
+**H2 tietokannan ohje**  
 H2-tietokantaa käytettäessä sinun tarvitsee määritellä `application.properties` tiedostossa `spring.profiles.default=h2` jonka jälkeen sinulla on H2-tietokanta käytössä. Sovelluksessa on käytössä ominaisuus, jonka avulla tietokantaan rakennetaan automaattisesti tietokanta seuraavalla komennolla: `spring.sql.init.schema-locations=file:db/data-h2.sql`
 H2-tietokantaan pääset käsiksi osoitteessa: http://localhost:8080/h2-console/
 <br>
