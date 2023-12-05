@@ -241,7 +241,7 @@ Testausta toteutetaan yksikkötesteillä, integraatiotesteillä sekä päästä 
 **Kehitysympäristö:** `Eclipse`  
 **Tuotantoympäristö:** `Rahti`  
 **Tietokanta:** `MariaDB`  
-**Tietokannan luonti:** `https://github.com/NicklasHH/TicketGuru/tree/master/db`  
+**Tietokannan luonti:** `[https://github.com/NicklasHH/TicketGuru/tree/master/db](https://github.com/NicklasHH/TicketGuru/tree/master/db)`  
 **Käynnistysasetukset:** `https://github.com/NicklasHH/TicketGuru/tree/master/src/main/resources`  
 <br>
 **Lisää Tietokannasta:**  
