@@ -297,9 +297,9 @@ H2-tietokantaan pääset käsiksi osoitteessa: http://localhost:8080/h2-console/
 
 ## Käynnistys- ja käyttöohje  
 
-[**Etusivulle:**](https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/) https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/
+**Etusivulle:** [`https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/`](https://ticketguru-ohjelmistoprojekti.rahtiapp.fi/)  
 
-[**Endpointtien listaukseen:**](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api) https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api
+**Endpointtien listaukseen:** [`https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api`](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api)  
 <br>
 
 **Sisäänkirjautumistiedot**
