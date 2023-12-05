@@ -13,6 +13,7 @@ public interface AppUserRepository extends CrudRepository<AppUser, Long> {
 
 	List<AppUser> findByUsername(String username);
 
+	// Suorittaa JPQL-kyselyn käyttäjänimen perusteella
 	@Query("SELECT u FROM AppUser u WHERE u.username = :username")
 	AppUser findByUsername2(@Param("username") String username);
 }

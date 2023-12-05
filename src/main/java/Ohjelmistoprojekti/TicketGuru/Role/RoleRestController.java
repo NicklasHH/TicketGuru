@@ -41,7 +41,9 @@ public class RoleRestController {
 	@Autowired
 	private AppUserRepository appUserRepository;
 
-	@GetMapping // http://localhost:8080/api/roles
+	// Palauttaa kaikki roolit
+	// http://localhost:8080/api/roles
+	@GetMapping
 	ResponseEntity<List<Role>> all() {
 		List<Role> roles = roleRepository.findAll(); // Hae kaikki roolit tietokannasta
 		if (!roles.isEmpty()) {
@@ -51,7 +53,8 @@ public class RoleRestController {
 		}
 	}
 
-	// Palauttaa roolin id perusteella http://localhost:8080/api/roles/1
+	// Palauttaa roolin id perusteella 
+	// http://localhost:8080/api/roles/1
 	@GetMapping("/{id}")
 	public ResponseEntity<Role> getRole(@PathVariable Long id) {
 		Optional<Role> role = roleRepository.findById(id);
@@ -77,7 +80,8 @@ public class RoleRestController {
 		}
 	}
 
-	// muokataan olemassa olevaa roolia http://localhost:8080/api/roles/id
+	// Muokataan olemassa olevaa roolia 
+	// http://localhost:8080/api/roles/id
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateRole(@Valid @RequestBody Role editedRole, @PathVariable Long id) {
 		if (!roleRepository.existsById(id)) {
@@ -102,7 +106,8 @@ public class RoleRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedRole);
 	}
 
-	// lisätään uusi rooli http://localhost:8080/api/roles
+	// Lisätään uusi rooli 
+	// http://localhost:8080/api/roles
 	@PostMapping
 	public ResponseEntity<Object> createRole(@Valid @RequestBody Role newRole) {
 		ResponseEntity<Object> validationResponse = roleService.validateRole(newRole);
@@ -121,7 +126,9 @@ public class RoleRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedRole);
 	}
 
-	@DeleteMapping("/{id}") // http://localhost:8080/api/roles/1
+	// Poistetaan rooli
+	 // http://localhost:8080/api/roles/1
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteRole(@PathVariable Long id) { // Hae appuser tietokannasta ja palauta vastaus
 		Optional<Role> roleOptional = roleRepository.findById(id);// Palauttaa appuserin Id:N perusteella
 		if (roleOptional.isPresent()) {

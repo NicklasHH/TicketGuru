@@ -39,7 +39,8 @@ public class EventRestController {
 	@Autowired
 	private TicketTypeRepository ticketTypeRepository;
 
-	// Palauttaa kaikki tapahtumat tietokannasta http://localhost:8080/api/events
+	// Palauttaa kaikki tapahtumat tietokannasta
+	// http://localhost:8080/api/events
 	@GetMapping
 	ResponseEntity<List<Event>> all() {
 		List<Event> events = eventRepository.findAll(); // Hae kaikki tapahtumat tietokannasta
@@ -50,7 +51,8 @@ public class EventRestController {
 		}
 	}
 
-	// Palauttaa tapahtuman id perusteella http://localhost:8080/api/events/1
+	// Palauttaa tapahtuman id perusteella
+	// http://localhost:8080/api/events/1
 	@GetMapping("/{id}")
 	public ResponseEntity<Event> getEvent(@PathVariable Long id) {
 		Optional<Event> event = eventRepository.findById(id); // Hae tapahtuma ID:n perusteella
@@ -163,7 +165,8 @@ public class EventRestController {
 		}
 	}
 
-	// muokataan olemassa olevaa tapahtumaa http://localhost:8080/api/events/id
+	// muokataan olemassa olevaa tapahtumaa 
+	// http://localhost:8080/api/events/id
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateEvent(@Valid @RequestBody Event editedEvent, @PathVariable Long id) {
 		if (!eventRepository.existsById(id)) {
@@ -182,7 +185,8 @@ public class EventRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedEvent);
 	}
 
-	// lisätään uusi tapahtuma http://localhost:8080/api/events
+	// lisätään uusi tapahtuma 
+	// http://localhost:8080/api/events
 	@PostMapping
 	public ResponseEntity<Object> createEvent(@Valid @RequestBody Event newEvent) {
 		ResponseEntity<Object> validationResponse = eventService.validateEvent(newEvent);
@@ -195,7 +199,8 @@ public class EventRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedEvent);
 	}
 
-	// Poistaa tapahtuman id:n perusteella http://localhost:8080/api/events/1
+	// Poistaa tapahtuman id:n perusteella 
+	// http://localhost:8080/api/events/1
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteEvent(@PathVariable Long id) {
 

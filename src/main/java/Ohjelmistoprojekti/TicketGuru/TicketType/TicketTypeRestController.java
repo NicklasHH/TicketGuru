@@ -41,7 +41,8 @@ public class TicketTypeRestController {
 	@Autowired
 	private TicketRepository ticketRepository;
 
-	// Palauttaa kaikki lipputyypit http://localhost:8080/api/tickettypes
+	// Palauttaa kaikki lipputyypit 
+	// http://localhost:8080/api/tickettypes
 	@GetMapping
 	ResponseEntity<List<TicketType>> all() {
 		List<TicketType> ticketTypes = ticketTypeRepository.findAll(); // Hae kaikki lipputyypit tietokannasta
@@ -79,7 +80,8 @@ public class TicketTypeRestController {
 		}
 	}
 
-	// Muokataan lipputyyppiä id perusteella http://localhost808/api/tickettypes/1
+	// Muokataan lipputyyppiä id perusteella 
+	// http://localhost808/api/tickettypes/1
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateTicketType(@Valid @RequestBody TicketType editedTicketType,
 			@PathVariable Long id) {
@@ -99,7 +101,8 @@ public class TicketTypeRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedTicketType);
 	}
 
-	// Luodaan uusi lipputyyppi http://localhost8080/api/tickettypes
+	// Luodaan uusi lipputyyppi 
+	// http://localhost8080/api/tickettypes
 	@PostMapping
 	public ResponseEntity<Object> createTicketType(@Valid @RequestBody TicketType newTicketType) {
 		ResponseEntity<Object> validationResponse = ticketTypeService.validateTicketType(newTicketType);
@@ -112,7 +115,9 @@ public class TicketTypeRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicketType);
 	}
 
-	@DeleteMapping("/{id}") // http://localhost:8080/api/tickettypes/1
+	// Poistetaan lipputyyppi ID perusteella
+	// http://localhost:8080/api/tickettypes/1
+	@DeleteMapping("/{id}") 
 	public ResponseEntity<?> deleteTicketType(@PathVariable Long id) { // Hae lipputyyppi tietokannasta ja palauta
 																		// vastaus
 		Optional<TicketType> ticketTypeOptional = ticketTypeRepository.findById(id); // Palauttaa lipputyypin Id:N

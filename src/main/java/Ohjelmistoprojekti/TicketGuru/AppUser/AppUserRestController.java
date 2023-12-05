@@ -42,7 +42,8 @@ public class AppUserRestController {
 	@Autowired
 	private RoleRepository roleRepository;
 
-	// Palauttaa kaikki appuserit http://localhost:8080/api/appusers
+	// Palauttaa kaikki appuserit 
+	// http://localhost:8080/api/appusers
 	@PreAuthorize("hasAuthority('Admin')")
 	@GetMapping
 	ResponseEntity<List<AppUser>> all() {
@@ -54,7 +55,8 @@ public class AppUserRestController {
 		}
 	}
 
-	// Palauttaa appuserin id perusteella http://localhost:8080/api/appusers/1
+	// Palauttaa appuserin id perusteella 
+	// http://localhost:8080/api/appusers/1
 	@GetMapping("/{id}")
 	public ResponseEntity<AppUser> getEvent(@PathVariable Long id) {
 		Optional<AppUser> appUser = appUserRepository.findById(id); // Hae appuser ID:n perusteella
@@ -113,7 +115,8 @@ public class AppUserRestController {
 		}
 	}
 
-	// lisätään uusi appuser http://localhost:8080/api/appusers
+	// lisätään uusi appuser 
+	// http://localhost:8080/api/appusers
 	@PostMapping
 	public ResponseEntity<Object> createAppUser(@Valid @RequestBody AppUser newAppUser) {
 		ResponseEntity<Object> validationResponse = appUserService.validateAppUser(newAppUser);
@@ -132,7 +135,8 @@ public class AppUserRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedAppUser);
 	}
 
-	// muokataan olemassa olevaa appuseria http://localhost:8080/api/appusers/id
+	// muokataan olemassa olevaa appuseria 
+	// http://localhost:8080/api/appusers/id
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateAppUser(@Valid @RequestBody AppUser editedAppUser, @PathVariable Long id) {
 		if (!appUserRepository.existsById(id)) {
@@ -157,7 +161,8 @@ public class AppUserRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedAppUser);
 	}
 
-	// Poista appuser id:n perusteella http://localhost:8080/api/appusers/1
+	// Poista appuser id:n perusteella 
+	// http://localhost:8080/api/appusers/1
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteAppUser(@PathVariable Long id) { // Hae appuser tietokannasta ja palauta vastaus
 		Optional<AppUser> appUserOptional = appUserRepository.findById(id);// Palauttaa appuserin Id:N perusteella

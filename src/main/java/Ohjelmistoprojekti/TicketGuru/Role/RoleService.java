@@ -17,6 +17,7 @@ public class RoleService {
 		this.roleRepository = roleRepository;
 	}
 
+	// Tarkistus olemassa olevan roolin yhteydessä
 	public ResponseEntity<Object> checkDuplicatePut(Role editedRole, long id) {
 		List<Role> allRoles = roleRepository.findAll(); // Hae kaikki Role-tiedot
 
@@ -32,6 +33,7 @@ public class RoleService {
 		return ResponseEntity.ok(null);
 	}
 
+	// Tarkistus uuden roolin yhteydessä
 	public ResponseEntity<Object> checkDuplicatePost(Role newRole) {
 		List<Role> duplicateRoles = roleRepository.findByRoleName(newRole.getRoleName());
 
@@ -45,8 +47,8 @@ public class RoleService {
 		return ResponseEntity.ok(null);
 	}
 
+	// Yleiset tarkistukset
 	public ResponseEntity<Object> validateRole(Role role) {
-
 		if (role.getRoleName() == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Roolin nimi ei voi olla tyhjä");
 		}

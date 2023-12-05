@@ -55,7 +55,8 @@ public class TicketRestController {
 	@Autowired
 	private EventRepository eventRepository;
 
-	// Palauttaa kaikki liput http://localhost:8080/api/tickets
+	// Palauttaa kaikki liput 
+	// http://localhost:8080/api/tickets
 	@GetMapping
 	ResponseEntity<List<Ticket>> all() {
 		List<Ticket> tickets = ticketRepository.findAll(); // Hae kaikki liput tietokannasta
@@ -66,23 +67,10 @@ public class TicketRestController {
 		}
 	}
 
-	@GetMapping(value = "/qr/{id}", produces = MediaType.IMAGE_PNG_VALUE)
-	public BufferedImage barbecueEAN13Barcode(@PathVariable Long id) throws Exception {
-		Optional<Ticket> ticket = ticketRepository.findById(id);
-		if (ticket.isPresent()) {
-			String info;
-			info = ticket.get().getTicketId().toString() + "\n";
-			info = info + ticket.get().getIsChecked() + "\n";
-			info = info + ticket.get().getEvent().getEventName() + "\n";
 
-			return (TicketGuruApplication.generateQRCodeImage(info));
-		} else {
-			return (TicketGuruApplication.generateQRCodeImage("Ei lippua"));
-		}
 
-	}
-
-	// Palauttaa lipun id perusteella http://localhost:8080/api/tickets/1
+	// Palauttaa lipun id perusteella 
+	// http://localhost:8080/api/tickets/1
 	@GetMapping("/{id}")
 	public ResponseEntity<Ticket> getTicket(@PathVariable Long id) {
 		Optional<Ticket> ticket = ticketRepository.findById(id);
@@ -93,7 +81,8 @@ public class TicketRestController {
 		}
 	}
 
-	// lippu tarkistettu http://localhost:8080/api/tickets/1/isChecked
+	// Lipun isChecked arvon muuttaminen trueksi
+	// http://localhost:8080/api/tickets/1/isChecked
 	@GetMapping("/{id}/isChecked")
 	public ResponseEntity<Object> getPassword(@PathVariable long id) {
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
@@ -125,7 +114,8 @@ public class TicketRestController {
 		}
 	}
 
-	// Palauttaa eventin id perusteella http://localhost:8080/api/tickets/1/event
+	// Palauttaa eventin id perusteella 
+	// http://localhost:8080/api/tickets/1/event
 	@GetMapping("/{id}/event")
 	public ResponseEntity<Event> getEvent(@PathVariable long id) {
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
@@ -160,7 +150,8 @@ public class TicketRestController {
 		}
 	}
 
-	// Muokkaa lippua id perusteella http://localhost:8080/api/tickets/1
+	// Muokkaa lippua id perusteella 
+	// http://localhost:8080/api/tickets/1
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateTicket(@Valid @RequestBody Ticket editedTicket, @PathVariable Long id) {
 		if (!ticketRepository.existsById(id)) {
@@ -179,7 +170,8 @@ public class TicketRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedTicket);
 	}
 
-	// Uusi lippu http://localhost:8080/api/tickets/
+	// Uusi lippu 
+	// http://localhost:8080/api/tickets/
 	@PostMapping
 	public ResponseEntity<Object> createTicket(@Valid @RequestBody Ticket newTicket) {
 		ResponseEntity<Object> validationResponse = ticketService.validateTicket(newTicket);
@@ -192,7 +184,8 @@ public class TicketRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedTicket);
 	}
 
-	// Poista lippu id perusteella http://localhost:8080/api/tickets/1
+	// Poista lippu id perusteella
+	// http://localhost:8080/api/tickets/1
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteTicket(@PathVariable Long id) { // Hae lippu tietokannasta ja palauta vastaus
 		Optional<Ticket> ticketOptional = ticketRepository.findById(id);// Palauttaa lipun Id:N perusteella
@@ -217,32 +210,27 @@ public class TicketRestController {
 			return ResponseEntity.notFound().build(); // HTTP 404 Not Found
 		}
 	}
+	
+	// Palauttaa QR koodin lipusta 
+	// http://localhost:8080/api/tickets/qr/1
+	@GetMapping(value = "/qr/{id}", produces = MediaType.IMAGE_PNG_VALUE)
+	public BufferedImage barbecueEAN13Barcode(@PathVariable Long id) throws Exception {
+		Optional<Ticket> ticket = ticketRepository.findById(id);
+		if (ticket.isPresent()) {
+			String info;
+			info = ticket.get().getTicketId().toString() + "\n";
+			info = info + ticket.get().getIsChecked() + "\n";
+			info = info + ticket.get().getEvent().getEventName() + "\n";
 
-	@PatchMapping("/{id}/check")
-	public ResponseEntity<?> checkTicket(@PathVariable Long id) {
-		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
-		if (ticketOptional.isPresent()) {
-			Ticket ticket = ticketOptional.get();
-			ticket.setIsChecked(true); // Asetaa isChecked arvon true
-			ticketRepository.save(ticket);
-			return ResponseEntity.ok(ticket);
+			return (TicketGuruApplication.generateQRCodeImage(info));
 		} else {
-			return ResponseEntity.notFound().build(); // Jos lippua ei löydy 404
+			return (TicketGuruApplication.generateQRCodeImage("Ei lippua"));
 		}
-	}
 
-	// Haetaan kaikki liput tietyn eventId:n mukaan
-	@GetMapping("/eventSales/{id}")
-	ResponseEntity<List<Ticket>> allTickets(@PathVariable Long id) {
-		List<Ticket> tickets = ticketRepository.findByEvent_EventId(id);
-		if (!tickets.isEmpty()) {
-			return ResponseEntity.ok(tickets);// HTTP 200 OK
-		} else {
-			return ResponseEntity.notFound().build();// HTTP 404 Not Found
-		}
 	}
 
 	// Haetaan jäljellä olevien lippujen määrä eventId:n mukaan
+	// http://localhost:8080/api/tickets/ticketsLeft/1
 	@GetMapping("/ticketsLeft/{id}")
 	ResponseEntity<Integer> getAllTickets(@PathVariable Long id) {
 		List<Ticket> tickets = ticketRepository.findByEvent_EventId(id);
@@ -264,6 +252,33 @@ public class TicketRestController {
 			if (!event.isEmpty()) {
 				return ResponseEntity.ok(event.get().getTicketCount());
 			}
+			return ResponseEntity.notFound().build();// HTTP 404 Not Found
+		}
+	}
+	
+	// Merkitään id perusteella lippu käytetyksi
+	// http://localhost:8080/api/tickets/1/check
+	@PatchMapping("/{id}/check")
+	public ResponseEntity<?> checkTicket(@PathVariable Long id) {
+		Optional<Ticket> ticketOptional = ticketRepository.findById(id);
+		if (ticketOptional.isPresent()) {
+			Ticket ticket = ticketOptional.get();
+			ticket.setIsChecked(true); // Asetaa isChecked arvon true
+			ticketRepository.save(ticket);
+			return ResponseEntity.ok(ticket);
+		} else {
+			return ResponseEntity.notFound().build(); // Jos lippua ei löydy 404
+		}
+	}
+
+	// Haetaan kaikki liput tietyn eventId:n mukaan
+	// http://localhost:8080/api/tickets/eventSales/1
+	@GetMapping("/eventSales/{id}")
+	ResponseEntity<List<Ticket>> allTickets(@PathVariable Long id) {
+		List<Ticket> tickets = ticketRepository.findByEvent_EventId(id);
+		if (!tickets.isEmpty()) {
+			return ResponseEntity.ok(tickets);// HTTP 200 OK
+		} else {
 			return ResponseEntity.notFound().build();// HTTP 404 Not Found
 		}
 	}

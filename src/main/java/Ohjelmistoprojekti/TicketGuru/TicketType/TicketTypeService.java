@@ -16,8 +16,8 @@ public class TicketTypeService {
 	@Autowired
 	private EventRepository eventRepository;
 
+	// Yleiset tarkistukset
 	public ResponseEntity<Object> validateTicketType(TicketType ticketType) {
-
 		Optional<Event> eventOptional = eventRepository.findById(ticketType.getEvent().getEventId());
 		if (eventOptional.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Event ID:tä ei löytynyt");

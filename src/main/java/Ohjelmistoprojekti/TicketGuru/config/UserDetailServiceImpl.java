@@ -19,9 +19,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
 		this.repository = userRepository;
 	}
 
+	// Käyttäjätietojen vertaaminen tietokannan käyttäjiin roolin saamiseksi
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		AppUser curruser = repository.findByUsername2(username);
+		AppUser curruser = repository.findByUsername2(username);// Haetaan tietokannasta käyttäjää nimen perusteella
 		System.out.println("Käyttäjän " + username + " rooli: " + curruser.getRole().getRoleName());
 		UserDetails user = new org.springframework.security.core.userdetails.User(username, curruser.getPassword(),
 				AuthorityUtils.createAuthorityList(curruser.getRole().getRoleName()));

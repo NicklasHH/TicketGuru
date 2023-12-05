@@ -33,6 +33,7 @@ public class AppUser {
 	@Column(name = "password", nullable = false)
 	private String password;
 
+	// transient = ei tallenneta tietokantaan
 	@Transient
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -70,6 +71,7 @@ public class AppUser {
 		return password;
 	}
 
+	// Salasanaan käytetään BCryptPasswordEncoderia
 	public void setPassword(String password) {
 		System.out.println(password);
 		if (password.length() < 5 || password.length() > 50) {

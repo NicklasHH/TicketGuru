@@ -1,6 +1,6 @@
 // Koodi pitää kommentoida ulos, jotta julkaisu onnistuu. Jkuben skipTests ei toimi jostain syystä.
 
-/*package Ohjelmistoprojekti.TicketGuru;
+package Ohjelmistoprojekti.TicketGuru;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,41 +14,38 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
+
 @AutoConfigureMockMvc
 public class IntegrationTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @Test
-    @WithMockUser(username = "admin", password = "admin", roles = "Admin")
-    public void testGetTicketById() throws Exception {
-        mockMvc.perform(get("/api/tickets/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.ticketId").value(1))
-                .andExpect(jsonPath("$.event.eventId").value(1))
-                .andExpect(jsonPath("$.event.eventName").value("Tapahtuma 1"))
-                .andExpect(jsonPath("$.isChecked").value(true));
-    }
+	@Test
 
-    @Test
-    public void testGetTicketByIdWithOutAuth() throws Exception {
-        mockMvc.perform(get("/api/tickets/1"))
-                .andExpect(status().isUnauthorized());
-    }
-    @Test
-    public void testHomeScreenWelcome() throws Exception {
-        mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Welcome to TicketGuru")));
-    }
+	@WithMockUser(username = "admin", password = "admin", roles = "Admin")
+	public void testGetTicketById() throws Exception {
+		mockMvc.perform(get("/api/tickets/1")).andExpect(status().isOk()).andExpect(jsonPath("$.ticketId").value(1))
+				.andExpect(jsonPath("$.event.eventId").value(1))
+				.andExpect(jsonPath("$.event.eventName").value("Tapahtuma 1"))
+				.andExpect(jsonPath("$.isChecked").value(true));
+	}
 
-    @Test
-    public void testFindKorvatunturi() throws Exception {
-        mockMvc.perform(get("/api/postalcodes"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.[?(@.postalcode == '99999')].postOffice").value("Korvatunturi"));
-    }
+	@Test
+	public void testGetTicketByIdWithOutAuth() throws Exception {
+		mockMvc.perform(get("/api/tickets/1")).andExpect(status().isUnauthorized());
+	}
+
+	@Test
+	public void testHomeScreenWelcome() throws Exception {
+		mockMvc.perform(get("/")).andExpect(status().isOk())
+				.andExpect(content().string(containsString("Welcome to TicketGuru")));
+	}
+
+	@Test
+	public void testFindKorvatunturi() throws Exception {
+		mockMvc.perform(get("/api/postalcodes")).andExpect(status().isOk())
+				.andExpect(jsonPath("$.[?(@.postalcode == '99999')].postOffice").value("Korvatunturi"));
+	}
 
 }
-*/

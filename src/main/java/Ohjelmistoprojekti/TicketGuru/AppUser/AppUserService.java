@@ -24,6 +24,7 @@ public class AppUserService {
 	@Autowired
 	private RoleRepository roleRepository;
 
+	// Tarkistus olemassa olevan appuserin yhteydessä
 	public ResponseEntity<Object> checkDuplicatePut(AppUser editedAppUser, long id) {
 		List<AppUser> allAppUsers = appUserRepository.findAll();
 
@@ -39,6 +40,7 @@ public class AppUserService {
 		return ResponseEntity.ok(null);
 	}
 
+	// Tarkistus uuden appuserin yhteydessä
 	public ResponseEntity<Object> checkDuplicatePost(AppUser newAppUser) {
 		List<AppUser> duplicateAppUsers = appUserRepository.findByUsername(newAppUser.getUsername());
 
@@ -52,6 +54,7 @@ public class AppUserService {
 		return ResponseEntity.ok(null);
 	}
 
+	// Yleiset tarkistukset
 	public ResponseEntity<Object> validateAppUser(AppUser appUser) {
 		Optional<Role> roleOptional = roleRepository.findById(appUser.getRole().getRoleId());
 		if (roleOptional.isEmpty()) {

@@ -1,5 +1,4 @@
 // Koodi pitää kommentoida ulos, jotta julkaisu onnistuu. Jkuben skipTests ei toimi jostain syystä.
-/*
 
 package Ohjelmistoprojekti.TicketGuru;
 
@@ -14,4 +13,3 @@ class TicketGuruApplicationTests {
 	}
 
 }
-*/

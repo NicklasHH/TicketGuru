@@ -40,7 +40,8 @@ public class PostalcodeRestController {
 		this.postalcodeService = postalcodeService;
 	}
 
-	// Hae kaikki posinumerot http://localhost:8080/api/postalcodes
+	// Hae kaikki posinumerot 
+	// http://localhost:8080/api/postalcodes
 	@GetMapping
 	ResponseEntity<List<Postalcode>> all() {
 		List<Postalcode> postalcodes = postalcodeRepository.findAll(); // Hae kaikki postinumerot tietokannasta
@@ -63,7 +64,9 @@ public class PostalcodeRestController {
 		}
 	}
 
-	@PutMapping("/{postalcode}") // Muokkaa postinumeroa http://localhost:8080/api/postalcode/00100
+	// Muokkaa postinumeroa 
+	// http://localhost:8080/api/postalcode/00100
+	@PutMapping("/{postalcode}")
 	public ResponseEntity<Object> updatePostalCode(@RequestBody Postalcode editedPostalcode,
 			@PathVariable String postalcode) {
 		editedPostalcode.setPostalcode(postalcode);
@@ -84,7 +87,8 @@ public class PostalcodeRestController {
 		return ResponseEntity.status(HttpStatus.OK).body(updatedPostalcode);
 	}
 
-	// Lisätään uusi postinumero http://localhost:8080/api/postalcodes
+	// Lisätään uusi postinumero 
+	// http://localhost:8080/api/postalcodes
 	@PostMapping
 	public ResponseEntity<Object> createPostalcode(@Valid @RequestBody Postalcode newPostalcode) {
 		ResponseEntity<Object> validationResponse = postalcodeService.validatePostalcode(newPostalcode);

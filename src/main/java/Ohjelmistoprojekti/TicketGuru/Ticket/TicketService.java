@@ -24,6 +24,7 @@ public class TicketService {
 	@Autowired
 	private EventRepository eventRepository;
 
+	// Yleiset tarkistukset
 	public ResponseEntity<Object> validateTicket(Ticket ticket) {
 
 		Optional<TicketType> ticketTypeOptional = ticketTypeRepository

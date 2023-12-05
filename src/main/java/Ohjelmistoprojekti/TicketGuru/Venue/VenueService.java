@@ -24,6 +24,7 @@ public class VenueService {
 	@Autowired
 	private PostalcodeRepository postalcodeRepository;
 
+	// Tarkistus olemassa olevan tapahtumapaikan yhteydessä
 	public ResponseEntity<Object> checkDuplicatePut(Venue editedVenue, long id) {
 		List<Venue> allVenues = venueRepository.findAll();
 
@@ -39,6 +40,7 @@ public class VenueService {
 		return ResponseEntity.ok(null);
 	}
 
+	// Tarkistus uuden tapahtumapaikan yhteydessä
 	public ResponseEntity<Object> checkDuplicatePost(Venue newVenue) {
 		List<Venue> duplicateVenues = venueRepository.findByPlace(newVenue.getPlace());
 
@@ -52,6 +54,7 @@ public class VenueService {
 		return ResponseEntity.ok(null);
 	}
 
+	// Yleiset tarkistukset
 	public ResponseEntity<Object> validateVenue(Venue venue) {
 		Optional<Postalcode> postalcodeOptional = postalcodeRepository
 				.findByPostalcode(venue.getPostalcode().getPostalcode());

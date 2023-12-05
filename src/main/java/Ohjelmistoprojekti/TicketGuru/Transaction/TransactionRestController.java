@@ -39,7 +39,8 @@ public class TransactionRestController {
 	@Autowired
 	private TicketRepository ticketRepository;
 
-	// Listaa kaikki myyntitapahtumat GET http://localhost:8080/api/transactions
+	// Listaa kaikki myyntitapahtumat  
+	// http://localhost:8080/api/transactions
 	@GetMapping
 	ResponseEntity<List<Transaction>> all() {
 		List<Transaction> transactions = transactionRepository.findAll(); // Hae kaikki transaktiot tietokannasta
@@ -52,7 +53,8 @@ public class TransactionRestController {
 		}
 	}
 
-	// Hae myyntitapahtuma id:llä GET http://localhost:8080/api/transactions/1
+	// Hae myyntitapahtuma id:llä  
+	// http://localhost:8080/api/transactions/1
 	@GetMapping("/{id}")
 	public ResponseEntity<Transaction> getTransaction(@PathVariable Long id) {
 		Optional<Transaction> transaction = transactionRepository.findById(id); // Hae tapahtuma ID:n perusteella
@@ -65,7 +67,8 @@ public class TransactionRestController {
 		}
 	}
 
-	// Lisää uusi myyntitapahtuma POST http://localhost:8080/api/transactions
+	// Lisää uusi myyntitapahtuma  
+	// http://localhost:8080/api/transactions
 	@PostMapping
 	Transaction newTransaction(@Valid @RequestBody Transaction newTransaction) {
 
@@ -79,7 +82,8 @@ public class TransactionRestController {
 		return transactionRepository.save(newTransaction);
 	}
 
-	// Muokkaa myyntitapahtumaa PUT http://localhost:8080/api/appusers/id
+	// Muokkaa myyntitapahtumaa 
+	// http://localhost:8080/api/appusers/id
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> editTransaction(@Valid @RequestBody Transaction editedTransaction,
 			@PathVariable Long id) {
@@ -97,7 +101,7 @@ public class TransactionRestController {
 		return ResponseEntity.ok(editedTransaction); // HTTP 200 OK
 	}
 
-	// Poista myyntitapahtuma id:n perusteella DELETE
+	// Poista myyntitapahtuma id:n perusteella 
 	// http://localhost:8080/api/transactions/1
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteTransaction(@PathVariable Long id) { // Hae myyntitapahtuma tietokannasta ja palauta

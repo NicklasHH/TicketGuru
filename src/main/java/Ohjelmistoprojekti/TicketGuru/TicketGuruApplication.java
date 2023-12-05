@@ -27,15 +27,18 @@ public class TicketGuruApplication {
 		System.out.println(ldt);
 
 	}
-	public static BufferedImage generateQRCodeImage(String barcodeText) throws Exception {
-	    QRCodeWriter barcodeWriter = new QRCodeWriter();
-	    BitMatrix bitMatrix = 
-	      barcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 200, 200);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	// QR koodin generointi annetun tekstin perusteella
+	public static BufferedImage generateQRCodeImage(String barcodeText) throws Exception {
+		QRCodeWriter barcodeWriter = new QRCodeWriter();
+		BitMatrix bitMatrix = barcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 200, 200);
+
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
+
+	// Muutetaan kuva HTTP viestiksi
 	@Bean
 	public HttpMessageConverter<BufferedImage> createImageHttpMessageConverter() {
-	    return new BufferedImageHttpMessageConverter();
+		return new BufferedImageHttpMessageConverter();
 	}
 }

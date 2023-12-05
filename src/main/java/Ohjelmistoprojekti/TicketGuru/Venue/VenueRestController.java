@@ -42,7 +42,8 @@ public class VenueRestController {
 	@Autowired
 	private EventRepository eventRepository;
 
-	// Hae kaikki tapahtumapaikat GET http://localhost:8080/api/venues
+	// Hae kaikki tapahtumapaikat 
+	// http://localhost:8080/api/venues
 	@GetMapping
 	ResponseEntity<List<Venue>> all() {
 		List<Venue> venues = venueRepository.findAll(); // Hae kaikki tapahtumapaikat tietokannasta
@@ -53,7 +54,7 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa tapahtumapaikan id:n perusteella GET
+	// Palauttaa tapahtumapaikan id:n perusteella
 	// http://localhost:8080/api/venues/1
 	@GetMapping("/{id}")
 	public ResponseEntity<Venue> getVenue(@PathVariable Long id) {
@@ -65,7 +66,7 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa tapahtumapaikan postinumeron id:n perusteella GET
+	// Palauttaa tapahtumapaikan postinumeron id:n perusteella
 	// http://localhost:8080/api/venues/1/postalcode
 	@GetMapping("/{id}/postalcode")
 	public ResponseEntity<Postalcode> getPostalcode(@PathVariable long id) {
@@ -82,7 +83,7 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa tapahtumapaikan id:n perusteella GET
+	// Palauttaa tapahtumapaikan id:n perusteella
 	// http://localhost:8080/api/venues/1/place
 	@GetMapping("/{id}/place")
 	public ResponseEntity<Object> getPlace(@PathVariable long id) {
@@ -97,7 +98,7 @@ public class VenueRestController {
 		}
 	}
 
-	// Palauttaa katuosoitteen id:n perusteella GET
+	// Palauttaa katuosoitteen id:n perusteella
 	// http://localhost:8080/api/venues/1/streetaddress
 	@GetMapping("/{id}/streetaddress")
 	public ResponseEntity<Object> getstreetaddress(@PathVariable long id) {
@@ -112,7 +113,7 @@ public class VenueRestController {
 		}
 	}
 
-	// Muokataan olemassa olevaa tapahtumapaikkaa id:n perusteella PUT
+	// Muokataan olemassa olevaa tapahtumapaikkaa id:n perusteella 
 	// http://localhost:8080/api/venues/id
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateVenue(@Valid @RequestBody Venue editedVenue, @PathVariable long id) {
@@ -138,7 +139,8 @@ public class VenueRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(updatedVenue);
 	}
 
-	// Lisätään uusi tapahtumapaikka POST http://localhost:8080/api/venues
+	// Lisätään uusi tapahtumapaikka  
+	// http://localhost:8080/api/venues
 	@PostMapping
 	public ResponseEntity<Object> createVenue(@Valid @RequestBody Venue newVenue) {
 		ResponseEntity<Object> validationResponse = venueService.validateVenue(newVenue);
@@ -157,11 +159,10 @@ public class VenueRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedVenue);
 	}
 
-	// Poista tapahtumapaikka id:n perusteella DELETE
+	// Poista tapahtumapaikka id:n perusteella 
 	// http://localhost:8080/api/venues/1
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteVenue(@PathVariable Long id) { // Hae tapahtumapaikka tietokannasta ja palauta
-																	// vastaus
+	public ResponseEntity<?> deleteVenue(@PathVariable Long id) { // Hae tapahtumapaikka tietokannasta ja palauta vastaus
 		Optional<Venue> venueOptional = venueRepository.findById(id);// Palauttaa tapahtumapaikan id:n perusteella
 		if (venueOptional.isPresent()) {
 			Venue venue = venueOptional.get();

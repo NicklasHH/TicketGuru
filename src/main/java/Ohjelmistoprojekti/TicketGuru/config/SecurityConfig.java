@@ -28,15 +28,12 @@ public class SecurityConfig {
 		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers(new AntPathRequestMatcher("/h2-console/**"))
 				.permitAll().requestMatchers("/api/postalcodes", "/").permitAll() // Salli kaikille pääsy tähän reittiin
 //				.anyRequest().permitAll()
-				.anyRequest().authenticated())
-				.cors(Customizer.withDefaults()) // Ottaa CORS asetukset käyttöön
+				.anyRequest().authenticated()).cors(Customizer.withDefaults()) // Ottaa CORS asetukset käyttöön
 				.csrf(AbstractHttpConfigurer::disable) // Poistaa käytöstä CSRF-suojauksen
 				.httpBasic(Customizer.withDefaults()) // Konfiguroi oletusarvoisen HTTP Basic -autentikoinnin
-				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())); // Sallii
-																										// H2-Consoleen
-																										// pääsyn ja
-																										// asettaa
-																										// kehysasetukset
+				
+				// Sallii H2-Consoleen pääsyn ja asettaa kehysasetukset
+				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()));
 
 		return http.build();
 	}

@@ -16,6 +16,7 @@ public class EventService {
 	@Autowired
 	private VenueRepository venueRepository;
 
+	// Yleiset tarkistukset
 	public ResponseEntity<Object> validateEvent(Event event) {
 		Optional<Venue> venueOptional = venueRepository.findById(event.getVenue().getVenueId());
 		if (venueOptional.isEmpty()) {

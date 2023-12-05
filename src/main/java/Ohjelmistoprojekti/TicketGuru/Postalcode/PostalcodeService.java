@@ -19,6 +19,7 @@ public class PostalcodeService {
 		this.postalcodeRepository = postalcodeRepository;
 	}
 
+	// Tarkistetaan postinumeron yksilöllisyys
 	public ResponseEntity<Object> checkDuplicatePost(Postalcode newPostalcode) {
 		Optional<Postalcode> postalcodeOptional = postalcodeRepository.findByPostalcode(newPostalcode.getPostalcode());
 		List<Postalcode> duplicatePostalcodes = postalcodeOptional.map(Collections::singletonList)
@@ -34,7 +35,7 @@ public class PostalcodeService {
 		return ResponseEntity.ok(null);
 	}
 
-	// Lisää tähän tarkistuksia jos on tarve
+	// Yleiset tarkistukset
 	public ResponseEntity<Object> validatePostalcode(Postalcode postalcode) {
 		if (postalcode.getPostalcode().length() != 5) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Postinumeron on oltava 5 numeroa.");
