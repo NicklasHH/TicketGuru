@@ -204,7 +204,7 @@ Julkaisussa on käytetty hyödyksi Mavenin Jkube lisäosaa, jonka avulla projekt
 Myös MariaDB tietokanta on julkaistu Rahdin palvelimelle ja sitä varten on luotu tietokannan luontiscripti SQL kielellä. [Tietokannan luontilauseet sisältävä kansio](https://github.com/NicklasHH/TicketGuru/tree/master/db)
 
 **Järjestelmän komponentit**  
-Järjestelmän komponentit pitävät sisällään kaikkien luokkien GET ja SET metodit,CRUD toiminnot REST API:lle, QR koodin tekemisen lipun tiedoista, yksittäisen lipun tarkistuksen ID perusteella, sekä jäljellä olevien lippujen määrän laskemisen tapahtuman ID perusteella.
+Järjestelmän komponentit pitävät sisällään kaikkien luokkien GET ja SET metodit, salasanan cryptauksen BCryptiä hyödyntäen,CRUD toiminnot REST API:lle, QR koodin tekemisen lipun tiedoista, yksittäisen lipun tarkistuksen ID perusteella, sekä jäljellä olevien lippujen määrän laskemisen tapahtuman ID perusteella.
 
 
 **Arkkitehtuuri**  
