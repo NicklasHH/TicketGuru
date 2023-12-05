@@ -208,7 +208,7 @@ Järjestelmän komponentit pitävät sisällään kaikkien luokkien GET ja SET m
 
 
 **Arkkitehtuuri**  
-![Arkkitehtuurin kuvaus](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/ArkkitehtuuriKuvaus.png)
+![Arkkitehtuurin kuvaus](https://github.com/NicklasHH/TicketGuru/blob/master/TicketGuruDocumentation/ArkkitehtuuriKuvausTumma.png)
 
 **Keskeiset rajapinnat**  
 Rajapintoja varten on tarkempi dokumentaatio, mikä sisältää jokaisen käytettävissä olevien endpointtien kuvauksen, esimerkkisisällön sekä muun olennaisen tiedon. [Rajapintojen dokumentaatioon pääset tästä](https://github.com/NicklasHH/TicketGuru/blob/master/RestDocumentation/README.md#ticketguru-rest-api)
